@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Add Caseback</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/styles.min.css" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+    * {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    table,
+    td,
+    th {
+      border: 1px solid black;
+      text-align: center;
+
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th {
+      height: 70px;
+      text-align: center;
+
+    }
+  </style>
+
+</head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar">
+      <!-- Sidebar scroll-->
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./products.html" class="text-nowrap logo-img">
+            <img src="../assets/images/logos/favicon.png" width="180" alt="" />
+          </a>
+          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+            <i class="ti ti-x fs-8"></i>
+          </div>
+        </div>
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+          <ul id="sidebarnav">
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Home</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./products.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Products</span>
+              </a>
+            </li>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Menu</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./profile.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Profile</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./orders.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-alert-circle"></i>
+                </span>
+                <span class="hide-menu">Orders</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./feedback.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-cards"></i>
+                </span>
+                <span class="hide-menu">Feedback</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./ratings.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file-description"></i>
+                </span>
+                <span class="hide-menu">Ratings</span>
+              </a>
+            </li>
+
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Settings</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./login.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-login"></i>
+                </span>
+                <span class="hide-menu">Logout</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+      </div>
+      <!-- End Sidebar scroll-->
+    </aside>
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <div>
+        <div class="card">
+          <div class="card-body">
+            <div style="margin-left: 10px; display: flex; align-items: center; justify-content: center;">
+              <h2 style="display: flex; justify-content: center;">Add
+                Caseback</h2>
+
+              <button type="button" class="btn btn-warning" style="margin-left: 300px; margin-bottom: 10px;"
+                onclick="nextPage()">
+                ADD NEW CASEBACK
+              </button>
+              <input type="checkbox" style="margin-left: 300px;" id="selectAllCheckbox" onclick="toggle(this)">
+              <p style="margin: 10px;">Select All</p>
+            </div>
+
+            <div class="card">
+              <div class="card-body">
+
+                <!--Form Starting Here-->
+                <form>
+
+                  <div class="row">
+                    <div>
+                      <table>
+                        <thead>
+                          <th>
+                            <h4>CASEBACK NAME</h4>
+                          </th>
+                          <th>
+                            <h4>CASEBACK IMAGE</h4>
+                          </th>
+                          <th>
+                            <h4>PRICE</h4>
+                          </th>
+                          <th>
+                            <h4>ACTION</h4>
+                          </th>
+                        </thead>
+                        <tbody id="tbody"></tbody>
+
+
+                      </table>
+
+                      <div style="display: flex;">
+                        <button type="button" class="btn btn-primary" style="margin-top: 30px; margin-left: 450px;"
+                          onclick="redirectToBackPage()">
+                          Back
+                        </button>
+                        <button type="button" class="btn btn-primary" style="margin-top: 30px; margin-left: 10px;"
+                          onclick="redirectToAnotherPage()">
+                          Continue
+                        </button>
+                      </div>
+                    </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/sidebarmenu.js"></script>
+  <script src="../assets/js/app.min.js"></script>
+  <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+
+  <script>
+    let temp = []
+    let combinationArray = []
+    function redirectToAnotherPage() {
+      // Redirect to the desired HTML page
+      if (JSON.stringify(temp).length > 2)
+        window.localStorage.setItem("cCasebackId", JSON.stringify(temp))
+      else
+        window.localStorage.removeItem("cCasebackId")
+      window.location.href = 'add-customization.html'; // Replace 'another_page.html' with the URL of your destination page
+    }
+
+    const getDialDetails = () => {
+      let url = "../api/get-indi-watch.php"
+      let body = JSON.stringify({
+        wid: window.localStorage.getItem("wid"),
+        token: window.localStorage.getItem("authToken")
+      })
+
+      fetch(url, {
+        method: "POST",
+        body: body
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            if (data.data[0].combination == null) {
+              getDial();
+              return true
+            }
+            data.data[0].combination.caseback.forEach(it => {
+              combinationArray.push(it)
+            })
+            getDial();
+          }
+          else {
+            alert("Something went wrong")
+          }
+        })
+    }
+
+
+
+    const getDial = () => {
+      let li = ``;
+      fetch("../api/get-caseback.php", {
+        method: "POST",
+        body: JSON.stringify({
+          "token": localStorage.getItem("authToken"),
+          "watch_id":window.localStorage.getItem("wid"),
+        }),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          if (json.success == false) {
+            alert(json.msg)
+          }
+          else {
+            let t = json.data;
+            t.forEach((user, index) => {
+              let unchecked = `<td><input type=  "checkbox" id="${user.cid}"  name="dialId" onclick="return addDials(this) "></td>`
+              let checked = `<td><input type=  "checkbox" id="${user.cid}"  name="dialId" onclick="return addDials(this)" checked></td>`
+
+              let ischecked = unchecked
+              if (window.localStorage.getItem("cCasebackId") != null) {
+                let json = JSON.parse(window.localStorage.getItem("cCasebackId"))
+                json.forEach(it => {
+                  if (it.id == user.cid) {
+                    ischecked = checked
+                  }
+                });
+              }
+              else {
+                combinationArray.forEach((it, index) => {
+                  console.log(it, user)
+                  if (it.id == user.cid) {
+                    ischecked = checked
+                    temp.push(it)
+                  }
+                });
+              }
+
+              li += `<tr>
+                  <td>
+                    <h5>${user.name}</h5>
+                  </td>
+                  <td><img src="${user.image_url}"
+                      style="height: 90px; width: 90px; margin: 15px;" /></td>
+                  <td>
+                    <h5>$${user.price}</h5>
+                  </td>
+                  ${ischecked}
+                </tr>`
+            })
+            document.getElementById("tbody").innerHTML = li
+          }
+        })
+    }
+
+
+    const addDials = (element) => {
+      temp = [];
+      const rowIndex = element.closest('tr').rowIndex;
+      const checkboxes = document.querySelectorAll('input[name="dialId"]');
+
+      checkboxes.forEach((checkbox) => {
+        if (checkbox.checked) {
+          let a = {}
+          a.price = checkbox.closest('tr').querySelector('td:nth-child(3)').textContent.trim()
+          a.id = checkbox.id
+          a.name = checkbox.closest('tr').querySelector('td:nth-child(1)').textContent.trim()
+          a.image = checkbox.closest('tr').querySelector('td:nth-child(2)').firstChild.currentSrc
+          temp.push(a)
+          console.log(temp)
+        }
+      });
+    }
+
+    const toggle = (source) => {
+      let checkboxes = document.querySelectorAll('input[name="dialId"]');
+      checkboxes.forEach(checkbox => {
+        checkbox.checked = source.checked
+      })
+      addDials(checkboxes[0])
+    }
+
+    const redirectToBackPage = () => {
+      window.location.href = 'add-customization.html'
+    }
+
+    const nextPage = () => {
+      window.location.href = 'add-caseback2.html'
+    }
+
+    getDialDetails()
+
+  </script>
+
+</body>
+
+</html>

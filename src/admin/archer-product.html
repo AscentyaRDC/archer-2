@@ -1,0 +1,816 @@
+<html>
+
+<head>
+    <link rel="icon" href="../assets/images/logos/favicon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Archer Product</title>
+
+    <style>
+        /* Basic Styling */
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Columns */
+        .left-column {
+            width: 65%;
+            position: relative;
+
+        }
+
+        .right-column {
+            width: 35%;
+            margin-top: 60px;
+        }
+
+        /* Left Column */
+        .left-column img {
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .left-column img.active {
+            opacity: 1;
+        }
+
+        /* Product Description */
+        .product-description {
+            border-bottom: 1px solid #E1E8EE;
+            margin-bottom: 20px;
+
+        }
+
+        /* .product-description span {
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+        } */
+
+        .product-description h1 {
+            font-weight: 300;
+            font-size: 52px;
+            color: #43484D;
+        }
+
+        .product-description p {
+            font-size: 16px;
+            font-weight: 300;
+            color: #86939E;
+            line-height: 24px;
+        }
+
+        /* Product Color */
+        .customizations {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #E1E8EE;
+
+            border: 1px solid #ccc;
+            /* Add border to create the box effect */
+            padding: 10px;
+            /* Add padding for spacing */
+            margin-bottom: 10px;
+            /* Add margin for spacing between boxes */
+
+        }
+
+        .customization-header {
+            cursor: pointer;
+            /* Set cursor to pointer to indicate clickable */
+            display: flex;
+            /* Use flexbox for layout */
+            justify-content: space-between;
+            /* Align items to each end */
+            align-items: center;
+            /* Align items vertically */
+        }
+
+        .expand-btn {
+            font-size: 24px;
+            /* Adjust the font size as needed */
+            font-weight: bold;
+            /* Make the symbol bold */
+        }
+
+        .customizations-content {
+            max-height: 0;
+            /* Initially hide content */
+            overflow: hidden;
+            /* Hide overflowing content */
+            transition: max-height 0.6s ease;
+            /* Add smooth animation */
+        }
+
+        .choose-custom div {
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+
+        /* Product Price */
+        .product-price {
+            display: flex;
+            align-items: center;
+            margin: 10px;
+
+        }
+
+        .product-price span {
+            font-size: 26px;
+            font-weight: 300;
+            color: #43474D;
+            margin-right: 20px;
+        }
+
+        /* Default styles for both buttons */
+        .cart-btn {
+            display: inline-block;
+            border-radius: 6px;
+            font-size: 16px;
+            text-decoration: none;
+            padding: 12px 30px;
+            margin-left: 20px;
+            width: 170%;
+            text-align: center;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        /* Add to Cart button */
+        .add-to-cart-btn {
+            background-color: white;
+            border: 2px solid black;
+            color: black;
+        }
+
+        /* Buy Now button */
+        .buy-now-btn {
+            background-color: black;
+            border: 2px solid black;
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 940px) {
+            .container {
+                flex-direction: column;
+                margin-top: 60px;
+            }
+
+            /* .left-column,
+            .right-column {
+                width: 100%;
+            } */
+
+            .left-column img {
+                width: 300px;
+                right: 0;
+                top: -65px;
+                left: initial;
+            }
+        }
+
+        @media (max-width: 535px) {
+            .left-column img {
+                width: 220px;
+                top: -85px;
+            }
+        }
+
+        .left-column:hover {
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transform: scale(1.1);
+            /* Adjust the scale factor as needed */
+            z-index: 1;
+            position: relative;
+            transition: transform 0.3s ease;
+
+        }
+
+        .checked {
+            color: orange;
+        }
+    </style>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 10px;
+            color: #86939E;
+            font-family: Times, "Times New Roman", Georgia, serif;
+
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+
+    <style>
+        .user-rating {
+            font-family: Arial;
+            margin: 0 auto;
+            /* Center website */
+            max-width: 800px;
+            /* Max width */
+            padding: 20px;
+        }
+
+        .heading {
+            font-size: 25px;
+            margin-right: 25px;
+        }
+
+        .fa {
+            font-size: 25px;
+        }
+
+        .checked {
+            color: orange;
+        }
+
+        /* Three column layout */
+        .side {
+            float: left;
+            width: 15%;
+            margin-top: 10px;
+        }
+
+        .middle {
+            margin-top: 10px;
+            float: left;
+            width: 70%;
+        }
+
+        /* Place text to the right */
+        .right {
+            text-align: right;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* The bar container */
+        .bar-container {
+            width: 100%;
+            background-color: #f1f1f1;
+            text-align: center;
+            color: white;
+        }
+
+        /* Individual bars */
+        .bar-5 {
+            width: 60%;
+            height: 18px;
+            background-color: #04AA6D;
+        }
+
+        .bar-4 {
+            width: 30%;
+            height: 18px;
+            background-color: #2196F3;
+        }
+
+        .bar-3 {
+            width: 10%;
+            height: 18px;
+            background-color: #00bcd4;
+        }
+
+        .bar-2 {
+            width: 4%;
+            height: 18px;
+            background-color: #ff9800;
+        }
+
+        .bar-1 {
+            width: 15%;
+            height: 18px;
+            background-color: #f44336;
+        }
+
+        .top-bar {
+            /* Adjust styles to display as a top bar */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+            /* Adjust height as needed */
+            background-color: #333;
+            /* Example background color */
+            color: #fff;
+            /* Example text color */
+            padding: 0 20px;
+            /* Example padding */
+            
+        }
+
+        .top-bar-nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .top-bar-item {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .top-bar-link {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .top-bar-link:hover {
+            color: #ccc;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <header class="top-bar">
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+            <a href="./products.html" class="text-nowrap logo-img">
+                <img src="../assets/images/logos/favicon.png" width="80" height="50" alt="" />
+            </a>
+            <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+                <i class="ti ti-x fs-8"></i>
+            </div>
+        </div>
+        <!-- Top bar navigation -->
+        <nav class="top-bar-nav">
+            <ul id="topbarnav">
+                <!-- Your top bar navigation items here -->
+                <li class="top-bar-item">
+                    <a class="top-bar-link" href="./products.html">Products</a>
+                </li>
+                <li class="top-bar-item">
+                    <a class="top-bar-link" href="./cart.html">Cart</a>
+                </li>
+                <li class="top-bar-item">
+                    <a class="top-bar-link" href="./favourites.html">Favourites</a>
+                </li>
+                <li class="top-bar-item">
+                    <a class="top-bar-link" href="./favourites.html">Profile</a>
+                </li>
+                <li class="top-bar-item">
+                    <a class="top-bar-link" href="./favourites.html">Orders</a>
+                </li>
+                <li class="top-bar-item">
+                    <a class="top-bar-link" href="./favourites.html">Feedback</a>
+                </li>
+                <li class="top-bar-item">
+                    <a class="top-bar-link" href="./favourites.html">Logout</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+    <main style="display: flex;">
+        <div class="container" style="padding: 20px; margin-left: 2%;">
+            <div class="image-container" style="display: flex; margin-top: 40px;">
+                <div class="left-column" style="height: 350px; width: 350px; margin-top: 40px;">
+                    <img data-image="red" class="active" src="../assets/images/profile/sample.png" alt=""
+                        style="height: 350px; width: 350px;">
+                </div>
+
+                <div class="left-column" style="height: 350px; width: 350px; margin-top: 40px; margin-left: 50px;">
+                    <img data-image="red" class="active" src="../assets/images/profile/iwatch.jpg" alt=""
+                        style="height: 350px; width: 350px;">
+                </div>
+            </div>
+
+            <div class="image-container" style="display: flex; margin-top: 40px;">
+                <!-- Left Column / Headphones Image -->
+                <div class="left-column" style="height: 350px; width: 350px; margin-top: 40px;">
+                    <img data-image="red" class="active" src="../assets/images/profile/images.jpeg" alt=""
+                        style="height: 350px; width: 350px;">
+                </div>
+
+                <div class="left-column" style="height: 350px; width: 350px; margin-top: 40px; margin-left: 50px;">
+                    <img data-image="red" class="active" src="../assets/images/profile/watch.png" alt=""
+                        style="height: 350px; width: 350px;">
+                </div>
+            </div>
+
+            <div class="image-container" style="display: flex; margin-top: 40px;">
+                <!-- Left Column / Headphones Image -->
+                <div class="left-column" style="height: 350px; width: 350px; margin-top: 40px;">
+                    <img data-image="red" class="active" src="../assets/images/profile/iwatch.jpg" alt=""
+                        style="height: 350px; width: 350px;">
+                </div>
+
+                <div class="left-column" style="height: 350px; width: 350px; margin-top: 40px; margin-left: 50px;">
+                    <img data-image="red" class="active" src="../assets/images/profile/watch.jpg" alt=""
+                        style="height: 350px; width: 350px;">
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="container" style="display: flex; padding: 20px; margin-left: 2%;">
+            <!-- Right Column -->
+            <div class="right-column" style="margin-left: 15%; width: 550px;">
+
+                <!-- Product Description -->
+                <div class="product-description">
+                    <!-- <span>titan</span> -->
+                    <h1 id="watchTitle">Titan Gen 1</h1>
+                    <div class="rating-bar" style="padding: 5px; margin-top: -30px;
+                    font-size: 20px; margin-bottom: -15px;">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <p style="display: inline-block; margin-left: 10px;">364 ratings</p>
+                    </div>
+                    <h2 style="display: inline-block;"><span style="text-decoration: line-through;">&#8377;19,999</span>
+                    </h2>
+                    <h2 style="display: inline-block; margin-left: 10px;"><span>&#8377; 9,999</span></h2>
+                    <p style="display: inline-block; margin-left: 5px; font-size: 14px; color: red;">Save 50%</p>
+                    <p style="margin-top: -15px; color: red; margin-left: 5px; font-size: 14px;">(Incl.of all taxes)</p>
+
+                    <!-- Quantity -->
+                    <div class="quantity-container">
+                        <p style="margin-top: 10px; font-size: 16px;">Quantity:</p>
+                        <div class="quantity">
+                            <button class="decrease-btn" style="width: 30px; height: 30px;"
+                                onclick="decreaseQuantity()">-</button>
+                            <input type="text" id="quantity" value="1"
+                                style="width: 50px; height: 30px; text-align: center;">
+                            <button class="increase-btn" style="width: 30px; height: 30px;"
+                                onclick="increaseQuantity()">+</button>
+                        </div>
+                    </div>
+
+                    <div class="product-price">
+                        <div style="display: flex; flex-direction: column;">
+                            <a href="#" class="cart-btn add-to-cart-btn" style="margin-bottom: 10px;">ADD TO CART</a>
+                            <a href="#" class="cart-btn buy-now-btn">BUY NOW</a>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- Product Configuration -->
+                <div class="product-configuration">
+                    <!-- Product Color -->
+                    <div class="customizations">
+                        <div class="customization-header" onclick="toggleCustomizations(this)">
+                            <span>Customizations</span>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="customizations-content hidden">
+                            <div class="choose-custom">
+                                <p style="margin-bottom: -10px; color: #86939E;">Dials</p>
+                                <div>
+                                    <img src="../assets/images/profile/sample.png" style="height: 80px; width: 80px;">
+                                </div>
+                                <div>
+                                    <img src="../assets/images/profile/sample.png" style="height: 80px; width: 80px;">
+                                </div>
+                                <div>
+                                    <img src="../assets/images/profile/sample.png" style="height: 80px; width: 80px;">
+                                </div>
+                                <div>
+                                    <img src="../assets/images/profile/sample.png" style="height: 80px; width: 80px;">
+                                </div>
+                            </div>
+
+                            <div class="choose-custom">
+                                <p style="margin-bottom: -10px; color: #86939E;">Straps</p>
+                                <div>
+                                    <img src="../assets/images/profile/sample.png" style="height: 80px; width: 80px;">
+                                </div>
+                                <div>
+                                    <img src="../assets/images/profile/sample.png" style="height: 80px; width: 80px;">
+                                </div>
+                                <div>
+                                    <img src="../assets/images/profile/sample.png" style="height: 80px; width: 80px;">
+                                </div>
+                                <div>
+                                    <img src="../assets/images/profile/sample.png" style="height: 80px; width: 80px;">
+                                </div>
+                            </div>
+
+                            <div class="choose-custom">
+                                <p style="margin-bottom: -10px; color: #86939E;">Movement</p>
+                                <div>
+                                    <img src="../assets/images/profile/sample.png" style="height: 80px; width: 80px;">
+                                </div>
+                                <div>
+                                    <img src="../assets/images/profile/sample.png" style="height: 80px; width: 80px;">
+                                </div>
+                                <div>
+                                    <img src="../assets/images/profile/sample.png" style="height: 80px; width: 80px;">
+                                </div>
+                                <div>
+                                    <img src="../assets/images/profile/sample.png" style="height: 80px; width: 80px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="customizations">
+                        <div class="customization-header" onclick="toggleCustomizations(this)">
+                            <span>Specifications</span>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="customizations-content hidden">
+                            <p style="color: #86939E; font-family: Times, 'Times New Roman', Georgia, serif;">The
+                                preferred choice of a vast range of acclaimed DJs. Punchy, bass-focused sound and high
+                                isolation.
+                                Sturdy headband and on-ear cushions suitable for live performance</p>
+                            <table>
+                                <tr>
+                                    <th>Dial Size</th>
+                                    <td>46MM</td>
+                                </tr>
+                                <tr>
+                                    <th>Colour</th>
+                                    <td>Golden Rose</td>
+                                </tr>
+                                <tr>
+                                    <th>Weight In Grams</th>
+                                    <td>40G</td>
+                                </tr>
+                                <tr>
+                                    <th>Body Type</th>
+                                    <td>Aluminium</td>
+                                </tr>
+                                <tr>
+                                    <th>Brand</th>
+                                    <td>Titan</td>
+                                </tr>
+                                <tr>
+                                    <th>Batteries Included</th>
+                                    <td>Yes</td>
+                                </tr>
+                                <tr>
+                                    <th>Year Of Manufacture</th>
+                                    <td>2024</td>
+                                </tr>
+                                <tr>
+                                    <th>Warranty Period In Months</th>
+                                    <td>12</td>
+                                </tr>
+                                <tr>
+                                    <th>Item Code</th>
+                                    <td>24HKDIJ</td>
+                                </tr>
+                                <tr>
+                                    <th>Display Type</th>
+                                    <td>Analog</td>
+                                </tr>
+                                <tr>
+                                    <th>Water Resistant</th>
+                                    <td>Yes (50ATM)</td>
+                                </tr>
+                                <tr>
+                                    <th>Shape</th>
+                                    <td>Round</td>
+                                </tr>
+                                <tr>
+                                    <th>Inside the Box</th>
+                                    <td>Watch, Strap, Warrantycard, Battery</td>
+                                </tr>
+                                <tr>
+                                    <th>IP Rating</th>
+                                    <td>IP68</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+
+                    <div class="customizations">
+                        <div class="customization-header" onclick="toggleCustomizations(this)">
+                            <span>Offers</span>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="customizations-content hidden">
+                            <!-- Offer 1 -->
+                            <div class="offer">
+                                <h6 class="offer-title">Offer 1</h6>
+                                <div class="card-body p-4">
+                                    <p>10% Instant discount up to INR 500 on Canara Bank Credit Card Non EMI Trnxs.
+                                        Minimum purchase value ₹3,000</p>
+                                </div>
+                            </div>
+                            <!-- End of Offer 1 -->
+
+                            <hr>
+
+                            <!-- Offer 2 -->
+                            <div class="offer">
+                                <h6 class="offer-title">Offer 2</h6>
+                                <div class="card-body p-4">
+                                    <p>15% Cashback up to ₹200 on first Pay Later/Postpaid trxns of ₹400 or more. TCA
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- End of Offer 2 -->
+
+                            <hr>
+
+                            <div class="offer">
+                                <h6 class="offer-title">Offer 3</h6>
+                                <div class="card-body p-4">
+                                    <p>15% Cashback up to ₹200 on first Pay Later/Postpaid trxns of ₹400 or more. TCA
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="customizations">
+                        <div class="customization-header" onclick="toggleCustomizations(this)">
+                            <span>User Ratings</span>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="customizations-content hidden">
+                            <div class="user-rating">
+                                <span class="heading">User Rating</span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <p>4.1 average based on 254 reviews.</p>
+                                <hr style="border:3px solid #f1f1f1">
+
+                                <div class="row">
+                                    <div class="side">
+                                        <div>5 star</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-5"></div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>150</div>
+                                    </div>
+                                    <div class="side">
+                                        <div>4 star</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-4"></div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>63</div>
+                                    </div>
+                                    <div class="side">
+                                        <div>3 star</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-3"></div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>15</div>
+                                    </div>
+                                    <div class="side">
+                                        <div>2 star</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-2"></div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>6</div>
+                                    </div>
+                                    <div class="side">
+                                        <div>1 star</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-1"></div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>20</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Pricing -->
+
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function toggleCustomizations(header) {
+            var content = header.nextElementSibling;
+            var expandBtn = header.querySelector('.expand-btn');
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                expandBtn.textContent = '-';
+                content.style.maxHeight = content.scrollHeight + 'px'; // Expand smoothly
+            } else {
+                content.classList.add('hidden');
+                expandBtn.textContent = '+';
+                content.style.maxHeight = null; // Collapse smoothly
+            }
+        }
+
+
+    </script>
+
+    <script>
+        function increaseQuantity() {
+            var quantityInput = document.getElementById("quantity");
+            var quantity = parseInt(quantityInput.value);
+            quantityInput.value = quantity + 1;
+        }
+
+        function decreaseQuantity() {
+            var quantityInput = document.getElementById("quantity");
+            var quantity = parseInt(quantityInput.value);
+            if (quantity > 1) {
+                quantityInput.value = quantity - 1;
+            }
+        }
+
+        let maxQty = 0
+        const getWatchDetails = () => {
+            let url = "src/api/get-indi-watch.php"
+            let body = JSON.stringify({
+                token: window.localStorage.getItem("authToken"),
+                wid: window.localStorage.getItem("wid")
+            })
+            fetch(url, {
+                body: body,
+                method: "POST"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        maxQty = parseInt(data.data[0].is_available)
+                        document.getElementById("watchTitle").innerHTML = data.data[0].name + " / " + data.data[0].model
+                        document.getElementById("desc").innerHTML = "Description : " + data.data[0].model + " " + data.data[0].name + " is a base watch with elegant stlish design. perfectly suit for you and it is in a trnd. you can customize the watch parts in the above available options"
+                        document.getElementById("price").innerHTML = "Price : &#x20b9; " + parseFloat(data.data[0].base_price).toFixed(2)
+                        document.getElementById("stock").innerHTML = "Available Stock : " + parseInt(data.data[0].is_available) + " No(s)"
+                        document.getElementById("watchImg").src = data.data[0].image_front
+                        document.getElementById("front").src = data.data[0].image_front
+                        document.getElementById("back").src = data.data[0].image_back
+                        document.getElementById("left").src = data.data[0].image_left
+                        document.getElementById("right").src = data.data[0].image_right
+                        document.getElementById("up").src = data.data[0].image_up
+                        document.getElementById("down").src = data.data[0].image_down
+                    }
+                    else {
+                        alert(data.msg)
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+        getWatchDetails()
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Design by foolishdeveloper.com -->
+  <title>Archer Admin</title>
+
+  <link rel="icon" href="./src/assets/images/logos/favicon.png" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet" />
+
+  <!--Stylesheet-->
+  <style media="screen">
+    *,
+    *:before,
+    *:after {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-image: url("./src/assets/images/backgrounds/bg.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed;
+
+    }
+
+    .background {
+      width: 100%;
+      height: 100%;
+      /* position: absolute; */
+      transform: translate(-50%, -50%);
+      left: 50%;
+      top: 50%;
+    }
+
+    .background .shape {
+      height: 200px;
+      width: 200px;
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .shape:first-child {
+      background: linear-gradient(#1845ad, #23a2f6);
+      left: -80px;
+      top: -80px;
+      display: none;
+    }
+
+    .shape:last-child {
+      background: linear-gradient(to right, #ff512f, #f09819);
+      right: -30px;
+      bottom: -80px;
+      display: none;
+    }
+
+    form {
+      height: 520px;
+      width: 400px;
+      background-color: rgba(255, 255, 255, 0.13);
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+      padding: 50px 35px;
+    }
+
+    form * {
+      font-family: "Poppins", sans-serif;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+      outline: none;
+      border: none;
+      animation: slideFromTop 1s ease-in-out;
+      opacity: 1;
+    }
+
+    form h3 {
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 42px;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 30px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    input {
+      display: block;
+      height: 50px;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.07);
+      border-radius: 3px;
+      padding: 0 10px;
+      margin-top: 8px;
+      font-size: 14px;
+      font-weight: 300;
+    }
+
+    ::placeholder {
+      color: #e5e5e5;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      background-color: #ffffff;
+      color: #080710;
+      padding: 15px 0;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .social {
+      margin-top: 30px;
+      display: flex;
+    }
+
+    .social div {
+      background: red;
+      width: 150px;
+      border-radius: 3px;
+      padding: 5px 10px 10px 5px;
+      background-color: rgba(255, 255, 255, 0.27);
+      color: #eaf0fb;
+      text-align: center;
+    }
+
+    .social div:hover {
+      background-color: rgba(255, 255, 255, 0.47);
+    }
+
+    .social .fb {
+      margin-left: 25px;
+    }
+
+    .social i {
+      margin-right: 4px;
+    }
+
+    .reg {
+      display: flex;
+      color: white;
+      margin-top: 20px;
+      float: right;
+      margin-right: 10px;
+      font-family: "Poppins", sans-serif;
+      animation: slideFromTop 1s ease-in-out;
+      opacity: 1;
+    }
+
+    .create {
+      color: #f09819;
+      font-family: "Poppins", sans-serif;
+      transition: 1s;
+      text-decoration: none;
+    }
+
+    .logo {
+      float: left;
+      margin: 0px;
+      margin-left: 50px;
+      margin-top: 20px;
+    }
+
+    .fgt {
+      float: right;
+      padding: 15px;
+      margin-top: 20px;
+    }
+
+    @keyframes slideFromLeft {
+      0% {
+        margin-top: 0px;
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 0;
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        margin-bottom: 100px;
+        /* Move to original position */
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideFromTop {
+      0% {
+        margin-top: 0px;
+        /* Start from off-screen left */
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 0;
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        margin-bottom: 1px;
+        /* Move to original position */
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+
+  <div class="logo">
+    <img src="./src/assets/images/logos/favicon.png" width="200px" height="100px" />
+  </div>
+
+  <div class="reg">
+    <h3>Don't Have an Account?</h3>
+    &nbsp;
+    <h3>
+      <a class="create" href="./index.html">Create Account</a>
+    </h3>
+  </div>
+
+  <form>
+    <h3>Login Here</h3>
+
+    <label for="username">Username</label>
+    <input type="text" placeholder="Enter Mobile Number / User Id / Email" id="Mobilenumber" />
+
+    <label for="password">Password</label>
+    <input type="password" placeholder="Enter Your Password" id="Password" />
+    <div style="
+          width: 100%;
+          display: flex;
+          height: 20px;
+          line-height: 40px;
+          text-align: center;
+        ">
+      <input style="width: 10%; height: 20px;" type="checkbox" onclick="showHidePasssword()" />
+
+      <p>Show Password</p>
+    </div>
+
+    <div class="fgt">
+      <a class="text-primary fw-bold ms-2" href="./reset-password.html">Forgot Password?</a>
+    </div>
+
+    <button type="button" id="login" onclick="Login()">Log In</button>
+  </form>
+
+  <!-- JS Start From HERE -->
+
+  <!-- Custom scripts for all pages -->
+  <script>
+    function Login() {
+      let Mobilenumber = document.getElementById("Mobilenumber");
+      let Password = document.getElementById("Password");
+      if (Mobilenumber.value == "") {
+        alert("UserId/ Mobile Number/ Email Required");
+      } else if (Password.value == "") {
+        alert("Enter Your Password");
+      } else if (Mobilenumber.value != "" && Password.value != "") {
+        let pw = Mobilenumber.value
+        if(pw.includes("@")){
+          pw = Mobilenumber.value.toLowerCase();
+        }
+        const url = "src/api/login.php"; // Replace with your API endpoint and the resource ID
+        const body = JSON.stringify({
+          mobile: pw,
+          password: Password.value,
+        });
+        //call api for login
+        fetch(url, {
+          method: "POST",
+          body: body,
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.success == true) {
+              alert(data.msg);
+              window.localStorage.setItem("authToken", data.data[0].token);
+              window.localStorage.setItem("user_id", data.data[0].user_id);
+              window.localStorage.setItem("mobile", data.data[0].mobile);
+              window.localStorage.setItem("u_name", data.data[0].u_name);
+              window.localStorage.setItem("email", data.data[0].email);
+              window.location.href = "./products.html";
+              if (data.data[0].u_type == "2") {
+                window.location.href = "./products.html";
+              }
+              else if (data.data[0].u_type == "2") {
+                window.location.href = ".src/admin/products.html";
+              }
+
+
+            } else {
+              alert(data.msg);
+            }
+          });
+      }
+    }
+
+    const showHidePasssword = () => {
+      var x = document.getElementById("Password");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    };
+  </script>
+</body>
+
+</html>

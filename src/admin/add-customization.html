@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Add Customization</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/styles.min.css" />
+
+
+  <style>
+    /* Style the select element */
+    .custom-select {
+      position: relative;
+      width: 100%;
+    }
+
+    /* Hide the default arrow */
+    .custom-select select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background: transparent;
+      padding-right: 1em;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.7em top 50%;
+      background-size: 1.5em auto;
+      border: 1px solid #ced4da;
+      border-radius: 8px;
+      font-size: 1em;
+      line-height: 2;
+      padding: 0.280rem 1.75rem 0.280rem 0.75rem;
+      -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+  </style>
+
+  <style>
+    .customizations-content {
+      display: flex;
+      flex-wrap: wrap;
+      /* Allow items to wrap onto multiple lines */
+      justify-content: space-between;
+      /* Distribute items evenly along the main axis */
+      align-items: flex-start;
+      /* Align items at the start of the cross axis */
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.6s ease;
+    }
+
+    .customizations-content>div {
+      width: calc(32% - 10px);
+      /* Set width for each item with margin */
+      margin: 5px;
+      /* Add margin for spacing between items */
+    }
+
+    .customizations {
+      margin-top: 20px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #E1E8EE;
+      width: 80%;
+      margin-left: 10%;
+
+      border: 1px solid #ccc;
+      /* Add border to create the box effect */
+      padding: 7px;
+      /* Add padding for spacing */
+      margin-bottom: 5px;
+      /* Add margin for spacing between boxes */
+
+    }
+
+    .customization-header {
+      cursor: pointer;
+      /* Set cursor to pointer to indicate clickable */
+      display: flex;
+      /* Use flexbox for layout */
+      justify-content: space-between;
+      /* Align items to each end */
+      align-items: center;
+      /* Align items vertically */
+    }
+
+    .expand-btn {
+      font-size: 24px;
+      /* Adjust the font size as needed */
+      font-weight: bold;
+      /* Make the symbol bold */
+    }
+  </style>
+
+</head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar">
+      <!-- Sidebar scroll-->
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./products.html" class="text-nowrap logo-img">
+            <img src="../assets/images/logos/favicon.png" width="180" alt="" />
+          </a>
+          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+            <i class="ti ti-x fs-8"></i>
+          </div>
+        </div>
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+          <ul id="sidebarnav">
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Home</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./products.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Products</span>
+              </a>
+            </li>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Menu</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./profile.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Profile</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./orders.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-alert-circle"></i>
+                </span>
+                <span class="hide-menu">Orders</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./feedback.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-cards"></i>
+                </span>
+                <span class="hide-menu">Feedback</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./ratings.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file-description"></i>
+                </span>
+                <span class="hide-menu">Ratings</span>
+              </a>
+            </li>
+
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Settings</span>
+            </li>
+            <li class="sidebar-item">
+
+              <a class="sidebar-link" href="./change-logo.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-settings"></i>
+                </span>
+                <span class="hide-menu">Settings</span>
+              </a>
+
+              <a class="sidebar-link" href="./add-offer.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file-description"></i>
+                </span>
+                <span class="hide-menu">Offers</span>
+              </a>
+
+              <a class="sidebar-link" href="./login.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-login"></i>
+                </span>
+                <span class="hide-menu">Logout</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+      </div>
+      <!-- End Sidebar scroll-->
+    </aside>
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <div>
+        <div class="card">
+          <div class="card-body">
+            <h2 style="width: 100%; text-align: center;">Customization Of Watch</h2>
+            <div class="card">
+              <div class="card-body">
+
+                <!--Form Starting Here-->
+                <form>
+                  <div class="row">
+                    <div style="display: flex; justify-content: space-evenly; margin-top: 40px;">
+
+                      <div style="width: 150px; height: 200px; text-align: center;">
+                        <img style="margin-left: auto;
+                                                     margin-right: auto;width: 100%;"
+                          src="../assets/images/profile/sample.png" height="100px" />
+                        <h5>Add <br> Chrono Cases</h5>
+                        <button type="button" style="width: 70px; margin-top: 20px;
+                                                    background-color: white; border: 1px solid rgb(0, 0, 0);
+                                                    border-radius: 5px; bottom: 0;"
+                          onclick="chronocases()">Go...</button>
+                      </div>
+
+
+                      <div style="width: 150px; height: 200px; text-align: center;">
+                        <img style="margin-left: auto;
+                                                         margin-right: auto;width: 100%;"
+                          src="../assets/images/profile/sample.png" height="100px" />
+                        <h5>Add <br> Movement</h5>
+                        <button type="button" style="width: 70px; margin-top: 20px;
+                                                    background-color: white; border: 1px solid rgb(0, 0, 0);
+                                                    border-radius: 5px; bottom: 0;" onclick="movement()">Go...</button>
+                      </div>
+
+                      <div style="width: 150px; height: 200px; text-align: center;">
+                        <img style="margin-left: auto;
+                                                        margin-right: auto;width: 100%;"
+                          src="../assets/images/profile/sample.png" height="100px" />
+                        <h5>Add <br> Bezel</h5>
+                        <button type="button" style="width: 70px; margin-top: 20px;
+                                                    background-color: white; border: 1px solid rgb(0, 0, 0);
+                                                    border-radius: 5px; bottom: 0;" onclick="addbezel()">Go...</button>
+                      </div>
+
+                      <div style="width: 150px; height: 200px; text-align: center;">
+                        <img style="margin-left: auto;
+                                                            margin-right: auto;width: 100%;"
+                          src="../assets/images/profile/sample.png" height="100px" />
+                        <h5>Add <br> Dials</h5>
+                        <button type="button" style="width: 70px; margin-top: 20px;
+                                                    background-color: white; border: 1px solid rgb(0, 0, 0);
+                                                    border-radius: 5px;" onclick="dial()">Go...</button>
+                      </div>
+
+                    </div>
+
+
+                    <div style="display: flex; justify-content: space-evenly; margin-top: 40px;">
+                      <div style="width: 150px; height: 200px; text-align: center;">
+                        <img style="margin-left: auto;
+                                                     margin-right: auto;width: 100%;"
+                          src="../assets/images/profile/sample.png" height="100px" />
+                        <h5>Add <br> Hands</h5>
+                        <button type="button" style="width: 70px; margin-top: 20px;
+                                                    background-color: white; border: 1px solid rgb(0, 0, 0);
+                                                    border-radius: 5px;" onclick="hands()">Go...</button>
+                      </div>
+
+
+                      <div style="width: 150px; height: 200px; text-align: center;">
+                        <img style="margin-left: auto;
+                                                         margin-right: auto;width: 100%;"
+                          src="../assets/images/profile/sample.png" height="100px" />
+                        <h5>Add <br> Seconds</h5>
+                        <button type="button" style="width: 70px; margin-top: 20px;
+                                                    background-color: white; border: 1px solid rgb(0, 0, 0);
+                                                    border-radius: 5px;" onclick="second()">Go...</button>
+                      </div>
+
+                      <div style="width: 150px; height: 200px; text-align: center;">
+                        <img style="margin-left: auto;
+                                                        margin-right: auto;width: 100%;"
+                          src="../assets/images/profile/sample.png" height="100px" />
+                        <h5>Add <br> Crowns</h5>
+                        <button type="button" style="width: 70px; margin-top: 20px;
+                                                    background-color: white; border: 1px solid rgb(0, 0, 0);
+                                                    border-radius: 5px;" onclick="crown()">Go...</button>
+                      </div>
+
+                      <div style="width: 150px; height: 200px; text-align: center;">
+                        <img style="margin-left: auto;
+                                                            margin-right: auto;width: 100%;"
+                          src="../assets/images/profile/sample.png" height="100px" />
+                        <h5>Add <br> Caseback</h5>
+                        <button type="button" style="width: 70px; margin-top: 20px;
+                                                    background-color: white; border: 1px solid rgb(0, 0, 0);
+                                                    border-radius: 5px;" onclick="caseback()">Go...</button>
+                      </div>
+
+                      <div style="width: 150px; height: 200px; text-align: center;">
+                        <img style="margin-left: auto;
+                                                            margin-right: auto;width: 100%;"
+                          src="../assets/images/profile/sample.png" height="100px" />
+                        <h5>Add <br> Strap</h5>
+                        <button type="button" style="width: 70px; margin-top: 20px;
+                                                    background-color: white; border: 1px solid rgb(0, 0, 0);
+                                                    border-radius: 5px;" onclick="strap()">Go...</button>
+                      </div>
+
+                    </div>
+
+                    <div class="customizations">
+                      <div class="customization-header" onclick="toggleCustomizations(this)">
+                        <h5><span>Watch Specifications</span></h5>
+                        <span class="expand-btn">+</span>
+                      </div>
+
+                      <div class="customizations-content hidden">
+                        <div class="col-sm-4">
+                          <h5>Dial Size</h5>
+                          <input class="form-control" id="dialsize" placeholder="Enter the Dial Size in MM" />
+                        </div>
+                        <div class="col-sm-4">
+                          <h5>Colour</h5>
+                          <input class="form-control" id="color" placeholder="Enter the Watch Colour" />
+                        </div>
+
+                        <div class="col-sm-4">
+                          <h5>Weight In Grams</h5>
+                          <input class="form-control" id="weight" placeholder="Enter Weight In Grams" />
+                        </div>
+
+
+                        <div class="col-sm-4">
+                          <h5>Body Type</h5>
+                          <input class="form-control" id="bodytype" placeholder="Enter the Body Type" />
+
+                        </div>
+                        <div class="col-sm-4">
+                          <h5>Brand</h5>
+                          <input class="form-control" id="Brand" placeholder="Enter the Watch Brand" />
+                        </div>
+
+                        <div class="col-sm-4">
+                          <h5>Batteries Included</h5>
+                          <div class="custom-select">
+                            <select class="form-control" id="battery">
+                              <option value="0">Select</option>
+                              <option value="1">Yes</option>
+                              <option value="2">No</option>
+                            </select>
+                          </div>
+                        </div>
+
+
+                        <div class="col-sm-4">
+                          <h5>Year Of Manufacture</h5>
+                          <input class="form-control" id="year" placeholder="Enter the Manufactured Year" />
+
+                        </div>
+                        <div class="col-sm-4">
+                          <h5>Warranty Period In Months</h5>
+                          <input class="form-control" id="warranty" placeholder="Enter the Warranty Period in Months" />
+                        </div>
+
+                        <div class="col-sm-4">
+                          <h5>Item Code</h5>
+                          <input class="form-control" id="itemcode" placeholder="Enter the Item Code" />
+                        </div>
+
+
+                        <div class="col-sm-4">
+                          <h5>Display Type</h5>
+                          <div class="custom-select">
+                            <select class="form-control" id="displaytype">
+                              <option value="0">Select</option>
+                              <option value="1">Analog</option>
+                              <option value="2">Digital</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                          <h5>Water Resistant</h5>
+                          <div class="custom-select">
+                            <select class="form-control" id="water">
+                              <option value="0">Select</option>
+                              <option value="1">Yes</option>
+                              <option value="2">No</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                          <h5>Shape</h5>
+                          <input class="form-control" id="shape" placeholder="Enter Your Watch Shape" />
+                        </div>
+
+
+                        <div class="col-sm-4">
+                          <h5>Inside the Box</h5>
+                          <input class="form-control" id="insidebox" placeholder="Enter what's Inside the Box" />
+                        </div>
+
+                        <div class="col-sm-4">
+                          <h5>IP Rating</h5>
+                          <input class="form-control" id="iprating" placeholder="Enter Delivery Fee" />
+                        </div>
+
+                        <div class="col-sm-4">
+                          <h5>Delivery Fee</h5>
+                          <input class="form-control" id="deliveryfee" placeholder="Enter Delivery Fee" />
+                        </div>
+
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div style="display: flex; margin-top: 40px;">
+                    <button type="button" class="btn btn-primary" style="margin-top: 20px; margin-left: 380px;"
+                      onclick="redirectToAnotherPage()">
+                      Back
+                    </button>
+                    <button type="button" class="btn btn-primary" style="margin-top: 20px; margin-left: 30px;"
+                      onclick="saveCustomization()">
+                      Save
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/sidebarmenu.js"></script>
+  <script src="../assets/js/app.min.js"></script>
+  <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+
+  <script>
+    const getDetails = () => {
+      const apiUrl = '../api//get-indi-watch.php';
+      const body = JSON.stringify({
+        "wid": window.localStorage.getItem("wid"),
+        "token": window.localStorage.getItem("authToken")
+      })
+      fetch(apiUrl, {
+        method: "POST",
+        body: body,
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById("dialsize").value = data.data[0].dial_size
+          document.getElementById("color").value = data.data[0].color
+          document.getElementById("weight").value = data.data[0].weight
+          document.getElementById("bodytype").value = data.data[0].body_type
+          document.getElementById("Brand").value = data.data[0].brand
+          document.getElementById("battery").value = data.data[0].batteries_included
+          document.getElementById("year").value = data.data[0].year_of_manufacture
+          document.getElementById("warranty").value = data.data[0].warranty_period
+          document.getElementById("itemcode").value = data.data[0].item_code
+          document.getElementById("displaytype").value = data.data[0].display_type
+          document.getElementById("water").value = data.data[0].water_resistant
+          document.getElementById("shape").value = data.data[0].shape
+          document.getElementById("insidebox").value = data.data[0].inside_the_box
+          document.getElementById("iprating").value = data.data[0].ip_rating
+          document.getElementById("deliveryfee").value = data.data[0].delivery_fee
+
+          if (data.success) {
+
+          }
+          else {
+            alert(data.msg)
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    }
+    getDetails()
+
+    const redirectToAnotherPage = () => {
+      window.location.href = 'edit-watch.html';
+    }
+
+    const addbezel = () => {
+      window.location.href = 'add-bezel.html';
+    }
+
+    const caseback = () => {
+      window.location.href = 'add-caseback.html';
+    }
+
+    const chronocases = () => {
+      window.location.href = 'add-chronocases.html';
+    }
+
+    const crown = () => {
+      window.location.href = 'add-crown.html';
+    }
+
+    const dial = () => {
+      window.location.href = 'add-dial.html';
+    }
+
+    const hands = () => {
+      // Redirect to the desired HTML page
+      window.location.href = 'add-hands.html';
+    }
+
+    const movement = () => {
+      window.location.href = 'add-movement.html';
+    }
+
+    const second = () => {
+      // Redirect to the desired HTML page
+      window.location.href = 'add-second.html';
+    }
+
+    const strap = () => {
+      window.location.href = 'add-strap.html';
+    }
+
+    const saveCustomization = () => {
+
+      let comb = {};
+      if (window.localStorage.getItem("cDialId") != null)
+        comb.dials = (JSON.parse(window.localStorage.getItem("cDialId")))
+      else
+        comb.dials = (JSON.parse("[]"))
+
+      if (window.localStorage.getItem("cMovementId") != null)
+        comb.movement = (JSON.parse(window.localStorage.getItem("cMovementId")))
+      else
+        comb.movement = (JSON.parse("[]"))
+
+      if (window.localStorage.getItem("cStrapId") != null)
+        comb.strap = (JSON.parse(window.localStorage.getItem("cStrapId")))
+      else
+        comb.strap = (JSON.parse("[]"))
+
+      if (window.localStorage.getItem("cHandId") != null)
+        comb.hand = (JSON.parse(window.localStorage.getItem("cHandId")))
+      else
+        comb.hand = (JSON.parse("[]"))
+
+      if (window.localStorage.getItem("cSecondId") != null)
+        comb.second = (JSON.parse(window.localStorage.getItem("cSecondId")))
+      else
+        comb.second = (JSON.parse("[]"))
+
+      if (window.localStorage.getItem("cBezelId") != null)
+        comb.bezel = (JSON.parse(window.localStorage.getItem("cBezelId")))
+      else
+        comb.bezel = (JSON.parse("[]"))
+
+      if (window.localStorage.getItem("cCasebackId") != null)
+        comb.caseback = (JSON.parse(window.localStorage.getItem("cCasebackId")))
+      else
+        comb.caseback = (JSON.parse("[]"))
+
+      if (window.localStorage.getItem("cChronocaseId") != null)
+        comb.chronocase = (JSON.parse(window.localStorage.getItem("cChronocaseId")))
+      else
+        comb.chronocase = (JSON.parse("[]"))
+
+      if (window.localStorage.getItem("cCrownId") != null)
+        comb.crown = (JSON.parse(window.localStorage.getItem("cCrownId")))
+      else
+        comb.crown = (JSON.parse("[]"))
+
+
+      if (window.localStorage.getItem("cCrownId") == null &&
+        window.localStorage.getItem("cChronocaseId") == null &&
+        window.localStorage.getItem("cCasebackId") == null &&
+        window.localStorage.getItem("cBezelId") == null &&
+        window.localStorage.getItem("cSecondId") == null &&
+        window.localStorage.getItem("cHandId") == null &&
+        window.localStorage.getItem("cStrapId") == null &&
+        window.localStorage.getItem("cMovementId") == null &&
+        window.localStorage.getItem("cDialId") == null) {
+        alert("pleae select atleast one combination")
+      }
+      else {
+        const url = "../api/add-watch-combination.php"
+        const body = JSON.stringify({
+          combination: comb,
+          wid: window.localStorage.getItem("wid"),
+          token: window.localStorage.getItem("authToken")
+        })
+        fetch(url, {
+          method: "POST",
+          body: body,
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "applicaion/json"
+          }
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.success) {
+
+              window.localStorage.removeItem("cCrownId")
+              window.localStorage.removeItem("cChronocaseId")
+              window.localStorage.removeItem("cCasebackId")
+              window.localStorage.removeItem("cBezelId")
+              window.localStorage.removeItem("cSecondId")
+              window.localStorage.removeItem("cHandId")
+              window.localStorage.removeItem("cStrapId")
+              window.localStorage.removeItem("cMovementId")
+              window.localStorage.removeItem("cDialId")
+              window.location.href = "./edit-watch.html"
+            }
+            alert(data.msg)
+          })
+      }
+
+    }
+  </script>
+
+
+  <script>
+    function toggleCustomizations(header) {
+      var content = header.nextElementSibling;
+      var expandBtn = header.querySelector('.expand-btn');
+
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        expandBtn.textContent = '-';
+        content.style.maxHeight = content.scrollHeight + 'px'; // Expand smoothly
+      } else {
+        content.classList.add('hidden');
+        expandBtn.textContent = '+';
+        content.style.maxHeight = null; // Collapse smoothly
+      }
+    }
+  </script>
+</body>
+
+</html>

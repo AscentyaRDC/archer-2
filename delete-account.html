@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Design by foolishdeveloper.com -->
+  <title>Delete Account</title>
+
+  <link rel="icon" href="./src/assets/images/logos/favicon.png" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet" />
+
+  <!--Stylesheet-->
+  <style media="screen">
+    *,
+    *:before,
+    *:after {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-image: url("./src/assets/images/backgrounds/bg.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed;
+
+    }
+
+    .background {
+      width: 100%;
+      height: 100%;
+      /* position: absolute; */
+      transform: translate(-50%, -50%);
+      left: 50%;
+      top: 50%;
+    }
+
+    .background .shape {
+      height: 200px;
+      width: 200px;
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .shape:first-child {
+      background: linear-gradient(#1845ad, #23a2f6);
+      left: -80px;
+      top: -80px;
+      display: none;
+    }
+
+    .shape:last-child {
+      background: linear-gradient(to right, #ff512f, #f09819);
+      right: -30px;
+      bottom: -80px;
+      display: none;
+    }
+
+    form {
+      height: 480px;
+      width: 400px;
+      background-color: rgba(255, 255, 255, 0.13);
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+      padding: 50px 35px;
+    }
+
+    form * {
+      font-family: "Poppins", sans-serif;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+      outline: none;
+      border: none;
+      animation: slideFromTop 1s ease-in-out;
+      opacity: 1;
+    }
+
+    form h3 {
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 42px;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 30px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    input {
+      display: block;
+      height: 50px;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.07);
+      border-radius: 3px;
+      padding: 0 10px;
+      margin-top: 8px;
+      font-size: 14px;
+      font-weight: 300;
+    }
+
+    ::placeholder {
+      color: #e5e5e5;
+    }
+
+    button {
+      margin-top: 40px;
+      width: 100%;
+      background-color: #ffffff;
+      color: #080710;
+      padding: 15px 0;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .social {
+      margin-top: 30px;
+      display: flex;
+    }
+
+    .social div {
+      background: red;
+      width: 150px;
+      border-radius: 3px;
+      padding: 5px 10px 10px 5px;
+      background-color: rgba(255, 255, 255, 0.27);
+      color: #eaf0fb;
+      text-align: center;
+    }
+
+    .social div:hover {
+      background-color: rgba(255, 255, 255, 0.47);
+    }
+
+    .social .fb {
+      margin-left: 25px;
+    }
+
+    .social i {
+      margin-right: 4px;
+    }
+
+    .reg {
+      display: flex;
+      color: white;
+      margin-top: 20px;
+      float: right;
+      margin-right: 70px;
+      font-family: "Poppins", sans-serif;
+      animation: slideFromTop 1s ease-in-out;
+      opacity: 1;
+    }
+
+    .create {
+      color: #f09819;
+      font-family: "Poppins", sans-serif;
+      transition: 1s;
+      text-decoration: none;
+    }
+
+    .logo {
+      float: left;
+      margin: 0px;
+      margin-left: 50px;
+      margin-top: 20px;
+    }
+
+    .fgt {
+      float: right;
+      padding: 15px;
+      margin-top: 20px;
+    }
+
+    @keyframes slideFromLeft {
+      0% {
+        margin-top: 0px;
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 0;
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        margin-bottom: 100px;
+        /* Move to original position */
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideFromTop {
+      0% {
+        margin-top: 0px;
+        /* Start from off-screen left */
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 0;
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        margin-bottom: 1px;
+        /* Move to original position */
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+
+  <div class="logo">
+    <img src="./src/assets/images/logos/favicon.png" width="200px" height="100px" />
+  </div>
+
+  <div class="reg">
+    <h3>Back To</h3>
+    &nbsp;
+    <h3>
+      <a class="create" href="./profile.html">My Profile</a>
+    </h3>
+  </div>
+
+  <form>
+    <h3>Delete Account!</h3>
+
+    <!-- <label for="username">Mobile Number</label>
+    <input type="text" placeholder="Enter Mobile Number" id="Mobilenumber" /> -->
+
+    <label for="password">Password</label>
+    <input type="password" placeholder="Enter Your Password" id="Password" />
+
+    <label for="password">Reason(Optional)</label>
+    <textarea id="reason" style="min-height: 60px; width: 100%; color: white; background-color: transparent; border: 2px solid whitesmoke;"
+    placeholder="Enter Your Reason"></textarea>
+
+    <div style="
+          width: 100%;
+          display: flex;
+          height: 20px;
+          line-height: 40px;
+          text-align: center;
+        ">
+      <input style="width: 10%; height: 20px;" type="checkbox" onclick="showHidePasssword()" />
+
+      <p>Show Password</p>
+    </div>
+
+    <button type="button" id="login" onclick="deleteuser()">Delete My Account</button>
+  </form>
+
+  <!-- JS Start From HERE -->
+
+  <!-- Custom scripts for all pages -->
+  <script>
+    const deleteuser = () => {
+      const url = "src/api/delete-user.php";
+      const body = JSON.stringify({
+        token: window.localStorage.getItem("authToken"),
+        mobile: window.localStorage.getItem("mobile"),
+        password: document.getElementById("Password").value,
+      });
+      fetch(url, {
+        method: "POST",
+        body: body,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success) {
+            alert(data.msg);
+            window.location.href = "./login.html"
+
+          }
+          else {
+            alert(data.msg);
+          }
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    }
+
+    const showHidePasssword = () => {
+      var x = document.getElementById("Password");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    };
+  </script>
+</body>
+
+</html>

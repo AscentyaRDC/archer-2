@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Add Offers</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/styles.min.css" />
+  <!-- Include SimpleBar CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplebar/5.3.6/simplebar.min.css" />
+  <!-- Include SimpleBar JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/5.3.6/simplebar.min.js"></script>
+  <style>
+    /* Style the select element */
+    .custom-select {
+      position: relative;
+      width: 100%;
+    }
+
+    /* Hide the default arrow */
+    .custom-select select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background: transparent;
+      padding-right: 1em;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.7em top 50%;
+      background-size: 1.5em auto;
+      border: 1px solid #ced4da;
+      border-radius: 8px;
+      font-size: 1em;
+      line-height: 2;
+      padding: 0.280rem 1.75rem 0.280rem 0.75rem;
+      -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    /* Ensure the sidebar takes the full height of the viewport */
+    .sidebar-container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      /* Full viewport height */
+    }
+
+    .brand-logo-container {
+      flex: 0 0 auto;
+      /* Fixed height for the logo container */
+      padding: 10px;
+      /* Optional: Adjust padding as needed */
+      background: #fff;
+      /* Optional: Background color for the logo section */
+      z-index: 1;
+      /* Ensure it stays above the scrollable content */
+    }
+
+    .scroll-sidebar {
+      flex-grow: 1;
+      /* Allow the nav to grow and take available space */
+      overflow-y: auto;
+      /* Enable vertical scrolling */
+      z-index: 0;
+      /* Ensure it stays below the logo section */
+      scrollbar-width: none;
+      /* For Firefox */
+    }
+
+    .scroll-sidebar::-webkit-scrollbar {
+      display: none;
+      /* For Chrome, Safari, and Opera */
+    }
+  </style>
+
+</head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar">
+      <!-- Sidebar scroll-->
+      <div class="sidebar-container">
+        <div class="brand-logo-container">
+          <div class="brand-logo d-flex align-items-center justify-content-between">
+            <a href="./products.html" class="text-nowrap logo-img">
+              <img src="../assets/images/logos/favicon.png" width="180" alt="Logo" />
+            </a>
+            <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+              <i class="ti ti-x fs-8"></i>
+            </div>
+          </div>
+        </div>
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar>
+          <ul id="sidebarnav">
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Home</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./products.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Products</span>
+              </a>
+            </li>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Menu</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./profile.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Profile</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./orders.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-alert-circle"></i>
+                </span>
+                <span class="hide-menu">Orders</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./feedback.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-cards"></i>
+                </span>
+                <span class="hide-menu">Feedback</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./ratings.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file-description"></i>
+                </span>
+                <span class="hide-menu">Ratings</span>
+              </a>
+            </li>
+
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Settings</span>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./change-logo.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-settings"></i>
+                </span>
+                <span class="hide-menu">Settings</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./add-offer.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file-description"></i>
+                </span>
+                <span class="hide-menu">Offers</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./login.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-login"></i>
+                </span>
+                <span class="hide-menu">Logout</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+      </div>
+      <!-- End Sidebar scroll-->
+    </aside>
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <div>
+        <div class="card">
+          <div class="card-body">
+            <h2>Create Offers</h2>
+
+
+            <!--Form Starting Here-->
+            <form>
+              <div class="row">
+                <div class="col-sm-4">
+                  <h5>Offer Code</h5>
+                  <input class="form-control" id="offercode" name="offercode" placeholder="Enter the Offer Code"
+                    oninput="this.value=(this.value.match('[a-zA-Z0-9 ]+'))" />
+                </div>
+
+                <div class="col-sm-4">
+                  <h5>Offer Description</h5>
+                  <!-- <input class="form-control" id="offername" name="offercode" placeholder="Enter the Offer Name"
+                    oninput="this.value=(this.value.match('[a-zA-a-zA-Z0-9 ]+'))" /> -->
+                  <textarea class="form-control" id="offername" name="offercode"
+                    oninput="this.value=(this.value.match('[a-zA-Z0-9% ]+'))" placeholder="Enter the Offer Description"
+                    style="min-height: 10px;"></textarea>
+                </div>
+
+                <div class="col-sm-4">
+                  <h5>Offer Type</h5>
+                  <div class="custom-select">
+                    <select class="form-control" id="offertype" name="offertype" onchange="handleOfferType()">
+                      <option value="0"> Select</option>
+                      <option value="1">Rupees</option>
+                      <option value="2">Percentage</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-sm-4" style="margin-top: 20px;">
+                  <h5>Offer Value</h5>
+                  <input class="form-control" id="offervalue" name="offervalue" placeholder="Enter the Offer Value" />
+                </div>
+
+                <div class="col-sm-4" style="margin-top: 20px;">
+                  <h5>Offer From</h5>
+                  <input class="form-control" type="date" id="offerfrom" name="from"
+                    placeholder="Enter the Offer From Date" onchange="updateToDateMin()" />
+                </div>
+
+                <div class="col-sm-4" style="margin-top: 20px;">
+                  <h5>Offer To</h5>
+                  <input class="form-control" type="date" id="offerto" name="to"
+                    placeholder="Enter the Offer To Date" />
+                </div>
+
+
+                <div style="left: 40%;position: relative; margin-top: 20px;">
+                  <button style="margin-top: 10px;margin-right: 10px;" type="button" class="btn btn-danger"
+                    onclick="window.location.href='./products.html'">
+                    Cancel</button>
+                  <button style="margin-top: 10px;" type="button" class="btn btn-success" onclick="validateForm()">
+                    Save</button>
+                </div>
+            </form>
+          </div>
+        </div>
+
+
+        <div class="card">
+          <div class="card-body">
+            <h4>Available Offers:</h4>
+            <table id="table" class="table table-hover table-responsive mb-0 align-middle">
+              <thead style="background-color: #5d87ff; color: white">
+                <tr>
+                  <th>#</th>
+                  <th>Offer Code</th>
+                  <th>Offer Description</th>
+                  <th>Offer Type</th>
+                  <th>offer Value</th>
+                  <th>Valid From</th>
+                  <th>Valid To</th>
+                </tr>
+              </thead>
+              <tbody id="tbody" style="background-color: white"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+        <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="../assets/js/sidebarmenu.js"></script>
+        <script src="../assets/js/app.min.js"></script>
+        <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+
+
+        <script>
+          var today = new Date().toISOString().split('T')[0];
+          document.getElementById("offerfrom").setAttribute("min", today);
+
+
+
+          const validateForm = () => {
+            // Validation checks
+            let offername = document.getElementById('offername').value.trim();
+            let offervalue = document.getElementById('offervalue').value.trim();
+            let offertype = document.getElementById('offertype').value.trim();
+            let offercode = document.getElementById('offercode').value.trim();
+            let offerfrom = document.getElementById('offerfrom').value.trim();
+            let offerto = document.getElementById('offerto').value.trim();
+            // Checking if fields are empty
+            if (offername === '' || offervalue === '' || offertype === '0' || offercode === '' || offerfrom === '' || offerto === '') {
+              alert('Please Enter all fields');
+              return;
+            }
+            let api = "../api/add-offer.php";
+            let body = JSON.stringify({
+              token: window.localStorage.getItem("authToken"),
+              offerCode: offercode,
+              offerDescription: offername,
+              offerType: offertype,
+              offerValue: offervalue,
+              validFrom: offerfrom,
+              validTo: offerto,
+            })
+
+            fetch(api,
+              {
+                body: body,
+                method: "POST",
+              }
+            )
+              .then(res => res.json())
+              .then(data => {
+                if (data.success) {
+                  getFeedBack();
+                }
+                alert(data.msg)
+              })
+          }
+
+
+          const getFeedBack = () => {
+            const url = "../api/get-offers.php";
+            const body = JSON.stringify({
+              token: window.localStorage.getItem("authToken"),
+            });
+            fetch(url, {
+              method: "POST",
+              body: body,
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+              },
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.success) {
+                  const d = data.data;
+                  let temp = 0;
+                  let rows = ``;
+                  d.forEach((element, index) => {
+                    let offerTypeText = '';
+                    if (element.offer_type == 1) {
+                      offerTypeText = 'Rupees';
+                    } else if (element.offer_type == 2) {
+                      offerTypeText = 'Percentage';
+                    }
+                    rows += `
+                      <tr>
+                       <td>${index + 1}</td>
+                       <td>${element.offer_code}</td>
+                       <td>${element.offer_description}</td>
+                       <td>${offerTypeText}</td> 
+                       <td>${element.offer_value}</td> 
+                       <td>${element.offer_valid_from}</td> 
+                       <td>${element.offer_valid_to}</td> 
+                      </tr>
+                    `;
+                  });
+
+                  document.getElementById("tbody").innerHTML = rows;
+                } else {
+                  alert(data.msg);
+                }
+              });
+          };
+
+
+          const updateToDateMin = () => {
+            var fromDate = document.getElementById("offerfrom").value;
+            document.getElementById("offerto").setAttribute("min", fromDate);
+          }
+
+
+          // const handleOfferType = () => {
+          //   var offerType = document.getElementById("offertype").value;
+          //   var offerValueInput = document.getElementById("offervalue");
+
+          //   if (offerType === "1") { // Rupees
+          //     offerValueInput.setAttribute("maxlength", "5");
+          //     offerValueInput.setAttribute("oninput", "this.value=(this.value.match('[0-9]+'))");
+          //   } else if (offerType === "2") { // Percentage
+          //     offerValueInput.setAttribute("maxlength", "2");
+          //     offerValueInput.setAttribute("oninput", "this.value=(this.value.match('[0-9]+'))");
+          //   } else {
+          //     offerValueInput.setAttribute("maxlength", "0");
+          //   }
+          // }
+
+          const handleOfferType = () => {
+            var offerType = document.getElementById("offertype").value;
+            var offerValueInput = document.getElementById("offervalue");
+
+            if (offerType === "1") { // Rupees
+              offerValueInput.setAttribute("maxlength", "5");
+              offerValueInput.setAttribute("oninput", "this.value=(this.value.match('[0-9]+') || []).join('')");
+            } else if (offerType === "2") { // Percentage
+              offerValueInput.setAttribute("maxlength", "2");
+              offerValueInput.setAttribute("oninput", "this.value=(this.value.match('[0-9]+') || []).join('')");
+
+              // Convert current value to percentage if it's not empty
+              if (offerValueInput.value !== "") {
+                offerValueInput.value = Math.min(offerValueInput.value, 100); // Ensure value does not exceed 100
+                offerValueInput.value += "%"; // Add percentage symbol
+              }
+            } else {
+              offerValueInput.setAttribute("maxlength", "0");
+            }
+          }
+
+          // Ensure percentage input does not allow non-numeric characters or values over 100
+          document.getElementById("offervalue").addEventListener("input", function (e) {
+            var offerType = document.getElementById("offertype").value;
+            if (offerType === "2") { // Percentage
+              var value = e.target.value.replace('%', ''); // Remove existing '%' if any
+              value = Math.min(value, 100); // Ensure value does not exceed 100
+              e.target.value = value + "%"; // Re-add '%' symbol
+            }
+          });
+          getFeedBack();
+
+          document.addEventListener('DOMContentLoaded', function () {
+            new SimpleBar(document.querySelector('.scroll-sidebar'), { autoHide: false });
+          });
+        </script>
+      </div>
+    </div>
+  </div>
+
+
+
+</body>
+
+</html>

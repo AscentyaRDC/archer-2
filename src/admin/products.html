@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product Details</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/styles.min.css" />
+</head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar">
+      <!-- Sidebar scroll-->
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./products.html" class="text-nowrap logo-img">
+            <img src="../assets/images/logos/favicon.png" width="180" alt="" />
+          </a>
+          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+            <i class="ti ti-x fs-8"></i>
+          </div>
+        </div>
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+          <ul id="sidebarnav">
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Home</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./products.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Products</span>
+              </a>
+            </li>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Menu</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./profile.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Profile</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./orders.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-alert-circle"></i>
+                </span>
+                <span class="hide-menu">Orders</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./feedback.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-cards"></i>
+                </span>
+                <span class="hide-menu">Feedback</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./ratings.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file-description"></i>
+                </span>
+                <span class="hide-menu">Ratings</span>
+              </a>
+            </li>
+
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Settings</span>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./change-logo.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file-description"></i>
+                </span>
+                <span class="hide-menu">Settings</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./add-offer.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file-description"></i>
+                </span>
+                <span class="hide-menu">Offers</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./login.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-login"></i>
+                </span>
+                <span class="hide-menu">Logout</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+      </div>
+      <!-- End Sidebar scroll-->
+    </aside>
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <!--  Header Start -->
+      <header class="app-header">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <ul class="navbar-nav"></ul>
+          <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+            <div style="width: 100%; padding: 5px; display: flex">
+              <input style="
+                    width: 90%;
+                    background-color: white;
+                    border-radius: 10px;
+                    padding: 10px;
+                  " type="text" onchange="getWatches()" onkeyup="this.onchange();" id="searchInput"
+                placeholder="Search Products" />
+              <!-- <button
+                  type="submit"
+                  class="btn btn-warning"
+                  id="search"
+                  onclick="getWatches()"
+                  style="
+                    font-weight: 700;
+                    margin-left: 10px;
+                    margin-right: 10px;
+                  "
+                >
+                  Search
+                </button> -->
+              <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+                <a href="./add-watch.html" class="btn btn-primary">Add Watch</a>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <!--  Header End -->
+      <div class="container-fluid">
+        <div id="list" class="row"></div>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/sidebarmenu.js"></script>
+  <script src="../assets/js/app.min.js"></script>
+  <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+  <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+  <script src="../assets/js/dashboard.js"></script>
+
+  <script>
+    const getWatches = () => {
+      const url = "../api/get-watches-admin.php";
+      const body = JSON.stringify({
+        token: window.localStorage.getItem("authToken"),
+      });
+      fetch(url, {
+        method: "POST",
+        body: body,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success) {
+            let rows = ``;
+            const list = document.getElementById("list");
+            data.data.forEach((it, i) => {
+              let t = 0;
+              if (it.user_fav != null) {
+                t = it.user_fav.length;
+              }
+              if (document.getElementById("searchInput").value != "") {
+                if (
+                  it.name
+                    .toLowerCase()
+                    .includes(
+                      document
+                        .getElementById("searchInput")
+                        .value.toLowerCase()
+                    ) ||
+                  it.model
+                    .toLowerCase()
+                    .includes(
+                      document
+                        .getElementById("searchInput")
+                        .value.toLowerCase()
+                    )
+                ) {
+                  rows += `
+                <div class="col-sm-6 col-xl-3" style="height:100%;">
+                  <div class="card overflow-hidden rounded-2">
+                    <div onclick="pageId(${it.wid})">
+                      <a href="javascript:void(0)"
+                        ><img
+                          style="width:200px;height:200px";
+                          src="${it.image_front}"
+                          class="card-img-top rounded-0"
+                          
+                      /></a>
+                    </div>
+                    <div class="card-body pt-3 p-4" onclick="pageId(${it.wid})" style="cursor:pointer;">
+                      <h6 class="fw-regular fs-4">Watch Name: ${it.name}</h6>
+                      <h6 class="fw-regular fs-4">Watch Model: ${it.model}</h6>
+                      <h6 class="fw-regular fs-4">Price: &#8377 ${it.base_price}</h6>
+                      <h6 class="fw-regular fs-4">No. of Favourites: ${t}</h6>
+                    </div>
+                     <div style="display:flex;margin: auto auto;width:100%;">
+                      <button style="margin:5px;width:90%" onclick="getId(${it.wid})" class="btn btn-warning">Edit</button>
+                    </div>
+                  </div>
+                </div>
+                `;
+                }
+              } else {
+                rows += `
+                <div class="col-sm-6 col-xl-3" style="height:100%;">
+                  <div class="card overflow-hidden rounded-2">
+                    <div onclick="pageId(${it.wid})">
+                      <a href="javascript:void(0)"
+                        ><img
+                          style="width:200px;height:200px";
+                          src="${it.image_front}"
+                          class="card-img-top rounded-0"
+                          
+                      /></a>
+                    </div>
+                    <div class="card-body pt-3 p-4" onclick="pageId(${it.wid})" style="cursor:pointer;">
+                      <h6 class="fw-regular fs-4">Watch Name: ${it.name}</h6>
+                      <h6 class="fw-regular fs-4">Watch Model: ${it.model}</h6>
+                      <h6 class="fw-regular fs-4">Price: &#8377 ${it.base_price}</h6>
+                      <h6 class="fw-regular fs-4">No. of Favourites: ${t}</h6>
+                    </div>
+                     <div style="display:flex;margin: auto auto;width:100%;">
+                      <button style="margin:5px;width:90%" onclick="getId(${it.wid})" class="btn btn-warning">Edit</button>
+                    </div>
+                  </div>
+                </div>
+                `;
+              }
+              // <a style="margin:5px;width:45%;" href="./add-watch.html" class="btn btn-danger">Delete</a>
+              if ((i + 1) % 4 == 0) {
+                rows += `<hr>`;
+              }
+            });
+            list.innerHTML = rows;
+          } else {
+            alert(data.msg);
+          }
+        });
+    };
+    getWatches();
+
+    const getId = (watchId) => {
+      window.localStorage.setItem("wid", watchId);
+      window.location.href = "./edit-watch.html";
+    };
+
+    const pageId = (watchId) => {
+      window.localStorage.setItem("wid", watchId);
+      window.location.href = "./view-watch.html"
+    }
+  </script>
+</body>
+
+</html>

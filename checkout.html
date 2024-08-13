@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Checkout</title>
+    <link rel="shortcut icon" type="image/png" href="./src/assets/images/logos/favicon.png" />
+    <link rel="stylesheet" href="./src/assets/css/styles.min.css" />
+</head>
+
+<style>
+    #myInput {
+        background-image: url("/css/searchicon.png");
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        width: 50%;
+        float: right;
+        font-size: 16px;
+        padding: 12px 20px 12px 40px;
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    /* Style the select elements */
+    .custom-select {
+        position: relative;
+        width: 100%;
+    }
+
+    /* Hide the default arrow and create a custom dropdown arrow */
+    .custom-select select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background: transparent;
+        padding-right: 1em;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+        background-repeat: no-repeat;
+        background-position: right 0.7em top 50%;
+        background-size: 1.5em auto;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        font-size: 12px;
+        line-height: 2;
+        padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+        -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    /* offerpage */
+
+    .customizations {
+        margin-bottom: 30px;
+        border-bottom: 1px solid #E1E8EE;
+
+        border: 1px solid #ccc;
+        /* Add border to create the box effect */
+        padding: 10px;
+        /* Add padding for spacing */
+        margin-bottom: 10px;
+        /* Add margin for spacing between boxes */
+
+    }
+
+    .customization-header {
+        cursor: pointer;
+        /* Set cursor to pointer to indicate clickable */
+        display: flex;
+        /* Use flexbox for layout */
+        justify-content: space-between;
+        /* Align items to each end */
+        align-items: center;
+        /* Align items vertically */
+    }
+
+    .expand-btn {
+        font-size: 24px;
+        /* Adjust the font size as needed */
+        font-weight: bold;
+        /* Make the symbol bold */
+    }
+
+    .customizations-content {
+        max-height: 0;
+        /* Initially hide content */
+        overflow: hidden;
+        /* Hide overflowing content */
+        transition: max-height 0.6s ease;
+        /* Add smooth animation */
+    }
+
+    .choose-custom div {
+        display: inline-block;
+        margin-top: 10px;
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
+
+<body>
+    <!--  Body Wrapper -->
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="fixed" data-header-position="fixed">
+        <!-- Sidebar Start -->
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div>
+                <div class="brand-logo d-flex align-items-center justify-content-between">
+                    <a href="./products.html" class="text-nowrap logo-img">
+                        <img src="./src/assets/images/logos/favicon.png" width="180" alt="" />
+                    </a>
+                    <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+                        <i class="ti ti-x fs-8"></i>
+                    </div>
+                </div>
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+                    <ul id="sidebarnav">
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Home</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./products.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-layout-dashboard"></i>
+                                </span>
+                                <span class="hide-menu">Products</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./cart.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-layout-dashboard"></i>
+                                </span>
+                                <span class="hide-menu">Cart</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./favourites.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-layout-dashboard"></i>
+                                </span>
+                                <span class="hide-menu">Favourites</span>
+                            </a>
+                        </li>
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Menu</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./profile.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-article"></i>
+                                </span>
+                                <span class="hide-menu">Profile</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./orders.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-alert-circle"></i>
+                                </span>
+                                <span class="hide-menu">Orders</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./feedback.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-cards"></i>
+                                </span>
+                                <span class="hide-menu">Feedback</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./ratings.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-file-description"></i>
+                                </span>
+                                <span class="hide-menu">Ratings</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Settings</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./support.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-menu"></i>
+                                </span>
+                                <span class="hide-menu">Support</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./login.html" aria-expanded="false"
+                                style="margin-bottom: 10vh; color: rgba(255, 0, 0, 0.5);">
+                                <span>
+                                    <i class="ti ti-login"></i>
+                                </span>
+                                <span class="hide-menu">Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!--  Sidebar End -->
+        <!--  Main wrapper -->
+        <div class="body-wrapper">
+            <div>
+                <div class="row">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div class="card" style="width: 730px; margin-left: 220px; margin-top: 20px;">
+                                <div class="card-body">
+                                    <p style="width: 100%;
+                             font-size: xx-large; color: #5d87cc;font-weight: 700;">Checkout</p>
+                                    <h5>Before ordering, please review your information, Including your order details,
+                                        below </h5>
+
+                                    <div class="customizations">
+                                        <div class="customization-header" onclick="toggleCustomizations(this)">
+                                            <h6>Available Offers</h6>
+                                            <span class="expand-btn">+</span>
+                                        </div>
+                                        <div class="customizations-content hidden" id="offersContainer">
+                                            <!-- Dynamic offers will be inserted here -->
+                                        </div>
+                                        <div class="no-offers hidden" id="noOffersMessage">
+                                            <p>No offers available at the moment.</p>
+                                        </div>
+                                    </div>
+
+                                    <form>
+                                        <p style="font-weight: 500;font-size: x-large;">Order Total</p>
+                                        <div style="display:flex;width: 100%;margin-top: 20px;">
+                                            <h4 style="width: 80%;">Product(s) Total</h4>
+                                            <h4 id="price" style="width: 20%;"><b>9999.00</b></p>
+                                        </div>
+                                        <hr>
+
+                                        <div style="display:flex;width: 100%;margin-top: 20px;">
+                                            <h4 style="width: 80%;">Service Tax</h4>
+                                            <h4 id="additional" style="width: 20%;"><b>5%</b></p>
+                                        </div>
+                                        <hr>
+
+                                        <div style="display:flex;width: 100%;">
+                                            <h4 style="width: 80%;">Quantity </h4>
+                                            <h4 id="qty" style="width: 20%;"><b>9999.00</b></p>
+                                        </div>
+                                        <hr>
+
+
+
+                                        <div style="display:flex;width: 100%;">
+                                            <h4 style="width: 80%;">Delivery Charges</h4>
+                                            <h4 id="delivery" style="width: 20%;"><b>FREE</b></p>
+                                        </div>
+                                        <hr>
+
+                                        <div style="display:flex;width: 100%;">
+                                            <h4 style="width: 80%;">India GST(18%)</h4>
+                                            <h4 id="gst" style="width: 20%;"><b>9999.00</b></p>
+                                        </div>
+                                        <hr>
+
+                                        <div style="display:flex;width: 100%;">
+                                            <h4 style="width: 80%;">Total Amount</h4>
+                                            <h4 id="total" style="width: 20%;"><b>9999.00</b></p>
+                                        </div>
+
+                                        <h5 style="margin-top: 20px;">By placing an order, you confirm that you've read,
+                                            and agree to, our Privacy and Cookie policy. Our Terms of use and the
+                                            product specific terms. </h5>
+
+                                        <button type="button" class="btn btn-warning" style="float: right;"
+                                            onclick="save()">
+                                            Place Order
+                                        </button>
+                                </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="./src/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="./src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./src/assets/js/sidebarmenu.js"></script>
+    <script src="./src/assets/js/app.min.js"></script>
+    <script src="./src/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+    <script src="./src/assets/libs/simplebar/dist/simplebar.js"></script>
+    <script src="./src/assets/js/dashboard.js"></script>
+
+    <script>
+        let selectedOfferDiscount = 0;
+        let selectedOfferType = ""; // To store the type of the selected offer
+        let lastSelectedButton = null; // To store the last selected offer button
+
+        // CSS class for fading out the offers
+        const style = document.createElement('style');
+        style.innerHTML = `
+               .faded-out {
+               opacity: 0.5;
+            }
+        `;
+        document.head.appendChild(style);
+
+        const applyOffer = (discount, discountType, button) => {
+            // Check if the same button is clicked again to remove the offer
+            if (button === lastSelectedButton) {
+                // Reset the discount and type
+                selectedOfferDiscount = 0;
+                selectedOfferType = "";
+                updateTotal();
+
+                // Reset the button text and classes
+                button.textContent = "Apply";
+                button.classList.remove('faded-out');
+                lastSelectedButton = null;
+
+                // Enable all buttons
+                const buttons = document.querySelectorAll('.offer .btn');
+                buttons.forEach(btn => {
+                    btn.classList.remove('faded-out');
+                });
+
+                return;
+            }
+
+            selectedOfferDiscount = discount;
+            selectedOfferType = discountType;
+            updateTotal();
+
+            // Reset the text content and classes of all buttons
+            const buttons = document.querySelectorAll('.offer .btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('faded-out');
+                btn.textContent = "Apply";
+            });
+
+            // Update the clicked button
+            button.classList.add('faded-out');
+            button.textContent = "Applied";
+            lastSelectedButton = button;
+        };
+
+        const updateTotal = () => {
+            const deliveryFee = parseFloat(JSON.parse(window.localStorage.getItem("delivery_fee"))[0]).toFixed(2);
+            const price = parseFloat(JSON.parse(window.localStorage.getItem("price"))[0]);
+            const qty = parseFloat(JSON.parse(window.localStorage.getItem("orderQty"))[0]);
+            const gst = (price * 0.18 * qty).toFixed(2);
+
+            document.getElementById("delivery").innerHTML = deliveryFee;
+            document.getElementById("price").innerHTML = price.toFixed(2);
+            document.getElementById("qty").innerHTML = qty;
+            document.getElementById("gst").innerHTML = gst;
+
+            let discountValue = selectedOfferDiscount;
+            if (selectedOfferType === "percentage") {
+                discountValue = (price * qty) * (selectedOfferDiscount / 100);
+            }
+
+            const total = ((price * qty) + parseFloat(gst) + parseFloat(deliveryFee) - discountValue).toFixed(2);
+            document.getElementById("total").innerHTML = total;
+
+            let url = "src/api/get-indi-watch.php";
+            let body = JSON.stringify({
+                token: window.localStorage.getItem("authToken"),
+                wid: window.localStorage.getItem("wid")
+            });
+            fetch(url, {
+                body: body,
+                method: "POST"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById("additional").innerHTML = parseFloat(data.data[0].aaditional_charges) + "%";
+                    }
+                    else {
+                        alert(data.msg);
+                    }
+                })
+        }
+
+        const getOffers = () => {
+            const url = "./src/api/get-offers.php";
+            const body = JSON.stringify({
+                token: window.localStorage.getItem("authToken"),
+            });
+
+            fetch(url, {
+                method: "POST",
+                body: body,
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    const offersContainer = document.getElementById("offersContainer");
+                    const noOffersMessage = document.getElementById("noOffersMessage");
+
+                    // Clear any existing offers
+                    offersContainer.innerHTML = "";
+
+                    if (data.success) {
+                        const offers = data.data;
+                        const currentDate = new Date();
+
+                        // Filter offers to exclude expired ones
+                        const validOffers = offers.filter(offer => {
+                            const offerValidTo = new Date(offer.offer_valid_to);
+                            return offerValidTo >= currentDate;
+                        });
+
+                        if (validOffers.length > 0) {
+                            noOffersMessage.classList.add("hidden");
+                            offersContainer.classList.remove("hidden");
+
+                            validOffers.forEach((offer, index) => {
+                                const offerElement = document.createElement("div");
+                                offerElement.classList.add("offer");
+
+                                const discountType = offer.offer_type === "2" ? "percentage" : "absolute"; // Assuming "2" is for percentage
+
+                                offerElement.innerHTML = `
+                        <button type="button" class="btn btn-info apply-offer" style="float: inline-end; cursor: pointer;" data-discount="${offer.offer_value}" data-discount-type="${discountType}">APPLY</button>
+                        <h6 class="offer-title">Offer Code: ${offer.offer_code}</h6>
+                        <h6 class="offer-title">Offer Value: ${offer.offer_value}${discountType === "percentage" ? "%" : ""}</h6>
+                        <h6>Valid Until: ${offer.offer_valid_to}</h6>
+                        <div class="card-body p-4">
+                            <p>${offer.offer_description}</p>
+                        </div>
+                    `;
+
+                                offersContainer.appendChild(offerElement);
+
+                                if (index < offers.length - 1) {
+                                    const hr = document.createElement("hr");
+                                    offersContainer.appendChild(hr);
+                                }
+                            });
+
+                            // Add event listeners to the newly created buttons
+                            const applyButtons = document.querySelectorAll('.apply-offer');
+                            applyButtons.forEach(button => {
+                                button.addEventListener('click', function () {
+                                    const discount = parseFloat(this.getAttribute('data-discount'));
+                                    const discountType = this.getAttribute('data-discount-type');
+                                    applyOffer(discount, discountType, this);
+                                });
+                            });
+                        } else {
+                            noOffersMessage.classList.remove("hidden");
+                            offersContainer.classList.add("hidden");
+                        }
+                    } else {
+                        noOffersMessage.classList.remove("hidden");
+                        offersContainer.classList.add("hidden");
+                        alert(data.msg);
+                    }
+                });
+        };
+
+        updateTotal();
+        getOffers();
+
+        const save = () => {
+            window.location.href = "./payment-method.html";
+        };
+
+        function toggleCustomizations(header) {
+            var content = header.nextElementSibling;
+            var expandBtn = header.querySelector('.expand-btn');
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                expandBtn.textContent = '-';
+                content.style.maxHeight = content.scrollHeight + 'px'; // Expand smoothly
+            } else {
+                content.classList.add('hidden');
+                expandBtn.textContent = '+';
+                content.style.maxHeight = null; // Collapse smoothly
+            }
+        }
+
+    </script>
+</body>
+
+</html>

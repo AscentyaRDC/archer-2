@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Add Caseback</title>
+    <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+    <link rel="stylesheet" href="../assets/css/styles.min.css" />
+
+    <style>
+        /* Style the select elements */
+        .custom-select {
+            position: relative;
+            width: 100%;
+        }
+
+        /* Hide the default arrow and create a custom dropdown arrow */
+        .custom-select select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background: transparent;
+            padding-right: 1em;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 0.7em top 50%;
+            background-size: 1.5em auto;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 12px;
+            line-height: 2;
+            padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+            -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+    </style>
+
+    <style>
+        .customizations-content {
+            display: flex;
+            flex-wrap: wrap;
+            /* Allow items to wrap onto multiple lines */
+            justify-content: space-between;
+            /* Distribute items evenly along the main axis */
+            align-items: flex-start;
+            /* Align items at the start of the cross axis */
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease;
+        }
+
+        .customizations-content>div {
+            width: calc(32% - 10px);
+            /* Set width for each item with margin */
+            margin: 5px;
+            /* Add margin for spacing between items */
+        }
+
+        .customizations {
+            margin-top: 20px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #E1E8EE;
+            width: 80%;
+            margin-left: 5%;
+            border: 1px solid #ccc;
+            /* Add border to create the box effect */
+            padding: 7px;
+            /* Add padding for spacing */
+            margin-bottom: 5px;
+            /* Add margin for spacing between boxes */
+
+        }
+
+        .customization-header {
+            cursor: pointer;
+            /* Set cursor to pointer to indicate clickable */
+            display: flex;
+            /* Use flexbox for layout */
+            justify-content: space-between;
+            /* Align items to each end */
+            align-items: center;
+            /* Align items vertically */
+        }
+
+        .expand-btn {
+            font-size: 24px;
+            /* Adjust the font size as needed */
+            font-weight: bold;
+            /* Make the symbol bold */
+        }
+    </style>
+
+</head>
+
+<body>
+    <!--  Body Wrapper -->
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="fixed" data-header-position="fixed">
+        <!-- Sidebar Start -->
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div>
+                <div class="brand-logo d-flex align-items-center justify-content-between">
+                    <a href="./products.html" class="text-nowrap logo-img">
+                        <img src="../assets/images/logos/favicon.png" width="180" alt="" />
+                    </a>
+                    <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+                        <i class="ti ti-x fs-8"></i>
+                    </div>
+                </div>
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+                    <ul id="sidebarnav">
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Home</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./products.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-layout-dashboard"></i>
+                                </span>
+                                <span class="hide-menu">Products</span>
+                            </a>
+                        </li>
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Menu</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./profile.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-article"></i>
+                                </span>
+                                <span class="hide-menu">Profile</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./orders.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-alert-circle"></i>
+                                </span>
+                                <span class="hide-menu">Orders</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./feedback.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-cards"></i>
+                                </span>
+                                <span class="hide-menu">Feedback</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./ratings.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-file-description"></i>
+                                </span>
+                                <span class="hide-menu">Ratings</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Settings</span>
+                        </li>
+                        <li class="sidebar-item">
+
+                            <a class="sidebar-link" href="./change-logo.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-settings"></i>
+                                </span>
+                                <span class="hide-menu">Settings</span>
+                            </a>
+
+                            <a class="sidebar-link" href="./add-offer.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-file-description"></i>
+                                </span>
+                                <span class="hide-menu">Offers</span>
+                            </a>
+
+                            <a class="sidebar-link" href="./login.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-login"></i>
+                                </span>
+                                <span class="hide-menu">Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!--  Sidebar End -->
+        <!--  Main wrapper -->
+        <div class="body-wrapper">
+            <div>
+                <div class="card">
+                    <div class="card-body">
+                        <h2 style="width: 100%; text-align: center;">Add Caseback</h2>
+                        <div class="card">
+                            <div class="card-body">
+
+                                <!--Form Starting Here-->
+                                <form id="watchForm">
+                                    <div class="row">
+                                        <div class="col-sm-4" style="margin-top: 50px;">
+                                            <h5>Caseback Name<span style="color: red;"> *</span></h5>
+                                            <input class="form-control" id="casebackname" name="casebackname"
+                                                placeholder="Enter the Caseback Name"
+                                                oninput="this.value=(this.value.match('[a-zA-Z0-9 ]+'))" />
+
+                                        </div>
+                                        <div class="col-sm-4" style="margin-top: 50px;">
+                                            <h5>Price<span style="color: red;"> *</span></h5>
+                                            <input class="form-control" id="casebackprice" name="casebackprice"
+                                                placeholder="Enter the Caseback Price"
+                                                oninput="this.value=(this.value.match('[0-9.]+'))" maxlength="8" />
+
+                                        </div>
+
+                                        <div class="col-sm-2 imgUp">
+                                            <div class="imagePreview" style="border-radius: 5px;">
+                                                <img src="../assets/images/profile/sample.png" alt="Default Image"
+                                                    id="right1" style="width:160px; height: 160px;"
+                                                    onclick="document.getElementById('casebackimage').click();">
+
+                                            </div>
+                                            <label style="width: 100%; text-align: center;">
+                                                Upload Caseback Image<input type="file" class="uploadFile img"
+                                                    value="Upload Photo" onchange="handleFileUpload(this, 'right1')"
+                                                    id="casebackimage" style="width: 0px; height: 0px; overflow: hidden;">
+                                            </label>
+                                            <span id="casebackimage_error" style="color: red;" class="error"></span>
+                                        </div>
+
+                                        <div id="validationMessage"></div>
+                                    </div>
+
+                                    <button type="button" class="btn btn-primary"
+                                        style="margin-top: 20px; margin-left: 380px;" onclick="redirectToAnotherPage()">
+                                        Back
+                                    </button>
+                                    <button type="button" class="btn btn-primary"
+                                        style="margin-top: 20px; margin-left: 10px;" onclick="caseBack()">
+                                        Save
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleFileUpload(input, imageId) {
+            var file = input.files[0];
+            var image = document.getElementById(imageId);
+            var errorSpan = document.getElementById(imageId + '_error');
+
+            if (file) {
+                if (file.type.match('image.*')) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        image.src = e.target.result;
+
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    image.src = '';
+                    errorSpan.textContent = 'Please upload an image file.';
+                    input.value = '';
+                }
+            } else {
+                image.src = '';
+                errorSpan.textContent = 'No file selected.';
+            }
+        }
+
+        function toggleCustomizations(header) {
+            var content = header.nextElementSibling;
+            var expandBtn = header.querySelector('.expand-btn');
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                expandBtn.textContent = '-';
+                content.style.maxHeight = content.scrollHeight + 'px'; // Expand smoothly
+            } else {
+                content.classList.add('hidden');
+                expandBtn.textContent = '+';
+                content.style.maxHeight = null; // Collapse smoothly
+            }
+        }
+
+        const redirectToAnotherPage = () => {
+            window.location.href = 'add-caseback.html'
+        }
+
+        const caseBack = () => {
+            let casebackname = document.getElementById('casebackname').value.trim();
+            let casebackprice = document.getElementById('casebackprice').value.trim();
+            let casebackimage = document.getElementById('casebackimage').files[0];
+            const url = "../api/add-caseback.php";
+            const formData = new FormData();
+            formData.append("name", casebackname);
+            formData.append("price", casebackprice);
+            formData.append("image_front", casebackimage);
+            formData.append("watch_id", window.localStorage.getItem("wid"));
+
+            fetch(url, {
+                method: "POST",
+                body: formData
+            })
+                .then(res => res.json())
+                .then(data => {
+                    alert(data.msg);
+                    if (data.success) {
+                        window.location.reload()
+                    } else {
+                        alert(data.msg);
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        }
+    </script>
+
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/sidebarmenu.js"></script>
+    <script src="../assets/js/app.min.js"></script>
+    <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+</body>
+
+</html>

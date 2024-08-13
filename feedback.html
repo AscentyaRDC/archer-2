@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feedback Details</title>
+  <link rel="shortcut icon" type="image/png" href="./src/assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="./src/assets/css/styles.min.css" />
+</head>
+<style>
+  #myInput {
+    background-image: url("/css/searchicon.png");
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 50%;
+    float: right;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  /* Ensure the sidebar takes the full height of the viewport */
+  .sidebar-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /* Full viewport height */
+  }
+
+  .brand-logo-container {
+    flex: 0 0 auto;
+    /* Fixed height for the logo container */
+    padding: 10px;
+    /* Optional: Adjust padding as needed */
+    background: #fff;
+    /* Optional: Background color for the logo section */
+    z-index: 1;
+    /* Ensure it stays above the scrollable content */
+  }
+
+  .scroll-sidebar {
+    flex-grow: 1;
+    /* Allow the nav to grow and take available space */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    z-index: 0;
+    /* Ensure it stays below the logo section */
+    scrollbar-width: none;
+    /* For Firefox */
+  }
+
+  .scroll-sidebar::-webkit-scrollbar {
+    display: none;
+    /* For Chrome, Safari, and Opera */
+  }
+</style>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar">
+      <!-- Sidebar scroll-->
+      <div class="sidebar-container">
+        <div class="brand-logo-container">
+          <div class="brand-logo d-flex align-items-center justify-content-between">
+            <a href="./products.html" class="text-nowrap logo-img">
+              <img src="./src/assets/images/logos/favicon.png" width="180" alt="Logo" />
+            </a>
+            <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+              <i class="ti ti-x fs-8"></i>
+            </div>
+          </div>
+        </div>
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar>
+          <ul id="sidebarnav">
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Home</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./products.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Products</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./cart.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Cart</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./favourites.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Favourites</span>
+              </a>
+            </li>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Menu</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./profile.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Profile</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./orders.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-alert-circle"></i>
+                </span>
+                <span class="hide-menu">Orders</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./feedback.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-cards"></i>
+                </span>
+                <span class="hide-menu">Feedback</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./ratings.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file-description"></i>
+                </span>
+                <span class="hide-menu">Ratings</span>
+              </a>
+            </li>
+
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Settings</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./support.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-menu"></i>
+                </span>
+                <span class="hide-menu">Support</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./login.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-login"></i>
+                </span>
+                <span class="hide-menu">Logout</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+      </div>
+      <!-- End Sidebar scroll-->
+    </aside>
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <!--  Header Start -->
+
+      <!--  Header End -->
+      <div>
+        <div class="row">
+          <div class="card">
+            <div class="card-body">
+              <h2 style="width: 100%;text-align: center;"> Add Feedback</h2>
+              <div class="card">
+                <div class="card-body">
+                  <form>
+                    <h5>User Name</h5>
+                    <input class="form-control" id="username" readonly />
+                    <h5 style="margin-top: 10px;">User ID</h5>
+                    <input class="form-control" id="userid" readonly />
+                    <h5 style="margin-top: 10px;">Mobile Number</h5>
+                    <input class="form-control" id="mobile" readonly />
+                    <h5 style="margin-top: 10px;">E-mail ID</h5>
+                    <input class="form-control" id="email" readonly />
+                    <h5 style="margin-top: 10px;">Feed Back</h5>
+                    <textarea style="min-height: 100px;" class="form-control" id="feedback"
+                      placeholder="Enter your feedback here.."></textarea>
+
+                    <button type="button" class="btn btn-warning"
+                      style="margin-top: 20px; margin-left: 10px; float: right;" onclick="validateForm()">
+                      Submit
+                    </button>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <script src="./src/assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="./src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./src/assets/js/sidebarmenu.js"></script>
+  <script src="./src/assets/js/app.min.js"></script>
+  <script src="./src/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+  <script src="./src/assets/libs/simplebar/dist/simplebar.js"></script>
+  <script src="./src/assets/js/dashboard.js"></script>
+
+  <script>
+    let userName = document.getElementById("username")
+    let userid = document.getElementById("userid")
+    let mobile = document.getElementById("mobile")
+    let email = document.getElementById("email")
+    let feedback = document.getElementById("feedback")
+
+
+    userName.value = window.localStorage.getItem('u_name')
+    mobile.value = window.localStorage.getItem('mobile')
+    email.value = window.localStorage.getItem('email')
+    userid.value = window.localStorage.getItem('user_id')
+
+    const validateForm = () => {
+      var feedback = document.getElementById('feedback').value;
+      if (feedback.trim() == "") {
+        alert('Please fill your feedback in  feedback details.');
+        return false;
+      }
+
+      let url = "src/api/add-feedback.php"
+      let body = JSON.stringify({
+        token: window.localStorage.getItem("authToken"),
+        name: userName.value,
+        phone: mobile.value,
+        email: email.value,
+        feedback: feedback
+      })
+      fetch(url, {
+        body: body,
+        method: "POST",
+
+      })
+        .then(res => res.json())
+        .then(data => {
+          alert(data.msg)
+          if (data.success) {
+            window.location.href = "./products.html"
+          }
+        })
+
+
+      return true;
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      new SimpleBar(document.querySelector('.scroll-sidebar'), { autoHide: false });
+    });
+  </script>
+</body>
+
+</html>

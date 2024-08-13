@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Editor Template</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .nav-buttons button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            background-color: #555;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .nav-buttons button:hover {
+            background-color: #777;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+            background-color: #f0f0f0;
+        }
+
+        .editor {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-color: #fff;
+            border-right: 2px solid #ccc;
+        }
+
+        .image-preview {
+            border: 2px solid #ccc;
+            width: 80%;
+            height: 60%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+        }
+
+        .image-preview img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .sidebar {
+            flex: 0.28;
+            /* Adjusted flex value for better spacing */
+            background-color: #fff;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            height: 620px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .tools {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 100%;
+        }
+
+        .edit-layout {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .layout-options {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .layout-option {
+            background-color: #e0e0e0;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .layout-option img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .footer button {
+            padding: 5px 10px;
+            background-color: #555;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .footer button:hover {
+            background-color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>ARCHER</h1>
+        <div class="nav-buttons">
+            <button>Products</button>
+            <button>Cart</button>
+            <button>Favourites</button>
+            <button>Logout</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="editor">
+            <div class="image-preview">
+                <img id="preview-image" src="your-image-path.jpeg" alt="Preview">
+            </div>
+        </div>
+        <div class="sidebar">
+            <div class="tools">
+                <div>
+                    <div class="imagePreview" style="border-radius: 5px;margin: 5px; text-align: center;">
+                        <p style="color: #777;">Dials</p>
+                        <img src="./src/assets/images/profile/watch.png" id="left" alt="Default Image"
+                            style="width:70px; height: 70px;" onclick="changeImage(this.src)"
+                            onmouseover="changeMainImage(this.src)" onmouseout="resetMainImage()">
+                    </div>
+                </div>
+                <div>
+                    <div class="imagePreview" style="border-radius: 5px;margin: 5px; text-align: center;">
+                        <p style="color: #777;">Straps</p>
+                        <img src="./src/assets/images/profile/watch.png" id="left" alt="Default Image"
+                            style="width:70px; height: 70px;" onclick="changeImage(this.src)"
+                            onmouseover="changeMainImage(this.src)" onmouseout="resetMainImage()">
+                    </div>
+                </div>
+                <div>
+                    <div class="imagePreview" style="border-radius: 5px;margin: 5px; text-align: center;">
+                        <p style="color: #777; margin-left: -8px;">Chronocase</p>
+                        <img src="./src/assets/images/profile/watch.png" id="left" alt="Default Image"
+                            style="width:70px; height: 70px;" onclick="changeImage(this.src)"
+                            onmouseover="changeMainImage(this.src)" onmouseout="resetMainImage()">
+                    </div>
+                </div>
+                <div>
+                    <div class="imagePreview" style="border-radius: 5px;margin: 5px; text-align: center;">
+                        <p style="color: #777;">Movement</p>
+                        <img src="./src/assets/images/profile/watch.png" id="left" alt="Default Image"
+                            style="width:70px; height: 70px;" onclick="changeImage(this.src)"
+                            onmouseover="changeMainImage(this.src)" onmouseout="resetMainImage()">
+                    </div>
+                </div>
+                <div>
+                    <div class="imagePreview" style="border-radius: 5px;margin: 5px; text-align: center;">
+                        <p style="color: #777;">Bezels</p>
+                        <img src="./src/assets/images/profile/watch.png" id="left" alt="Default Image"
+                            style="width:70px; height: 70px;" onclick="changeImage(this.src)"
+                            onmouseover="changeMainImage(this.src)" onmouseout="resetMainImage()">
+                    </div>
+                </div>
+                <div>
+                    <div class="imagePreview" style="border-radius: 5px;margin: 5px; text-align: center;">
+                        <p style="color: #777;">Hands</p>
+                        <img src="./src/assets/images/profile/watch.png" id="left" alt="Default Image"
+                            style="width:70px; height: 70px;" onclick="changeImage(this.src)"
+                            onmouseover="changeMainImage(this.src)" onmouseout="resetMainImage()">
+                    </div>
+                </div>
+                <div>
+                    <div class="imagePreview" style="border-radius: 5px;margin: 5px; text-align: center;">
+                        <p style="color: #777;">Hands</p>
+                        <img src="./src/assets/images/profile/watch.png" id="left" alt="Default Image"
+                            style="width:70px; height: 70px;" onclick="changeImage(this.src)"
+                            onmouseover="changeMainImage(this.src)" onmouseout="resetMainImage()">
+                    </div>
+                </div>
+                <div>
+                    <div class="imagePreview" style="border-radius: 5px;margin: 5px; text-align: center;">
+                        <p style="color: #777;">Hands</p>
+                        <img src="./src/assets/images/profile/watch.png" id="left" alt="Default Image"
+                            style="width:70px; height: 70px;" onclick="changeImage(this.src)"
+                            onmouseover="changeMainImage(this.src)" onmouseout="resetMainImage()">
+                    </div>
+                </div>
+                <div>
+                    <div class="imagePreview" style="border-radius: 5px;margin: 5px; text-align: center;">
+                        <p style="color: #777;">Hands</p>
+                        <img src="./src/assets/images/profile/watch.png" id="left" alt="Default Image"
+                            style="width:70px; height: 70px;" onclick="changeImage(this.src)"
+                            onmouseover="changeMainImage(this.src)" onmouseout="resetMainImage()">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="edit-layout">
+            <h2>Available Customizations</h2>
+            <div class="layout-options">
+                <div class="layout-option">
+                    <img src="./src/assets/images/profile/watch.png" alt="Image 1">
+                </div>
+                <div class="layout-option">
+                    <img src="./src/assets/images/profile/watch.png" alt="Image 2">
+                </div>
+                <div class="layout-option">
+                    <img src="./src/assets/images/profile/watch.png" alt="Image 3">
+                </div>
+                <div class="layout-option">
+                    <img src="./src/assets/images/profile/watch.png" alt="Image 4">
+                </div>
+                <div class="layout-option">
+                    <img src="./src/assets/images/profile/watch.png" alt="Image 5">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <button>SAVE PROGRESS</button>
+        <button>DOWNLOAD</button>
+    </div>
+    <script>
+        // Add JavaScript to handle image selection and preview update
+    </script>
+</body>
+
+</html>

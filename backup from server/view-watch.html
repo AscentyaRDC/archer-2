@@ -1,0 +1,1416 @@
+<html>
+
+<head>
+    <link rel="icon" href="./src/assets/images/logos/favicon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Archer Product</title>
+
+    <style>
+        /* Basic Styling */
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Columns */
+        .left-column {
+            width: 65%;
+            position: relative;
+
+        }
+
+        .right-column {
+            width: 35%;
+            margin-top: 60px;
+        }
+
+        /* Left Column */
+        .left-column img {
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .left-column img.active {
+            opacity: 1;
+        }
+
+        /* Product Description */
+        .product-description {
+            border-bottom: 1px solid #E1E8EE;
+            margin-bottom: 20px;
+
+        }
+
+        /* .product-description span {
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+        } */
+
+        .product-description h1 {
+            font-weight: 300;
+            font-size: 52px;
+            color: #43484D;
+        }
+
+        .product-description p {
+            font-size: 16px;
+            font-weight: 300;
+            color: #86939E;
+            line-height: 24px;
+        }
+
+        /* Product Color */
+        .customizations {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #E1E8EE;
+
+            border: 1px solid #ccc;
+            /* Add border to create the box effect */
+            padding: 10px;
+            /* Add padding for spacing */
+            margin-bottom: 10px;
+            /* Add margin for spacing between boxes */
+
+        }
+
+        .customization-header {
+            cursor: pointer;
+            /* Set cursor to pointer to indicate clickable */
+            display: flex;
+            /* Use flexbox for layout */
+            justify-content: space-between;
+            /* Align items to each end */
+            align-items: center;
+            /* Align items vertically */
+        }
+
+        .expand-btn {
+            font-size: 24px;
+            /* Adjust the font size as needed */
+            font-weight: bold;
+            /* Make the symbol bold */
+        }
+
+        .customizations-content {
+            max-height: 0;
+            /* Initially hide content */
+            overflow: hidden;
+            /* Hide overflowing content */
+            transition: max-height 0.6s ease;
+            /* Add smooth animation */
+        }
+
+        .choose-custom div {
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+
+        /* Product Price */
+        .product-price {
+            display: flex;
+            align-items: center;
+            margin: 10px;
+
+        }
+
+        .product-price span {
+            font-size: 26px;
+            font-weight: 300;
+            color: #43474D;
+            margin-right: 20px;
+        }
+
+        /* Default styles for both buttons */
+        .cart-btn {
+            display: inline-block;
+            border-radius: 6px;
+            font-size: 16px;
+            text-decoration: none;
+            padding: 12px 30px;
+            margin-left: 20px;
+            width: 140%;
+            text-align: center;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        /* Add to Cart button */
+        .add-to-cart-btn {
+            background-color: white;
+            border: 2px solid black;
+            color: black;
+        }
+
+        /* Responsive */
+        @media (max-width: 940px) {
+            .container {
+                flex-direction: column;
+                margin-top: 60px;
+            }
+
+            /* .left-column,
+            .right-column {
+                width: 100%;
+            } */
+
+            .left-column img {
+                width: 300px;
+                right: 0;
+                top: -65px;
+                left: initial;
+            }
+        }
+
+        @media (max-width: 535px) {
+            .left-column img {
+                width: 220px;
+                top: -85px;
+            }
+        }
+
+        .left-column:hover {
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transform: scale(1.1);
+            /* Adjust the scale factor as needed */
+            z-index: 1;
+            position: relative;
+            transition: transform 0.3s ease;
+
+        }
+
+        .checked {
+            color: orange;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 10px;
+            color: #86939E;
+            font-family: Times, "Times New Roman", Georgia, serif;
+
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .user-rating {
+            font-family: Arial;
+            margin: 0 auto;
+            /* Center website */
+            max-width: 800px;
+            /* Max width */
+            padding: 20px;
+        }
+
+        .heading {
+            font-size: 25px;
+            margin-right: 25px;
+        }
+
+        .fa {
+            font-size: 25px;
+        }
+
+        .checked {
+            color: orange;
+        }
+
+        /* Three column layout */
+        .side {
+            float: left;
+            width: 15%;
+            margin-top: 10px;
+        }
+
+        .middle {
+            margin-top: 10px;
+            float: left;
+            width: 70%;
+        }
+
+        /* Place text to the right */
+        .right {
+            text-align: right;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* The bar container */
+        .bar-container {
+            width: 100%;
+            background-color: #f1f1f1;
+            text-align: center;
+            color: white;
+        }
+
+        /* Individual bars */
+        .bar-5 {
+            width: 60%;
+            height: 18px;
+            background-color: #04AA6D;
+        }
+
+        .bar-4 {
+            width: 30%;
+            height: 18px;
+            background-color: #2196F3;
+        }
+
+        .bar-3 {
+            width: 10%;
+            height: 18px;
+            background-color: #00bcd4;
+        }
+
+        .bar-2 {
+            width: 4%;
+            height: 18px;
+            background-color: #ff9800;
+        }
+
+        .bar-1 {
+            width: 15%;
+            height: 18px;
+            background-color: #f44336;
+        }
+
+        .top-bar {
+            position: fixed;
+            /* Stick the navigation bar to the top */
+            top: 0;
+            /* Position it at the top of the viewport */
+            left: 0;
+            /* Align it to the left */
+            width: 98%;
+            /* Make it span the entire width of the viewport */
+            z-index: 1000;
+            /* Ensure it's above other content */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+            /* Adjust height as needed */
+            background-color: #333;
+            /* Example background color */
+            color: #fff;
+            /* Example text color */
+            padding: 0 20px;
+            /* Example padding */
+        }
+
+        body {
+            padding-top: 20px;
+            /* Adjust this value to match the height of your navigation bar */
+        }
+
+
+        .top-bar-nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .top-bar-item {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .top-bar-link {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .top-bar-link:hover {
+            color: #ccc;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .flex-container>div {
+            margin: 5px;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <header class="top-bar">
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+            <a href="./products.html" class="text-nowrap logo-img">
+                <img src="../assets/images/logos/favicon.png" width="80" height="50" alt="" />
+            </a>
+            <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+                <i class="ti ti-x fs-8"></i>
+            </div>
+        </div>
+        <!-- Top bar navigation -->
+        <nav class="top-bar-nav">
+            <ul id="topbarnav">
+                <!-- Your top bar navigation items here -->
+                <li class="top-bar-item">
+                    <a class="top-bar-link" href="./products.html">Products</a>
+                </li>
+                <!-- <li class="top-bar-item">
+                    <a class="top-bar-link" href="./cart.html">Cart</a>
+                </li>
+                <li class="top-bar-item">
+                    <a class="top-bar-link" href="./favourites.html">Favourites</a>
+                </li> -->
+                <li class="top-bar-item">
+                    <a class="top-bar-link" href="./profile.html">Profile</a>
+                </li>
+                <li class="top-bar-item">
+                    <a class="top-bar-link" href="./orders.html">Orders</a>
+                </li>
+                <li class="top-bar-item">
+                    <a class="top-bar-link" href="./feedback.html">Feedback</a>
+                </li>
+                <li class="top-bar-item">
+                    <a class="top-bar-link" href="./login.html">Logout</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+    <main style="display: flex;">
+
+        <!-- Watch Images Here -->
+        <div class="container" style="padding: 20px; margin-left: 2%;">
+            <div class="container" style="width: 60%;margin-top: 40px;">
+                <div style="display: flex;flex-direction: row;">
+                    <a href="./products.html">
+                        <img src="../assets/images/backgrounds/back.png" style="padding: 10px; cursor: pointer;"
+                            width="50px" height="50px">
+                    </a>
+                    <!-- <img src="../assets/images/backgrounds/back.png" style="padding: 10px; cursor: pointer;" width="50px"  height="50px" onclick=""> -->
+                    <label style="margin-top: 25px;vertical-align: middle;flex: 1;font-size: larger;">Back to
+                        Products</label>
+                </div>
+            </div>
+
+            <div class="image-container" style="display: flex; margin-top: 40px;">
+                <div class="left-column" style="height: 350px; width: 350px; margin-top: 40px;">
+                    <img data-image="red" class="active" src="../assets/images/profile/sample.png" alt=""
+                        style="height: 350px; width: 350px;" id="front">
+                </div>
+
+                <div class="left-column" style="height: 350px; width: 350px; margin-top: 40px; margin-left: 50px;">
+                    <img data-image="red" class="active" src="../assets/images/profile/sample.png" alt=""
+                        style="height: 350px; width: 350px;" id="back">
+                </div>
+            </div>
+
+            <div class="image-container" style="display: flex; margin-top: 40px;">
+                <div class="left-column" style="height: 350px; width: 350px; margin-top: 40px;">
+                    <img data-image="red" class="active" src="../assets/images/profile/sample.png" alt=""
+                        style="height: 350px; width: 350px;" id="left">
+                </div>
+
+                <div class="left-column" style="height: 350px; width: 350px; margin-top: 40px; margin-left: 50px;">
+                    <img data-image="red" class="active" src="../assets/images/profile/sample.png" alt=""
+                        style="height: 350px; width: 350px;" id="right">
+                </div>
+            </div>
+
+            <div class="image-container" style="display: flex; margin-top: 40px;">
+                <!-- Left Column / Headphones Image -->
+                <div class="left-column" style="height: 350px; width: 350px; margin-top: 40px;">
+                    <img data-image="red" class="active" src="../assets/images/profile/sample.png" alt=""
+                        style="height: 350px; width: 350px;" id="up">
+                </div>
+
+                <div class="left-column" style="height: 350px; width: 350px; margin-top: 40px; margin-left: 50px;">
+                    <img data-image="red" class="active" src="../assets/images/profile/sample.png" alt=""
+                        style="height: 350px; width: 350px;" id="down">
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="container" style="display: flex; padding: 20px; margin-left: 2%; margin-top: 35px;">
+            <!-- Right Column -->
+            <div class="right-column-container" style="margin-left: 15%; width: 550px; overflow-y: auto;">
+                <!-- Product Description -->
+                <div class="product-description">
+                    <!-- <span>titan</span> -->
+                    <p>Watch Name & model : </p>
+                    <h1 id="watchTitle" style="margin-top: -10px;">No Watch Here</h1>
+                    <!-- <div class="rating-bar" style="padding: 5px; margin-top: -30px;
+                    font-size: 20px; margin-bottom: -15px;">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <p style="display: inline-block; margin-left: 10px;">364 ratings</p>
+                    </div> -->
+                    <!-- <h2 style="display: inline-block;"><span style="text-decoration: line-through;">&#8377;19,999</span>
+                    </h2> -->
+                    <p style="margin-top: -10px;">Price</p>
+                    <h2 style="display: inline-block; margin-left: 10px; margin-top: -10px;" id="price"><span>&#8377;
+                            NULL</span></h2>
+                    <!-- <p style="display: inline-block; margin-left: 5px; font-size: 14px; color: red;">Save 50%</p>
+                    <p style="margin-top: -15px; color: red; margin-left: 5px; font-size: 14px;">(Incl.of all taxes)
+                    </p> -->
+
+                    <!-- Quantity -->
+                    <div class="quantity-container">
+                        <p style="margin-top: 10px; font-size: 16px; display: none;" id="additioncost">NULL</p>
+                        <p>Available Stock</p>
+                        <h2 style="margin-top: 10px; font-size: 16px;" id="stock">NULL</h2>
+
+                        <!-- <p style="margin-top: 10px; font-size: 16px;">Quantity:</p>
+                        <div class="quantity">
+                            <button class="decrease-btn" style="width: 30px; height: 30px;" onclick="minus()">-</button>
+                            <input type="text" onkeyup="checkQty()" id="qty" value="1"
+                                style="width: 50px; height: 30px; text-align: center;">
+                            <button class="increase-btn" style="width: 30px; height: 30px;" onclick="plus()">+</button>
+                        </div> -->
+                    </div>
+
+                    <!-- <div class="product-price">
+                        <div style="display: flex; flex-direction: column;">
+                            <a href="#" class="cart-btn add-to-cart-btn" style="margin-bottom: 10px;"
+                                onclick="location.href = 'products.html';">BACK TO PRODUCTS</a>
+
+                        </div>
+                    </div> -->
+
+                </div>
+
+
+                <!-- Product Configuration -->
+                <div class="product-configuration">
+                    <!-- Product Color -->
+                    <div class="customizations">
+                        <div class="customization-header" onclick="toggleCustomizations(this)">
+                            <span>Customizations</span>
+                            <span class="expand-btn">+</span>
+                        </div>
+
+                        <div class="customizations-content hidden">
+                            <div style="margin-top: 10px;">
+                                <button type="button"
+                                    style="font-weight: 700; height: 30px; cursor: pointer; background-color: orange; color: white;"
+                                    onclick="getWatchDetails()">
+                                    Reset All
+                                </button>
+                            </div>
+
+                            <div id="combinations">
+                                <div id="one" class="combination-section">
+
+                                    <div id="dials" style="display: flex;"></div>
+                                </div>
+                                <div id="two" class="combination-section">
+
+                                    <div id="straps" style="display: flex;"></div>
+                                </div>
+                                <div id="three" class="combination-section">
+
+                                    <div id="bezels" style="display: flex;"></div>
+                                </div>
+                                <div id="four" class="combination-section">
+
+                                    <div id="casebacks" style="display: flex;"></div>
+                                </div>
+                                <div id="five" class="combination-section">
+
+                                    <div id="chronocases" style="display: flex;"></div>
+                                </div>
+                                <div id="six" class="combination-section">
+
+                                    <div id="crowns" style="display: flex;"></div>
+                                </div>
+                                <div id="seven" class="combination-section">
+
+                                    <div id="hands" style="display: flex;"></div>
+                                </div>
+                                <div id="eight" class="combination-section">
+
+                                    <div id="movements" style="display: flex;"></div>
+                                </div>
+                                <div id="nine" class="combination-section">
+
+                                    <div id="seconds" style="display: flex;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="customizations-content hidden">
+                            <div class="choose-custom">
+                                <p style="margin-bottom: -10px; color: #86939E;">Dials</p>
+                                <div>
+                                    <img src="../assets/images/profile/sample.png" style="height: 80px; width: 80px;">
+                                </div>
+                                <div>
+                                    <img src="../assets/images/profile/sample.png" style="height: 80px; width: 80px;">
+                                </div>
+                                <div>
+                                    <img src="../assets/images/profile/sample.png" style="height: 80px; width: 80px;">
+                                </div>
+                                <div>
+                                    <img src="../assets/images/profile/sample.png" style="height: 80px; width: 80px;">
+                                </div>
+                                <div>
+                                    <img src="../assets/images/profile/sample.png" style="height: 80px; width: 80px;">
+                                </div>
+                            </div>
+
+                            <div class="choose-custom">
+                                <p style="margin-bottom: -10px; color: #86939E;">Straps</p>
+                                <div>
+                                    <img src="./src/assets/images/profile/sample.png"
+                                        style="height: 80px; width: 80px;">
+                                </div>
+                                <div>
+                                    <img src="./src/assets/images/profile/sample.png"
+                                        style="height: 80px; width: 80px;">
+                                </div>
+                                <div>
+                                    <img src="./src/assets/images/profile/sample.png"
+                                        style="height: 80px; width: 80px;">
+                                </div>
+                                <div>
+                                    <img src="./src/assets/images/profile/sample.png"
+                                        style="height: 80px; width: 80px;">
+                                </div>
+                            </div>
+
+                            <div class="choose-custom">
+                                <p style="margin-bottom: -10px; color: #86939E;">Movement</p>
+                                <div>
+                                    <img src="./src/assets/images/profile/sample.png"
+                                        style="height: 80px; width: 80px;">
+                                </div>
+                                <div>
+                                    <img src="./src/assets/images/profile/sample.png"
+                                        style="height: 80px; width: 80px;">
+                                </div>
+                                <div>
+                                    <img src="./src/assets/images/profile/sample.png"
+                                        style="height: 80px; width: 80px;">
+                                </div>
+                                <div>
+                                    <img src="./src/assets/images/profile/sample.png"
+                                        style="height: 80px; width: 80px;">
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+
+
+                    <div class="customizations">
+                        <div class="customization-header" onclick="toggleCustomizations(this)">
+                            <span>Specifications</span>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="customizations-content hidden">
+                            <p style="color: #86939E; font-family: Times, 'Times New Roman', Georgia, serif;" id="desc">
+                                The
+                                preferred choice of a vast range of acclaimed DJs. Punchy, bass-focused sound and
+                                high
+                                isolation.
+                                Sturdy headband and on-ear cushions suitable for live performance</p>
+                            <table>
+                                <tr>
+                                    <th>Dial Size</th>
+                                    <td id="dialsize">NULL</td>
+                                </tr>
+                                <tr>
+                                    <th>Colour</th>
+                                    <td id="color">NULL</td>
+                                </tr>
+                                <tr>
+                                    <th>Weight In Grams</th>
+                                    <td id="weight">NULL</td>
+                                </tr>
+                                <tr>
+                                    <th>Body Type</th>
+                                    <td id="bodytype">NULL</td>
+                                </tr>
+                                <tr>
+                                    <th>Brand</th>
+                                    <td id="Brand">NULL</td>
+                                </tr>
+                                <tr>
+                                    <th>Batteries Included</th>
+                                    <td id="battery">NULL</td>
+                                </tr>
+                                <tr>
+                                    <th>Year Of Manufacture</th>
+                                    <td id="year">NULL</td>
+                                </tr>
+                                <tr>
+                                    <th>Warranty Period In Months</th>
+                                    <td id="warranty">NULL</td>
+                                </tr>
+                                <tr>
+                                    <th>Item Code</th>
+                                    <td id="itemcode">NULL</td>
+                                </tr>
+                                <tr>
+                                    <th>Display Type</th>
+                                    <td id="displaytype">NULL</td>
+                                </tr>
+                                <tr>
+                                    <th>Water Resistant</th>
+                                    <td id="water">NULL</td>
+                                </tr>
+                                <tr>
+                                    <th>IP Rating</th>
+                                    <td id="iprating">NULL</td>
+                                </tr>
+                                <tr>
+                                    <th>Shape</th>
+                                    <td id="shape">NULL</td>
+                                </tr>
+                                <tr>
+                                    <th>Inside the Box</th>
+                                    <td id="insidebox">NULL</td>
+                                </tr>
+                                <tr>
+                                    <th style="display: none;">Delivery Fee</th>
+                                    <td style="display: none;" id="deliveryfee">NULL</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Pricing -->
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        let SelectedDial = "0";
+        let SelectedStrap = "0";
+        let SelectedBezel = "0";
+        let SelectedCaseback = "0";
+        let SelectedChronocase = "0";
+        let SelectedCrown = "0";
+        let SelectedHand = "0";
+        let SelectedMovement = "0";
+        let SelectedSecond = "0";
+        let CustomizationDials = []
+        let CustomizationStrap = []
+        let CustomizationBezels = []
+        let CustomizationCasebacks = []
+        let CustomizationChronocases = []
+        let CustomizationCrowns = []
+        let CustomizationHands = []
+        let CustomizationMovements = []
+        let CustomizationSeconds = []
+        let maxQty = 0
+        let wfid = 0
+
+        const getWatchDetails = () => {
+            let url = "../api/get-indi-watch.php";
+            let body = JSON.stringify({
+                token: window.localStorage.getItem("authToken"),
+                wid: window.localStorage.getItem("wid")
+            });
+            fetch(url, {
+                body: body,
+                method: "POST"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        SelectedDial = "0"
+                        SelectedStrap = "0"
+                        SelectedBezel = "0";
+                        SelectedCaseback = "0";
+                        SelectedChronocase = "0";
+                        SelectedCrown = "0";
+                        SelectedHand = "0";
+                        SelectedMovement = "0";
+                        SelectedSecond = "0";
+                        maxQty = parseInt(data.data[0].is_available);
+                        document.getElementById("watchTitle").innerHTML = data.data[0].name + " / " + data.data[0].model;
+                        document.getElementById("desc").innerHTML = "Description : " + data.data[0].model + " " + data.data[0].name + " is a base watch with elegant stylish design. Perfectly suits you and it is in trend. You can customize the watch parts in the above available options";
+
+                        let basePrice = parseFloat(data.data[0].base_price);
+                        let additionalChargesPercentage = parseFloat(data.data[0].aaditional_charges);
+                        let finalPrice = basePrice + (basePrice * additionalChargesPercentage / 100);
+
+                        document.getElementById("price").innerHTML = `Price : &#x20b9; ${finalPrice.toFixed(2)} <span style="color:red; font-size: 14px;">(Included Service Taxes)</span>`;
+                        document.getElementById("additioncost").innerHTML = additionalChargesPercentage + "%";
+                        document.getElementById("stock").innerHTML = "Available Stock : " + parseInt(data.data[0].is_available) + " No(s)";
+                        document.getElementById("front").src = data.data[0].image_front;
+                        document.getElementById("back").src = data.data[0].image_back;
+                        document.getElementById("left").src = data.data[0].image_left;
+                        document.getElementById("right").src = data.data[0].image_right;
+                        document.getElementById("up").src = data.data[0].image_up;
+                        document.getElementById("down").src = data.data[0].image_down;
+
+                        document.getElementById("dialsize").textContent = data.data[0].dial_size;
+                        document.getElementById("color").textContent = data.data[0].color;
+                        document.getElementById("weight").textContent = data.data[0].weight;
+                        document.getElementById("bodytype").textContent = data.data[0].body_type;
+                        document.getElementById("Brand").textContent = data.data[0].brand;
+                        document.getElementById("battery").textContent = data.data[0].batteries_included == 1 ? "Yes" : "No";
+                        document.getElementById("year").textContent = data.data[0].year_of_manufacture;
+                        document.getElementById("warranty").textContent = data.data[0].warranty_period;
+                        document.getElementById("itemcode").textContent = data.data[0].item_code;
+                        document.getElementById("displaytype").textContent = data.data[0].display_type == 0 ? "-" : data.data[0].display_type == 1 ? "Analog" : "Digital";
+                        document.getElementById("water").textContent = data.data[0].water_resistant == 1 ? "Yes" : "No";
+                        document.getElementById("shape").textContent = data.data[0].shape;
+                        document.getElementById("insidebox").textContent = data.data[0].inside_the_box;
+                        document.getElementById("iprating").textContent = data.data[0].ip_rating;
+                        document.getElementById("deliveryfee").textContent = data.data[0].delivery_fee;
+
+                        // Sesha
+                        let rowDial = `<div> <h3>Dials</h3><div class="flex-container">`;
+                        CustomizationDials = data.data[0].combination.dials;
+                        // console.log(CustomizationDials);
+
+                        CustomizationDials.forEach((it) => {
+                            let tempDiv = `<div style="padding: 5px;">`;
+                            if (it.id == SelectedDial)
+                                tempDiv = `<div style="padding: 5px;background-color: #00bcd4;border-radius:10px;">`;
+                            rowDial += `${tempDiv}
+                        <img src="${it.image}" style="height: 80px; width: 80px;" onclick="dialselect(${it.id})">
+                    </div>`;
+                        });
+                        rowDial += `</div></div>`;
+                        document.getElementById("dials").innerHTML = rowDial;
+
+                        let rowStrap = `<div> <h3>Straps</h3><div class="flex-container">`;
+                        CustomizationStrap = data.data[0].combination.strap;
+                        console.log(CustomizationStrap);
+
+                        CustomizationStrap.forEach((it) => {
+                            let tempDiv = `<div style="padding: 10px;">`;
+                            if (it.id == SelectedStrap)
+                                tempDiv = `<div style="padding: 5px;background-color: #00bcd4;border-radius:10px">`;
+                            rowStrap += `${tempDiv}
+                        <img src="${it.image}" style="height: 80px; width: 80px;" onclick="strapselect(${it.id})">
+                    </div>`;
+                        });
+                        rowStrap += `</div></div>`;
+                        document.getElementById("straps").innerHTML = rowStrap;
+
+                        let rowBezel = `<div> <h3>Bezels</h3><div class="flex-container">`;
+                        CustomizationBezels = data.data[0].combination.bezel;
+
+                        CustomizationBezels.forEach((it) => {
+                            rowBezel += `<div style="padding: 10px;">
+                        <img src="${it.image}" style="height: 80px; width: 80px;" onclick="bezelselect(${it.id})">
+                    </div>`;
+                        });
+                        rowBezel += `</div></div>`;
+                        document.getElementById("bezels").innerHTML = rowBezel;
+
+                        let rowCasebacks = `<div> <h3>Casebacks</h3><div class="flex-container">`;
+                        CustomizationCasebacks = data.data[0].combination.caseback;
+
+                        CustomizationCasebacks.forEach((it) => {
+                            rowCasebacks += `<div style="padding: 10px;">
+                        <img src="${it.image}" style="height: 80px; width: 80px;" onclick="casebackselect(${it.id})">
+                    </div>`;
+                        });
+                        rowCasebacks += `</div></div>`;
+                        document.getElementById("casebacks").innerHTML = rowCasebacks;
+
+                        let rowChronocases = `<div> <h3>Chronocases</h3><div class="flex-container">`;
+                        CustomizationChronocases = data.data[0].combination.chronocase;
+
+                        CustomizationChronocases.forEach((it) => {
+                            rowChronocases += `<div style="padding: 10px;">
+                        <img src="${it.image}" style="height: 80px; width: 80px;" onclick="chronocaseselect(${it.id})">
+                    </div>`;
+                        });
+                        rowChronocases += `</div></div>`;
+                        document.getElementById("chronocases").innerHTML = rowChronocases;
+
+                        let rowCrowns = `<div> <h3>Crowns</h3><div class="flex-container">`;
+                        CustomizationCrowns = data.data[0].combination.crown;
+
+                        CustomizationCrowns.forEach((it) => {
+                            rowCrowns += `<div style="padding: 10px;">
+                        <img src="${it.image}" style="height: 80px; width: 80px;" onclick="crownsselect(${it.id})">
+                    </div>`;
+                        });
+                        rowCrowns += `</div></div>`;
+                        document.getElementById("crowns").innerHTML = rowCrowns;
+
+                        let rowHands = `<div> <h3>Hands</h3><div class="flex-container">`;
+                        CustomizationHands = data.data[0].combination.hand;
+
+                        CustomizationHands.forEach((it) => {
+                            rowHands += `<div style="padding: 10px;">
+                        <img src="${it.image}" style="height: 80px; width: 80px;" onclick="handsselect(${it.id})">
+                    </div>`;
+                        });
+                        rowHands += `</div></div>`;
+                        document.getElementById("hands").innerHTML = rowHands;
+
+                        let rowMovements = `<div> <h3>Movements</h3><div class="flex-container">`;
+                        CustomizationMovements = data.data[0].combination.movement;
+
+                        CustomizationMovements.forEach((it) => {
+                            rowMovements += `<div style="padding: 10px;">
+                        <img src="${it.image}" style="height: 80px; width: 80px;" onclick="movementselect(${it.id})">
+                    </div>`;
+                        });
+                        rowMovements += `</div></div>`;
+                        document.getElementById("movements").innerHTML = rowMovements;
+
+                        let rowSeconds = `<div> <h3>Seconds</h3><div class="flex-container">`;
+                        CustomizationSeconds = data.data[0].combination.second;
+
+                        CustomizationSeconds.forEach((it) => {
+                            rowSeconds += `<div style="padding: 10px;">
+                        <img src="${it.image}" style="height: 80px; width: 80px;" onclick="secondselect(${it.id})">
+                    </div>`;
+                        });
+                        rowSeconds += `</div></div>`;
+                        document.getElementById("seconds").innerHTML = rowSeconds;
+
+
+
+                        const dials = data.data[0].combination?.dials || [];
+                        const straps = data.data[0].combination?.strap || [];
+                        const bezels = data.data[0].combination?.bezel || [];
+                        const casebacks = data.data[0].combination?.caseback || [];
+                        const chronocases = data.data[0].combination?.chronocase || [];
+                        const crowns = data.data[0].combination?.crown || [];
+                        const hands = data.data[0].combination?.hand || [];
+                        const movements = data.data[0].combination?.movement || [];
+                        const seconds = data.data[0].combination?.second || [];
+
+                        if (dials.length === 0) {
+                            document.getElementById('one').classList.add('hidden');
+                        } else {
+                            // Add dials to the UI
+                        }
+
+                        if (straps.length === 0) {
+                            document.getElementById('two').classList.add('hidden');
+                        } else {
+                            // Add straps to the UI
+                        }
+
+                        if (bezels.length === 0) {
+                            document.getElementById('three').classList.add('hidden');
+                        } else {
+                            // Add bezels to the UI
+                        }
+
+                        if (casebacks.length === 0) {
+                            document.getElementById('four').classList.add('hidden');
+                        } else {
+                            // Add bezels to the UI
+                        }
+
+                        if (chronocases.length === 0) {
+                            document.getElementById('five').classList.add('hidden');
+                        } else {
+                            // Add bezels to the UI
+                        }
+
+                        if (crowns.length === 0) {
+                            document.getElementById('six').classList.add('hidden');
+                        } else {
+                            // Add bezels to the UI
+                        }
+
+                        if (hands.length === 0) {
+                            document.getElementById('seven').classList.add('hidden');
+                        } else {
+                            // Add bezels to the UI
+                        }
+
+                        if (movements.length === 0) {
+                            document.getElementById('eight').classList.add('hidden');
+                        } else {
+                            // Add bezels to the UI
+                        }
+
+                        if (seconds.length === 0) {
+                            document.getElementById('nine').classList.add('hidden');
+                        } else {
+                            // Add bezels to the UI
+                        }
+
+                    } else {
+                        alert(data.msg);
+                    }
+                })
+            // .catch(error => {
+            //     console.error('Error:', error);
+            // });
+        }
+
+
+        getWatchDetails();
+
+
+        const minus = () => {
+            let qty = document.getElementById("qty")
+            if (qty.value == "1") {
+                alert("Product Quantity must be greater than zero")
+            }
+            else {
+                qty.value = (parseInt(qty.value) - 1).toString()
+            }
+        }
+
+        const plus = () => {
+            let qty = document.getElementById("qty")
+            if (parseInt(qty.value) == maxQty) {
+                alert("Product Quantity exceeds available stock")
+            }
+            else {
+                qty.value = (parseInt(qty.value) + 1).toString()
+            }
+        }
+
+        const checkQty = () => {
+            let qty = document.getElementById("qty")
+            if (parseInt(qty.value) > maxQty) {
+                alert("Product Quantity exceeds available stock")
+                qty.value = maxQty.toString()
+            }
+        }
+
+        const addToCart = () => {
+            let cart = JSON.parse(window.localStorage.getItem("cart"))
+            let a = {}
+            a.wid = window.localStorage.getItem("wid")
+            if (cart != null) {
+                cart.push(a)
+            }
+            else {
+                cart = []
+                cart.push(a)
+            }
+
+            window.localStorage.setItem("cart", JSON.stringify(cart))
+            alert("Item added to Cart Successfully")
+            window.location.href = "./products.html"
+        }
+
+        const BuyNow = () => {
+            let order = []
+            let price = []
+            order.push(document.getElementById("qty").value)
+            price.push(document.getElementById("price").innerHTML.toString().replace("Price : ", "").slice(1))
+            window.localStorage.setItem("orderQty", JSON.stringify(order))
+            window.localStorage.setItem("maxQty", maxQty)
+            window.localStorage.setItem("price", JSON.stringify(price))
+            window.location.href = './order-add-address.html'
+        }
+
+
+
+        // const getWatchFaces = () => {
+        //     let url = "../api/get-watch-face.php"
+        //     let body = JSON.stringify({
+        //         wid: window.localStorage.getItem("wid")
+        //     })
+        //     fetch(url, {
+        //         body: body,
+        //         method: "POST"
+        //     })
+        //         .then(res => res.json())
+        //         .then(data => {
+        //             if (data.success) {
+
+        //             }
+        //             else {
+        //                 alert(data.msg)
+        //             }
+        //         })
+        //         .catch(err => {
+        //             console.log(err)
+        //         })
+        // }
+
+        const Watchface = () => {
+            let url = "../api/get-watch-face.php";
+            let body = JSON.stringify({
+                token: window.localStorage.getItem("authToken"),
+                wid: window.localStorage.getItem("wid")
+            });
+            fetch(url, {
+                body: body,
+                method: "POST"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        let t = 0
+                        data.data.forEach((it) => {
+                            if (SelectedDial == it.dial_id && SelectedStrap == it.strap_id && SelectedBezel == it.bezel_id && SelectedCaseback == it.caseback_id && SelectedChronocase == it.chronocase_id
+                                && SelectedCrown == it.crown_id && SelectedHand == it.hand_id && SelectedMovement == it.movement_id && SelectedSecond == it.second_id) {
+                                console.log(SelectedDial)
+                                t += 1
+                                document.getElementById("price").innerHTML = "Price : &#x20b9; " + parseFloat(it.price).toFixed(2) + ' <span style="color:red; font-size: 14px;">(Included Service Taxes)</span>';
+                                document.getElementById("dialsize").textContent = it.dial_size;
+                                document.getElementById("color").textContent = it.color;
+                                document.getElementById("weight").textContent = it.weight;
+                                document.getElementById("bodytype").textContent = it.body_type;
+                                document.getElementById("Brand").textContent = it.brand;
+                                document.getElementById("battery").textContent = it.batteries_included == 1 ? "Yes" : "No";
+                                document.getElementById("year").textContent = it.year_of_manufacture;
+                                document.getElementById("warranty").textContent = it.warranty_period;
+                                document.getElementById("itemcode").textContent = it.item_code;
+                                document.getElementById("displaytype").textContent = it.display_type == 0 ? "-" : data.data[0].display_type == 1 ? "Analog" : "Digital";
+                                document.getElementById("water").textContent = it.water_resistant == 1 ? "Yes" : "No";
+                                document.getElementById("shape").textContent = it.shape;
+                                document.getElementById("insidebox").textContent = it.inside_the_box;
+                                document.getElementById("iprating").textContent = it.ip_rating;
+                                document.getElementById("deliveryfee").textContent = it.delivery_fee;
+
+
+                                document.getElementById("front").src = it.image_front;
+                                document.getElementById("back").src = it.image_back;
+                                document.getElementById("left").src = it.image_left;
+                                document.getElementById("right").src = it.image_right;
+                                document.getElementById("up").src = it.image_up;
+                                document.getElementById("down").src = it.image_down;
+                            }
+
+
+                            // if (SelectedDial == it.strap_id) {
+                            //     document.getElementById("price").innerHTML = "Price : &#x20b9; " + parseFloat(it.price).toFixed(2);
+                            //     document.getElementById("dialsize").textContent = it.dial_size;
+                            //     document.getElementById("color").textContent = it.color;
+                            //     document.getElementById("weight").textContent = it.weight;
+                            //     document.getElementById("bodytype").textContent = it.body_type;
+                            //     document.getElementById("Brand").textContent = it.brand;
+                            //     document.getElementById("battery").textContent = it.batteries_included == 1 ? "Yes" : "No";
+                            //     document.getElementById("year").textContent = it.year_of_manufacture;
+                            //     document.getElementById("warranty").textContent = it.warranty_period;
+                            //     document.getElementById("itemcode").textContent = it.item_code;
+                            //     document.getElementById("displaytype").textContent = it.display_type == 0 ? "-" : data.data[0].display_type == 1 ? "Analog" : "Digital";
+                            //     document.getElementById("water").textContent = it.water_resistant == 1 ? "Yes" : "No";
+                            //     document.getElementById("shape").textContent = it.shape;
+                            //     document.getElementById("insidebox").textContent = it.inside_the_box;
+                            //     document.getElementById("iprating").textContent = it.ip_rating;
+                            //     document.getElementById("deliveryfee").textContent = it.delivery_fee;
+
+
+                            //     document.getElementById("front").src = it.image_front;
+                            //     document.getElementById("back").src = it.image_back;
+                            //     document.getElementById("left").src = it.image_left;
+                            //     document.getElementById("right").src = it.image_right;
+                            //     document.getElementById("up").src = it.image_up;
+                            //     document.getElementById("down").src = it.image_down;
+                            // }
+
+                            // if (SelectedDial == it.bezel_id) {
+                            //     document.getElementById("price").innerHTML = "Price : &#x20b9; " + parseFloat(it.price).toFixed(2);
+                            //     document.getElementById("dialsize").textContent = it.dial_size;
+                            //     document.getElementById("color").textContent = it.color;
+                            //     document.getElementById("weight").textContent = it.weight;
+                            //     document.getElementById("bodytype").textContent = it.body_type;
+                            //     document.getElementById("Brand").textContent = it.brand;
+                            //     document.getElementById("battery").textContent = it.batteries_included == 1 ? "Yes" : "No";
+                            //     document.getElementById("year").textContent = it.year_of_manufacture;
+                            //     document.getElementById("warranty").textContent = it.warranty_period;
+                            //     document.getElementById("itemcode").textContent = it.item_code;
+                            //     document.getElementById("displaytype").textContent = it.display_type == 0 ? "-" : data.data[0].display_type == 1 ? "Analog" : "Digital";
+                            //     document.getElementById("water").textContent = it.water_resistant == 1 ? "Yes" : "No";
+                            //     document.getElementById("shape").textContent = it.shape;
+                            //     document.getElementById("insidebox").textContent = it.inside_the_box;
+                            //     document.getElementById("iprating").textContent = it.ip_rating;
+                            //     document.getElementById("deliveryfee").textContent = it.delivery_fee;
+
+
+                            //     document.getElementById("front").src = it.image_front;
+                            //     document.getElementById("back").src = it.image_back;
+                            //     document.getElementById("left").src = it.image_left;
+                            //     document.getElementById("right").src = it.image_right;
+                            //     document.getElementById("up").src = it.image_up;
+                            //     document.getElementById("down").src = it.image_down;
+                            // }
+
+                            // if (SelectedDial == it.caseback_id) {
+                            //     document.getElementById("price").innerHTML = "Price : &#x20b9; " + parseFloat(it.price).toFixed(2);
+                            //     document.getElementById("dialsize").textContent = it.dial_size;
+                            //     document.getElementById("color").textContent = it.color;
+                            //     document.getElementById("weight").textContent = it.weight;
+                            //     document.getElementById("bodytype").textContent = it.body_type;
+                            //     document.getElementById("Brand").textContent = it.brand;
+                            //     document.getElementById("battery").textContent = it.batteries_included == 1 ? "Yes" : "No";
+                            //     document.getElementById("year").textContent = it.year_of_manufacture;
+                            //     document.getElementById("warranty").textContent = it.warranty_period;
+                            //     document.getElementById("itemcode").textContent = it.item_code;
+                            //     document.getElementById("displaytype").textContent = it.display_type == 0 ? "-" : data.data[0].display_type == 1 ? "Analog" : "Digital";
+                            //     document.getElementById("water").textContent = it.water_resistant == 1 ? "Yes" : "No";
+                            //     document.getElementById("shape").textContent = it.shape;
+                            //     document.getElementById("insidebox").textContent = it.inside_the_box;
+                            //     document.getElementById("iprating").textContent = it.ip_rating;
+                            //     document.getElementById("deliveryfee").textContent = it.delivery_fee;
+
+
+                            //     document.getElementById("front").src = it.image_front;
+                            //     document.getElementById("back").src = it.image_back;
+                            //     document.getElementById("left").src = it.image_left;
+                            //     document.getElementById("right").src = it.image_right;
+                            //     document.getElementById("up").src = it.image_up;
+                            //     document.getElementById("down").src = it.image_down;
+                            // }
+
+                            // if (SelectedDial == it.chronocase_id) {
+                            //     document.getElementById("price").innerHTML = "Price : &#x20b9; " + parseFloat(it.price).toFixed(2);
+                            //     document.getElementById("dialsize").textContent = it.dial_size;
+                            //     document.getElementById("color").textContent = it.color;
+                            //     document.getElementById("weight").textContent = it.weight;
+                            //     document.getElementById("bodytype").textContent = it.body_type;
+                            //     document.getElementById("Brand").textContent = it.brand;
+                            //     document.getElementById("battery").textContent = it.batteries_included == 1 ? "Yes" : "No";
+                            //     document.getElementById("year").textContent = it.year_of_manufacture;
+                            //     document.getElementById("warranty").textContent = it.warranty_period;
+                            //     document.getElementById("itemcode").textContent = it.item_code;
+                            //     document.getElementById("displaytype").textContent = it.display_type == 0 ? "-" : data.data[0].display_type == 1 ? "Analog" : "Digital";
+                            //     document.getElementById("water").textContent = it.water_resistant == 1 ? "Yes" : "No";
+                            //     document.getElementById("shape").textContent = it.shape;
+                            //     document.getElementById("insidebox").textContent = it.inside_the_box;
+                            //     document.getElementById("iprating").textContent = it.ip_rating;
+                            //     document.getElementById("deliveryfee").textContent = it.delivery_fee;
+
+
+                            //     document.getElementById("front").src = it.image_front;
+                            //     document.getElementById("back").src = it.image_back;
+                            //     document.getElementById("left").src = it.image_left;
+                            //     document.getElementById("right").src = it.image_right;
+                            //     document.getElementById("up").src = it.image_up;
+                            //     document.getElementById("down").src = it.image_down;
+                            // }
+
+                            // if (SelectedDial == it.crown_id) {
+                            //     document.getElementById("price").innerHTML = "Price : &#x20b9; " + parseFloat(it.price).toFixed(2);
+                            //     document.getElementById("dialsize").textContent = it.dial_size;
+                            //     document.getElementById("color").textContent = it.color;
+                            //     document.getElementById("weight").textContent = it.weight;
+                            //     document.getElementById("bodytype").textContent = it.body_type;
+                            //     document.getElementById("Brand").textContent = it.brand;
+                            //     document.getElementById("battery").textContent = it.batteries_included == 1 ? "Yes" : "No";
+                            //     document.getElementById("year").textContent = it.year_of_manufacture;
+                            //     document.getElementById("warranty").textContent = it.warranty_period;
+                            //     document.getElementById("itemcode").textContent = it.item_code;
+                            //     document.getElementById("displaytype").textContent = it.display_type == 0 ? "-" : data.data[0].display_type == 1 ? "Analog" : "Digital";
+                            //     document.getElementById("water").textContent = it.water_resistant == 1 ? "Yes" : "No";
+                            //     document.getElementById("shape").textContent = it.shape;
+                            //     document.getElementById("insidebox").textContent = it.inside_the_box;
+                            //     document.getElementById("iprating").textContent = it.ip_rating;
+                            //     document.getElementById("deliveryfee").textContent = it.delivery_fee;
+
+
+                            //     document.getElementById("front").src = it.image_front;
+                            //     document.getElementById("back").src = it.image_back;
+                            //     document.getElementById("left").src = it.image_left;
+                            //     document.getElementById("right").src = it.image_right;
+                            //     document.getElementById("up").src = it.image_up;
+                            //     document.getElementById("down").src = it.image_down;
+                            // }
+
+                            // if (SelectedDial == it.hand_id) {
+                            //     document.getElementById("price").innerHTML = "Price : &#x20b9; " + parseFloat(it.price).toFixed(2);
+                            //     document.getElementById("dialsize").textContent = it.dial_size;
+                            //     document.getElementById("color").textContent = it.color;
+                            //     document.getElementById("weight").textContent = it.weight;
+                            //     document.getElementById("bodytype").textContent = it.body_type;
+                            //     document.getElementById("Brand").textContent = it.brand;
+                            //     document.getElementById("battery").textContent = it.batteries_included == 1 ? "Yes" : "No";
+                            //     document.getElementById("year").textContent = it.year_of_manufacture;
+                            //     document.getElementById("warranty").textContent = it.warranty_period;
+                            //     document.getElementById("itemcode").textContent = it.item_code;
+                            //     document.getElementById("displaytype").textContent = it.display_type == 0 ? "-" : data.data[0].display_type == 1 ? "Analog" : "Digital";
+                            //     document.getElementById("water").textContent = it.water_resistant == 1 ? "Yes" : "No";
+                            //     document.getElementById("shape").textContent = it.shape;
+                            //     document.getElementById("insidebox").textContent = it.inside_the_box;
+                            //     document.getElementById("iprating").textContent = it.ip_rating;
+                            //     document.getElementById("deliveryfee").textContent = it.delivery_fee;
+
+
+                            //     document.getElementById("front").src = it.image_front;
+                            //     document.getElementById("back").src = it.image_back;
+                            //     document.getElementById("left").src = it.image_left;
+                            //     document.getElementById("right").src = it.image_right;
+                            //     document.getElementById("up").src = it.image_up;
+                            //     document.getElementById("down").src = it.image_down;
+                            // }
+
+                            // if (SelectedDial == it.movement_id) {
+                            //     document.getElementById("price").innerHTML = "Price : &#x20b9; " + parseFloat(it.price).toFixed(2);
+                            //     document.getElementById("dialsize").textContent = it.dial_size;
+                            //     document.getElementById("color").textContent = it.color;
+                            //     document.getElementById("weight").textContent = it.weight;
+                            //     document.getElementById("bodytype").textContent = it.body_type;
+                            //     document.getElementById("Brand").textContent = it.brand;
+                            //     document.getElementById("battery").textContent = it.batteries_included == 1 ? "Yes" : "No";
+                            //     document.getElementById("year").textContent = it.year_of_manufacture;
+                            //     document.getElementById("warranty").textContent = it.warranty_period;
+                            //     document.getElementById("itemcode").textContent = it.item_code;
+                            //     document.getElementById("displaytype").textContent = it.display_type == 0 ? "-" : data.data[0].display_type == 1 ? "Analog" : "Digital";
+                            //     document.getElementById("water").textContent = it.water_resistant == 1 ? "Yes" : "No";
+                            //     document.getElementById("shape").textContent = it.shape;
+                            //     document.getElementById("insidebox").textContent = it.inside_the_box;
+                            //     document.getElementById("iprating").textContent = it.ip_rating;
+                            //     document.getElementById("deliveryfee").textContent = it.delivery_fee;
+
+
+                            //     document.getElementById("front").src = it.image_front;
+                            //     document.getElementById("back").src = it.image_back;
+                            //     document.getElementById("left").src = it.image_left;
+                            //     document.getElementById("right").src = it.image_right;
+                            //     document.getElementById("up").src = it.image_up;
+                            //     document.getElementById("down").src = it.image_down;
+                            // }
+
+                            // if (SelectedDial == it.second_id) {
+                            //     document.getElementById("price").innerHTML = "Price : &#x20b9; " + parseFloat(it.price).toFixed(2);
+                            //     document.getElementById("dialsize").textContent = it.dial_size;
+                            //     document.getElementById("color").textContent = it.color;
+                            //     document.getElementById("weight").textContent = it.weight;
+                            //     document.getElementById("bodytype").textContent = it.body_type;
+                            //     document.getElementById("Brand").textContent = it.brand;
+                            //     document.getElementById("battery").textContent = it.batteries_included == 1 ? "Yes" : "No";
+                            //     document.getElementById("year").textContent = it.year_of_manufacture;
+                            //     document.getElementById("warranty").textContent = it.warranty_period;
+                            //     document.getElementById("itemcode").textContent = it.item_code;
+                            //     document.getElementById("displaytype").textContent = it.display_type == 0 ? "-" : data.data[0].display_type == 1 ? "Analog" : "Digital";
+                            //     document.getElementById("water").textContent = it.water_resistant == 1 ? "Yes" : "No";
+                            //     document.getElementById("shape").textContent = it.shape;
+                            //     document.getElementById("insidebox").textContent = it.inside_the_box;
+                            //     document.getElementById("iprating").textContent = it.ip_rating;
+                            //     document.getElementById("deliveryfee").textContent = it.delivery_fee;
+
+
+                            //     document.getElementById("front").src = it.image_front;
+                            //     document.getElementById("back").src = it.image_back;
+                            //     document.getElementById("left").src = it.image_left;
+                            //     document.getElementById("right").src = it.image_right;
+                            //     document.getElementById("up").src = it.image_up;
+                            //     document.getElementById("down").src = it.image_down;
+                            // }
+                        })
+                        if (t == 0) {
+                            alert("No Customizations Found")
+                        }
+                    }
+                    else {
+                        alert(data.msg);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        const dialselect = (it) => {
+            SelectedDial = it
+            Watchface()
+        }
+        // strapselect
+        const strapselect = (it) => {
+            SelectedStrap = it
+            Watchface()
+        }
+
+        const bezelselect = (it) => {
+            SelectedBezel = it
+            Watchface()
+        }
+
+        const casebackselect = () => {
+            SelectedCaseback = it
+            Watchface()
+        }
+
+        const chronocaseselect = () => {
+            SelectedChronocase = it
+            Watchface()
+        }
+
+        const crownsselect = () => {
+            SelectedCrown = it
+            Watchface()
+        }
+
+        const handsselect = () => {
+            SelectedHand = it
+            Watchface()
+        }
+
+        const movementselect = () => {
+            SelectedMovement = it
+            Watchface()
+        }
+
+        const secondselect = () => {
+            SelectedSecond = it
+            Watchface()
+        }
+
+
+        function toggleCustomizations(header) {
+            var content = header.nextElementSibling;
+            var expandBtn = header.querySelector('.expand-btn');
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                expandBtn.textContent = '-';
+                content.style.maxHeight = content.scrollHeight + 'px'; // Expand smoothly
+            } else {
+                content.classList.add('hidden');
+                expandBtn.textContent = '+';
+                content.style.maxHeight = null; // Collapse smoothly
+            }
+        }
+
+    </script>
+
+
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/sidebarmenu.js"></script>
+    <script src="../assets/js/app.min.js"></script>
+    <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Add Watch</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/styles.min.css" />
+
+  <style>
+    /* Style the select element */
+    .custom-select {
+      position: relative;
+      width: 100%;
+    }
+
+    /* Hide the default arrow */
+    .custom-select select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background: transparent;
+      padding-right: 1em;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.7em top 50%;
+      background-size: 1.5em auto;
+      border: 1px solid #ced4da;
+      border-radius: 8px;
+      font-size: 1em;
+      line-height: 2;
+      padding: 0.280rem 1.75rem 0.280rem 0.75rem;
+      -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+  </style>
+  <style>
+    /* Style the select element */
+    .custom-select {
+      position: relative;
+      width: 100%;
+    }
+
+    /* Hide the default arrow */
+    .custom-select select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background: transparent;
+      padding-right: 1em;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.7em top 50%;
+      background-size: 1.5em auto;
+      border: 1px solid #ced4da;
+      border-radius: 8px;
+      font-size: 1em;
+      line-height: 2;
+      padding: 0.280rem 1.75rem 0.280rem 0.75rem;
+      -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    .customizations-content {
+      display: flex;
+      flex-wrap: wrap;
+      /* Allow items to wrap onto multiple lines */
+      justify-content: space-between;
+      /* Distribute items evenly along the main axis */
+      align-items: flex-start;
+      /* Align items at the start of the cross axis */
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.6s ease;
+    }
+
+    .customizations-content>div {
+      width: calc(32% - 10px);
+      /* Set width for each item with margin */
+      margin: 5px;
+      /* Add margin for spacing between items */
+    }
+
+    .customizations {
+      margin-top: 20px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #E1E8EE;
+
+      border: 1px solid #ccc;
+      /* Add border to create the box effect */
+      padding: 7px;
+      /* Add padding for spacing */
+      margin-bottom: 5px;
+      /* Add margin for spacing between boxes */
+
+    }
+
+    .customization-header {
+      cursor: pointer;
+      /* Set cursor to pointer to indicate clickable */
+      display: flex;
+      /* Use flexbox for layout */
+      justify-content: space-between;
+      /* Align items to each end */
+      align-items: center;
+      /* Align items vertically */
+    }
+
+    .expand-btn {
+      font-size: 24px;
+      /* Adjust the font size as needed */
+      font-weight: bold;
+      /* Make the symbol bold */
+    }
+  </style>
+
+</head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar">
+      <!-- Sidebar scroll-->
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./products.html" class="text-nowrap logo-img">
+            <img src="../assets/images/logos/favicon.png" width="180" alt="" />
+          </a>
+          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+            <i class="ti ti-x fs-8"></i>
+          </div>
+        </div>
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+          <ul id="sidebarnav">
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Home</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./products.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Products</span>
+              </a>
+            </li>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Menu</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./profile.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Profile</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./orders.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-alert-circle"></i>
+                </span>
+                <span class="hide-menu">Orders</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./feedback.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-cards"></i>
+                </span>
+                <span class="hide-menu">Feedback</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./ratings.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file-description"></i>
+                </span>
+                <span class="hide-menu">Ratings</span>
+              </a>
+            </li>
+
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Settings</span>
+            </li>
+            <li class="sidebar-item">
+
+              <a class="sidebar-link" href="./change-logo.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-settings"></i>
+                </span>
+                <span class="hide-menu">Settings</span>
+              </a>
+
+              <a class="sidebar-link" href="./add-offer.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file-description"></i>
+                </span>
+                <span class="hide-menu">Offers</span>
+              </a>
+
+              <a class="sidebar-link" href="./login.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-login"></i>
+                </span>
+                <span class="hide-menu">Logout</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+      </div>
+      <!-- End Sidebar scroll-->
+    </aside>
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <div>
+        <div class="card">
+          <div class="card-body">
+            <h2>Create Watch</h2>
+            <div class="card">
+              <div class="card-body">
+
+                <!--Form Starting Here-->
+                <form id="watchForm">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <h5>Watch Name<span style="color: red;"> *</span></h5>
+                      <input class="form-control" id="watchname" name="watchname" placeholder="Enter the Watch Name"
+                        oninput="this.value=(this.value.match('[a-zA-Z ]+'))" />
+
+                    </div>
+                    <div class="col-sm-4">
+                      <h5>Watch Model<span style="color: red;"> *</span></h5>
+                      <input class="form-control" id="watchmodel" name="watchmodel"
+                        placeholder="Enter the Watch Model" />
+
+                    </div>
+                    <div class="col-sm-4">
+                      <h5>Watch Category<span style="color: red;"> *</span></h5>
+                      <div class="custom-select">
+                        <select class="form-control" id="watchCategory" name="watchCategory">
+                          <option value="0"> Select</option>
+                          <option value="1">Men's Watches</option>
+                          <option value="2">Women's Watches</option>
+                          <option value="3">Kid's Watches</option>
+                        </select>
+                      </div>
+                    </div>
+
+
+                    <div class="col-sm-4" style="margin-top: 20px;">
+                      <h5>Stock<span style="color: red;"> *</span></h5>
+                      <input class="form-control" id="stock" name="stock" placeholder="Enter the Watch Quantity"
+                        oninput="this.value=(this.value.match('[0-9]+'))" maxlength="15" />
+                    </div>
+                    <div class="col-sm-4" style="margin-top: 20px;">
+                      <h5>Base Price<span style="color: red;"> *</span></h5>
+                      <input class="form-control" id="watchprice" name="watchprice" placeholder="Enter the Watch Price"
+                        oninput="this.value=(this.value.match('[0-9.]+'))" maxlength="15"
+                        onkeypress="return isNumberKey(this, event);" />
+                    </div>
+                    <div class="col-sm-4" style="margin-top: 20px;">
+                      <h5>Service Percentage<span style="color: red;"> *</span></h5>
+                      <input class="form-control" id="percentage" name="percentage"
+                        placeholder="Enter the Watch Percentage" oninput="this.value=(this.value.match('[0-9.]+'))"
+                        maxlength="10" onkeypress="return isNumberKey(this, event);" />
+                    </div>
+                    <!-- <div class="col-sm-4" style="margin-top: 20px;">
+                      <h5>Total Cost</h5>
+                      <input class="form-control" id="totalcost" name="totalcost"
+                        placeholder="Total cost of the Watch Show here" readonly />
+                    </div> -->
+
+
+                    <!--Images Start From Here-->
+
+                    <div class="col-sm-4" style="margin-top: 20px;">
+                      <label for="firstName" class="form-label">Upload Watch Front Image<span style="color: red;">
+                          *</span></label>
+                      <input type="file" id="image1" name="file" accept="image/*">
+                    </div>
+
+                    <div class="col-sm-4" style="margin-top: 20px;">
+                      <label for="firstName" class="form-label">Upload Watch Right Side Image<span style="color: red;">
+                          *</span></label>
+                      <input type="file" id="image2" name="file" accept="image/*">
+                    </div>
+
+                    <div class="col-sm-4" style="margin-top: 20px;">
+                      <label for="firstName" class="form-label">Upload Watch Left Side Image<span style="color: red;">
+                          *</span></label>
+                      <input type="file" id="image3" name="file" accept="image/*">
+                    </div>
+
+                    <div class="col-sm-4" style="margin-top: 20px;">
+                      <label for="firstName" class="form-label">Upload Watch Back Side Image<span style="color: red;">
+                          *</span></label>
+                      <input type="file" id="image4" name="file" accept="image/*">
+                    </div>
+
+                    <div class="col-sm-4" style="margin-top: 20px;">
+                      <label for="firstName" class="form-label">Upload Watch Top Image<span style="color: red;">
+                          *</span></label>
+                      <input type="file" id="image5" name="file" accept="image/*">
+                    </div>
+
+                    <div class="col-sm-4" style="margin-top: 20px;">
+                      <label for="firstName" class="form-label">Upload Watch Bottom Image<span style="color: red;">
+                          *</span></label>
+                      <input type="file" id="image6" name="file" accept="image/*">
+                    </div>
+
+
+                    <div class="customizations">
+                      <div class="customization-header" onclick="toggleCustomizations(this)">
+                        <h5><span> Add Watch Specifications</span></h5>
+                        <span class="expand-btn">+</span>
+                      </div>
+
+                      <div class="customizations-content hidden">
+                        <div class="col-sm-4">
+                          <h5>Dial Size<span style="color: red;"> *</span></h5>
+                          <input class="form-control" id="dialsize" placeholder="Enter the Dial Size in MM"
+                            maxlength="5" oninput="this.value=(this.value.match('[0-9M]+'))" />
+                        </div>
+                        <div class="col-sm-4">
+                          <h5>Colour<span style="color: red;"> *</span></h5>
+                          <input class="form-control" id="color" placeholder="Enter the Watch Colour" maxlength="15"
+                            oninput="this.value=(this.value.match('[a-zA-Z ]+'))" />
+                        </div>
+
+                        <div class="col-sm-4">
+                          <h5>Weight In Grams<span style="color: red;"> *</span></h5>
+                          <input class="form-control" id="weight" placeholder="Enter Weight In Grams" maxlength="4"
+                            oninput="this.value=(this.value.match('[0-9]+'))" />
+                        </div>
+
+
+                        <div class="col-sm-4">
+                          <h5>Body Type<span style="color: red;"> *</span></h5>
+                          <input class="form-control" id="bodytype" placeholder="Enter the Body Type" maxlength="20"
+                            oninput="this.value=(this.value.match('[a-zA-Z ]+'))" />
+
+                        </div>
+                        <div class="col-sm-4">
+                          <h5>Brand<span style="color: red;"> *</span></h5>
+                          <input class="form-control" id="Brand" placeholder="Enter the Watch Brand" maxlength="20"
+                            oninput="this.value=(this.value.match('[a-zA-Z ]+'))" />
+                        </div>
+
+                        <div class="col-sm-4">
+                          <h5>Batteries Included<span style="color: red;"> *</span></h5>
+                          <div class="custom-select">
+                            <select class="form-control" id="battery">
+                              <option value="0">Select</option>
+                              <option value="1">Yes</option>
+                              <option value="2">No</option>
+                            </select>
+                          </div>
+                        </div>
+
+
+                        <div class="col-sm-4">
+                          <h5>Year Of Manufacture<span style="color: red;"> *</span></h5>
+                          <input class="form-control" id="year" placeholder="Enter the Manufactured Year" maxlength="4"
+                            oninput="this.value=(this.value.match('[0-9]+'))" />
+
+                        </div>
+                        <div class="col-sm-4">
+                          <h5>Warranty Period In Months<span style="color: red;"> *</span></h5>
+                          <input class="form-control" id="warranty" placeholder="Enter the Warranty Period in Months"
+                            maxlength="3" oninput="this.value=(this.value.match('[0-9]+'))" />
+                        </div>
+
+                        <div class="col-sm-4">
+                          <h5>Item Code<span style="color: red;"> *</span></h5>
+                          <input class="form-control" id="itemcode" placeholder="Enter the Item Code" maxlength="10"
+                            oninput="this.value=(this.value.match('[a-zA-Z0-9 ]+'))" />
+                        </div>
+
+
+                        <div class="col-sm-4">
+                          <h5>Display Type<span style="color: red;"> *</span></h5>
+                          <div class="custom-select">
+                            <select class="form-control" id="displaytype">
+                              <option value="0">Select</option>
+                              <option value="1">Analog</option>
+                              <option value="2">Digital</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                          <h5>Water Resistant<span style="color: red;"> *</span></h5>
+                          <div class="custom-select">
+                            <select class="form-control" id="water">
+                              <option value="0">Select</option>
+                              <option value="1">Yes</option>
+                              <option value="2">No</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                          <h5>Shape<span style="color: red;"> *</span></h5>
+                          <input class="form-control" id="shape" placeholder="Enter Your Watch Shape" maxlength="10"
+                            oninput="this.value=(this.value.match('[a-zA-Z ]+'))" />
+                        </div>
+
+
+                        <div class="col-sm-4">
+                          <h5>Inside the Box<span style="color: red;"> *</span></h5>
+                          <input class="form-control" id="insidebox" placeholder="Enter what's Inside the Box"
+                            oninput="this.value=(this.value.match('[a-zA-Z0-9, ]+'))" />
+                        </div>
+
+                        <div class="col-sm-4">
+                          <h5>IP Rating<span style="color: red;"> *</span></h5>
+                          <input class="form-control" id="iprating" placeholder="Enter IP Rating"
+                            oninput="this.value=(this.value.match('[A-Z0-9 ]+'))" />
+                        </div>
+
+                        <div class="col-sm-4">
+                          <h5>Delivery Fee<span style="color: red;"> *</span></h5>
+                          <input class="form-control" id="deliveryfee" placeholder="Enter Delivery Fee" maxlength="3"
+                            oninput="this.value=(this.value.match('[0-9 ]+'))" />
+                        </div>
+
+                        <div class="col-sm-4">
+                          <h5>Watch Description<span style="color: red;"> *</span></h5>
+                          <textarea class="form-control" id="desc" style="min-height: 60px;"
+                            placeholder="Enter the Watch Description"></textarea>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div id="validationMessage"></div>
+
+                  </div>
+
+                  <button type="button" class="btn btn-primary" style="margin-top: 20px; margin-left: 380px;"
+                    onclick="redirectToAnotherPage()">
+                    Cancel
+                  </button>
+                  <button type="button" class="btn btn-primary" style="margin-top: 20px; margin-left: 10px;"
+                    onclick="validateForm()">
+                    Save
+                  </button>
+                </form>
+              </div>
+            </div>
+            <div id="responseMessage"></div>
+
+
+            <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+            <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="../assets/js/sidebarmenu.js"></script>
+            <script src="../assets/js/app.min.js"></script>
+            <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+
+
+
+            <!-- <script>
+              function calculateTotalCost() {
+
+                let watchPrice = parseFloat(document.getElementById('watchprice').value);
+                let percentage = parseFloat(document.getElementById('percentage').value);
+
+                // Check if both watch price and percentage are valid numbers
+                if (watchPrice == NaN || percentage == NaN) {
+                  document.getElementById('totalcost').value = '0.00';
+                }
+                else if (watchPrice != NaN && percentage != NaN) {
+                  var totalCost = watchPrice + (watchPrice * (percentage / 100));
+                  document.getElementById('totalcost').value = totalCost.toFixed(2);
+                } else {
+                  // If either watch price or percentage is not a valid number, display an error or default value
+                  document.getElementById('totalcost').value = '0.00';
+                }
+              }
+
+            </script> -->
+
+
+            <script>
+              function validateForm() {
+                // Validation checks
+                const watchName = document.getElementById('watchname').value.trim();
+                const watchPrice = document.getElementById('watchprice').value.trim();
+                const watchModel = document.getElementById('watchmodel').value.trim();
+                const percentage = document.getElementById('percentage').value.trim();
+                const stock = document.getElementById('stock').value.trim();
+                // const totalCost = document.getElementById('totalcost').value.trim();
+
+                const dialsize = document.getElementById('dialsize').value.trim();
+                const color = document.getElementById('color').value.trim();
+                const weight = document.getElementById('weight').value.trim();
+                const bodytype = document.getElementById('bodytype').value.trim();
+                const Brand = document.getElementById('Brand').value.trim();
+                const battery = document.getElementById('battery').value.trim();
+                const yearofmanufacture = document.getElementById('year').value.trim();
+                const warranty = document.getElementById('warranty').value.trim();
+                const itemcode = document.getElementById('itemcode').value.trim();
+                const displaytype = document.getElementById('displaytype').value.trim();
+                const waterresistant = document.getElementById('water').value;
+                const shape = document.getElementById('shape').value.trim();
+                const insidebox = document.getElementById('insidebox').value.trim();
+                const iprating = document.getElementById('iprating').value.trim();
+                const deliveryfee = document.getElementById('deliveryfee').value.trim();
+                const description = document.getElementById("desc").value.trim();
+                // const watchCategory = document.getElementById('watchcategory').value.trim();
+
+                // Checking if fields are empty
+                if (watchName === '' || watchPrice === '' || watchModel === '' || percentage === '' || stock === '') {
+                  alert('All fields are required');
+                  return;
+                }
+                // Additional validation, e.g., numeric values
+                if (isNaN(watchPrice) || isNaN(percentage) || isNaN(stock)) {
+                  alert('Price, Percentage, Stock, and Total Cost must be numeric values');
+                  return;
+                }
+                const category = document.getElementById('watchCategory').value;
+                if (category == '0') {
+                  alert("Please select a valid watch category.");
+                  return; // Stop further execution
+                }
+                //Validation For Adding watch specification
+                if (dialsize === '' || color === '' || weight === '' || bodytype === '' || Brand === '' || battery === '0' || yearofmanufacture === '' || warranty === '' ||
+                  itemcode === '' || displaytype === '0' || waterresistant === '0' || shape === '' || insidebox === '' || deliveryfee === '' || iprating === '' || description === '') {
+                  alert('Please Add Watch Specifications');
+                  return;
+                }
+                validateImage();
+
+              }
+            </script>
+
+            <script>
+              function validateImage() {
+                var image1 = document.getElementById('image1');
+                var image2 = document.getElementById('image2');
+                var image3 = document.getElementById('image3');
+                var image4 = document.getElementById('image4');
+                var image5 = document.getElementById('image5');
+                var image6 = document.getElementById('image6');
+                var validationMessage = document.getElementById('validationMessage');
+
+                if (image1.files.length === 0 || image2.files.length === 0 || image3.files.length === 0 ||
+                  image4.files.length === 0 || image5.files.length === 0 || image6.files.length === 0) {
+                  alert('Please Uplaod All Images');
+                  return;
+                }
+
+                var allFiles = [image1.files[0], image2.files[0], image3.files[0], image4.files[0], image5.files[0], image6.files[0]];
+                for (var i = 0; i < allFiles.length; i++) {
+                  var fileType = allFiles[i].type.split('/')[0]; // Extracting the file type (e.g., 'image')
+                  if (fileType !== 'image') {
+                    alert('Please Uplaod Only Image Files');
+                    // resetInputFields();
+                    return;
+                  }
+                }
+
+                validationMessage.innerHTML = "All images uploaded successfully";
+                addWatch();
+              }
+
+              function resetInputFields() {
+                var imageInputs = document.querySelectorAll('input[type="file"]');
+                for (var i = 0; i < imageInputs.length; i++) {
+                  imageInputs[i].value = ''; // Clear the input field
+                }
+              }
+            </script>
+
+            <script>
+              function redirectToAnotherPage() {
+                // Redirect to the desired HTML page
+                window.location.href = './products.html'; // Replace 'another_page.html' with the URL of your destination page
+              }
+            </script>
+
+
+            <script type="text/javascript">
+              function isNumberKey(txt, evt) {
+                var charCode = (evt.which) ? evt.which : evt.keyCode;
+
+                // Check if the pressed key is a dot
+                if (charCode == 46) {
+                  // Check if the text already contains the . character
+                  if (txt.value.indexOf('.') === -1) {
+                    return true; // Allow input if dot is not present
+                  } else {
+                    return false; // Prevent input if dot is already present
+                  }
+                } else if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                  return false; // Prevent input if key is not a digit
+                } else if (txt.value.indexOf('.') !== -1) {
+                  // Check if dot is already present in the text
+                  var dotIndex = txt.value.indexOf('.');
+                  var decimalPart = txt.value.substring(dotIndex + 1);
+                  if (decimalPart.length >= 2) {
+                    return false; // Prevent input if more than two decimal places
+                  }
+                }
+                return true; // Allow input otherwise
+              }
+            </script>
+
+            <script>
+              function addWatch() {
+
+                const watchName = document.getElementById('watchname').value.trim();
+                const watchPrice = document.getElementById('watchprice').value.trim();
+                const watchModel = document.getElementById('watchmodel').value.trim();
+                const percentage = document.getElementById('percentage').value.trim();
+                const stock = document.getElementById('stock').value.trim();
+                const category = document.getElementById('watchCategory').value;
+                const image1 = document.getElementById('image1').files[0];
+                const image2 = document.getElementById('image2').files[0];
+                const image3 = document.getElementById('image3').files[0];
+                const image4 = document.getElementById('image4').files[0];
+                const image5 = document.getElementById('image5').files[0];
+                const image6 = document.getElementById('image6').files[0];
+
+                const dialsize = document.getElementById('dialsize').value.trim();
+                const color = document.getElementById('color').value.trim();
+                const weight = document.getElementById('weight').value.trim();
+                const bodytype = document.getElementById('bodytype').value.trim();
+                const Brand = document.getElementById('Brand').value.trim();
+                const battery = document.getElementById('battery').value.trim();
+                const yearofmanufacture = document.getElementById('year').value.trim();
+                const warranty = document.getElementById('warranty').value.trim();
+                const itemcode = document.getElementById('itemcode').value.trim();
+                const displaytype = document.getElementById('displaytype').value.trim();
+                const waterresistant = document.getElementById('water').value;
+                const shape = document.getElementById('shape').value.trim();
+                const iprating = document.getElementById('iprating').value.trim();
+                const deliveryfee = document.getElementById('deliveryfee').value.trim();
+                const insidebox = document.getElementById('insidebox').value.trim();
+                const description = document.getElementById("desc").value.trim();
+
+
+                const url = "../api/add-watch.php";
+                const formData = new FormData();
+                formData.append("name", watchName)
+                formData.append("model", watchModel)
+                formData.append("base_price", watchPrice)
+                formData.append("token", window.localStorage.getItem("authToken"))
+                formData.append("image_front", image1);
+                formData.append("image_back", image2);
+                formData.append("image_up", image3);
+                formData.append("image_down", image4);
+                formData.append("image_left", image5);
+                formData.append("image_right", image6);
+                formData.append("dial_id", 0);
+                formData.append("strap_id", 0);
+                formData.append("chronocase_id", 0);
+                formData.append("movement_id", 0);
+                formData.append("hands_id", 0);
+                formData.append("bezel_id", 0);
+                formData.append("seconds_id", 0);
+                formData.append("crown_id", 0);
+                formData.append("caseback_id", 0);
+                formData.append("catId", category);
+                formData.append("aaditional_charges", percentage);
+                formData.append("created_by", 1);
+                formData.append("is_available", stock);
+
+                formData.append("dialSize", dialsize);
+                formData.append("color", color);
+                formData.append("displayType", displaytype);
+                formData.append("weight", weight);
+                formData.append("bodyType", bodytype);
+                formData.append("brand", Brand);
+                formData.append("batteriesIncluded", battery);
+                formData.append("yearOfManufacture", yearofmanufacture);
+                formData.append("warrantyPeriod", warranty);
+                formData.append("itemCode", itemcode);
+                formData.append("waterResistant", waterresistant);
+                formData.append("ipRating", iprating);
+                formData.append("deliveryFee", deliveryfee);
+                formData.append("shape", shape);
+                formData.append("insideTheBox", insidebox);
+                formData.append("description", description);
+
+                fetch(url, {
+                  method: "POST",
+                  body: formData
+                })
+                  .then(res => {
+                    return res.json()
+                  }).then(data => {
+                    alert(data.msg);
+                    if (data.success) {
+                      window.localStorage.setItem("wid", data.data[0].last_inserted_id)
+                      window.location.href = "./view-watch.html"
+                    }
+                  })
+              }
+            </script>
+
+            <script>
+              function toggleCustomizations(header) {
+                var content = header.nextElementSibling;
+                var expandBtn = header.querySelector('.expand-btn');
+
+                if (content.classList.contains('hidden')) {
+                  content.classList.remove('hidden');
+                  expandBtn.textContent = '-';
+                  content.style.maxHeight = content.scrollHeight + 'px'; // Expand smoothly
+                } else {
+                  content.classList.add('hidden');
+                  expandBtn.textContent = '+';
+                  content.style.maxHeight = null; // Collapse smoothly
+                }
+              }
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

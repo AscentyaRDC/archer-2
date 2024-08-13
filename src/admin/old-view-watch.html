@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>View Watch</title>
+    <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+    <link rel="stylesheet" href="../assets/css/styles.min.css" />
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            background-color: antiquewhite;
+            /* For browsers that do not support gradients */
+            background-image: linear-gradient(antiquewhite, #ffffff);
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            /* Location of the box */
+            left: 25%;
+            top: 30%;
+            width: 50%;
+            /* Full width */
+            height: 50%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: #ffffff;
+            border: 1px solid #888;
+            border-radius: 10px;
+        }
+
+        .custom-watch {
+            display: flex;
+            justify-content: center;
+        }
+
+        .watch-item {
+            text-align: center;
+            /* Center text and image */
+            margin-top: 15px;
+            /* Adjust margin between items */
+            display: inline-block;
+        }
+
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+            padding: 15px;
+        }
+
+        .close:hover,
+        .close:focus {
+            text-decoration: none;
+            cursor: pointer;
+            float: right;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!--  Body Wrapper -->
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="fixed" data-header-position="fixed">
+        <!-- Sidebar Start -->
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div>
+                <div class="brand-logo d-flex align-items-center justify-content-between">
+                    <a href="./products.html" class="text-nowrap logo-img">
+                        <img src="../assets/images/logos/favicon.png" width="180" alt="" />
+                    </a>
+                    <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+                        <i class="ti ti-x fs-8"></i>
+                    </div>
+                </div>
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+                    <ul id="sidebarnav">
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Home</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./products.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-layout-dashboard"></i>
+                                </span>
+                                <span class="hide-menu">Products</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./cart.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-layout-dashboard"></i>
+                                </span>
+                                <span class="hide-menu">Cart</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./favourites.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-layout-dashboard"></i>
+                                </span>
+                                <span class="hide-menu">Favourites</span>
+                            </a>
+                        </li>
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Menu</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./profile.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-article"></i>
+                                </span>
+                                <span class="hide-menu">Profile</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./orders.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-alert-circle"></i>
+                                </span>
+                                <span class="hide-menu">Orders</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./feedback.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-cards"></i>
+                                </span>
+                                <span class="hide-menu">Feedback</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./ratings.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-file-description"></i>
+                                </span>
+                                <span class="hide-menu">Ratings</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Settings</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./support.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-menu"></i>
+                                </span>
+                                <span class="hide-menu">Support</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./login.html" aria-expanded="false"
+                                style="margin-bottom: 10vh; color: rgba(255, 0, 0, 0.5);">
+                                <span>
+                                    <i class="ti ti-login"></i>
+                                </span>
+                                <span class="hide-menu">Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!--  Sidebar End -->
+        <!--  Main wrapper -->
+        <div class="body-wrapper">
+            <div>
+                <div class="card">
+                    <div class="card-body">
+                        <h2 style="width: 100%; text-align: center;">Watch Details</h2>
+                        <div class="card">
+                            <div class="card-body">
+
+                                <!--Form Starting Here-->
+                                <form>
+                                    <div class="row">
+                                        <div class="col-sm-8">
+                                            <div class="row">
+                                                <div class="container">
+                                                    <div class="row" style="margin-top: 2%;">
+                                                        <div>
+                                                            <h4 style="width: 100%;text-align: center;">Customizations
+                                                            </h4>
+                                                            <div class="row">
+                                                                <!-- First 4 images -->
+                                                                <div class="col-2"
+                                                                    style="margin-top: 30px; margin-left: 65px;">
+                                                                    <div class="custom-select"
+                                                                        style="text-align: center;" id="dial">
+                                                                        <p style="font-size: medium;">Dial</p>
+                                                                        <img src="../assets/images/profile/sample.png"
+                                                                            id="front1" alt="Default Image"
+                                                                            style="width:80px; height: 80px;">
+                                                                    </div>
+
+                                                                    <!-- The Modal -->
+                                                                    <div id="myModal" class="modal">
+                                                                        <!-- Modal content -->
+                                                                        <span class="close">X</span>
+                                                                        <div id="custom-watch">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-2" style="margin-top: 30px;">
+                                                                    <div class="custom-select"
+                                                                        style="text-align: center;" id="strap">
+                                                                        <p style="font-size: medium;">Strap</p>
+                                                                        <img src="../assets/images/profile/sample.png"
+                                                                            id="front1" alt="Default Image"
+                                                                            style="width:80px; height: 80px;">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-2" style="margin-top: 30px;">
+                                                                    <div class="custom-select"
+                                                                        style="text-align: center;" id="movement">
+                                                                        <p style="font-size: medium;">Movement</p>
+                                                                        <img src="../assets/images/profile/sample.png"
+                                                                            id="front1" alt="Default Image"
+                                                                            style="width:80px; height: 80px;">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-2" style="margin-top: 30px;">
+                                                                    <div class="custom-select"
+                                                                        style="text-align: center;" id="bezel">
+                                                                        <p style="font-size: medium;">Bezel</p>
+                                                                        <img src="../assets/images/profile/sample.png"
+                                                                            id="front1" alt="Default Image"
+                                                                            style="width:80px; height: 80px;">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row" style="margin-top: 30px;">
+                                                                <!-- Next 5 images -->
+                                                                <div class="col-2" style="margin-top: 30px;">
+                                                                    <div class="custom-select"
+                                                                        style="text-align: center;" id="chronocase">
+                                                                        <p style="font-size: medium;">Chronocase</p>
+                                                                        <img src="../assets/images/profile/sample.png"
+                                                                            id="front1" alt="Default Image"
+                                                                            style="width:80px; height: 80px;">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-2" style="margin-top: 30px;">
+                                                                    <div class="custom-select"
+                                                                        style="text-align: center;" id="hand">
+                                                                        <p style="font-size: medium;">Hand</p>
+                                                                        <img src="../assets/images/profile/sample.png"
+                                                                            id="front1" alt="Default Image"
+                                                                            style="width:80px; height: 80px;">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-2" style="margin-top: 30px;">
+                                                                    <div class="custom-select"
+                                                                        style="text-align: center;" id="second">
+                                                                        <p style="font-size: medium;">Seconds</p>
+                                                                        <img src="../assets/images/profile/sample.png"
+                                                                            id="front1" alt="Default Image"
+                                                                            style="width:80px; height: 80px;">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-2" style="margin-top: 30px;">
+                                                                    <div class="custom-select"
+                                                                        style="text-align: center;" id="crown">
+                                                                        <p style="font-size: medium;">Crown</p>
+                                                                        <img src="../assets/images/profile/sample.png"
+                                                                            id="front1" alt="Default Image"
+                                                                            style="width:80px; height: 80px;">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-2" style="margin-top: 30px;">
+                                                                    <div class="custom-select"
+                                                                        style="text-align: center;" id="caseback">
+                                                                        <p style="font-size: medium;">Caseback</p>
+                                                                        <img src="../assets/images/profile/sample.png"
+                                                                            id="front1" alt="Default Image"
+                                                                            style="width:80px; height: 80px;">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div style="display: flex" class="col-sm-4 center">
+                                            <div style="width: 200px;">
+                                                <img id="watchImg" style="margin-left: auto; 
+                                                 margin-right: auto; height: 200px; width: 200px;"
+                                                    src="../assets/images/profile/iwatch.jpg" />
+                                                <h5 style="margin-top: 30px;" id="watchTitle">I Watch Ultra</h5>
+                                                <p id="desc">Description: This is a base watch without customization.You
+                                                    can use
+                                                    the options to modify the parts of the product</p>
+                                                <p id="price">Price: Rs.9999</p>
+                                                <p id="stock"></p>
+                                                <p>Quantity:</p>
+                                                <div style="display: flex;">
+                                                    <button type="button" class="btn btn-danger"
+                                                        style="width: 50px;height: 50px;text-align: center;font-size: x-large;"
+                                                        onclick="minus()">-</button>
+                                                    <input onkeyup="checkQty()" id="qty"
+                                                        style="font-size: 20px; border: 1px solid black;border-radius: 10px; padding: 10px;text-align: center; margin-left: 20px;margin-right: 20px;width: 50px;height: 50px;"
+                                                        value="1">
+                                                    <button type="button" class="btn btn-success"
+                                                        style="width: 50px;height: 50px;font-size: x-large;text-align: center;"
+                                                        onclick="plus()">+</button>
+                                                </div>
+
+                                            </div>
+                                            <div style="padding-left: 20px;margin-bottom: 20px;">
+                                                <div>
+                                                    <div class="imagePreview" style="border-radius: 5px;margin: 5px;">
+                                                        <img src="../assets/images/profile/watch.png" id="front"
+                                                            alt="Default Image" style="width:70px; height: 70px;"
+                                                            onclick="changeImage(this.src)" onmouseover="changeMainImage(this.src)" onmouseout="resetMainImage()">
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <div>
+                                                    <div class="imagePreview" style="border-radius: 5px;margin: 5px;">
+                                                        <img src="../assets/images/profile/watch.png" id="left"
+                                                            alt="Default Image" style="width:70px; height: 70px;"
+                                                            onclick="changeImage(this.src)" onmouseover="changeMainImage(this.src)" onmouseout="resetMainImage()">
+                                                    </div>
+
+                                                </div>
+
+                                                <div>
+                                                    <div class="imagePreview" style="border-radius: 5px;margin: 5px;">
+                                                        <img src="../assets/images/profile/watch.png"
+                                                            alt="Default Image" id="right"
+                                                            style="width:70px; height: 70px;"
+                                                            onclick="changeImage(this.src)" onmouseover="changeMainImage(this.src)" onmouseout="resetMainImage()">
+                                                    </div>
+
+                                                </div>
+
+                                                <div>
+                                                    <div class="imagePreview" style="border-radius: 5px;margin: 5px;">
+                                                        <img src="../assets/images/profile/watch.png"
+                                                            alt="Default Image" id="back"
+                                                            style="width:70px; height: 70px;"
+                                                            onclick="changeImage(this.src)" onmouseover="changeMainImage(this.src)" onmouseout="resetMainImage()">
+
+                                                    </div>
+
+                                                </div>
+
+
+                                                <div>
+                                                    <div class="imagePreview" style="border-radius: 5px;margin: 5px;">
+                                                        <img src="../assets/images/profile/watch.png"
+                                                            alt="Default Image" id="up"
+                                                            style="width:70px; height: 70px;"
+                                                            onclick="changeImage(this.src)" onmouseover="changeMainImage(this.src)" onmouseout="resetMainImage()">
+
+                                                    </div>
+
+                                                </div>
+                                                <div>
+                                                    <div class="imagePreview" style="border-radius: 5px;margin: 5px;">
+                                                        <img src="../assets/images/profile/watch.png"
+                                                            alt="Default Image" id="down"
+                                                            style="width:70px; height: 70px;"
+                                                            onclick="changeImage(this.src)" onmouseover="changeMainImage(this.src)" onmouseout="resetMainImage()">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!-- <div style="margin-bottom: 20px; display: flex;justify-content: center;">
+                                            
+                                            <button type="button" class="btn btn-warning" style="margin-left: 20px;"
+                                                onclick="addToCart()">
+                                                Add to cart
+                                            </button>
+                                        </div> -->
+                                        <!--Image Upload Field Here-->
+                                        <button type="button" class="btn btn-info" style="margin-left: 37%; width: 15%;"
+                                            onclick="window.location.href = './products.html'">
+                                            Back to Products
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let maxQty = 0
+        let wfid = 0
+        const getWatchDetails = () => {
+            let url = "../api/get-indi-watch.php"
+            let body = JSON.stringify({
+                token: window.localStorage.getItem("authToken"),
+                wid: window.localStorage.getItem("wid")
+            })
+            fetch(url, {
+                body: body,
+                method: "POST"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        maxQty = parseInt(data.data[0].is_available)
+                        document.getElementById("watchTitle").innerHTML = data.data[0].name + " / " + data.data[0].model
+                        document.getElementById("desc").innerHTML = "Description : " + data.data[0].model + " " + data.data[0].name + " is a base watch with elegant stlish design. perfectly suit for you and it is in a trnd. you can customize the watch parts in the above available options"
+                        document.getElementById("price").innerHTML = "Price : &#x20b9; " + parseFloat(data.data[0].base_price).toFixed(2)
+                        document.getElementById("stock").innerHTML = "Available Stock : " + parseInt(data.data[0].is_available) + " No(s)"
+                        document.getElementById("watchImg").src = data.data[0].image_front
+                        document.getElementById("front").src = data.data[0].image_front
+                        document.getElementById("back").src = data.data[0].image_back
+                        document.getElementById("left").src = data.data[0].image_left
+                        document.getElementById("right").src = data.data[0].image_right
+                        document.getElementById("up").src = data.data[0].image_up
+                        document.getElementById("down").src = data.data[0].image_down
+                        //New Changes Here
+                        document.getElementById("dial").src = data.data[0].dial_id
+                        document.getElementById("strap").src = data.data[0].strap_id
+                        document.getElementById("movement").src = data.data[0].movement_id
+                        document.getElementById("bezel").src = data.data[0].bezel_id
+                        document.getElementById("chronocase").src = data.data[0].chronocase_id
+                        document.getElementById("hand").src = data.data[0].hands_id
+                        document.getElementById("second").src = data.data[0].seconds_id
+                        document.getElementById("crown").src = data.data[0].crown_id
+                        document.getElementById("caseback").src = data.data[0].caseback_id
+                    }
+                    else {
+                        alert(data.msg)
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+        getWatchDetails()
+
+        const getWatchFace = () => {
+            let url = "../api/get-watch-face.php"
+            let body = JSON.stringify({
+                token: window.localStorage.getItem("authToken"),
+                wid: window.localStorage.getItem("wid")
+            })
+            fetch(url, {
+                body: body,
+                method: "POST"
+            })
+            .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        //New Changes Here
+                        document.getElementById("front").src = data.data[0].image_front
+                        document.getElementById("back").src = data.data[0].image_back
+                        document.getElementById("left").src = data.data[0].image_left
+                        document.getElementById("right").src = data.data[0].image_right
+                        document.getElementById("up").src = data.data[0].image_up
+                        document.getElementById("down").src = data.data[0].image_down
+                    }
+                    else {
+                        alert(data.msg)
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+        getWatchFace()        
+
+        const minus = () => {
+            let qty = document.getElementById("qty")
+            if (qty.value == "1") {
+                alert("Product Quantity must be greater than zero")
+            }
+            else {
+                qty.value = (parseInt(qty.value) - 1).toString()
+            }
+        }
+
+        const plus = () => {
+            let qty = document.getElementById("qty")
+            if (parseInt(qty.value) == maxQty) {
+                alert("Product Quantity exceeds available stock")
+            }
+            else {
+                qty.value = (parseInt(qty.value) + 1).toString()
+            }
+        }
+
+        const checkQty = () => {
+            let qty = document.getElementById("qty")
+            if (parseInt(qty.value) > maxQty) {
+                alert("Product Quantity exceeds available stock")
+                qty.value = maxQty.toString()
+            }
+        }
+
+        const addToCart = () => {
+            let cart = JSON.parse(window.localStorage.getItem("cart"))
+            let a = {}
+            a.wid = window.localStorage.getItem("wid")
+            a.maxQty = maxQty
+            if (cart != null) {
+                cart.push(a)
+            }
+            else {
+                cart = []
+                cart.push(a)
+            }
+
+            window.localStorage.setItem("cart", JSON.stringify(cart))
+            alert("Item added to Cart Successfully")
+            window.location.href = "./products.html"
+        }
+
+        const BuyNow = () => {
+            let order = []
+            let price = []
+            let watch = []
+            order.push(document.getElementById("qty").value)
+            price.push(document.getElementById("price").innerHTML.toString().replace("Price : ", "").slice(1))
+            watch.push(wfid)
+            window.localStorage.setItem("orderQty", JSON.stringify(order))
+            window.localStorage.setItem("maxQty", maxQty)
+            window.localStorage.setItem("wfid", watch)
+            window.localStorage.setItem("price", JSON.stringify(price))
+            window.location.href = './order-add-address.html'
+        }
+
+        const changeImage = (src) => {
+            document.getElementById("watchImg").src = src
+        }
+        /*------------------*/
+        /*Model Portion Here*/
+        /*------------------*/
+
+
+        let modal = document.getElementById("myModal");
+        let dialbtn = document.getElementById("dial");
+        let strapbtn = document.getElementById("strap");
+        let movebtn = document.getElementById("movement");
+        let bezelbtn = document.getElementById("bezel");
+        let chronobtn = document.getElementById("chronocase");
+        let handbtn = document.getElementById("hand");
+        let secondbtn = document.getElementById("second");
+        let crownbtn = document.getElementById("crown");
+        let casebtn = document.getElementById("caseback");
+
+        // Get the <span> element that closes the modal
+        let span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal 
+        dialbtn.onclick = function () {
+            modal.style.display = "block";
+            getWatchFaceDetails('dial_id')
+        }
+        strapbtn.onclick = function () {
+            modal.style.display = "block";
+            getWatchFaceDetails('strap_id')
+        }
+        movebtn.onclick = function () {
+            modal.style.display = "block";
+            getWatchFaceDetails('movement_id')
+        }
+        bezelbtn.onclick = function () {
+            modal.style.display = "block";
+            getWatchFaceDetails('bezel_id')
+        }
+        chronobtn.onclick = function () {
+            modal.style.display = "block";
+            getWatchFaceDetails('chronocase_id')
+        }
+        handbtn.onclick = function () {
+            modal.style.display = "block";
+            getWatchFaceDetails('hand_id')
+        }
+        secondbtn.onclick = function () {
+            modal.style.display = "block";
+            getWatchFaceDetails('second_id')
+        }
+        crownbtn.onclick = function () {
+            modal.style.display = "block";
+            getWatchFaceDetails('crown_id')
+        }
+        casebtn.onclick = function () {
+            modal.style.display = "block";
+            getWatchFaceDetails('caseback_id')
+        }
+
+
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+
+        const getWatchFaceDetails = (req) => {
+            let url = "src/api/get-watch-face.php"
+            let body = JSON.stringify({
+                wid: window.localStorage.getItem("wid")
+            })
+
+            fetch(url, {
+                method: "POST",
+                body: body
+            })
+                .then(res => res.json())
+                .then(data => {
+                    let row = ``
+                    if (data.success) {
+                        data.data.forEach(element => {
+                            if (element[req] != "0") {
+                                row += `<div class="watch-item" style="margin:10px ">
+                                        <p style="color: black;padding-top:10px;">${element.watch_face_name}</p>
+                                        <img style="height: 150px; width: 150px;" onclick="changeWatchFace('${element.image_front}','${element.price}'
+                                        ,'${element.description}','${element.watch_face_id}','${element.image_back}','${element.image_left}'
+                                        ,'${element.image_right}','${element.image_up}','${element.image_down}')"
+                                            src="${element.image_front}"
+                                            alt="">
+                                    </div>
+                                    `;
+                            }
+                        });
+                        if (row == ``) {
+                            row += `<div class="watch-item" style="margin:10px ">
+                                        <p style="color: black;padding-top:10px;">No Customizations Found with ${req.replace("_id", "")}</p>
+                                </div>`
+                        }
+                        document.getElementById("custom-watch").innerHTML = row;
+                    }
+                    else {
+                        alert("no data found")
+                    }
+                })
+                .catch(err => { console.log("errror  " + err) })
+        }
+
+        const changeWatchFace = (frontImage, price, desc, wfid1, back, left, right, up, down) => {
+            document.getElementById("watchImg").src = frontImage
+            document.getElementById("front").src = frontImage
+            document.getElementById("back").src = back
+            document.getElementById("left").src = left
+            document.getElementById("right").src = right
+            document.getElementById("up").src = up
+            document.getElementById("down").src = down
+            document.getElementById("price").innerHTML = "Price : &#x20b9; " + parseFloat(price).toFixed(2)
+            document.getElementById("desc").innerHTML = "Description : " + desc
+            wfid = wfid1;
+            modal.style.display = "none"
+        }
+    </script>
+
+    <script>
+        function changeMainImage(src) {
+            document.getElementById('watchImg').src = src;
+        }
+
+        function resetMainImage() {
+            // Reset main image to default when mouse moves out
+            document.getElementById('watchImg').src = '../assets/images/profile/iwatch.jpg';
+        }
+    </script>
+
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/sidebarmenu.js"></script>
+    <script src="../assets/js/app.min.js"></script>
+    <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Design by foolishdeveloper.com -->
+  <title>Archer Admin</title>
+
+  <link rel="icon" href="./src/assets/images/logos/favicon.png" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet" />
+  <!--Stylesheet-->
+  <style media="screen">
+    *,
+    *:before,
+    *:after {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-image: url("./src/assets/images/backgrounds/bg.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed;
+
+    }
+
+    .background {
+      width: 100%;
+      height: 100%;
+      /* position: absolute; */
+      transform: translate(-50%, -50%);
+      left: 50%;
+      top: 50%;
+    }
+
+    .background .shape {
+      height: 200px;
+      width: 200px;
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .shape:first-child {
+      background: linear-gradient(#1845ad, #23a2f6);
+      left: -80px;
+      top: -80px;
+      display: none;
+    }
+
+    .shape:last-child {
+      background: linear-gradient(to right, #ff512f, #f09819);
+      right: -30px;
+      bottom: -80px;
+      display: none;
+    }
+
+    form {
+      margin-top: 20px;
+      padding-bottom: 20px;
+      min-width: 40%;
+      background-color: rgba(255, 255, 255, 0.13);
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+      padding: 10px 35px;
+    }
+
+    form * {
+      font-family: "Poppins", sans-serif;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+      outline: none;
+      border: none;
+      animation: slideFromTop 1s ease-in-out;
+      opacity: 1;
+    }
+
+    form h3 {
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 42px;
+      text-align: center;
+    }
+
+    form div {
+      margin: 2%;
+    }
+
+    /* label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+} */
+    input {
+      display: block;
+      height: 50px;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.07);
+      border-radius: 3px;
+      padding: 0 10px;
+      margin-top: 8px;
+      font-size: 14px;
+      font-weight: 300;
+    }
+
+    ::placeholder {
+      color: #e5e5e5;
+    }
+
+    .social {
+      margin-top: 30px;
+      display: flex;
+    }
+
+    .social div {
+      background: red;
+      width: 150px;
+      border-radius: 3px;
+      padding: 5px 10px 10px 5px;
+      background-color: rgba(255, 255, 255, 0.27);
+      color: #eaf0fb;
+      text-align: center;
+    }
+
+    .social div:hover {
+      background-color: rgba(255, 255, 255, 0.47);
+    }
+
+    .social .fb {
+      margin-left: 25px;
+    }
+
+    .social i {
+      margin-right: 4px;
+    }
+
+    .logo {
+      float: left;
+      margin: 0px;
+      margin-left: 50px;
+      margin-top: 20px;
+    }
+
+    .reg {
+      display: flex;
+      color: white;
+      margin-top: 20px;
+      float: right;
+      margin-right: 10px;
+      font-family: "Poppins", sans-serif;
+      animation: slideFromTop 1s ease-in-out;
+      opacity: 1;
+    }
+
+    .create {
+      color: #f09819;
+      font-family: "Poppins", sans-serif;
+      transition: 1s;
+      text-decoration: none;
+    }
+
+    .fone {
+      display: inline-block;
+      padding: 1% 10% 1% 10%;
+      text-align: center;
+    }
+
+    .shap {
+      border-radius: 25px;
+      border-color: white;
+    }
+
+    @keyframes slideFromTop {
+      0% {
+        margin-top: 0px;
+        /* Start from off-screen left */
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 0;
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        margin-bottom: 1px;
+        /* Move to original position */
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+
+  <div class="logo">
+    <img src="./src/assets/images/logos/favicon.png" width="200px" height="100px" />
+  </div>
+
+  <div class="reg">
+    <h3>Already Have an Account?</h3>
+    &nbsp;
+    <h3>
+      <a class="create" href="./login.html">Login!</a>
+    </h3>
+  </div>
+
+  <form>
+    <h3>Create an Account!</h3>
+
+    <div class="col-lg-12">
+      <div id="list">
+        <label for="username">User ID</label>
+        <input class="shap" name="user-id" placeholder="User ID (All Cap Characters)" maxlength="10" minlength="6"
+          type="text" id="userid" oninput="this.value=(this.value.match('[A-Z_0-9]+'))" />
+        <span id="userid_error" class="text-danger" style="font-size: 12px"></span>
+      </div>
+
+      <div id="list">
+        <label for="mobilenumber">Mobile Number</label>
+        <input class="shap" id="Mobilenumber" placeholder="Enter Your Mobile Number" maxlength="10" type="text"
+          onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" />
+        <span id="Mobilenumber_error" style="font-size: 12px" class="text-danger"></span>
+      </div>
+
+      <div id="list">
+        <label for="FirstName">Name</label>
+        <input class="shap" id="FirstName" name="firstname" placeholder="Name" maxlength="50" type="text"
+          oninput="this.value=(this.value.match('[a-zA-Z ]+'))" />
+        <span id="FirstName_error" style="font-size: 12px" class="text-danger"></span>
+      </div>
+
+      <div id="list">
+        <label for="InputEmail">Email</label>
+        <input class="shap" type="text" placeholder="Enter Your Email ID" id="InputEmail"
+          onkeyup="return forceLower(this)" />
+        <span id="InputEmail_error" style="font-size: 12px" class="text-danger"></span>
+      </div>
+
+      <div id="list">
+        <label for="Password">Password</label>
+        <input class="shap" type="password" placeholder="Enter Password (6-15 characters)" id="password" minlength="6"
+          maxlength="15" />
+        <span id="Password_error" style="font-size: 12px" class="text-danger"></span>
+      </div>
+
+      <div id="list">
+        <label for="exampleRepeatPassword">Re-Enter Password</label>
+        <input class="shap" type="password" placeholder="Re-Enter Password (6-15 characters)" id="exampleRepeatPassword"
+          maxlength="15" />
+        <span id="exampleRepeatPassword_error" style="font-size: 12px" class="text-danger"></span>
+      </div>
+    </div>
+    <div style="
+          width: 100%;
+          display: flex;
+          height: 20px;
+          line-height: 40px;
+          text-align: center;
+        ">
+      <input style="width: 10%; height: 20px;" type="checkbox" onclick="showHidePasssword()" />
+
+      <p>Show Password</p>
+    </div>
+
+    <input type="button" style="
+          background-color: #ffffff;
+          color: #080710;
+          font-size: 16px;
+          font-weight: 600;
+          border-radius: 40px;
+          margin-left: 17px;
+          margin-top: 30px;
+          cursor: pointer;
+        " id="submit" class="btn btn-primary btn-user btn-block" value="Sign Up To Continue"
+      onclick="validationForm()" />
+  </form>
+</body>
+
+<script>
+  function validationForm() {
+    let userid = document.getElementById("userid").value;
+    let mobilenumber = document.getElementById("Mobilenumber").value;
+    let firstname = document.getElementById("FirstName").value;
+    let email = document.getElementById("InputEmail").value.toLowerCase();
+    let password = document.getElementById("password").value;
+    let confirmpassword = document.getElementById(
+      "exampleRepeatPassword"
+    ).value;
+    let filter =
+      /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+    if (userid == "") {
+      alert("UserId Required");
+    } else if (mobilenumber.length < 10) {
+      alert("Enter Valid Mobile Number");
+    } else if (firstname.length <= 2) {
+      alert("Enter valid user name");
+    } else if (!filter.test(email)) {
+      alert("Enter Valid Email ID");
+    } else if (password.length < 6) {
+      alert("Password must be atleast 6 characters");
+    } else if (password !== confirmpassword) {
+      alert("Passwords Didn't Match");
+    } else {
+      const apiUrl = "src/api/register-user.php";
+      const body = JSON.stringify({
+        name: firstname,
+        email: email,
+        mobile: mobilenumber,
+        password: password,
+        userId: userid,
+      });
+      fetch(apiUrl, {
+        method: "POST",
+        body: body,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          // Handle the JSON response data
+          if (data.success == true) {
+            alert(data.msg);
+            window.location.href = "./verification-code.html";
+          } else {
+            alert(data.msg);
+          }
+        });
+    }
+  }
+
+  const showHidePasssword = () => {
+    var x = document.getElementById("password");
+    var y = document.getElementById("exampleRepeatPassword");
+    if (x.type === "password") {
+      x.type = "text";
+      y.type = "text";
+    } else {
+      x.type = "password";
+      y.type = "password";
+    }
+  };
+</script>
+
+</html>

@@ -1,0 +1,767 @@
+<html>
+
+<head>
+    <link rel="icon" href="./src/assets/images/logos/favicon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Archer Product</title>
+
+    <style>
+        /* Basic Styling */
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Columns */
+        .left-column {
+            width: 65%;
+            position: relative;
+
+        }
+
+        .right-column {
+            width: 35%;
+            margin-top: 60px;
+        }
+
+        /* Left Column */
+        .left-column img {
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .left-column img.active {
+            opacity: 1;
+        }
+
+        /* Product Description */
+        .product-description {
+            border-bottom: 1px solid #E1E8EE;
+            margin-bottom: 20px;
+
+        }
+
+        /* .product-description span {
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+        } */
+
+        .product-description h1 {
+            font-weight: 300;
+            font-size: 52px;
+            color: #43484D;
+        }
+
+        .product-description p {
+            font-size: 16px;
+            font-weight: 300;
+            color: #86939E;
+            line-height: 24px;
+        }
+
+        /* Product Color */
+        .customizations {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #E1E8EE;
+
+            border: 1px solid #ccc;
+            /* Add border to create the box effect */
+            padding: 10px;
+            /* Add padding for spacing */
+            margin-bottom: 10px;
+            /* Add margin for spacing between boxes */
+
+        }
+
+        .customization-header {
+            cursor: pointer;
+            /* Set cursor to pointer to indicate clickable */
+            display: flex;
+            /* Use flexbox for layout */
+            justify-content: space-between;
+            /* Align items to each end */
+            align-items: center;
+            /* Align items vertically */
+        }
+
+        .expand-btn {
+            font-size: 24px;
+            /* Adjust the font size as needed */
+            font-weight: bold;
+            /* Make the symbol bold */
+        }
+
+        .customizations-content {
+            max-height: 0;
+            /* Initially hide content */
+            overflow: hidden;
+            /* Hide overflowing content */
+            transition: max-height 0.6s ease;
+            /* Add smooth animation */
+        }
+
+        .choose-custom div {
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+
+        /* Product Price */
+        .product-price {
+            display: flex;
+            align-items: center;
+            margin: 10px;
+
+        }
+
+        .product-price span {
+            font-size: 26px;
+            font-weight: 300;
+            color: #43474D;
+            margin-right: 20px;
+        }
+
+        /* Default styles for both buttons */
+        .cart-btn {
+            display: inline-block;
+            border-radius: 6px;
+            font-size: 16px;
+            text-decoration: none;
+            padding: 12px 30px;
+            margin-left: 20px;
+            width: 140%;
+            text-align: center;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        /* Add to Cart button */
+        .add-to-cart-btn {
+            background-color: white;
+            border: 2px solid black;
+            color: black;
+        }
+
+        /* Responsive */
+        @media (max-width: 940px) {
+            .container {
+                flex-direction: column;
+                margin-top: 60px;
+            }
+
+            /* .left-column,
+            .right-column {
+                width: 100%;
+            } */
+
+            .left-column img {
+                width: 300px;
+                right: 0;
+                top: -65px;
+                left: initial;
+            }
+        }
+
+        @media (max-width: 535px) {
+            .left-column img {
+                width: 220px;
+                top: -85px;
+            }
+        }
+
+        .left-column:hover {
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transform: scale(1.1);
+            /* Adjust the scale factor as needed */
+            z-index: 1;
+            position: relative;
+            transition: transform 0.3s ease;
+
+        }
+
+        .checked {
+            color: orange;
+        }
+    </style>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 10px;
+            color: #86939E;
+            font-family: Times, "Times New Roman", Georgia, serif;
+
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+
+    <style>
+        .user-rating {
+            font-family: Arial;
+            margin: 0 auto;
+            /* Center website */
+            max-width: 800px;
+            /* Max width */
+            padding: 20px;
+        }
+
+        .heading {
+            font-size: 25px;
+            margin-right: 25px;
+        }
+
+        .fa {
+            font-size: 25px;
+        }
+
+        .checked {
+            color: orange;
+        }
+
+        /* Three column layout */
+        .side {
+            float: left;
+            width: 15%;
+            margin-top: 10px;
+        }
+
+        .middle {
+            margin-top: 10px;
+            float: left;
+            width: 70%;
+        }
+
+        /* Place text to the right */
+        .right {
+            text-align: right;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* The bar container */
+        .bar-container {
+            width: 100%;
+            background-color: #f1f1f1;
+            text-align: center;
+            color: white;
+        }
+
+        /* Individual bars */
+        .bar-5 {
+            width: 60%;
+            height: 18px;
+            background-color: #04AA6D;
+        }
+
+        .bar-4 {
+            width: 30%;
+            height: 18px;
+            background-color: #2196F3;
+        }
+
+        .bar-3 {
+            width: 10%;
+            height: 18px;
+            background-color: #00bcd4;
+        }
+
+        .bar-2 {
+            width: 4%;
+            height: 18px;
+            background-color: #ff9800;
+        }
+
+        .bar-1 {
+            width: 15%;
+            height: 18px;
+            background-color: #f44336;
+        }
+    </style>
+
+    <style>
+        .top-bar {
+            position: fixed;
+            /* Stick the navigation bar to the top */
+            top: 0;
+            /* Position it at the top of the viewport */
+            left: 0;
+            /* Align it to the left */
+            width: 98%;
+            /* Make it span the entire width of the viewport */
+            z-index: 1000;
+            /* Ensure it's above other content */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+            /* Adjust height as needed */
+            background-color: #333;
+            /* Example background color */
+            color: #fff;
+            /* Example text color */
+            padding: 0 20px;
+            /* Example padding */
+        }
+
+        body {
+            padding-top: 20px;
+            /* Adjust this value to match the height of your navigation bar */
+        }
+
+
+        .top-bar-nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .top-bar-item {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .top-bar-link {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .top-bar-link:hover {
+            color: #ccc;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <header class="top-bar">
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+            <a href="./products.html" class="text-nowrap logo-img">
+                <img src="../assets/images/logos/favicon.png" width="80" height="50" alt="" />
+            </a>
+            <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+                <i class="ti ti-x fs-8"></i>
+            </div>
+        </div>
+        <!-- Top bar navigation -->
+        <nav class="top-bar-nav">
+            <ul id="topbarnav">
+                <!-- Your top bar navigation items here -->
+                <li class="top-bar-item">
+                    <a class="top-bar-link" href="./products.html">Products</a>
+                </li>
+                <li class="top-bar-item">
+                    <a class="top-bar-link" href="./cart.html">Cart</a>
+                </li>
+                <li class="top-bar-item">
+                    <a class="top-bar-link" href="./favourites.html">Favourites</a>
+                </li>
+                <li class="top-bar-item">
+                    <a class="top-bar-link" href="./profile.html">Profile</a>
+                </li>
+                <li class="top-bar-item">
+                    <a class="top-bar-link" href="./orders.html">Orders</a>
+                </li>
+                <li class="top-bar-item">
+                    <a class="top-bar-link" href="./feedback.html">Feedback</a>
+                </li>
+                <li class="top-bar-item">
+                    <a class="top-bar-link" href="./login.html">Logout</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+    <main style="display: flex;">
+        <!-- Watch Images Here -->
+        <div class="container" style="width: 60%;margin-top: 40px;">
+            <div style="display: flex;flex-direction: row;">
+                <img src="../assets/images/backgrounds/back.png" style="padding: 10px;" width="50px"  height="50px" onclick="window.history.back()">
+                <label style="margin-top: 25px;vertical-align: middle;flex: 1;font-size: larger;">Back to Products</label>
+            </div>
+
+             <div style="display: block;
+             margin-left: auto;
+             margin-right: auto;
+             width: 90%;">
+                <img id="front" src="../assets/images/backgrounds/back.png"  width="30%"  height="200px">
+                <img id="back" src="../assets/images/backgrounds/back.png"  width="30%"  height="200px">
+                <img id="left" src="../assets/images/backgrounds/back.png"  width="30%"  height="200px">
+             </div>
+
+             <div style="display: block;
+             margin-left: auto;
+             margin-right: auto;
+             width: 90%;">
+                <img id="right" src="../assets/images/backgrounds/back.png"  width="30%"  height="200px">
+                <img id="up" src="../assets/images/backgrounds/back.png"  width="30%"  height="200px">
+                <img id="down" src="../assets/images/backgrounds/back.png"  width="30%"  height="200px">
+             </div>
+
+        </div>
+
+
+        <div class="container" style="display: flex; margin-top: 40px;width: 40%;padding: 10px;">
+            <!-- Right Column -->
+            <div class="right-column-container" style="overflow-y: auto;">
+                <!-- Product Description -->
+                <div >
+                    <!-- <span>titan</span> -->
+                    <p>Watch Name & model : </p>
+                    <h2 id="watchTitle">Titan Gen 1</h2>
+                    
+                    <p>Price :</p>
+                    <h2  id="price"><span>&#8377;
+                            9,999</span></h2>
+
+                    <p style="margin-top: 10px; font-size: 16px;">Avilable Stock:</p>
+                    <h2  id="stock"><span>&#8377;
+                        9,999</span></h2>
+
+                </div>
+                <!-- Product Configuration -->
+                <div class="product-configuration" >
+                  
+                    <div class="customizations">
+                        <div class="customization-header" onclick="toggleCustomizations(this)">
+                            <span>Specifications</span>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="customizations-content hidden">
+                            <p style="color: #86939E; font-family: Times, 'Times New Roman', Georgia, serif;" id="desc">
+                                The
+                                preferred choice of a vast range of acclaimed DJs. Punchy, bass-focused sound and
+                                high
+                                isolation.
+                                Sturdy headband and on-ear cushions suitable for live performance</p>
+                            <table>
+                                <tr>
+                                    <th>Dial Size</th>
+                                    <td id="dialsize">46MM</td>
+                                </tr>
+                                <tr>
+                                    <th>Colour</th>
+                                    <td id="color">Golden Rose</td>
+                                </tr>
+                                <tr>
+                                    <th>Weight In Grams</th>
+                                    <td id="weight">40G</td>
+                                </tr>
+                                <tr>
+                                    <th>Body Type</th>
+                                    <td id="bodytype">Aluminium</td>
+                                </tr>
+                                <tr>
+                                    <th>Brand</th>
+                                    <td id="Brand">Titan</td>
+                                </tr>
+                                <tr>
+                                    <th>Batteries Included</th>
+                                    <td id="battery">Yes</td>
+                                </tr>
+                                <tr>
+                                    <th>Year Of Manufacture</th>
+                                    <td id="year">2024</td>
+                                </tr>
+                                <tr>
+                                    <th>Warranty Period In Months</th>
+                                    <td id="warranty">12</td>
+                                </tr>
+                                <tr>
+                                    <th>Item Code</th>
+                                    <td id="itemcode">24HKDIJ</td>
+                                </tr>
+                                <tr>
+                                    <th>Display Type</th>
+                                    <td id="displaytype">Analog</td>
+                                </tr>
+                                <tr>
+                                    <th>Water Resistant</th>
+                                    <td id="water">Yes (50ATM)</td>
+                                </tr>
+                                <tr>
+                                    <th>IP Rating</th>
+                                    <td id="iprating">IP68</td>
+                                </tr>
+                                <tr>
+                                    <th>Shape</th>
+                                    <td id="shape">Round</td>
+                                </tr>
+                                <tr>
+                                    <th>Inside the Box</th>
+                                    <td id="insidebox">Watch, Strap, Warrantycard, Battery</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Pricing -->
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function toggleCustomizations(header) {
+            var content = header.nextElementSibling;
+            var expandBtn = header.querySelector('.expand-btn');
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                expandBtn.textContent = '-';
+                content.style.maxHeight = content.scrollHeight + 'px'; // Expand smoothly
+            } else {
+                content.classList.add('hidden');
+                expandBtn.textContent = '+';
+                content.style.maxHeight = null; // Collapse smoothly
+            }
+        }
+
+
+    </script>
+
+    <script>
+        let maxQty = 0
+        let wfid = 0
+        const getWatchDetails = () => {
+            let url = "../api/get-indi-watch.php"
+            let body = JSON.stringify({
+                token: window.localStorage.getItem("authToken"),
+                wid: window.localStorage.getItem("wid")
+            })
+            fetch(url, {
+                body: body,
+                method: "POST"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        maxQty = parseInt(data.data[0].is_available)
+                        document.getElementById("watchTitle").innerHTML = data.data[0].name + " &amp; " + data.data[0].model
+                        document.getElementById("desc").innerHTML = "Description : " + data.data[0].model + " " + data.data[0].name + " is a base watch with elegant stlish design. perfectly suit for you and it is in a trnd. you can customize the watch parts in the above available options"
+                        document.getElementById("price").innerHTML = "&#x20b9; " + parseFloat(data.data[0].base_price).toFixed(2)
+                        document.getElementById("stock").innerHTML = parseInt(data.data[0].is_available) + " No(s)"
+                        // document.getElementById("watchImg").src = data.data[0].image_front
+                        document.getElementById("front").src = data.data[0].image_front
+                        document.getElementById("back").src = data.data[0].image_back
+                        document.getElementById("left").src = data.data[0].image_left
+                        document.getElementById("right").src = data.data[0].image_right
+                        document.getElementById("up").src = data.data[0].image_up
+                        document.getElementById("down").src = data.data[0].image_down
+
+                        document.getElementById("dialsize").textContent = data.data[0].dial_size;
+                        document.getElementById("color").textContent = data.data[0].color;
+                        document.getElementById("weight").textContent = data.data[0].weight;
+                        document.getElementById("bodytype").textContent = data.data[0].body_type;
+                        document.getElementById("Brand").textContent = data.data[0].brand;
+                        if (document.getElementById("battery").textContent = data.data[0].batteries_included == 1) {
+                            document.getElementById("battery").textContent = "Yes"
+                        }
+                        else {
+                            document.getElementById("battery").textContent = "No"
+                        }
+                        document.getElementById("year").textContent = data.data[0].year_of_manufacture;
+                        document.getElementById("warranty").textContent = data.data[0].warranty_period;
+                        document.getElementById("itemcode").textContent = data.data[0].item_code;
+                        if (document.getElementById("displaytype").textContent = data.data[0].display_type == 0) {
+                            document.getElementById("displaytype").textContent = "-"
+                        }
+                        else if (document.getElementById("displaytype").textContent = data.data[0].display_type == 1) {
+                            document.getElementById("displaytype").textContent = "Analog"
+                        }
+                        else {
+                            document.getElementById("displaytype").textContent = "Digital"
+                        }
+
+                        if (document.getElementById("water").textContent = data.data[0].water_resistant == 1) {
+                            document.getElementById("water").textContent = "Yes"
+                        }
+                        else {
+                            document.getElementById("water").textContent = "No"
+                        }
+                        document.getElementById("shape").textContent = data.data[0].shape;
+                        document.getElementById("insidebox").textContent = data.data[0].inside_the_box;
+                        document.getElementById("iprating").textContent = data.data[0].ip_rating;
+                        // document.getElementById("deliveryfee").textContent = data.data[0].delivery_fee;
+
+                        data.data[0].WatchFaceData.forEach((it,index )=> {
+                            if(index == data.data[0].WatchFaceData.length-1){
+                                document.getElementById("watchTitle").innerHTML = data.data[0].name + " &amp; " + data.data[0].model
+                                document.getElementById("desc").innerHTML = "Description : " + it.description
+                                document.getElementById("price").innerHTML = "&#x20b9; " + parseFloat(it.price).toFixed(2)
+                                document.getElementById("stock").innerHTML = parseInt(data.data[0].is_available) + " No(s)"
+                                // document.getElementById("watchImg").src = data.data[0].image_front
+                                document.getElementById("front").src = it.image_front
+                                document.getElementById("back").src = it.image_back
+                                document.getElementById("left").src = it.image_left
+                                document.getElementById("right").src = it.image_right
+                                document.getElementById("up").src = it.image_up
+                                document.getElementById("down").src = it.image_down
+
+                                document.getElementById("dialsize").textContent = it.dial_size;
+                        document.getElementById("color").textContent = it.color;
+                        document.getElementById("weight").textContent = it.weight;
+                        document.getElementById("bodytype").textContent = it.body_type;
+                        document.getElementById("Brand").textContent = it.brand;
+                        if (document.getElementById("battery").textContent = it.batteries_included == 1) {
+                            document.getElementById("battery").textContent = "Yes"
+                        }
+                        else {
+                            document.getElementById("battery").textContent = "No"
+                        }
+                        document.getElementById("year").textContent = it.year_of_manufacture;
+                        document.getElementById("warranty").textContent = it.warranty_period;
+                        document.getElementById("itemcode").textContent = it.item_code;
+                        if (document.getElementById("displaytype").textContent = it.display_type == 0) {
+                            document.getElementById("displaytype").textContent = "-"
+                        }
+                        else if (document.getElementById("displaytype").textContent = it.display_type == 1) {
+                            document.getElementById("displaytype").textContent = "Analog"
+                        }
+                        else {
+                            document.getElementById("displaytype").textContent = "Digital"
+                        }
+
+                        if (document.getElementById("water").textContent = it.water_resistant == 1) {
+                            document.getElementById("water").textContent = "Yes"
+                        }
+                        else {
+                            document.getElementById("water").textContent = "No"
+                        }
+                        document.getElementById("shape").textContent = it.shape;
+                        document.getElementById("insidebox").textContent = it.inside_the_box;
+                        document.getElementById("iprating").textContent = it.ip_rating;
+
+                            }
+                        });
+                    }
+                    else {
+                        alert(data.msg)
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+        getWatchDetails()
+
+        const minus = () => {
+            let qty = document.getElementById("qty")
+            if (qty.value == "1") {
+                alert("Product Quantity must be greater than zero")
+            }
+            else {
+                qty.value = (parseInt(qty.value) - 1).toString()
+            }
+        }
+
+        const plus = () => {
+            let qty = document.getElementById("qty")
+            if (parseInt(qty.value) == maxQty) {
+                alert("Product Quantity exceeds available stock")
+            }
+            else {
+                qty.value = (parseInt(qty.value) + 1).toString()
+            }
+        }
+
+        const checkQty = () => {
+            let qty = document.getElementById("qty")
+            if (parseInt(qty.value) > maxQty) {
+                alert("Product Quantity exceeds available stock")
+                qty.value = maxQty.toString()
+            }
+        }
+
+        const addToCart = () => {
+            let cart = JSON.parse(window.localStorage.getItem("cart"))
+            let a = {}
+            a.wid = window.localStorage.getItem("wid")
+            if (cart != null) {
+                cart.push(a)
+            }
+            else {
+                cart = []
+                cart.push(a)
+            }
+
+            window.localStorage.setItem("cart", JSON.stringify(cart))
+            alert("Item added to Cart Successfully")
+            window.location.href = "./products.html"
+        }
+
+        const BuyNow = () => {
+            let order = []
+            let price = []
+            order.push(document.getElementById("qty").value)
+            price.push(document.getElementById("price").innerHTML.toString().replace("Price : ", "").slice(1))
+            window.localStorage.setItem("orderQty", JSON.stringify(order))
+            window.localStorage.setItem("maxQty", maxQty)
+            window.localStorage.setItem("price", JSON.stringify(price))
+            window.location.href = './order-add-address.html'
+        }
+
+        const getWatchFaces = () => {
+            let url = "../api/get-watch-face.php"
+            let body = JSON.stringify({
+                wid: window.localStorage.getItem("wid")
+            })
+            fetch(url, {
+                body: body,
+                method: "POST"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+
+                    }
+                    else {
+                        alert(data.msg)
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+
+    </script>
+
+
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/sidebarmenu.js"></script>
+    <script src="../assets/js/app.min.js"></script>
+    <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+
+</body>
+
+</html>

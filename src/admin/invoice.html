@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en, id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/invoice.css" />
+  </head>
+  <body>
+    <section class="wrapper-invoice">
+      <!-- switch mode rtl by adding class rtl on invoice class -->
+      <div class="invoice">
+        <div class="invoice-information">
+          <p><b>Order No #</b> : <span id="invoiceNo"></span></p>
+          <p><b>Payment Mode</b> : Cash</p>
+          <p><b>Created Date </b>: <span id="invoiceDate"></span></p>
+        </div>
+        <!-- logo brand invoice -->
+        <div class="invoice-logo-brand">
+          <!-- <h2>Tampsh.</h2> -->
+          <img src="../assets/images/logos/favicon.png" alt="" />
+        </div>
+        <!-- invoice head -->
+        <div class="invoice-head">
+          <div class="head client-info">
+            <p>Ascentya Research & Development Solutions</p>
+            <p>Amanjikarai,Nelson Manikkam Road</p>
+            <p>Chennai - 600045</p>
+          </div>
+          <div class="head client-data">
+            <p id="to"></p>
+            <p id="mobile">Ph No - 999887650</p>
+            <p style="text-align: end;padding-left: 30%;" id="address">No 18, Usman Road,T-Nagar</p>
+          </div>
+        </div>
+        <!-- invoice body-->
+        <div class="invoice-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Item Description</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody id="items"></tbody>
+          </table>
+          <div class="flex-table">
+            <div class="flex-column"></div>
+            <div class="flex-column">
+              <table class="table-subtotal">
+                <tbody id="totalTable">
+                  <tr>
+                    <td>Price</td>
+                    <td id="price"></td>
+                  </tr>
+                  <tr>
+                    <td>GST (18%)</td>
+                    <td id="gst"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- invoice total  -->
+          <div class="invoice-total-amount">
+            <p id="total">Total : Rs.12,800</p>
+          </div>
+        </div>
+        <!-- invoice footer -->
+        <div class="invoice-footer">
+          <p>Thankyou, Happy shopping again</p>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const getOrder = () => {
+        let url = "../api/get-orders-web.php";
+        let body = JSON.stringify({
+          token: window.localStorage.getItem("authToken"),
+        });
+
+        fetch(url, {
+          method: "POST",
+          body: body,
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            data.data.forEach((order) => {
+              if (window.localStorage.getItem("orderId") == order.order_id) {
+                document.getElementById("invoiceNo").innerHTML =
+                  "ASCARC00" + order.order_id;
+                document.getElementById("invoiceDate").innerHTML =
+                  order.ordered_at;
+                document.getElementById("to").innerHTML =
+                  "<b>To : <br></b>" + order.productDetails[0].userDetails.u_name;
+                document.getElementById("address").innerHTML =
+                  "<b>Address : <br></b>" +
+                  order.productDetails[0].userDetails.shipping_address;
+                document.getElementById("mobile").innerHTML =
+                  "<b>Mobile : <br></b>+91 " +
+                  order.productDetails[0].userDetails.mobile;
+                let row = ``;
+                let total = parseFloat(0);
+                order.productDetails.forEach((detail) => {
+                  row += `
+                      <tr>
+                          <td>${detail.watchDetails.name}</td>
+                          <td>${parseFloat(
+                            detail.watchDetails.base_price
+                          ).toFixed(2)}</td>
+                      </tr>
+                    `;
+                  total = (
+                    parseFloat(total) +
+                    parseFloat(detail.watchDetails.base_price)
+                  ).toFixed(2);
+                });
+                document.getElementById("items").innerHTML = row;
+                document.getElementById("price").innerHTML = total;
+                document.getElementById("gst").innerHTML = (
+                  parseFloat(total) * parseFloat(0.18)
+                ).toFixed(2);
+                document.getElementById("total").innerHTML = "Total amount to be paid: "+(
+                  parseFloat(total) + parseFloat((18 / 100) * parseFloat(total))
+                ).toFixed(2);
+              }
+            });
+          });
+      };
+
+      getOrder();
+    </script>
+  </body>
+</html>

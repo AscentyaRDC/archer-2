@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product Details</title>
+  <link rel="shortcut icon" type="image/png" href="./src/assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="./src/assets/css/styles.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <style>
+    .container {
+      border: 1px solid #DDDDDD;
+      width: 100%;
+      min-height: 200px;
+      position: relative;
+    }
+
+    .tag {
+      float: left;
+      left: 0px;
+      top: 0px;
+      z-index: 1000;
+      position: absolute;
+      background-color: transparent;
+      padding: 5px;
+      color: #FFFFFF;
+      font-weight: bold;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar">
+      <!-- Sidebar scroll-->
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./products.html" class="text-nowrap logo-img">
+            <img src="./src/assets/images/logos/favicon.png" width="180" alt="" />
+          </a>
+          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+            <i class="ti ti-x fs-8"></i>
+          </div>
+        </div>
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+          <ul id="sidebarnav">
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Home</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./products.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Products</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./cart.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Cart</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./favourites.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Favourites</span>
+              </a>
+            </li>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Menu</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./profile.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Profile</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./orders.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-alert-circle"></i>
+                </span>
+                <span class="hide-menu">Orders</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./feedback.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-cards"></i>
+                </span>
+                <span class="hide-menu">Feedback</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./ratings.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file-description"></i>
+                </span>
+                <span class="hide-menu">Ratings</span>
+              </a>
+            </li>
+
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Settings</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./support.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-menu"></i>
+                </span>
+                <span class="hide-menu">Support</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./login.html" aria-expanded="false"
+                style="margin-bottom: 10vh; color: rgba(255, 0, 0, 0.5);">
+                <span>
+                  <i class="ti ti-login"></i>
+                </span>
+                <span class="hide-menu">Logout</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+      </div>
+      <!-- End Sidebar scroll-->
+    </aside>
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <!--  Header Start -->
+      <header class="app-header">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <ul class="navbar-nav"></ul>
+          <div style="width: 100% ;padding: 5px;display: flex;">
+            <input style="width: 90%;background-color: white;border-radius: 10px;padding: 10px;" type="text"
+              onchange="getWatches()" onkeyup="this.onchange();" id="searchInput" placeholder="Search Products">
+            <button type="submit" class="btn btn-warning" id="search" onclick="getWatches()"
+              style=" font-weight: 700;margin-left: 10px;margin-right: 10px;">
+              Search
+            </button>
+          </div>
+        </nav>
+      </header>
+      <!--  Header End -->
+      <div class="container-fluid">
+        <div style="margin-top: 20px;" id="list" class="row"></div>
+      </div>
+    </div>
+  </div>
+  <script src="./src/assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="./src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./src/assets/js/sidebarmenu.js"></script>
+  <script src="./src/assets/js/app.min.js"></script>
+  <script src="./src/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+  <script src="./src/assets/libs/simplebar/dist/simplebar.js"></script>
+  <script src="./src/assets/js/dashboard.js"></script>
+
+  <script>
+    const getWatches = () => {
+      const url = "src/api/get-watches.php";
+      const body = JSON.stringify({
+        token: window.localStorage.getItem("authToken"),
+      });
+      fetch(url, {
+        method: "POST",
+        body: body,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success) {
+
+
+
+            let rows = ``;
+            const list = document.getElementById("list");
+            data.data.forEach((it, i) => {
+              let heart = `<span onclick="addFav(${it.wid})"><svg  xmlns="http://www.w3.org/2000/svg"  width="50"  height="50"  viewBox="0 0 24 24"  fill="none"  stroke="#ff2600"  stroke-width="1"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-heart tag"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" /></svg> </span>`;
+              let heartFilled = `<span onclick="removeFav(${it.wid})"><svg  xmlns="http://www.w3.org/2000/svg"  width="50"  height="50"  viewBox="0 0 24 24"  fill="#ff2600"  class="icon icon-tabler icons-tabler-filled icon-tabler-heart tag"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6.979 3.074a6 6 0 0 1 4.988 1.425l.037 .033l.034 -.03a6 6 0 0 1 4.733 -1.44l.246 .036a6 6 0 0 1 3.364 10.008l-.18 .185l-.048 .041l-7.45 7.379a1 1 0 0 1 -1.313 .082l-.094 -.082l-7.493 -7.422a6 6 0 0 1 3.176 -10.215z" /></svg></span>`
+
+              let fav = heart;
+              if (it.user_fav != null) {
+
+                if (it.user_fav.includes(window.localStorage.getItem("mobile"))) {
+                  fav = heartFilled
+                } else {
+                  fav = heart
+                }
+              }
+              if (document.getElementById("searchInput").value != "") {
+                if (it.name.toLowerCase().includes(document.getElementById("searchInput").value.toLowerCase())
+                  || it.model.toLowerCase().includes(document.getElementById("searchInput").value.toLowerCase())) {
+                  rows += `
+                  <div class="col-sm-6 col-xl-3" style="height:100%;">
+                    <div class="card overflow-hidden rounded-2">
+                      <div class="container">
+                      
+                        <a href="javascript:void(0)">
+                          <img
+                            style="width:100%;height:200px";
+                            src="${it.image_front}"
+                            class="card-img-top rounded-0 tag"
+                          />
+                          ${fav}
+                        </a>
+                      </div>
+
+                      <div class="card-body pt-3 p-4">
+                        <h6 class="fw-regular fs-4">Watch Name: ${it.name}</h6>
+                        <h6 class="fw-regular fs-4">Watch Model: ${it.model}</h6>
+                        <h6 class="fw-regular fs-4">Price: &#8377 ${it.base_price}</h6>
+                      </div>
+                      <div style="display:flex;margin: auto auto;width:100%;">
+                        <button style="margin:5px;width:95%" onclick="getId(${it.wid})" class="btn btn-primary">View Details</button>
+                      </div>
+                    </div>
+                  </div>
+                  `;
+                  if ((i + 1) % 4 == 0) {
+                    rows += `<hr>`;
+                  }
+                }
+              }
+              else {
+                rows += `
+                <div class="col-sm-6 col-xl-3" style="height:100%;">
+                  <div class="card overflow-hidden rounded-2">
+                    <div class="container">
+                     
+                      <a href="javascript:void(0)">
+                        <img
+                          style="width:100%;height:200px";
+                          src="${it.image_front}"
+                          class="card-img-top rounded-0 tag"
+                        />
+                        ${fav}
+                      </a>
+                     </div>
+                    <div class="card-body pt-3 p-4">
+                      <h6 class="fw-regular fs-4">Watch Name: ${it.name}</h6>
+                      <h6 class="fw-regular fs-4">Watch Model: ${it.model}</h6>
+                      <h6 class="fw-regular fs-4">Price: &#8377 ${it.base_price}</h6>
+                    </div>
+                     <div style="display:flex;margin: auto auto;width:100%;">
+                      <button style="margin:5px;width:95%" onclick="getId(${it.wid})" class="btn btn-primary">View Details</button>
+                    </div>
+                  </div>
+                </div>
+                `;
+                if ((i + 1) % 4 == 0) {
+                  rows += `<hr>`;
+                }
+              }
+            });
+            list.innerHTML = rows;
+            if (rows == ``)
+              alert("No Records Found")
+          } else {
+            alert(data.msg);
+          }
+        });
+    };
+    getWatches();
+
+    const getId = (watchId) => {
+      window.localStorage.setItem("wid", watchId);
+      window.location.href = "./archer-product.html"
+    }
+
+    const addFav = (id) => {
+      checkFavourites(id, 0)
+    }
+
+    const removeFav = (id) => {
+      checkFavourites(id, 1)
+    }
+
+    const checkFavourites = (wid, operation) => {
+      let url = "src/api/add-user-fav.php"
+      let body = JSON.stringify({
+        watchId: wid,
+        token: window.localStorage.getItem("authToken"),
+        operation: operation
+      })
+      fetch(url, {
+        body: body,
+        method: "POST"
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            window.location.href = "./products.html"
+          }
+        })
+    }
+  </script>
+</body>
+
+</html>

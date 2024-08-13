@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Change Logo</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/styles.min.css" />
+  <!-- Include SimpleBar CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplebar/5.3.6/simplebar.min.css" />
+  <!-- Include SimpleBar JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/5.3.6/simplebar.min.js"></script>
+
+  <style>
+    /* Ensure the sidebar takes the full height of the viewport */
+    .sidebar-container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      /* Full viewport height */
+    }
+
+    .brand-logo-container {
+      flex: 0 0 auto;
+      /* Fixed height for the logo container */
+      padding: 10px;
+      /* Optional: Adjust padding as needed */
+      background: #fff;
+      /* Optional: Background color for the logo section */
+      z-index: 1;
+      /* Ensure it stays above the scrollable content */
+    }
+
+    .scroll-sidebar {
+      flex-grow: 1;
+      /* Allow the nav to grow and take available space */
+      overflow-y: auto;
+      /* Enable vertical scrolling */
+      z-index: 0;
+      /* Ensure it stays below the logo section */
+      scrollbar-width: none;
+      /* For Firefox */
+    }
+
+    .scroll-sidebar::-webkit-scrollbar {
+      display: none;
+      /* For Chrome, Safari, and Opera */
+    }
+  </style>
+
+</head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar">
+      <!-- Sidebar scroll-->
+      <div class="sidebar-container">
+        <div class="brand-logo-container">
+          <div class="brand-logo d-flex align-items-center justify-content-between">
+            <a href="./products.html" class="text-nowrap logo-img">
+              <img src="../assets/images/logos/favicon.png" width="180" alt="Logo" />
+            </a>
+            <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+              <i class="ti ti-x fs-8"></i>
+            </div>
+          </div>
+        </div>
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar>
+          <ul id="sidebarnav">
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Home</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./products.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Products</span>
+              </a>
+            </li>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Menu</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./profile.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Profile</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./orders.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-alert-circle"></i>
+                </span>
+                <span class="hide-menu">Orders</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./feedback.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-cards"></i>
+                </span>
+                <span class="hide-menu">Feedback</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./ratings.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file-description"></i>
+                </span>
+                <span class="hide-menu">Ratings</span>
+              </a>
+            </li>
+
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Settings</span>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./change-logo.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-settings"></i>
+                </span>
+                <span class="hide-menu">Settings</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./add-offer.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file-description"></i>
+                </span>
+                <span class="hide-menu">Offers</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./login.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-login"></i>
+                </span>
+                <span class="hide-menu">Logout</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+      </div>
+      <!-- End Sidebar scroll-->
+    </aside>
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <div>
+        <div class="card">
+          <div class="card-body">
+            <h2 style="width: 100%; text-align: center;">Settings</h2>
+            <div class="card">
+              <div class="card-body">
+                <!--Form Starting Here-->
+                <form>
+                  <p style="text-align: center;">*You can change your Logo or Login Background Here</p>
+                  <div style="display: flex; justify-content: space-around;">
+                    <!-- First Image Upload Field -->
+                    <div style="margin-right: 20px;">
+                      <div class="image-container">
+                        <div class="imagePreview" id="image_back1" style="border-radius: 5px;">
+                          <h4 style="text-align: center;">Current Logo</h4>
+                          <img src="../assets/images/logos/favicon.png" id="logo" alt="Default Image"
+                            style="width: 160px; height: 160px; cursor: pointer;"
+                            onclick="document.getElementById('logo_upload').click()">
+                        </div>
+
+                        <label for="logo_upload" style="margin-left: 40px; display: none;" class="btn btn-warning">
+                          Update<input type="file" id="logo_upload" class="uploadFile img" value="Upload Photo"
+                            onchange="handleFileUpload(this, 'logo')">
+                        </label>
+                        <button class="btn btn-primary" style="margin-left: 40px;" type="button"
+                          onclick="updatelogo()">Update</button>
+                        <span id="watchfile2_error" style="color: red; text-align: center;" class="error"></span>
+                      </div>
+                    </div>
+
+                    <!-- Second Image Upload Field -->
+                    <div>
+                      <div class="image-container">
+                        <div class="imagePreview" style="border-radius: 5px;">
+                          <h4 style="text-align: center;">Current Login Background</h4>
+                          <img src="../assets/images/backgrounds/bg.png" id="background" alt="Default Image"
+                            style="width: 160px; height: 160px; margin-left: 40px; cursor: pointer;"
+                            onclick="document.getElementById('bg_upload').click();">
+                        </div>
+                        <label for="bg_upload" style="margin-left: 80px;display: none;" class="btn btn-warning">
+                          Choose File<input type="file" id="bg_upload" class="uploadFile img" value="Upload Photo"
+                            onchange="handleFileUpload(this,'background')">
+                        </label>
+                        <button class="btn btn-primary" style="margin-left: 80px;" type="button"
+                          onclick="updatebg()">Update</button>
+
+                        <span id="background_error" style="color: red; text-align: center;" class="error"></span>
+                      </div>
+
+
+
+
+                    </div>
+                  </div>
+                  <!--Submit Button Here-->
+                  <!-- <div style="display: flex; justify-content: center;">
+                                    <button type="button" class="btn btn-primary" style="margin-top: 20px; margin-right: 10px;" onclick="window.location.href ='./edit-watch.html'">
+                                        Cancel
+                                    </button>
+                                    <button type="button" class="btn btn-primary" style="margin-top: 20px;" onclick="validateForm()">
+                                        Save
+                                    </button>
+                                </div> -->
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function triggerFileInput() {
+
+      document.getElementById('bg_upload').click();
+
+    }
+
+    function handleFileUpload(input, imageId) {
+      var file = input.files[0];
+      var image = document.getElementById(imageId);
+      var errorSpan = document.getElementById(imageId + '_error');
+
+      if (file) {
+        if (file.type.match('image.*')) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            image.src = e.target.result;
+
+          };
+          reader.readAsDataURL(file);
+        } else {
+          image.src = '';
+          errorSpan.textContent = 'Please upload an image file.';
+          input.value = '';
+        }
+      } else {
+        image.src = '';
+        errorSpan.textContent = 'No file selected.';
+      }
+    }
+
+    function updatelogo() {
+
+      const logo = document.getElementById("logo_upload");
+      const apiUrl = "../api/update-logo.php";
+      const body = new FormData();
+      body.append("token", window.localStorage.getItem("authToken"))
+      body.append("logo", logo.files[0])
+
+      fetch(apiUrl, {
+        body: body,
+        method: "POST"
+
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            alert(data.msg)
+          }
+          else {
+            alert(data.msg)
+          }
+        });
+    }
+
+    function updatebg() {
+      const logo = document.getElementById("bg_upload");
+      const apiUrl = "../api/update-login-bg.php";
+      const body = new FormData();
+      body.append("token", window.localStorage.getItem("authToken"))
+      body.append("bg", logo.files[0])
+
+      fetch(apiUrl, {
+        body: body,
+        method: "POST"
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            alert(data.msg)
+          }
+          else {
+            alert(data.msg)
+          }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      new SimpleBar(document.querySelector('.scroll-sidebar'), { autoHide: false });
+    });
+
+  </script>
+</body>
+
+</html>

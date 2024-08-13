@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Order Details</title>
+  <link rel="shortcut icon" type="image/png" href="./src/assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="./src/assets/css/styles.min.css" />
+  <style>
+    #myInput {
+      background-image: url("/css/searchicon.png");
+      background-position: 10px 10px;
+      background-repeat: no-repeat;
+      width: 50%;
+      float: right;
+      font-size: 16px;
+      padding: 12px 20px 12px 40px;
+      border: 1px solid #ddd;
+      margin-bottom: 20px;
+      margin-top: 20px;
+    }
+
+    /* Ensure the sidebar takes the full height of the viewport */
+    .sidebar-container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      /* Full viewport height */
+    }
+
+    .brand-logo-container {
+      flex: 0 0 auto;
+      /* Fixed height for the logo container */
+      padding: 10px;
+      /* Optional: Adjust padding as needed */
+      background: #fff;
+      /* Optional: Background color for the logo section */
+      z-index: 1;
+      /* Ensure it stays above the scrollable content */
+    }
+
+    .scroll-sidebar {
+      flex-grow: 1;
+      /* Allow the nav to grow and take available space */
+      overflow-y: auto;
+      /* Enable vertical scrolling */
+      z-index: 0;
+      /* Ensure it stays below the logo section */
+      scrollbar-width: none;
+      /* For Firefox */
+    }
+
+    .scroll-sidebar::-webkit-scrollbar {
+      display: none;
+      /* For Chrome, Safari, and Opera */
+    }
+  </style>
+</head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar">
+      <!-- Sidebar scroll-->
+      <div class="sidebar-container">
+        <div class="brand-logo-container">
+          <div class="brand-logo d-flex align-items-center justify-content-between">
+            <a href="./products.html" class="text-nowrap logo-img">
+              <img src="./src/assets/images/logos/favicon.png" width="180" alt="Logo" />
+            </a>
+            <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+              <i class="ti ti-x fs-8"></i>
+            </div>
+          </div>
+        </div>
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar>
+          <ul id="sidebarnav">
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Home</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./products.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Products</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./cart.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Cart</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./favourites.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Favourites</span>
+              </a>
+            </li>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Menu</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./profile.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Profile</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./orders.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-alert-circle"></i>
+                </span>
+                <span class="hide-menu">Orders</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./feedback.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-cards"></i>
+                </span>
+                <span class="hide-menu">Feedback</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./ratings.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file-description"></i>
+                </span>
+                <span class="hide-menu">Ratings</span>
+              </a>
+            </li>
+
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Settings</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./support.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-menu"></i>
+                </span>
+                <span class="hide-menu">Support</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./login.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-login"></i>
+                </span>
+                <span class="hide-menu">Logout</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+      </div>
+      <!-- End Sidebar scroll-->
+    </aside>
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <!--  Header Start -->
+
+      <!--  Header End -->
+
+      <div>
+
+        <div class="row">
+
+          <div class="card">
+            <div class="card-body">
+              <h1 class="card-title align-items-center text-center">
+                Order Details
+              </h1>
+              <div>
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Order ID"
+                  title="Type in a name" />
+              </div>
+              <table id="table" class="table table-hover table-responsive mb-0 align-middle">
+                <thead style="background-color: #5d87ff; color: white">
+                  <tr>
+                    <th>#</th>
+                    <th>Order ID</th>
+                    <th>User Name</th>
+                    <th>Watch Name</th>
+                    <th>Price</th>
+                    <th>Customization Price</th>
+                    <th>GST</th>
+                    <th>Total Price</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
+                    <th>Ordered Date</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody" style="background-color: white"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./src/assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="./src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./src/assets/js/sidebarmenu.js"></script>
+  <script src="./src/assets/js/app.min.js"></script>
+  <script src="./src/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+  <script src="./src/assets/libs/simplebar/dist/simplebar.js"></script>
+  <script src="./src/assets/js/dashboard.js"></script>
+
+  <script>
+    const getFeedBack = () => {
+      const url = "src/api/get-orders-v2.php";
+      const body = JSON.stringify({
+        token: window.localStorage.getItem("authToken"),
+      });
+      fetch(url, {
+        method: "POST",
+        body: body,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success) {
+            const d = data.data;
+            let temp = 0;
+            let rows = "";
+            d.forEach((order, index) => {
+              order.productDetails.forEach((detail, it) => {
+                temp++;
+                // const totalGst = (parseInt(detail.watch_face_id) === 0) ? 0 : (parseInt(detail.watch_face_id) === 1) ? 36 : 18;
+                // const gstAmount = (parseInt(detail.price) * totalGst) / 100;
+                // const calculatedPrice = parseInt(detail.price) + gstAmount;
+                let totalGst = 0;
+                let calculatedPrice = 0;
+                let tempRow = ``;
+                if (detail.watchFaceDetails != null) {
+                  tempRow = `<td>${detail.watchFaceDetails.price}</td>`;
+                  totalGst = parseFloat(detail.watchFaceDetails.price) * 0.18;
+                  calculatedPrice =
+                    (totalGst + parseFloat(detail.watchFaceDetails.price)) *
+                    order.qty[it];
+                } else {
+                  tempRow = `<td>0</td>`;
+                  totalGst =
+                    parseFloat(detail.watchDetails.base_price) * 0.18;
+                  calculatedPrice =
+                    (totalGst + parseFloat(detail.watchDetails.base_price)) *
+                    order.qty[it];
+                }
+                let whiteRow = `<tr style="background-color: #5d87ff40">`;
+                let redRow = `<tr style="background-color: #ffcc0040">`;
+                if (index % 2 != 0) {
+                  rows += whiteRow;
+                } else {
+                  rows += redRow;
+                }
+                rows +=
+                  `
+                                <td>${temp}</td>
+                                <td>ASCARC00${order.order_id}</td>
+                                <td>${detail.userDetails.u_name}</td>
+                                <td>${detail.watchDetails.name}</td>
+                                <td>${detail.watchDetails.base_price}</td>` +
+                  tempRow +
+                  `
+                                <td>${parseFloat(totalGst).toFixed(2)}</td>
+                                 <td>${parseFloat(calculatedPrice).toFixed(
+                    2
+                  )}</td>
+                                <td>${order.qty[it]}</td>
+                                <td>${order.status}</td>
+                                <td>${order.ordered_at}</td>
+                                <td><button data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="return getId(this)" class="btn btn-success">View Invoice</button></td>
+                            </tr>`;
+              });
+            });
+            // d.forEach((itemData, index) => {
+            //   itemData.productDetails.forEach((it, i) => {
+            //     temp += "<tr>";
+            //     temp += "<td>" + count.toString() + "</td>";
+            //     count++;
+            //     temp += "<td>" + it.userDetails.u_name + "</td>";
+            //     temp += "<td>" + it.watchDetails.name + "</td>";
+            //     temp += "<td>" + it.watchDetails.base_price + "</td>";
+            //     temp += "<td>" + it.watchFaceDetails.price + "</td>";
+            //     temp += "<td>" + it.watchFaceDetails.price + "</td>";
+            //     temp += "<td>" + it.watchFaceDetails.price + "</td>";
+            //     temp += "<td>" + itemData.qty + "</td>";
+            //     temp += "</tr>";
+            //   });
+            // });
+            document.getElementById("tbody").innerHTML = rows;
+          } else {
+            alert(data.msg);
+          }
+        });
+    };
+
+    getFeedBack();
+
+    function myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("table");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+          txtValue = td.textContent.trim() || td.innerText.trim();
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      new SimpleBar(document.querySelector('.scroll-sidebar'), { autoHide: false });
+    });
+  </script>
+</body>
+
+</html>
