@@ -309,8 +309,7 @@
                       </div>
 
                     </div>
-
-                    <div class="customizations">
+                    <!-- <div class="customizations">
                       <div class="customization-header" onclick="toggleCustomizations(this)">
                         <h5><span>Watch Specifications</span></h5>
                         <span class="expand-btn">+</span>
@@ -414,8 +413,7 @@
                         </div>
 
                       </div>
-                    </div>
-
+                    </div> -->
                   </div>
 
                   <div style="display: flex; margin-top: 40px;">
@@ -445,49 +443,49 @@
   <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
 
   <script>
-    const getDetails = () => {
-      const apiUrl = '../api//get-indi-watch.php';
-      const body = JSON.stringify({
-        "wid": window.localStorage.getItem("wid"),
-        "token": window.localStorage.getItem("authToken")
-      })
-      fetch(apiUrl, {
-        method: "POST",
-        body: body,
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-        .then(res => res.json())
-        .then(data => {
-          document.getElementById("dialsize").value = data.data[0].dial_size
-          document.getElementById("color").value = data.data[0].color
-          document.getElementById("weight").value = data.data[0].weight
-          document.getElementById("bodytype").value = data.data[0].body_type
-          document.getElementById("Brand").value = data.data[0].brand
-          document.getElementById("battery").value = data.data[0].batteries_included
-          document.getElementById("year").value = data.data[0].year_of_manufacture
-          document.getElementById("warranty").value = data.data[0].warranty_period
-          document.getElementById("itemcode").value = data.data[0].item_code
-          document.getElementById("displaytype").value = data.data[0].display_type
-          document.getElementById("water").value = data.data[0].water_resistant
-          document.getElementById("shape").value = data.data[0].shape
-          document.getElementById("insidebox").value = data.data[0].inside_the_box
-          document.getElementById("iprating").value = data.data[0].ip_rating
-          document.getElementById("deliveryfee").value = data.data[0].delivery_fee
+    // const getDetails = () => {
+    //   const apiUrl = '../api//get-indi-watch.php';
+    //   const body = JSON.stringify({
+    //     "wid": window.localStorage.getItem("wid"),
+    //     "token": window.localStorage.getItem("authToken")
+    //   })
+    //   fetch(apiUrl, {
+    //     method: "POST",
+    //     body: body,
+    //     headers: {
+    //       "Content-Type": "application/json"
+    //     }
+    //   })
+    //     .then(res => res.json())
+    //     .then(data => {
+    //       document.getElementById("dialsize").value = data.data[0].dial_size
+    //       document.getElementById("color").value = data.data[0].color
+    //       document.getElementById("weight").value = data.data[0].weight
+    //       document.getElementById("bodytype").value = data.data[0].body_type
+    //       document.getElementById("Brand").value = data.data[0].brand
+    //       document.getElementById("battery").value = data.data[0].batteries_included
+    //       document.getElementById("year").value = data.data[0].year_of_manufacture
+    //       document.getElementById("warranty").value = data.data[0].warranty_period
+    //       document.getElementById("itemcode").value = data.data[0].item_code
+    //       document.getElementById("displaytype").value = data.data[0].display_type
+    //       document.getElementById("water").value = data.data[0].water_resistant
+    //       document.getElementById("shape").value = data.data[0].shape
+    //       document.getElementById("insidebox").value = data.data[0].inside_the_box
+    //       document.getElementById("iprating").value = data.data[0].ip_rating
+    //       document.getElementById("deliveryfee").value = data.data[0].delivery_fee
 
-          if (data.success) {
+    //       if (data.success) {
 
-          }
-          else {
-            alert(data.msg)
-          }
-        })
-        .catch(err => {
-          console.log(err);
-        })
-    }
-    getDetails()
+    //       }
+    //       else {
+    //         alert(data.msg)
+    //       }
+    //     })
+    //     .catch(err => {
+    //       console.log(err);
+    //     })
+    // }
+    // getDetails()
 
     const redirectToAnotherPage = () => {
       window.location.href = 'edit-watch.html';

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Editor Template</title>
+    <title>Archer New</title>
     <style>
         * {
             margin: 0;
@@ -65,8 +65,8 @@
 
         .image-preview {
             border: 2px solid #ccc;
-            width: 80%;
-            height: 60%;
+            width: 90%;
+            height: 80%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -159,8 +159,12 @@
     </div>
     <div class="container">
         <div class="editor">
-            <div class="image-preview">
-                <img id="preview-image" src="your-image-path.jpeg" alt="Preview">
+            <!-- <div class="image-preview">
+                <img id="preview-image" src="./src/assets/images/profile/watch.png" alt="Preview">
+            </div> -->
+            <div class="left-column" style="height: 350px; width: 350px; margin-top: 40px;">
+                <img data-image="red" class="active" src="./src/assets/images/profile/sample.png" alt=""
+                    style="height: 350px; width: 350px;" id="front">
             </div>
         </div>
         <div class="sidebar">

@@ -14,7 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 } else {
     $name = $_POST["name"];
     $price = $_POST["price"];
-    $watch_id = $_POST["watch_id"];
 
     $image_front_name = $_FILES["image_front"]["name"];
     $image_front_tmp_name = $_FILES["image_front"]["tmp_name"];
@@ -25,9 +24,10 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
     if (move_uploaded_file($image_front_tmp_name, $image_front_path)) {
         // Prepare the insert statement
-        $query = "INSERT INTO strap (name, price, image_url, watch_id, created_by, is_available) VALUES (?, ?, ?, ?, 1, 20)";
+        $query = "INSERT INTO strap (name, price, image_url, created_by, is_available) VALUES (?, ?, ?, 1, 20)";
         if ($stmt = $conn->prepare($query)) {
-            $stmt->bind_param("sdsi", $name, $price, $image_front_path, $watch_id);
+            // Corrected bind_param - only three parameters to bind
+            $stmt->bind_param("sds", $name, $price, $image_front_path);
             if ($stmt->execute()) {
                 // Record inserted successfully
                 $res["success"] = true;

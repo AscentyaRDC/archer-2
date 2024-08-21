@@ -207,93 +207,62 @@
       window.location.href = 'add-customization.html'; // Replace 'another_page.html' with the URL of your destination page
     }
     const getDialDetails = () => {
-      let url = "../api/get-indi-watch.php"
+      let url = "../api/get-hands.php";
       let body = JSON.stringify({
-        wid: window.localStorage.getItem("wid"),
         token: window.localStorage.getItem("authToken")
-      })
+      });
 
       fetch(url, {
         method: "POST",
-        body: body
-      })
-        .then(res => res.json())
-        .then(data => {
-          if (data.success) {
-            if (data.data[0].combination == null) {
-              getDial();
-              return true
-            }
-            data.data[0].combination.hand.forEach(it => {
-              combinationArray.push(it)
-            })
-            getDial();
-          }
-          else {
-            alert("Something went wrong")
-          }
-        })
-    }
-
-    const getDial = () => {
-      let li = ``;
-      fetch("../api/get-hands.php", {
-        method: "POST",
-        body: JSON.stringify({
-          "token": localStorage.getItem("authToken"),
-          "watch_id":window.localStorage.getItem("wid"),
-        }),
+        body: body,
         headers: {
           "Content-Type": "application/json"
         }
       })
-        .then((response) => response.json())
-        .then((json) => {
-          if (json.success == false) {
-            alert(json.msg)
-          }
-          else {
-            let t = json.data;
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            let t = data.data;
+            let li = ``;
             t.forEach((user, index) => {
-              let unchecked = `<td><input type=  "checkbox" id="${user.hid}"  name="dialId" onclick="return addDials(this) "></td>`
-              let checked = `<td><input type=  "checkbox" id="${user.hid}"  name="dialId" onclick="return addDials(this)" checked></td>`
+              let unchecked = `<td><input type="checkbox" id="${user.hid}" name="dialId" onclick="return addDials(this)"></td>`;
+              let checked = `<td><input type="checkbox" id="${user.hid}" name="dialId" onclick="return addDials(this)" checked></td>`;
 
-              let ischecked = unchecked
+              let ischecked = unchecked;
               if (window.localStorage.getItem("cHandId") != null) {
-                let json = JSON.parse(window.localStorage.getItem("cHandId"))
+                let json = JSON.parse(window.localStorage.getItem("cHandId"));
+
                 json.forEach(it => {
                   if (it.id == user.hid) {
-                    ischecked = checked
-                    temp.push(it)
+                    ischecked = checked;
+                    temp.push(it);
                   }
                 });
-              }
-              else {
+              } else {
                 combinationArray.forEach((it, index) => {
                   if (it.id == user.hid) {
-                    ischecked = checked
-                    temp.push(it)
-
+                    ischecked = checked;
+                    temp.push(it);
                   }
                 });
               }
               li += `<tr>
-                  <td>
-                    <h5>${user.name}</h5>
-                  </td>
-                  <td><img src="${user.image_url}"
-                      style="height: 90px; width: 90px; margin: 15px;" /></td>
-                  <td>
-                    <h5>$${user.price}</h5>
-                  </td>
-                  ${ischecked}
-                </tr>`
-
-            })
-            document.getElementById("tbody").innerHTML = li
+                          <td><h5>${user.name}</h5></td>
+                          <td><img src="${user.image_url}" style="height: 90px; width: 90px; margin: 15px;" /></td>
+                          <td><h5>₹${user.price}</h5></td>
+                          ${ischecked}
+                       </tr>`;
+            });
+            document.getElementById("tbody").innerHTML = li;
+          } else {
+            alert("Failed to load hands: " + data.msg);
           }
         })
-    }
+        .catch(err => {
+          console.log("Error:", err);
+          alert("There was an error processing your request. Please try again.");
+        });
+    };
 
     getDialDetails();
     const addDials = (element) => {

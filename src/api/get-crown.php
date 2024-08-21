@@ -1,58 +1,46 @@
 <?php
-
 require("./conn.php");
+
 $inputJSON = file_get_contents('php://input');
-$input = json_decode($inputJSON, TRUE); //convert JSON into array
+$input = json_decode($inputJSON, TRUE); // Convert JSON into an array
 $token = $input["token"];
-$watch_id = $input["watch_id"]; // Get the watch_id from input
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "Method Not Allowed";
+    exit();
 }
-else{
-    $sql = "SELECT `token` FROM `user` WHERE `token` = '$token'";
+
+$sql = "SELECT `token` FROM `user` WHERE `token` = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $token);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+    $data = array();
+    // Query to fetch available dials only
+    $sql = "SELECT * FROM `crowns` WHERE `is_available` > 1";
     $result = $conn->query($sql);
-    if($result->num_rows > 0){
     
-        $data = array();
-        $sql = "SELECT * FROM `crowns` WHERE `watch_id` = '$watch_id'";
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
-                    $row["image_url"] = $base . substr($row["image_url"],1);
-                    array_push($data,$row);
-            }
-            $res["success"] = true;
-            $res["msg"] = "List of crowns";
-            $res["data"] = $data;
-
-            $out = json_encode($res);
-
-            echo $out;
-
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $row["image_url"] = $base . substr($row["image_url"], 1);
+            array_push($data, $row);
         }
-        else{
-
-            $res["success"] = false;
-            $res["msg"] = "no crowns found";
-            $res["data"] = [];
-
-            $out = json_encode($res);
-
-            echo $out;
-        }
-    }
-    else{
+        $res["success"] = true;
+        $res["msg"] = "List of available crowns";
+        $res["data"] = $data;
+    } else {
         $res["success"] = false;
-        $res["msg"] = "Not a Valid token";
+        $res["msg"] = "No available crowns found";
         $res["data"] = [];
-
-        $out = json_encode($res);
-        echo $out;
     }
-  
+} else {
+    $res["success"] = false;
+    $res["msg"] = "Invalid token";
+    $res["data"] = [];
 }
 
+echo json_encode($res);
 $conn->close();
-
 ?>

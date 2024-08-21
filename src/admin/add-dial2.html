@@ -286,16 +286,56 @@
             window.location.href = 'add-dial.html'
         }
 
+        // const addDial = () => {
+        //     let dialname = document.getElementById('dialname').value.trim();
+        //     let dialprice = document.getElementById('dialprice').value.trim();
+        //     let dialimage = document.getElementById('dialimage').files[0];
+        //     const url = "../api/add-dial.php";
+        //     const formData = new FormData();
+        //     formData.append("name", dialname);
+        //     formData.append("price", dialprice);
+        //     formData.append("image_front", dialimage);
+
+        //     fetch(url, {
+        //         method: "POST",
+        //         body: formData
+        //     })
+        //         .then(res => res.json())
+        //         .then(data => {
+        //             alert(data.msg);
+        //             if (data.success) {
+        //                 window.location.reload()
+        //             } else {
+        //                 alert(data.msg);
+        //             }
+        //         })
+        //         .catch(err => {
+        //             console.log(err);
+        //         });
+        // }
+
         const addDial = () => {
             let dialname = document.getElementById('dialname').value.trim();
             let dialprice = document.getElementById('dialprice').value.trim();
             let dialimage = document.getElementById('dialimage').files[0];
+
+            if (!dialname || !dialprice || !dialimage) {
+                alert("Please fill in all fields and select an image.");
+                return;
+            }
+
+            // Optional: Check the file type
+            const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+            if (!allowedTypes.includes(dialimage.type)) {
+                alert("Please upload a valid image file (JPEG, PNG, GIF).");
+                return;
+            }
+
             const url = "../api/add-dial.php";
             const formData = new FormData();
             formData.append("name", dialname);
             formData.append("price", dialprice);
             formData.append("image_front", dialimage);
-            formData.append("watch_id", window.localStorage.getItem("wid"));
 
             fetch(url, {
                 method: "POST",
@@ -305,15 +345,17 @@
                 .then(data => {
                     alert(data.msg);
                     if (data.success) {
-                        window.location.reload()
+                        window.location.reload();
                     } else {
-                        alert(data.msg);
+                        alert("Failed to add dial: " + data.msg);
                     }
                 })
                 .catch(err => {
-                    console.log(err);
+                    console.log("Error:", err);
+                    alert("There was an error processing your request. Please try again.");
                 });
-        }
+        };
+
     </script>
 
     <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
