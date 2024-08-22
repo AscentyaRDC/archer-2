@@ -211,45 +211,24 @@
 
                                         <div class="col-sm-8">
                                             <div class="row">
-                                                <div class="col-sm-3">
-                                                    <h6>Watch Name</h6>
-                                                    <input class="form-control" id="watchname" readonly
-                                                        placeholder="Galaxy Watch 6" />
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <h6>Watch Model</h6>
-                                                    <input class="form-control" id="watchmodel"
-                                                        onchange="calculateTotalCost()" maxlength="15"
-                                                        onkeypress="return isNumberKey(this, event);"
-                                                        placeholder="SAMSUNG" readonly />
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <h6>Watch Base Price</h6>
-                                                    <input class="form-control" id="watchprice" maxlength="30"
-                                                        placeholder="9999" readonly />
-
-                                                </div>
-
-                                                <div class="col-sm-3">
-                                                    <h6>Service (%)</h6>
-                                                    <input class="form-control" id="servicePercentage" maxlength="30"
-                                                        placeholder="9999" readonly />
-                                                </div>
-
-                                                <p style="margin: 10px;"> * price may vary after customization respect
-                                                    to service percentage</p>
-
                                                 <div class="container">
                                                     <div class="row" style="margin-top: 2%;">
                                                         <div class="col-sm-12">
                                                             <div class="row">
-                                                                <h5>Select Options</h5>
+                                                                <h5>Select Combo 1</h5>
                                                                 <div class="col-4" style="margin-top: 10px;">
                                                                     <div class="custom-select">
+                                                                        <img src="../assets/images/profile/watch.png"
+                                                                            id="front" alt="Default Image"
+                                                                            style="width:70px; height: 70px; margin-left: 70px;"
+                                                                            onclick="changeImage(this.src)"
+                                                                            onmouseover="changeMainImage(this.src)"
+                                                                            onmouseout="resetMainImage()">
                                                                         <select class="form-control" id="dial_dropdown">
                                                                             <option value="0">Dials</option>
                                                                             <!-- Add more options as needed -->
                                                                         </select>
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-4" style="margin-top: 10px;">
@@ -261,15 +240,15 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 10px;">
+                                                                <!-- <div class="col-4" style="margin-top: 10px;">
                                                                     <div class="custom-select">
                                                                         <select class="form-control"
                                                                             id="bezel_dropdown">
                                                                             <option value="0">Bezel</option>
-                                                                            <!-- Add more options as needed -->
+                                                                            
                                                                         </select>
                                                                     </div>
-                                                                </div>
+                                                                </div> -->
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-12">
@@ -829,7 +808,7 @@
                         addlChrgs = data.data[0].aaditional_charges
 
                         data.data[0].combination.dials.forEach(al => {
-                            dialDetails.push({ value: al.id, text: al.name, price: parseFloat(al.price.replace('$', ''))})
+                            dialDetails.push({ value: al.id, text: al.name, price: parseFloat(al.price.replace('$', '')) })
                         });
                         dialDetails.forEach(item => {
                             const dial_option = document.createElement('option');
@@ -838,7 +817,7 @@
                             Dial_dropdown.appendChild(dial_option);
                         })
                         data.data[0].combination.bezel.forEach(al => {
-                            bezelDetails.push({ value: al.id, text: al.name, price: parseFloat(al.price.replace('$', ''))})
+                            bezelDetails.push({ value: al.id, text: al.name, price: parseFloat(al.price.replace('$', '')) })
                         });
                         bezelDetails.forEach(item => {
                             const dial_option = document.createElement('option');
@@ -847,7 +826,7 @@
                             Bezel_dropdown.appendChild(dial_option);
                         })
                         data.data[0].combination.caseback.forEach(al => {
-                            casebackDetails.push({ value: al.id, text: al.name, price: parseFloat(al.price.replace('$', ''))})
+                            casebackDetails.push({ value: al.id, text: al.name, price: parseFloat(al.price.replace('$', '')) })
                         });
                         casebackDetails.forEach(item => {
                             const dial_option = document.createElement('option');
@@ -859,7 +838,7 @@
                         //Strap Here
 
                         data.data[0].combination.strap.forEach(al => {
-                            strapDetails.push({ value: al.id, text: al.name, price: parseFloat(al.price.replace('$', ''))})
+                            strapDetails.push({ value: al.id, text: al.name, price: parseFloat(al.price.replace('$', '')) })
                         });
                         strapDetails.forEach(item => {
                             const dial_option = document.createElement('option');
@@ -868,7 +847,7 @@
                             Strap_dropdown.appendChild(dial_option);
                         })
                         data.data[0].combination.chronocase.forEach(al => {
-                            chronocaseDetails.push({ value: al.id, text: al.name, price: parseFloat(al.price.replace('$', ''))})
+                            chronocaseDetails.push({ value: al.id, text: al.name, price: parseFloat(al.price.replace('$', '')) })
                         });
                         chronocaseDetails.forEach(item => {
                             const dial_option = document.createElement('option');
@@ -877,7 +856,7 @@
                             Chronocase_dropdown.appendChild(dial_option);
                         })
                         data.data[0].combination.crown.forEach(al => {
-                            crownDetails.push({ value: al.id, text: al.name, price: parseFloat(al.price.replace('$', ''))})
+                            crownDetails.push({ value: al.id, text: al.name, price: parseFloat(al.price.replace('$', '')) })
                         });
                         crownDetails.forEach(item => {
                             const dial_option = document.createElement('option');
@@ -886,7 +865,7 @@
                             Crown_dropdown.appendChild(dial_option);
                         })
                         data.data[0].combination.hand.forEach(al => {
-                            handDetails.push({ value: al.id, text: al.name, price: parseFloat(al.price.replace('$', ''))})
+                            handDetails.push({ value: al.id, text: al.name, price: parseFloat(al.price.replace('$', '')) })
                         });
                         handDetails.forEach(item => {
                             const dial_option = document.createElement('option');
@@ -895,7 +874,7 @@
                             Hand_dropdown.appendChild(dial_option);
                         })
                         data.data[0].combination.movement.forEach(al => {
-                            movementDetails.push({ value: al.id, text: al.name, price: parseFloat(al.price.replace('$', ''))})
+                            movementDetails.push({ value: al.id, text: al.name, price: parseFloat(al.price.replace('$', '')) })
                         });
                         movementDetails.forEach(item => {
                             const dial_option = document.createElement('option');
@@ -904,7 +883,7 @@
                             Movement_dropdown.appendChild(dial_option);
                         })
                         data.data[0].combination.second.forEach(al => {
-                            secondDetails.push({ value: al.id, text: al.name, price: parseFloat(al.price.replace('$', ''))})
+                            secondDetails.push({ value: al.id, text: al.name, price: parseFloat(al.price.replace('$', '')) })
                         });
                         secondDetails.forEach(item => {
                             const dial_option = document.createElement('option');
@@ -1060,7 +1039,7 @@
                 let newArray = dialDetails.filter(function (el) {
                     return el.value == dialDropdown;
                 });
-                
+
                 totalCost += newArray[0].price
             }
 
@@ -1068,7 +1047,7 @@
                 let newArray = strapDetails.filter(function (el) {
                     return el.value == strapDropdown;
                 });
-                
+
                 totalCost += newArray[0].price
             }
 
@@ -1076,7 +1055,7 @@
                 let newArray = bezelDetails.filter(function (el) {
                     return el.value == bezelDropdown;
                 });
-                
+
                 totalCost += newArray[0].price
             }
 
@@ -1084,7 +1063,7 @@
                 let newArray = casebackDetails.filter(function (el) {
                     return el.value == casebackDropdown;
                 });
-                
+
                 totalCost += newArray[0].price
             }
 
@@ -1092,7 +1071,7 @@
                 let newArray = chronocaseDetails.filter(function (el) {
                     return el.value == chronocaseDropdown;
                 });
-                
+
                 totalCost += newArray[0].price
             }
 
@@ -1100,7 +1079,7 @@
                 let newArray = crownDetails.filter(function (el) {
                     return el.value == crownDropdown;
                 });
-                
+
                 totalCost += newArray[0].price
             }
 
@@ -1108,7 +1087,7 @@
                 let newArray = handDetails.filter(function (el) {
                     return el.value == handDropdown;
                 });
-                
+
                 totalCost += newArray[0].price
             }
 
@@ -1116,7 +1095,7 @@
                 let newArray = movementDetails.filter(function (el) {
                     return el.value == movementDropdown;
                 });
-                
+
                 totalCost += newArray[0].price
             }
 
@@ -1124,7 +1103,7 @@
                 let newArray = secondDetails.filter(function (el) {
                     return el.value == secondDropdown;
                 });
-                
+
                 totalCost += newArray[0].price
             }
 

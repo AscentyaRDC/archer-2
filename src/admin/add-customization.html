@@ -590,37 +590,39 @@
         alert("pleae select atleast one combination")
       }
       else {
-        const url = "../api/add-watch-combination.php"
-        const body = JSON.stringify({
-          combination: comb,
-          wid: window.localStorage.getItem("wid"),
-          token: window.localStorage.getItem("authToken")
-        })
-        fetch(url, {
-          method: "POST",
-          body: body,
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "applicaion/json"
-          }
-        })
-          .then(res => res.json())
-          .then(data => {
-            if (data.success) {
+        // const url = "../api/add-watch-combination.php"
+        // const body = JSON.stringify({
+        //   combination: comb,
+        //   wid: window.localStorage.getItem("wid"),
+        //   token: window.localStorage.getItem("authToken")
+        // })
+        // fetch(url, {
+        //   method: "POST",
+        //   body: body,
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //     Accept: "applicaion/json"
+        //   }
+        // })
+        //   .then(res => res.json())
+        //   .then(data => {
+        //     if (data.success) {
 
-              window.localStorage.removeItem("cCrownId")
-              window.localStorage.removeItem("cChronocaseId")
-              window.localStorage.removeItem("cCasebackId")
-              window.localStorage.removeItem("cBezelId")
-              window.localStorage.removeItem("cSecondId")
-              window.localStorage.removeItem("cHandId")
-              window.localStorage.removeItem("cStrapId")
-              window.localStorage.removeItem("cMovementId")
-              window.localStorage.removeItem("cDialId")
-              window.location.href = "./edit-watch.html"
-            }
-            alert(data.msg)
-          })
+        //       window.localStorage.removeItem("cCrownId")
+        //       window.localStorage.removeItem("cChronocaseId")
+        //       window.localStorage.removeItem("cCasebackId")
+        //       window.localStorage.removeItem("cBezelId")
+        //       window.localStorage.removeItem("cSecondId")
+        //       window.localStorage.removeItem("cHandId")
+        //       window.localStorage.removeItem("cStrapId")
+        //       window.localStorage.removeItem("cMovementId")
+        //       window.localStorage.removeItem("cDialId")
+              
+        //   }
+        //   alert(data.msg)
+        // })
+          alert("Customizations Updated Succesfully")
+          window.location.href = "./edit-watch.html"
       }
 
     }
