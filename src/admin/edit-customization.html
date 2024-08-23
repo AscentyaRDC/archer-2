@@ -209,14 +209,14 @@
                                 <form>
                                     <div class="row">
 
-                                        <div class="col-sm-8">
+                                        <div class="col-12" style="background-color: antiquewhite;">
                                             <div class="row">
                                                 <div class="container">
                                                     <div class="row" style="margin-top: 2%;">
                                                         <div class="col-sm-12">
                                                             <div class="row">
                                                                 <h5>Select Combo 1</h5>
-                                                                <div class="col-4" style="margin-top: 10px;">
+                                                                <div class="col-3" style="margin-top: 10px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                             id="front" alt="Default Image"
@@ -231,7 +231,7 @@
 
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 10px;">
+                                                                <div class="col-3" style="margin-top: 10px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -246,21 +246,40 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <!-- <div class="col-4" style="margin-top: 10px;">
-                                                                    <div class="custom-select">
-                                                                        <select class="form-control"
-                                                                            id="bezel_dropdown">
-                                                                            <option value="0">Bezel</option>
-                                                                            
-                                                                        </select>
-                                                                    </div>
-                                                                </div> -->
+                                                                <div class="col-3"></div>
+                                                                <!-- <div style="display: flex" class="col-3 center">
+                                                                    <img id="watchImg" style="margin-left: auto; 
+                                                                    margin-right: auto; height: 150px; width: 200px;"
+                                                                        src="../assets/images/profile/sample.png" />
+                                                                        <label style="width: 100%; text-align: center;">
+                                                                    Upload<input type="file" class="uploadFile img" value="Upload Photo"
+                                                                        onchange="handleFileUpload(this, 'front1')" id="watchfile2"
+                                                                        style="width: 0px; height: 0px; overflow: hidden;">
+                                                                </label>
+                                                               </div>  -->
+
+                                                               <div class="col-3" style="background-color: rgb(199, 146, 77); text-align: center;">
+                                                                <div class="imagePreview" id="image_back1" style="border-radius: 5px;">
+                                                                    <img src="../assets/images/profile/sample.png" id="front1"
+                                                                        alt="Default Image" style="width:160px; height: 160px;"
+                                                                        onclick="document.getElementById('watchfile2').click();">
+                                                                    </button>
+                                                                </div>
+                                                                <label style="width: 100%; text-align: center;">
+                                                                    Upload<input type="file" class="uploadFile img" value="Upload Photo"
+                                                                        onchange="handleFileUpload(this, 'front1')" id="watchfile2"
+                                                                        style="width: 0px; height: 0px; overflow: hidden;">
+                                                                </label>
+                                                                <span id="watchfile2_error" style="color: red;" class="error"></span>
                                                             </div>
+                                                                
+                                                    </div>
+                                                            <hr style="margin-top: 30px;">
                                                         </div>
                                                         <div class="col-sm-12">
                                                             <div class="row">
                                                                 <h5>Select Combo 2</h5>
-                                                                <div class="col-4" style="margin-top: 10px;">
+                                                                <div class="col-3" style="margin-top: 10px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                             id="front" alt="Default Image"
@@ -275,7 +294,7 @@
 
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 10px;">
+                                                                <div class="col-3" style="margin-top: 10px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -290,7 +309,7 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 10px;">
+                                                                <div class="col-3" style="margin-top: 10px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -305,12 +324,27 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                                
+                                                                <div class="col-3" style="background-color: rgb(199, 146, 77); text-align: center;">
+                                                                    <div class="imagePreview" id="image_back1" style="border-radius: 5px;">
+                                                                        <img src="../assets/images/profile/sample.png" id="front1"
+                                                                            alt="Default Image" style="width:160px; height: 160px;"
+                                                                            onclick="document.getElementById('watchfile2').click();">
+                                                                        </button>
+                                                                    </div>
+                                                                    <label style="width: 100%; text-align: center;">
+                                                                        Upload<input type="file" class="uploadFile img" value="Upload Photo"
+                                                                            onchange="handleFileUpload(this, 'front1')" id="watchfile2"
+                                                                            style="width: 0px; height: 0px; overflow: hidden;">
+                                                                    </label>
+                                                                    <span id="watchfile2_error" style="color: red;" class="error"></span>
+                                                                </div>
+                                                            <hr style="margin-top: 30px;">
                                                         </div>
                                                         <div class="col-sm-12">
                                                             <div class="row">
                                                                 <h5>Select Combo 3</h5>
-                                                                <div class="col-4" style="margin-top: 10px;">
+                                                                <div class="col-3" style="margin-top: 10px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                             id="front" alt="Default Image"
@@ -325,7 +359,7 @@
 
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 10px;">
+                                                                <div class="col-3" style="margin-top: 10px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -340,7 +374,7 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 10px;">
+                                                                <div class="col-3" style="margin-top: 10px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -355,11 +389,25 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
+                                                                <div class="col-3" style="background-color: rgb(199, 146, 77); text-align: center;">
+                                                                    <div class="imagePreview" id="image_back1" style="border-radius: 5px;">
+                                                                        <img src="../assets/images/profile/sample.png" id="front1"
+                                                                            alt="Default Image" style="width:160px; height: 160px;"
+                                                                            onclick="document.getElementById('watchfile2').click();">
+                                                                        </button>
+                                                                    </div>
+                                                                    <label style="width: 100%; text-align: center;">
+                                                                        Upload<input type="file" class="uploadFile img" value="Upload Photo"
+                                                                            onchange="handleFileUpload(this, 'front1')" id="watchfile2"
+                                                                            style="width: 0px; height: 0px; overflow: hidden;">
+                                                                    </label>
+                                                                    <span id="watchfile2_error" style="color: red;" class="error"></span>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-12">
                                                             <div class="row">
-                                                                <div class="col-4" style="margin-top: 20px;">
+                                                                <div class="col-3" style="margin-top: 20px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -376,12 +424,13 @@
                                                                 </div>
                                                                
                                                             </div>
+                                                            <hr style="margin-top: 30px;">
                                                         </div>
                                                         <div class="col-sm-12">
                                                             <!-- ---start- -->
                                                             <div class="row">
                                                                 <h5>Select Combo 4</h5>
-                                                                <div class="col-4" style="margin-top: 10px;">
+                                                                <div class="col-3" style="margin-top: 10px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                             id="front" alt="Default Image"
@@ -396,7 +445,7 @@
 
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 10px;">
+                                                                <div class="col-3" style="margin-top: 10px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -411,7 +460,7 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 10px;">
+                                                                <div class="col-3" style="margin-top: 10px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -426,12 +475,26 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
+                                                                <div class="col-3" style="background-color: rgb(199, 146, 77); text-align: center;">
+                                                                    <div class="imagePreview" id="image_back1" style="border-radius: 5px;">
+                                                                        <img src="../assets/images/profile/sample.png" id="front1"
+                                                                            alt="Default Image" style="width:160px; height: 160px;"
+                                                                            onclick="document.getElementById('watchfile2').click();">
+                                                                        </button>
+                                                                    </div>
+                                                                    <label style="width: 100%; text-align: center;">
+                                                                        Upload<input type="file" class="uploadFile img" value="Upload Photo"
+                                                                            onchange="handleFileUpload(this, 'front1')" id="watchfile2"
+                                                                            style="width: 0px; height: 0px; overflow: hidden;">
+                                                                    </label>
+                                                                    <span id="watchfile2_error" style="color: red;" class="error"></span>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                        
                                                         <div class="col-sm-12">
                                                             <div class="row">
-                                                                <div class="col-4" style="margin-top: 10px;">
+                                                                <div class="col-3" style="margin-top: 10px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -446,7 +509,7 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 10px;">
+                                                                <div class="col-3" style="margin-top: 10px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -462,12 +525,13 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <hr style="margin-top: 20px;">
                                                         </div>
                                                         <div class="col-sm-12">
                                                             <!-- start5 -->
                                                             <div class="row">
                                                                 <h5>Select Combo 5</h5>
-                                                                <div class="col-4" style="margin-top: 10px;">
+                                                                <div class="col-3" style="margin-top: 10px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                             id="front" alt="Default Image"
@@ -482,7 +546,7 @@
 
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 10px;">
+                                                                <div class="col-3" style="margin-top: 10px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -497,7 +561,7 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 10px;">
+                                                                <div class="col-3" style="margin-top: 10px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -512,13 +576,28 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
+                                                                <div class="col-3" style="background-color: rgb(199, 146, 77); text-align: center;">
+                                                                    <div class="imagePreview" id="image_back1" style="border-radius: 5px;">
+                                                                        <img src="../assets/images/profile/sample.png" id="front1"
+                                                                            alt="Default Image" style="width:160px; height: 160px;"
+                                                                            onclick="document.getElementById('watchfile2').click();">
+                                                                        </button>
+                                                                    </div>
+                                                                    <label style="width: 100%; text-align: center;">
+                                                                        Upload<input type="file" class="uploadFile img" value="Upload Photo"
+                                                                            onchange="handleFileUpload(this, 'front1')" id="watchfile2"
+                                                                            style="width: 0px; height: 0px; overflow: hidden;">
+                                                                    </label>
+                                                                    <span id="watchfile2_error" style="color: red;" class="error"></span>
+                                                                </div>
+                                                                
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-12">
 
                                                             <div class="row">
                                                                 
-                                                                <div class="col-4" style="margin-top: 20px;">
+                                                                <div class="col-3" style="margin-top: 20px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -533,7 +612,7 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 20px;">
+                                                                <div class="col-3" style="margin-top: 20px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -548,7 +627,7 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 20px;">
+                                                                <div class="col-3" style="margin-top: 20px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -564,13 +643,14 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <hr style="margin-top: 30px;">
                                                              <!-- end5 -->
                                                         </div>
                                                         <div class="col-sm-12">
                                                             <!-- start6 -->
                                                             <div class="row">
                                                                 <h5>Select Combo 6</h5>
-                                                                <div class="col-4" style="margin-top: 10px;">
+                                                                <div class="col-3" style="margin-top: 10px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                             id="front" alt="Default Image"
@@ -585,7 +665,7 @@
 
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 10px;">
+                                                                <div class="col-3" style="margin-top: 10px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -600,7 +680,7 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 10px;">
+                                                                <div class="col-3" style="margin-top: 10px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -615,13 +695,27 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
+                                                                <div class="col-3" style="background-color: rgb(199, 146, 77); text-align: center;">
+                                                                    <div class="imagePreview" id="image_back1" style="border-radius: 5px;">
+                                                                        <img src="../assets/images/profile/sample.png" id="front1"
+                                                                            alt="Default Image" style="width:160px; height: 160px;"
+                                                                            onclick="document.getElementById('watchfile2').click();">
+                                                                        </button>
+                                                                    </div>
+                                                                    <label style="width: 100%; text-align: center;">
+                                                                        Upload<input type="file" class="uploadFile img" value="Upload Photo"
+                                                                            onchange="handleFileUpload(this, 'front1')" id="watchfile2"
+                                                                            style="width: 0px; height: 0px; overflow: hidden;">
+                                                                    </label>
+                                                                    <span id="watchfile2_error" style="color: red;" class="error"></span>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-12">
 
                                                             <div class="row">
                                                                 
-                                                                <div class="col-4" style="margin-top: 20px;">
+                                                                <div class="col-3" style="margin-top: 20px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -636,7 +730,7 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 20px;">
+                                                                <div class="col-3" style="margin-top: 20px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -651,7 +745,7 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 20px;">
+                                                                <div class="col-3" style="margin-top: 20px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -669,9 +763,9 @@
                                                             </div>
                                                           
                                                         </div>
-                                                        <div class="col-sm-12">
+                                                        <div class="col-sm-12" style="margin-top: 50px;">
                                                             <div class="row">
-                                                                <div class="col-4" style="margin-top: 20px;">
+                                                                <div class="col-3" style="margin-top: 20px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -686,6 +780,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <hr style="margin-top: 30px;">
                                                                <!-- end6 -->
                                                         </div>
 
@@ -693,7 +788,7 @@
                                                             <!-- start7 -->
                                                             <div class="row">
                                                                 <h5>Select Combo 7</h5>
-                                                                <div class="col-4" style="margin-top: 10px;">
+                                                                <div class="col-3" style="margin-top: 10px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                             id="front" alt="Default Image"
@@ -708,7 +803,7 @@
 
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 10px;">
+                                                                <div class="col-3" style="margin-top: 10px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -723,7 +818,7 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 10px;">
+                                                                <div class="col-3" style="margin-top: 10px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -738,13 +833,27 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
+                                                                <div class="col-3" style="background-color: rgb(199, 146, 77); text-align: center;">
+                                                                    <div class="imagePreview" id="image_back1" style="border-radius: 5px;">
+                                                                        <img src="../assets/images/profile/sample.png" id="front1"
+                                                                            alt="Default Image" style="width:160px; height: 160px;"
+                                                                            onclick="document.getElementById('watchfile2').click();">
+                                                                        </button>
+                                                                    </div>
+                                                                    <label style="width: 100%; text-align: center;">
+                                                                        Upload<input type="file" class="uploadFile img" value="Upload Photo"
+                                                                            onchange="handleFileUpload(this, 'front1')" id="watchfile2"
+                                                                            style="width: 0px; height: 0px; overflow: hidden;">
+                                                                    </label>
+                                                                    <span id="watchfile2_error" style="color: red;" class="error"></span>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-12">
 
                                                             <div class="row">
                                                                 
-                                                                <div class="col-4" style="margin-top: 20px;">
+                                                                <div class="col-3" style="margin-top: 20px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -759,7 +868,7 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 20px;">
+                                                                <div class="col-3" style="margin-top: 20px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -774,7 +883,7 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 20px;">
+                                                                <div class="col-3" style="margin-top: 20px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -792,9 +901,9 @@
                                                             </div>
                                                           
                                                         </div>
-                                                        <div class="col-sm-12">
+                                                        <div class="col-sm-12" style="margin-top: 50px;">
                                                             <div class="row">
-                                                                <div class="col-4" style="margin-top: 20px;">
+                                                                <div class="col-3" style="margin-top: 20px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -808,7 +917,7 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 20px;">
+                                                                <div class="col-3" style="margin-top: 20px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -824,6 +933,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <hr style="margin-top: 30px;">
                                                                <!-- end7 -->
                                                         </div>
 
@@ -831,7 +941,7 @@
                                                             <!-- start8 -->
                                                             <div class="row">
                                                                 <h5>Select Combo 8</h5>
-                                                                <div class="col-4" style="margin-top: 10px;">
+                                                                <div class="col-3" style="margin-top: 10px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                             id="front" alt="Default Image"
@@ -846,7 +956,7 @@
 
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 10px;">
+                                                                <div class="col-3" style="margin-top: 10px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -861,7 +971,7 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 10px;">
+                                                                <div class="col-3" style="margin-top: 10px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -876,13 +986,27 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
+                                                                <div class="col-3" style="background-color: rgb(199, 146, 77); text-align: center;">
+                                                                    <div class="imagePreview" id="image_back1" style="border-radius: 5px;">
+                                                                        <img src="../assets/images/profile/sample.png" id="front1"
+                                                                            alt="Default Image" style="width:160px; height: 160px;"
+                                                                            onclick="document.getElementById('watchfile2').click();">
+                                                                        </button>
+                                                                    </div>
+                                                                    <label style="width: 100%; text-align: center;">
+                                                                        Upload<input type="file" class="uploadFile img" value="Upload Photo"
+                                                                            onchange="handleFileUpload(this, 'front1')" id="watchfile2"
+                                                                            style="width: 0px; height: 0px; overflow: hidden;">
+                                                                    </label>
+                                                                    <span id="watchfile2_error" style="color: red;" class="error"></span>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-12">
 
                                                             <div class="row">
                                                                 
-                                                                <div class="col-4" style="margin-top: 20px;">
+                                                                <div class="col-3" style="margin-top: 20px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -897,7 +1021,7 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 20px;">
+                                                                <div class="col-3" style="margin-top: 20px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -912,7 +1036,7 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 20px;">
+                                                                <div class="col-3" style="margin-top: 20px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -930,9 +1054,9 @@
                                                             </div>
                                                           
                                                         </div>
-                                                        <div class="col-sm-12">
+                                                        <div class="col-sm-12" style="margin-top: 50px;">
                                                             <div class="row">
-                                                                <div class="col-4" style="margin-top: 20px;">
+                                                                <div class="col-3" style="margin-top: 20px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -946,7 +1070,7 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 20px;">
+                                                                <div class="col-3" style="margin-top: 20px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -961,7 +1085,7 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-4" style="margin-top: 20px;">
+                                                                <div class="col-3" style="margin-top: 20px;">
                                                                     <div class="custom-select">
                                                                         <img src="../assets/images/profile/watch.png"
                                                                         id="front" alt="Default Image"
@@ -984,17 +1108,17 @@
                                             </div>
                                         </div>
 
-                                        <div style="display: flex" class="col-sm-4 center">
+                                        <!-- <div style="display: flex" class="col-sm-4 center">
                                             <div style="height: 200px; width: 200px; margin-left: 70px;">
                                                 <img id="watchImg" style="margin-left: auto; 
                                                 margin-right: auto; height: 200px; width: 200px;"
                                                     src="../assets/images/profile/sample.png" />
                                             </div>
-                                        </div>
+                                        </div> -->
 
 
                                         <div class="row" style="margin-top: 2%;">
-                                            <div class="col-sm-6">
+                                            <!-- <div class="col-sm-6">
                                                 <h5>Combination Title</h5>
                                                 <textarea class="form-control" id="combination"
                                                     style="max-height: 60px;" placeholder="Enter the Combination Title"
@@ -1005,7 +1129,7 @@
                                                 <h5>Combination Description</h5>
                                                 <textarea class="form-control" id="comdescrip" style="min-height: 60px;"
                                                     placeholder="Enter the Combination Description"></textarea>
-                                            </div>
+                                            </div> -->
 
                                             <div class="customizations">
                                                 <div class="customization-header" onclick="toggleCustomizations(this)">
@@ -1128,7 +1252,9 @@
 
                                         <!--Image Upload Field Here-->
 
-                                        <div class="row" style="padding: 30px; margin-top: 20px">
+                                        
+                                            <h5 style="margin-left: 40px; margin-top: 40px; ">Upload Final Watch Images</h5>
+                                        <div class="row" style="margin-top: 20px;" >
                                             <div class="col-sm-2 imgUp">
                                                 <div class="imagePreview" id="image_back1" style="border-radius: 5px;">
                                                     <img src="../assets/images/profile/sample.png" id="front1"
