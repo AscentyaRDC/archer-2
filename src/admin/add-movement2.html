@@ -232,7 +232,8 @@
                                             <label style="width: 100%; text-align: center;">
                                                 Upload Movement Image<input type="file" class="uploadFile img"
                                                     value="Upload Photo" onchange="handleFileUpload(this, 'right1')"
-                                                    id="movementimage" style="width: 0px; height: 0px; overflow: hidden;">
+                                                    id="movementimage"
+                                                    style="width: 0px; height: 0px; overflow: hidden;">
                                             </label>
                                             <span id="movementimage_error" style="color: red;" class="error"></span>
                                         </div>
@@ -305,12 +306,24 @@
             let movementname = document.getElementById('movementname').value.trim();
             let movementprice = document.getElementById('movementprice').value.trim();
             let movementimage = document.getElementById('movementimage').files[0];
+
+            if (!movementname || !movementprice || !movementimage) {
+                alert("Please fill in all fields and select an image.");
+                return;
+            }
+
+            // Optional: Check the file type
+            const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+            if (!allowedTypes.includes(movementimage.type)) {
+                alert("Please upload a valid image file (JPEG, PNG, GIF).");
+                return;
+            }
+
             const url = "../api/add-movement.php";
             const formData = new FormData();
             formData.append("name", movementname);
             formData.append("price", movementprice);
             formData.append("image_front", movementimage);
-            formData.append("watch_id", window.localStorage.getItem("wid"));
 
             fetch(url, {
                 method: "POST",
@@ -320,15 +333,16 @@
                 .then(data => {
                     alert(data.msg);
                     if (data.success) {
-                        window.location.reload()
+                        window.location.reload();
                     } else {
-                        alert(data.msg);
+                        alert("Failed to add movement: " + data.msg);
                     }
                 })
                 .catch(err => {
-                    console.log(err);
+                    console.log("Error:", err);
+                    alert("There was an error processing your request. Please try again.");
                 });
-        }
+        };
     </script>
 
     <script src="../assets/libs/jquery/dist/jquery.min.js"></script>

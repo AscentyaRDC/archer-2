@@ -302,15 +302,27 @@
         }
 
         const addHands = () => {
-            let handssname = document.getElementById('handsname').value.trim();
+            let handsname = document.getElementById('handsname').value.trim();
             let handsprice = document.getElementById('handsprice').value.trim();
             let handsimage = document.getElementById('handsimage').files[0];
+
+            if (!handsname || !handsprice || !handsimage) {
+                alert("Please fill in all fields and select an image.");
+                return;
+            }
+
+            // Optional: Check the file type
+            const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+            if (!allowedTypes.includes(handsimage.type)) {
+                alert("Please upload a valid image file (JPEG, PNG, GIF).");
+                return;
+            }
+
             const url = "../api/add-hands.php";
             const formData = new FormData();
-            formData.append("name", handssname);
+            formData.append("name", handsname);
             formData.append("price", handsprice);
             formData.append("image_front", handsimage);
-            formData.append("watch_id", window.localStorage.getItem("wid"));
 
             fetch(url, {
                 method: "POST",
@@ -320,15 +332,16 @@
                 .then(data => {
                     alert(data.msg);
                     if (data.success) {
-                        window.location.reload()
+                        window.location.reload();
                     } else {
-                        alert(data.msg);
+                        alert("Failed to add hands: " + data.msg);
                     }
                 })
                 .catch(err => {
-                    console.log(err);
+                    console.log("Error:", err);
+                    alert("There was an error processing your request. Please try again.");
                 });
-        }
+        };
     </script>
 
     <script src="../assets/libs/jquery/dist/jquery.min.js"></script>

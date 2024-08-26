@@ -286,16 +286,29 @@
             window.location.href = 'add-crown.html'
         }
 
+        
         const addCrowns = () => {
             let crownname = document.getElementById('crownname').value.trim();
             let crownprice = document.getElementById('crownprice').value.trim();
             let crownimage = document.getElementById('crownimage').files[0];
+
+            if (!crownname || !crownprice || !crownimage) {
+                alert("Please fill in all fields and select an image.");
+                return;
+            }
+
+            // Optional: Check the file type
+            const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+            if (!allowedTypes.includes(crownimage.type)) {
+                alert("Please upload a valid image file (JPEG, PNG, GIF).");
+                return;
+            }
+
             const url = "../api/add-crowns.php";
             const formData = new FormData();
             formData.append("name", crownname);
             formData.append("price", crownprice);
             formData.append("image_front", crownimage);
-            formData.append("watch_id", window.localStorage.getItem("wid"));
 
             fetch(url, {
                 method: "POST",
@@ -305,15 +318,16 @@
                 .then(data => {
                     alert(data.msg);
                     if (data.success) {
-                        window.location.reload()
+                        window.location.reload();
                     } else {
-                        alert(data.msg);
+                        alert("Failed to add crown: " + data.msg);
                     }
                 })
                 .catch(err => {
-                    console.log(err);
+                    console.log("Error:", err);
+                    alert("There was an error processing your request. Please try again.");
                 });
-        }
+        };
     </script>
 
     <script src="../assets/libs/jquery/dist/jquery.min.js"></script>

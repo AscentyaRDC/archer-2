@@ -232,7 +232,8 @@
                                             <label style="width: 100%; text-align: center;">
                                                 Upload Seconds Image<input type="file" class="uploadFile img"
                                                     value="Upload Photo" onchange="handleFileUpload(this, 'right1')"
-                                                    id="secondsimage" style="width: 0px; height: 0px; overflow: hidden;">
+                                                    id="secondsimage"
+                                                    style="width: 0px; height: 0px; overflow: hidden;">
                                             </label>
                                             <span id="secondsimage_error" style="color: red;" class="error"></span>
                                         </div>
@@ -305,12 +306,24 @@
             let secondsname = document.getElementById('secondsname').value.trim();
             let secondsprice = document.getElementById('secondsprice').value.trim();
             let secondsimage = document.getElementById('secondsimage').files[0];
+
+            if (!secondsname || !secondsprice || !secondsimage) {
+                alert("Please fill in all fields and select an image.");
+                return;
+            }
+
+            // Optional: Check the file type
+            const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+            if (!allowedTypes.includes(secondsimage.type)) {
+                alert("Please upload a valid image file (JPEG, PNG, GIF).");
+                return;
+            }
+
             const url = "../api/add-second.php";
             const formData = new FormData();
             formData.append("name", secondsname);
             formData.append("price", secondsprice);
             formData.append("image_front", secondsimage);
-            formData.append("watch_id", window.localStorage.getItem("wid"));
 
             fetch(url, {
                 method: "POST",
@@ -320,15 +333,16 @@
                 .then(data => {
                     alert(data.msg);
                     if (data.success) {
-                        window.location.reload()
+                        window.location.reload();
                     } else {
-                        alert(data.msg);
+                        alert("Failed to add seconds: " + data.msg);
                     }
                 })
                 .catch(err => {
-                    console.log(err);
+                    console.log("Error:", err);
+                    alert("There was an error processing your request. Please try again.");
                 });
-        }
+        };
     </script>
 
     <script src="../assets/libs/jquery/dist/jquery.min.js"></script>

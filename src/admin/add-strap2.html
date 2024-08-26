@@ -286,16 +286,57 @@
             window.location.href = 'add-strap.html'
         }
 
+        // const addStrap = () => {
+        //     let strapname = document.getElementById('strapname').value.trim();
+        //     let strapprice = document.getElementById('strapprice').value.trim();
+        //     let strapimage = document.getElementById('strapimage').files[0];
+        //     const url = "../api/add-strap.php";
+        //     const formData = new FormData();
+        //     formData.append("name", strapname);
+        //     formData.append("price", strapprice);
+        //     formData.append("image_front", strapimage);
+        //     formData.append("watch_id", window.localStorage.getItem("wid"));
+
+        //     fetch(url, {
+        //         method: "POST",
+        //         body: formData
+        //     })
+        //         .then(res => res.json())
+        //         .then(data => {
+        //             alert(data.msg);
+        //             if (data.success) {
+        //                 window.location.reload()
+        //             } else {
+        //                 alert(data.msg);
+        //             }
+        //         })
+        //         .catch(err => {
+        //             console.log(err);
+        //         });
+        // }
+
         const addStrap = () => {
             let strapname = document.getElementById('strapname').value.trim();
             let strapprice = document.getElementById('strapprice').value.trim();
             let strapimage = document.getElementById('strapimage').files[0];
+
+            if (!strapname || !strapprice || !strapimage) {
+                alert("Please fill in all fields and select an image.");
+                return;
+            }
+
+            // Optional: Check the file type
+            const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+            if (!allowedTypes.includes(strapimage.type)) {
+                alert("Please upload a valid image file (JPEG, PNG, GIF).");
+                return;
+            }
+
             const url = "../api/add-strap.php";
             const formData = new FormData();
             formData.append("name", strapname);
             formData.append("price", strapprice);
             formData.append("image_front", strapimage);
-            formData.append("watch_id", window.localStorage.getItem("wid"));
 
             fetch(url, {
                 method: "POST",
@@ -305,15 +346,16 @@
                 .then(data => {
                     alert(data.msg);
                     if (data.success) {
-                        window.location.reload()
+                        window.location.reload();
                     } else {
-                        alert(data.msg);
+                        alert("Failed to add strap: " + data.msg);
                     }
                 })
                 .catch(err => {
-                    console.log(err);
+                    console.log("Error:", err);
+                    alert("There was an error processing your request. Please try again.");
                 });
-        }
+        };
 
     </script>
 

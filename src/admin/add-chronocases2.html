@@ -232,7 +232,8 @@
                                             <label style="width: 100%; text-align: center;">
                                                 Upload Chronocase Image<input type="file" class="uploadFile img"
                                                     value="Upload Photo" onchange="handleFileUpload(this, 'right1')"
-                                                    id="chronocaseimage" style="width: 0px; height: 0px; overflow: hidden;">
+                                                    id="chronocaseimage"
+                                                    style="width: 0px; height: 0px; overflow: hidden;">
                                             </label>
                                             <span id="chronocaseimage_error" style="color: red;" class="error"></span>
                                         </div>
@@ -305,12 +306,24 @@
             let chronocasename = document.getElementById('chronocasename').value.trim();
             let chronocaseprice = document.getElementById('chronocaseprice').value.trim();
             let chronocaseimage = document.getElementById('chronocaseimage').files[0];
+
+            if (!chronocasename || !chronocaseprice || !chronocaseimage) {
+                alert("Please fill in all fields and select an image.");
+                return;
+            }
+
+            // Optional: Check the file type
+            const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+            if (!allowedTypes.includes(chronocaseimage.type)) {
+                alert("Please upload a valid image file (JPEG, PNG, GIF).");
+                return;
+            }
+
             const url = "../api/add-chronocase.php";
             const formData = new FormData();
             formData.append("name", chronocasename);
             formData.append("price", chronocaseprice);
             formData.append("image_front", chronocaseimage);
-            formData.append("watch_id", window.localStorage.getItem("wid"));
 
             fetch(url, {
                 method: "POST",
@@ -320,15 +333,16 @@
                 .then(data => {
                     alert(data.msg);
                     if (data.success) {
-                        window.location.reload()
+                        window.location.reload();
                     } else {
-                        alert(data.msg);
+                        alert("Failed to add chronocase: " + data.msg);
                     }
                 })
                 .catch(err => {
-                    console.log(err);
+                    console.log("Error:", err);
+                    alert("There was an error processing your request. Please try again.");
                 });
-        }
+        };
     </script>
 
     <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
