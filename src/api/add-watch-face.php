@@ -12,52 +12,14 @@ $seconds_id = $_POST["seconds_id"];
 $crown_id = $_POST["crown_id"];
 $caseback_id = $_POST["caseback_id"];
 $wid = $_POST["wid"];
-$watchFaceName = $_POST["watch_face_name"];
 $price = $_POST["price"];
-$description = $_POST["description"];
 $token = $_POST["token"];
 
 $image_front_name = $_FILES["image_front"]["name"];
 $image_front_tmp_name = $_FILES["image_front"]["tmp_name"];
 
-$image_back_name = $_FILES["image_back"]["name"];
-$image_back_tmp_name = $_FILES["image_back"]["tmp_name"];
-
-$image_up_name = $_FILES["image_up"]["name"];
-$image_up_tmp_name = $_FILES["image_up"]["tmp_name"];
-
-$image_down_name = $_FILES["image_down"]["name"];
-$image_down_tmp_name =$_FILES["image_down"]["tmp_name"];
-
-$image_left_name = $_FILES["image_left"]["name"];
-$image_left_tmp_name = $_FILES["image_left"]["tmp_name"];
-
-$image_right_name = $_FILES["image_right"]["name"];
-$image_right_tmp_name = $_FILES["image_right"]["tmp_name"];
-
 $created_by = $_POST["user_id"];
 $folder_front = "./image/watchface/" . $image_front_name;
-$folder_back = "./image/watchface/" . $image_back_name;
-$folder_up = "./image/watchface/" . $image_up_name;
-$folder_down = "./image/watchface/" . $image_down_name;
-$folder_left = "./image/watchface/" . $image_left_name;
-$folder_right = "./image/watchface/" . $image_right_name;
-
-$dialSize = $_POST["dialSize"];
-$color = $_POST["color"];
-$weight = $_POST["weight"];
-$bodyType = $_POST["bodyType"];
-$brand = $_POST["brand"];
-$batteriesIncluded = $_POST["batteriesIncluded"];
-$yearOfManufacture = $_POST["yearOfManufacture"];
-$warrantyPeriod = $_POST["warrantyPeriod"];
-$itemCode = $_POST["itemCode"];
-$displayType = $_POST["displayType"];
-$waterResistant = $_POST["waterResistant"];
-$ipRating = $_POST["ipRating"];
-$shape = $_POST["shape"];
-$inside = $_POST["insideTheBox"];
-$deliveryFee = $_POST["deliveryFee"];
 
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
