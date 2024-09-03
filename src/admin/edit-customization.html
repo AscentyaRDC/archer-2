@@ -212,704 +212,7 @@
                                             <div class="row">
                                                 <div class="container">
                                                     <div class="row" style="margin-top: 2%;">
-                                                        <div class="col-sm-12">
-                                                            <div class="row">
-                                                                <h5>Select Combo 1</h5>
-                                                                <div class="col-3" style="margin-top: 10px;">
-                                                                    <div class="custom-select">
-                                                                        <img src="../assets/images/profile/watch.png"
-                                                                            id="front" class="dial" alt="Default Image"
-                                                                            style="width:70px; height: 70px; margin-left: 70px;">
-                                                                        <select class="form-control dial_dropdown"
-                                                                            id="dial_dropdown">
-                                                                            <option value="0">Dials</option>
-                                                                            <!-- Add more options as needed -->
-                                                                        </select>
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-3" style="margin-top: 10px;">
-                                                                    <div class="custom-select">
-                                                                        <img src="../assets/images/profile/watch.png"
-                                                                            id="front" class="strap" alt="Default Image"
-                                                                            style="width:70px; height: 70px; margin-left: 70px;">
-                                                                        <select class="form-control strap_dropdown"
-                                                                            id="strap_dropdown">
-                                                                            <option value="0">Straps</option>
-                                                                            <!-- Add more options as needed -->
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-3"></div>
-
-
-                                                                <div class="col-3" style="text-align: center;">
-                                                                    <div class="imagePreview" id="image_back1"
-                                                                        style="border-radius: 5px;">
-                                                                        <img src="../assets/images/profile/sample.png"
-                                                                            id="combo1" alt="Default Image"
-                                                                            style="width:160px; height: 160px;"
-                                                                            onclick="document.getElementById('img1').click();">
-                                                                        </button>
-                                                                    </div>
-                                                                    <label style="width: 100%; text-align: center;">
-                                                                        Upload<input type="file" class="uploadFile img"
-                                                                            value="Upload Photo"
-                                                                            onchange="handleFileUpload(this, 'combo1')"
-                                                                            id="img1"
-                                                                            style="width: 0px; height: 0px; overflow: hidden;">
-                                                                    </label>
-                                                                    <span id="watchfile2_error" style="color: red;"
-                                                                        class="error"></span>
-                                                                </div>
-
-                                                            </div>
-                                                            <hr style="margin-top: 30px;">
-                                                        </div>
-                                                        <div class="col-sm-12">
-                                                            <div class="row">
-                                                                <h5>Select Combo 2</h5>
-                                                                <div class="col-3" style="margin-top: 10px;">
-                                                                    <div class="custom-select">
-                                                                        <img src="../assets/images/profile/watch.png"
-                                                                            id="front" class="dial" alt="Default Image"
-                                                                            style="width:70px; height: 70px; margin-left: 70px;">
-                                                                        <select class="form-control dial_dropdown"
-                                                                            id="dial_dropdown">
-                                                                            <option value="0">Dials</option>
-                                                                            <!-- Add more options as needed -->
-                                                                        </select>
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-3" style="margin-top: 10px;">
-                                                                    <div class="custom-select">
-                                                                        <img src="../assets/images/profile/watch.png"
-                                                                            id="front" class="strap" alt="Default Image"
-                                                                            style="width:70px; height: 70px; margin-left: 70px;">
-                                                                        <select class="form-control strap_dropdown"
-                                                                            id="strap_dropdown">
-                                                                            <option value="0">Straps</option>
-                                                                            <!-- Add more options as needed -->
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-3" style="margin-top: 10px;">
-                                                                    <div class="custom-select">
-                                                                        <img src="../assets/images/profile/watch.png"
-                                                                            id="front" class="bezel" alt="Default Image"
-                                                                            style="width:70px; height: 70px; margin-left: 70px;">
-                                                                        <select class="form-control bezel_dropdown"
-                                                                            id="bezel_dropdown">
-                                                                            <option value="0">Bezel</option>
-
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-3" style="text-align: center;">
-                                                                    <div class="imagePreview" id="image_back1"
-                                                                        style="border-radius: 5px;">
-                                                                        <img src="../assets/images/profile/sample.png"
-                                                                            id="combo2" alt="Default Image"
-                                                                            style="width:160px; height: 160px;"
-                                                                            onclick="document.getElementById('img2').click();">
-                                                                        </button>
-                                                                    </div>
-                                                                    <label style="width: 100%; text-align: center;">
-                                                                        Upload<input type="file" class="uploadFile img"
-                                                                            value="Upload Photo"
-                                                                            onchange="handleFileUpload(this, 'combo2')"
-                                                                            id="img2"
-                                                                            style="width: 0px; height: 0px; overflow: hidden;">
-                                                                    </label>
-                                                                    <span id="watchfile2_error" style="color: red;"
-                                                                        class="error"></span>
-                                                                </div>
-                                                                <hr style="margin-top: 30px;">
-                                                            </div>
-                                                            <div class="col-sm-12">
-                                                                <div class="row">
-                                                                    <h5>Select Combo 3</h5>
-                                                                    <div class="col-3" style="margin-top: 10px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="dial"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select class="form-control dial_dropdown"
-                                                                                id="dial_dropdown">
-                                                                                <option value="0">Dials</option>
-                                                                                <!-- Add more options as needed -->
-                                                                            </select>
-
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-3" style="margin-top: 10px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="strap"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select class="form-control strap_dropdown"
-                                                                                id="strap_dropdown">
-                                                                                <option value="0">Straps</option>
-                                                                                <!-- Add more options as needed -->
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-3" style="margin-top: 10px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="bezel"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select class="form-control bezel_dropdown"
-                                                                                id="bezel_dropdown">
-                                                                                <option value="0">Bezel</option>
-
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-3" style="text-align: center;">
-                                                                        <div class="imagePreview" id="image_back1"
-                                                                            style="border-radius: 5px;">
-                                                                            <img src="../assets/images/profile/sample.png"
-                                                                                id="combo3" alt="Default Image"
-                                                                                style="width:160px; height: 160px;"
-                                                                                onclick="document.getElementById('img3').click();">
-                                                                            </button>
-                                                                        </div>
-                                                                        <label style="width: 100%; text-align: center;">
-                                                                            Upload<input type="file"
-                                                                                class="uploadFile img"
-                                                                                value="Upload Photo"
-                                                                                onchange="handleFileUpload(this, 'combo3')"
-                                                                                id="img3"
-                                                                                style="width: 0px; height: 0px; overflow: hidden;">
-                                                                        </label>
-                                                                        <span id="watchfile2_error" style="color: red;"
-                                                                            class="error"></span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-12">
-                                                                <div class="row">
-                                                                    <div class="col-3" style="margin-top: 20px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="caseback"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select
-                                                                                class="form-control caseback_dropdown"
-                                                                                id="caseback_dropdown">
-                                                                                <option value="0">Caseback</option>
-                                                                                <!-- Add more options as needed -->
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-
-                                                                </div>
-                                                                <hr style="margin-top: 30px;">
-                                                            </div>
-                                                            <div class="col-sm-12">
-                                                                <!-- ---start- -->
-                                                                <div class="row">
-                                                                    <h5>Select Combo 4</h5>
-                                                                    <div class="col-3" style="margin-top: 10px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="dial"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select class="form-control dial_dropdown"
-                                                                                id="dial_dropdown">
-                                                                                <option value="0">Dials</option>
-                                                                                <!-- Add more options as needed -->
-                                                                            </select>
-
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-3" style="margin-top: 10px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="strap"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select class="form-control strap_dropdown"
-                                                                                id="strap_dropdown">
-                                                                                <option value="0">Straps</option>
-                                                                                <!-- Add more options as needed -->
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-3" style="margin-top: 10px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="bezel"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select class="form-control bezel_dropdown"
-                                                                                id="bezel_dropdown">
-                                                                                <option value="0">Bezel</option>
-
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-3" style="text-align: center;">
-                                                                        <div class="imagePreview" id="image_back1"
-                                                                            style="border-radius: 5px;">
-                                                                            <img src="../assets/images/profile/sample.png"
-                                                                                id="combo4" alt="Default Image"
-                                                                                style="width:160px; height: 160px;"
-                                                                                onclick="document.getElementById('img4').click();">
-                                                                            </button>
-                                                                        </div>
-                                                                        <label style="width: 100%; text-align: center;">
-                                                                            Upload<input type="file"
-                                                                                class="uploadFile img"
-                                                                                value="Upload Photo"
-                                                                                onchange="handleFileUpload(this, 'combo4')"
-                                                                                id="img4"
-                                                                                style="width: 0px; height: 0px; overflow: hidden;">
-                                                                        </label>
-                                                                        <span id="watchfile2_error" style="color: red;"
-                                                                            class="error"></span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-sm-12">
-                                                                <div class="row">
-                                                                    <div class="col-3" style="margin-top: 10px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="caseback"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select
-                                                                                class="form-control caseback_dropdown"
-                                                                                id="caseback_dropdown">
-                                                                                <option value="0">Caseback</option>
-
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-3" style="margin-top: 10px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="chronocase"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select
-                                                                                class="form-control chronocase_dropdown"
-                                                                                id="chronocase_dropdown">
-                                                                                <option value="0">chronocase</option>
-
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <hr style="margin-top: 20px;">
-                                                            </div>
-                                                            <div class="col-sm-12">
-                                                                <!-- start5 -->
-                                                                <div class="row">
-                                                                    <h5>Select Combo 5</h5>
-                                                                    <div class="col-3" style="margin-top: 10px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="dial"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select class="form-control dial_dropdown"
-                                                                                id="dial_dropdown">
-                                                                                <option value="0">Dials</option>
-                                                                                <!-- Add more options as needed -->
-                                                                            </select>
-
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-3" style="margin-top: 10px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="strap"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select class="form-control strap_dropdown"
-                                                                                id="strap_dropdown">
-                                                                                <option value="0">Straps</option>
-                                                                                <!-- Add more options as needed -->
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-3" style="margin-top: 10px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="bezel"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select class="form-control bezel_dropdown"
-                                                                                id="bezel_dropdown">
-                                                                                <option value="0">Bezel</option>
-
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-3" style="text-align: center;">
-                                                                        <div class="imagePreview" id="image_back1"
-                                                                            style="border-radius: 5px;">
-                                                                            <img src="../assets/images/profile/sample.png"
-                                                                                id="combo5" alt="Default Image"
-                                                                                style="width:160px; height: 160px;"
-                                                                                onclick="document.getElementById('img5').click();">
-                                                                            </button>
-                                                                        </div>
-                                                                        <label style="width: 100%; text-align: center;">
-                                                                            Upload<input type="file"
-                                                                                class="uploadFile img"
-                                                                                value="Upload Photo"
-                                                                                onchange="handleFileUpload(this, 'combo5')"
-                                                                                id="img5"
-                                                                                style="width: 0px; height: 0px; overflow: hidden;">
-                                                                        </label>
-                                                                        <span id="watchfile2_error" style="color: red;"
-                                                                            class="error"></span>
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-12">
-
-                                                                <div class="row">
-
-                                                                    <div class="col-3" style="margin-top: 20px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="caseback"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select
-                                                                                class="form-control caseback_dropdown"
-                                                                                id="caseback_dropdown">
-                                                                                <option value="0">Caseback</option>
-                                                                                <!-- Add more options as needed -->
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-3" style="margin-top: 20px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="chronocase"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select
-                                                                                class="form-control chronocase_dropdown"
-                                                                                id="chronocase_dropdown">
-                                                                                <option value="0">Chronocase</option>
-                                                                                <!-- Add more options as needed -->
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-3" style="margin-top: 20px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="crown"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select class="form-control crown_dropdown"
-                                                                                id="crown_dropdown">
-                                                                                <option value="0">Crown</option>
-                                                                                <!-- Add more options as needed -->
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <hr style="margin-top: 30px;">
-                                                                <!-- end5 -->
-                                                            </div>
-                                                            <div class="col-sm-12">
-                                                                <!-- start6 -->
-                                                                <div class="row">
-                                                                    <h5>Select Combo 6</h5>
-                                                                    <div class="col-3" style="margin-top: 10px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="dial"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select class="form-control dial_dropdown"
-                                                                                id="dial_dropdown">
-                                                                                <option value="0">Dials</option>
-                                                                                <!-- Add more options as needed -->
-                                                                            </select>
-
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-3" style="margin-top: 10px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="strap"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select class="form-control strap_dropdown"
-                                                                                id="strap_dropdown">
-                                                                                <option value="0">Straps</option>
-                                                                                <!-- Add more options as needed -->
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-3" style="margin-top: 10px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="bezel"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select class="form-control bezel_dropdown"
-                                                                                id="bezel_dropdown">
-                                                                                <option value="0">Bezel</option>
-
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-3" style="text-align: center;">
-                                                                        <div class="imagePreview" id="image_back1"
-                                                                            style="border-radius: 5px;">
-                                                                            <img src="../assets/images/profile/sample.png"
-                                                                                id="combo6" alt="Default Image"
-                                                                                style="width:160px; height: 160px;"
-                                                                                onclick="document.getElementById('img6').click();">
-                                                                            </button>
-                                                                        </div>
-                                                                        <label style="width: 100%; text-align: center;">
-                                                                            Upload<input type="file"
-                                                                                class="uploadFile img"
-                                                                                value="Upload Photo"
-                                                                                onchange="handleFileUpload(this, 'combo6')"
-                                                                                id="img6"
-                                                                                style="width: 0px; height: 0px; overflow: hidden;">
-                                                                        </label>
-                                                                        <span id="watchfile2_error" style="color: red;"
-                                                                            class="error"></span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-12">
-
-                                                                <div class="row">
-
-                                                                    <div class="col-3" style="margin-top: 20px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="caseback"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select
-                                                                                class="form-control caseback_dropdown"
-                                                                                id="caseback_dropdown">
-                                                                                <option value="0">Caseback</option>
-                                                                                <!-- Add more options as needed -->
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-3" style="margin-top: 20px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="chronocase"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select
-                                                                                class="form-control chronocase_dropdown"
-                                                                                id="chronocase_dropdown">
-                                                                                <option value="0">Chronocase</option>
-                                                                                <!-- Add more options as needed -->
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-3" style="margin-top: 20px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="crown"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select class="form-control crown_dropdown"
-                                                                                id="crown_dropdown">
-                                                                                <option value="0">Crown</option>
-                                                                                <!-- Add more options as needed -->
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="col-sm-12" style="margin-top: 50px;">
-                                                                <div class="row">
-                                                                    <div class="col-3" style="margin-top: 20px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="hand"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select class="form-control hand_dropdown"
-                                                                                id="hand_dropdown">
-                                                                                <option value="0">Hands</option>
-                                                                                <!-- Add more options as needed -->
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <hr style="margin-top: 30px;">
-                                                                <!-- end6 -->
-                                                            </div>
-
-                                                            <div class="col-sm-12">
-                                                                <!-- start7 -->
-                                                                <div class="row">
-                                                                    <h5>Select Combo 7</h5>
-                                                                    <div class="col-3" style="margin-top: 10px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="dial"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select class="form-control dial_dropdown"
-                                                                                id="dial_dropdown">
-                                                                                <option value="0">Dials</option>
-                                                                                <!-- Add more options as needed -->
-                                                                            </select>
-
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-3" style="margin-top: 10px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="strap"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select class="form-control strap_dropdown"
-                                                                                id="strap_dropdown">
-                                                                                <option value="0">Straps</option>
-                                                                                <!-- Add more options as needed -->
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-3" style="margin-top: 10px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="bezel"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select class="form-control bezel_dropdown"
-                                                                                id="bezel_dropdown">
-                                                                                <option value="0">Bezel</option>
-
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-3" style="text-align: center;">
-                                                                        <div class="imagePreview" id="image_back1"
-                                                                            style="border-radius: 5px;">
-                                                                            <img src="../assets/images/profile/sample.png"
-                                                                                id="combo7" alt="Default Image"
-                                                                                style="width:160px; height: 160px;"
-                                                                                onclick="document.getElementById('img7').click();">
-                                                                            </button>
-                                                                        </div>
-                                                                        <label style="width: 100%; text-align: center;">
-                                                                            Upload<input type="file"
-                                                                                class="uploadFile img"
-                                                                                value="Upload Photo"
-                                                                                onchange="handleFileUpload(this, 'combo7')"
-                                                                                id="img7"
-                                                                                style="width: 0px; height: 0px; overflow: hidden;">
-                                                                        </label>
-                                                                        <span id="watchfile2_error" style="color: red;"
-                                                                            class="error"></span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-12">
-
-                                                                <div class="row">
-
-                                                                    <div class="col-3" style="margin-top: 20px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="caseback"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select
-                                                                                class="form-control caseback_dropdown"
-                                                                                id="caseback_dropdown">
-                                                                                <option value="0">Caseback</option>
-                                                                                <!-- Add more options as needed -->
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-3" style="margin-top: 20px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="chronocase"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select
-                                                                                class="form-control chronocase_dropdown"
-                                                                                id="chronocase_dropdown">
-                                                                                <option value="0">Chronocase</option>
-                                                                                <!-- Add more options as needed -->
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-3" style="margin-top: 20px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="crown"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select class="form-control crown_dropdown"
-                                                                                id="crown_dropdown">
-                                                                                <option value="0">Crown</option>
-                                                                                <!-- Add more options as needed -->
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="col-sm-12" style="margin-top: 50px;">
-                                                                <div class="row">
-                                                                    <div class="col-3" style="margin-top: 20px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="hand"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select class="form-control hand_dropdown"
-                                                                                id="hand_dropdown">
-                                                                                <option value="0">Hands</option>
-                                                                                <!-- Add more options as needed -->
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-3" style="margin-top: 20px;">
-                                                                        <div class="custom-select">
-                                                                            <img src="../assets/images/profile/watch.png"
-                                                                                id="front" class="movement"
-                                                                                alt="Default Image"
-                                                                                style="width:70px; height: 70px; margin-left: 70px;">
-                                                                            <select
-                                                                                class="form-control movement_dropdown"
-                                                                                id="movement_dropdown">
-                                                                                <option value="0">Movement</option>
-                                                                                <!-- Add more options as needed -->
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <hr style="margin-top: 30px;">
-                                                                <!-- end7 -->
-                                                            </div>
+                                                        
 
                                                             <div class="col-sm-12">
                                                                 <!-- start8 -->
@@ -961,7 +264,7 @@
                                                                             <img src="../assets/images/profile/sample.png"
                                                                                 id="combo8" alt="Default Image"
                                                                                 style="width:160px; height: 160px;"
-                                                                                onclick="document.getElementById('img8').click();">
+                                                                                onclick="document.getElementById('uploadFile_8').click();">
                                                                             </button>
                                                                         </div>
                                                                         <label style="width: 100%; text-align: center;">
@@ -969,7 +272,7 @@
                                                                                 class="uploadFile img"
                                                                                 value="Upload Photo"
                                                                                 onchange="handleFileUpload(this, 'combo8')"
-                                                                                id="img8"
+                                                                                id="uploadFile_8"
                                                                                 style="width: 0px; height: 0px; overflow: hidden;">
                                                                         </label>
                                                                         <span id="watchfile2_error" style="color: red;"
@@ -1229,7 +532,7 @@
                                                             onchange="handleFileUpload(this, 'front1')" id="watchimg1"
                                                             style="width: 0px; height: 0px; overflow: hidden;">
                                                     </label>
-                                                    <span id="watchfile2_error" style="color: red;"
+                                                    <span id="watchfile2_error" style="color: red;"watchimg2
                                                         class="error"></span>
                                                 </div>
                                                 <!-- col-2 -->
@@ -1238,7 +541,7 @@
                                                     <div class="imagePreview" style="border-radius: 5px;">
                                                         <img src="../assets/images/profile/sample.png" id="back1"
                                                             alt="Default Image" style="width:160px; height: 160px;"
-                                                            onclick="document.getElementById('watchimg2').click();">
+                                                            onclick="document.getElementById('').click();">
                                                     </div>
                                                     <label style="width: 100%; text-align: center;">
                                                         Upload<input type="file" class="uploadFile img"
@@ -1455,145 +758,467 @@
         getWatchData();
 
 
+        // function validateForm() {
+        //     let isValid = true;
+        //     let errorMessage = '';
+
+        //     // Validate dropdowns (Example for one, repeat for all)
+        //     let dialDropdown = document.getElementById("dial_dropdown").value;
+        //     let strapDropdown = document.getElementById("strap_dropdown").value;
+        //     let bezelDropdown = document.getElementById("bezel_dropdown").value;
+        //     let casebackDropdown = document.getElementById("caseback_dropdown").value;
+        //     let chronocaseDropdown = document.getElementById("chronocase_dropdown").value;
+        //     let crownDropdown = document.getElementById("crown_dropdown").value;
+        //     let handDropdown = document.getElementById("hand_dropdown").value;
+        //     let movementDropdown = document.getElementById("movement_dropdown").value;
+        //     let secondDropdown = document.getElementById("second_dropdown").value;
+
+        //     const dialsize = document.getElementById('dialsize').value.trim();
+        //     const color = document.getElementById('color').value.trim();
+        //     const weight = document.getElementById('weight').value.trim();
+        //     const bodytype = document.getElementById('bodytype').value.trim();
+        //     const Brand = document.getElementById('Brand').value.trim();
+        //     const battery = document.getElementById('battery').value.trim();
+        //     const yearofmanufacture = document.getElementById('year').value.trim();
+        //     const warranty = document.getElementById('warranty').value.trim();
+        //     const itemcode = document.getElementById('itemcode').value.trim();
+        //     const displaytype = document.getElementById('displaytype').value.trim();
+        //     const waterresistant = document.getElementById('water').value;
+        //     const shape = document.getElementById('shape').value.trim();
+        //     const iprating = document.getElementById('iprating').value.trim();
+        //     const deliveryfee = document.getElementById('deliveryfee').value.trim();
+        //     const insidebox = document.getElementById('insidebox').value.trim();
+
+
+        //     // Validate combos
+        //     let combo1 = document.getElementById("combo1").value;
+        //     let combo2 = document.getElementById("combo2").value;
+        //     let combo3 = document.getElementById("combo3").value;
+        //     let combo4 = document.getElementById("combo4").value;
+        //     let combo5 = document.getElementById("combo5").value;
+        //     let combo6 = document.getElementById("combo6").value;
+        //     let combo7 = document.getElementById("combo7").value;
+        //     let combo8 = document.getElementById("combo8").value;
+
+        //     // Simple validation example (repeat this for all fields)
+        //     if (dialDropdown === "") {
+        //         isValid = false;
+        //         errorMessage += "Please select a dial.\n";
+        //     }
+
+        //     if (strapDropdown === "") {
+        //         isValid = false;
+        //         errorMessage += "Please select a strap.\n";
+        //     }
+
+        //     if (bezelDropdown === "") {
+        //         isValid = false;
+        //         errorMessage += "Please select a bezel.\n";
+        //     }
+
+        //     if (casebackDropdown === "") {
+        //         isValid = false;
+        //         errorMessage += "Please select a caseback.\n";
+        //     }
+
+        //     if (chronocaseDropdown === "") {
+        //         isValid = false;
+        //         errorMessage += "Please select a chronocase.\n";
+        //     }
+
+        //     if (crownDropdown === "") {
+        //         isValid = false;
+        //         errorMessage += "Please select a crown.\n";
+        //     }
+
+        //     if (handDropdown === "") {
+        //         isValid = false;
+        //         errorMessage += "Please select a hand.\n";
+        //     }
+
+        //     if (movementDropdown === "") {
+        //         isValid = false;
+        //         errorMessage += "Please select a movement.\n";
+        //     }
+
+        //     if (secondDropdown === "") {
+        //         isValid = false;
+        //         errorMessage += "Please select a second.\n";
+        //     }
+
+        //     // Repeat similar checks for the rest of the dropdowns and combos
+
+        //     if (!isValid) {
+        //         alert(errorMessage);
+        //         return false; // Prevent form submission if validation fails
+        //     }
+
+        //     // If validation passes, proceed to send the form data via AJAX
+        //     let formData = new FormData();
+
+        //     // Append all dropdowns and combos to formData
+        //     formData.append("dial_dropdown_8", dialDropdown);
+        //     formData.append("strap_dropdown_8", strapDropdown);
+        //     formData.append("bezel_dropdown_8", bezelDropdown);
+        //     formData.append("caseback_dropdown_8", casebackDropdown);
+        //     formData.append("chronocase_dropdown_8", chronocaseDropdown);
+        //     formData.append("crown_dropdown_8", crownDropdown);
+        //     formData.append("hand_dropdown_8", handDropdown);
+        //     formData.append("movement_dropdown_8", movementDropdown);
+        //     formData.append("second_dropdown_8", secondDropdown);
+        //     formData.append("combo1", combo1);
+        //     formData.append("combo2", combo2);
+        //     formData.append("combo3", combo3);
+        //     formData.append("combo4", combo4);
+        //     formData.append("combo5", combo5);
+        //     formData.append("combo6", combo6);
+        //     formData.append("combo7", combo7);
+        //     formData.append("combo8", combo8);
+
+        //     formData.append("dial_size_8", dialsize);
+        //     formData.append("color_8", color);
+        //     formData.append("display_type_8", displaytype);
+        //     formData.append("weight_8", weight);
+        //     formData.append("body_type_8", bodytype);
+        //     formData.append("brand_8", Brand);
+        //     formData.append("batteries_included_8", battery);
+        //     formData.append("year_of_manufacture_8", yearofmanufacture);
+        //     formData.append("warranty_period_8", warranty);
+        //     formData.append("item_code_8", itemcode);
+        //     formData.append("water_resistant_8", waterresistant);
+        //     formData.append("ip_rating_8", iprating);
+        //     formData.append("delivery_fee_8", deliveryfee);
+        //     formData.append("shape_8", shape);
+        //     formData.append("inside_the_box_8", insidebox);
+
+        //     // Add file inputs based on the IDs you provided
+        //     let fileInputs = {
+        //         "image_front": "watchimg1",
+        //         "image_back": "watchimg2",
+        //         "image_down": "watchimg3",
+        //         "image_up": "watchimg4",
+        //         "image_left": "watchimg5",
+        //         "image_right": "watchimg6"
+        //     };
+
+        //     for (let [fieldName, inputId] of Object.entries(fileInputs)) {
+        //         let fileInput = document.getElementById(inputId);
+        //         if (fileInput && fileInput.files.length > 0) {
+        //             formData.append(fieldName, fileInput.files[0]);
+        //         }
+        //     }
+
+        //     // Send the form data via AJAX to the PHP API
+        //     fetch('../api/add-watch-combo.php', { // Replace with your actual API endpoint
+        //         method: 'POST',
+        //         body: formData
+        //     })
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             if (data.success) {
+        //                 alert('Watch and watch faces saved successfully!');
+        //                 // Optionally, reset the form or redirect to another page
+        //             } else {
+        //                 alert('Failed to save: ' + data.message);
+        //             }
+        //         })
+        //         .catch(error => {
+        //             console.error('Error:', error);
+        //             alert('An error occurred while saving the watch.');
+        //         });
+
+        //     return false;  // Prevent default form submission
+        // }
+
+
+        // function updateWatchDetails() {
+        //     const watchName = document.getElementById('watchname').value.trim();
+        //     const watchPrice = parseFloat(document.getElementById('watchprice').value.trim());
+        //     const watchModel = document.getElementById('watchmodel').value.trim();
+        //     const watchPercentage = parseFloat(document.getElementById("servicePercentage").value.trim());
+
+        //     let combinationTitle = document.getElementById("combination").value;
+        //     let combinationDescription = document.getElementById("comdescrip").value;
+        //     let dialDropdown = document.getElementById("dial_dropdown").value;
+        //     let strapDropdown = document.getElementById("strap_dropdown").value;
+        //     let bezelDropdown = document.getElementById("bezel_dropdown").value;
+        //     let casebackDropdown = document.getElementById("caseback_dropdown").value;
+        //     let chronocaseDropdown = document.getElementById("chronocase_dropdown").value;
+        //     let crownDropdown = document.getElementById("crown_dropdown").value;
+        //     let handDropdown = document.getElementById("hand_dropdown").value;
+        //     let movementDropdown = document.getElementById("movement_dropdown").value;
+        //     let secondDropdown = document.getElementById("second_dropdown").value;
+
+        //     // let pricePercentage = 0;
+        //     let totalCost = 0;
+        //     totalCost += watchPrice;
+
+
+        //     if (dialDropdown != "0") {
+        //         let newArray = dialDetails.filter(function (el) {
+        //             return el.value == dialDropdown;
+        //         });
+
+        //         totalCost += newArray[0].price
+        //     }
+
+        //     if (strapDropdown != "0") {
+        //         let newArray = strapDetails.filter(function (el) {
+        //             return el.value == strapDropdown;
+        //         });
+
+        //         totalCost += newArray[0].price
+        //     }
+
+        //     if (bezelDropdown != "0") {
+        //         let newArray = bezelDetails.filter(function (el) {
+        //             return el.value == bezelDropdown;
+        //         });
+
+        //         totalCost += newArray[0].price
+        //     }
+
+        //     if (casebackDropdown != "0") {
+        //         let newArray = casebackDetails.filter(function (el) {
+        //             return el.value == casebackDropdown;
+        //         });
+
+        //         totalCost += newArray[0].price
+        //     }
+
+        //     if (chronocaseDropdown != "0") {
+        //         let newArray = chronocaseDetails.filter(function (el) {
+        //             return el.value == chronocaseDropdown;
+        //         });
+
+        //         totalCost += newArray[0].price
+        //     }
+
+        //     if (crownDropdown != "0") {
+        //         let newArray = crownDetails.filter(function (el) {
+        //             return el.value == crownDropdown;
+        //         });
+
+        //         totalCost += newArray[0].price
+        //     }
+
+        //     if (handDropdown != "0") {
+        //         let newArray = handDetails.filter(function (el) {
+        //             return el.value == handDropdown;
+        //         });
+
+        //         totalCost += newArray[0].price
+        //     }
+
+        //     if (movementDropdown != "0") {
+        //         let newArray = movementDetails.filter(function (el) {
+        //             return el.value == movementDropdown;
+        //         });
+
+        //         totalCost += newArray[0].price
+        //     }
+
+        //     if (secondDropdown != "0") {
+        //         let newArray = secondDetails.filter(function (el) {
+        //             return el.value == secondDropdown;
+        //         });
+
+        //         totalCost += newArray[0].price
+        //     }
+
+        //     const dialsize = document.getElementById('dialsize').value.trim();
+        //     const color = document.getElementById('color').value.trim();
+        //     const weight = document.getElementById('weight').value.trim();
+        //     const bodytype = document.getElementById('bodytype').value.trim();
+        //     const Brand = document.getElementById('Brand').value.trim();
+        //     const battery = document.getElementById('battery').value.trim();
+        //     const yearofmanufacture = document.getElementById('year').value.trim();
+        //     const warranty = document.getElementById('warranty').value.trim();
+        //     const itemcode = document.getElementById('itemcode').value.trim();
+        //     const displaytype = document.getElementById('displaytype').value.trim();
+        //     const waterresistant = document.getElementById('water').value;
+        //     const shape = document.getElementById('shape').value.trim();
+        //     const iprating = document.getElementById('iprating').value.trim();
+        //     const deliveryfee = document.getElementById('deliveryfee').value.trim();
+        //     const insidebox = document.getElementById('insidebox').value.trim();
+
+        //     const url = '../api/add-watch-face.php';
+        //     const body = new FormData();
+        //     body.append("dial_id", dialDropdown)
+        //     body.append("strap_id", strapDropdown)
+        //     body.append("chronocase_id", chronocaseDropdown)
+        //     body.append("movement_id", movementDropdown)
+        //     body.append("bezel_id", bezelDropdown)
+        //     body.append("hands_id", handDropdown)
+        //     body.append("seconds_id", secondDropdown)
+        //     body.append("crown_id", crownDropdown)
+        //     body.append("caseback_id", casebackDropdown)
+        //     body.append("wid", window.localStorage.getItem("wid"))
+        //     body.append("price", (totalCost + (totalCost * (watchPercentage / 100))).toFixed(2));
+        //     body.append("description", combinationDescription.trim())
+        //     body.append("watch_face_name", combinationTitle.trim())
+        //     body.append("token", window.localStorage.getItem("authToken"))
+        //     body.append("image_front", document.getElementById("watchfile2").files[0])
+        //     body.append("image_back", document.getElementById("watchfile3").files[0])
+        //     body.append("image_up", document.getElementById("watchfile4").files[0])
+        //     body.append("image_down", document.getElementById("watchfile5").files[0])
+        //     body.append("image_left", document.getElementById("watchfile6").files[0])
+        //     body.append("image_right", document.getElementById("watchfile1").files[0])
+        //     body.append("user_id", "0")
+        //     body.append("dialSize", dialsize)
+        //     body.append("color", color)
+        //     body.append("weight", weight)
+        //     body.append("bodyType", bodytype)
+        //     body.append("brand", Brand)
+        //     body.append("batteriesIncluded", battery)
+        //     body.append("yearOfManufacture", yearofmanufacture)
+        //     body.append("warrantyPeriod", warranty)
+        //     body.append("itemCode", itemcode)
+        //     body.append("displayType", displaytype)
+        //     body.append("waterResistant", waterresistant)
+        //     body.append("ipRating", iprating)
+        //     body.append("shape", shape)
+        //     body.append("insideTheBox", insidebox)
+        //     body.append("deliveryFee", deliveryfee)
+
+
+        //     fetch(url, {
+        //         method: "POST",
+        //         body: body,
+        //     },
+        //     ).then(response => {
+        //         return response.json();
+        //     }).then(data => {
+        //         if (data.success) {
+        //             alert(data.msg);
+        //             window.location.href = "./view-watch.html"
+        //         }
+        //         else {
+        //             alert(data.msg);
+        //         }
+        //     }).catch(err => {
+        //         console.log('err')
+        //         alert("error")
+        //     });
+        // }
+
+
         function validateForm() {
-            let dialDropdown = document.getElementById("dial_dropdown").value;
-            let strapDropdown = document.getElementById("strap_dropdown").value;
-            let bezelDropdown = document.getElementById("bezel_dropdown").value;
-            let casebackDropdown = document.getElementById("caseback_dropdown").value;
-            let chronocaseDropdown = document.getElementById("chronocase_dropdown").value;
-            let crownDropdown = document.getElementById("crown_dropdown").value;
-            let handDropdown = document.getElementById("hand_dropdown").value;
-            let movementDropdown = document.getElementById("movement_dropdown").value;
-            let secondDropdown = document.getElementById("second_dropdown").value;
+            let isValid = true;
+            let errorMessage = '';
 
-            let combo1 = document.getElementById("combo1").value;
-            let combo2 = document.getElementById("combo2").value;
-            let combo3 = document.getElementById("combo3").value;
-            let combo4 = document.getElementById("combo4").value;
-            let combo5 = document.getElementById("combo5").value;
-            let combo6 = document.getElementById("combo6").value;
-            let combo7 = document.getElementById("combo7").value;
-            let combo8 = document.getElementById("combo8").value;
+            // Validate and collect data for Combo 1 (dial, strap)
+            let dialDropdown1 = document.getElementById("dial_dropdown_1").value;
+            let strapDropdown1 = document.getElementById("strap_dropdown_1").value;
+            let combo1 = document.getElementById("combo1");
 
-
-
-            //Check min one dropdown has to be selected
-            if (dialDropdown === '0' && strapDropdown === '0' && bezelDropdown === '0' && casebackDropdown === '0' && chronocaseDropdown === '0' && crownDropdown === '0'
-                && handDropdown === '0' && movementDropdown === '0' && secondDropdown === '0') {
-                alert('Please select minimum one dropdown');
-                return false;
+            if (dialDropdown1 === "" || strapDropdown1 === "") {
+                isValid = false;
+                errorMessage += "Please fill out all fields for Combo 1.\n";
             }
 
-            // Validate image file inputs
-            let imageInputs = document.querySelectorAll(".uploadFile");
-            for (var i = 0; i < imageInputs.length; i++) {
-                var file = imageInputs[i].files[0];
-                if (!file) {
-                    alert("Please upload all images in upload field");
-                    return false;
-                }
-                // Add additional validations if needed, such as file type or size
+            // Validate and collect data for Combo 2 (dial, strap, bezel)
+            let dialDropdown2 = document.getElementById("dial_dropdown_2").value;
+            let strapDropdown2 = document.getElementById("strap_dropdown_2").value;
+            let bezelDropdown2 = document.getElementById("bezel_dropdown_2").value;
+            let combo2 = document.getElementById("combo2");
+
+            if (dialDropdown2 === "" || strapDropdown2 === "" || bezelDropdown2 === "") {
+                isValid = false;
+                errorMessage += "Please fill out all fields for Combo 2.\n";
             }
 
-            updateWatchDetails()
+            // Validate and collect data for Combo 3 (dial, strap, bezel, caseback)
+            let dialDropdown3 = document.getElementById("dial_dropdown_3").value;
+            let strapDropdown3 = document.getElementById("strap_dropdown_3").value;
+            let bezelDropdown3 = document.getElementById("bezel_dropdown_3").value;
+            let casebackDropdown3 = document.getElementById("caseback_dropdown_3").value;
+            let combo3 = document.getElementById("combo3");
 
-        }
-
-        function updateWatchDetails() {
-            const watchName = document.getElementById('watchname').value.trim();
-            const watchPrice = parseFloat(document.getElementById('watchprice').value.trim());
-            const watchModel = document.getElementById('watchmodel').value.trim();
-            const watchPercentage = parseFloat(document.getElementById("servicePercentage").value.trim());
-
-            let combinationTitle = document.getElementById("combination").value;
-            let combinationDescription = document.getElementById("comdescrip").value;
-            let dialDropdown = document.getElementById("dial_dropdown").value;
-            let strapDropdown = document.getElementById("strap_dropdown").value;
-            let bezelDropdown = document.getElementById("bezel_dropdown").value;
-            let casebackDropdown = document.getElementById("caseback_dropdown").value;
-            let chronocaseDropdown = document.getElementById("chronocase_dropdown").value;
-            let crownDropdown = document.getElementById("crown_dropdown").value;
-            let handDropdown = document.getElementById("hand_dropdown").value;
-            let movementDropdown = document.getElementById("movement_dropdown").value;
-            let secondDropdown = document.getElementById("second_dropdown").value;
-
-            // let pricePercentage = 0;
-            let totalCost = 0;
-            totalCost += watchPrice;
-
-
-            if (dialDropdown != "0") {
-                let newArray = dialDetails.filter(function (el) {
-                    return el.value == dialDropdown;
-                });
-
-                totalCost += newArray[0].price
+            if (dialDropdown3 === "" || strapDropdown3 === "" || bezelDropdown3 === "" || casebackDropdown3 === "") {
+                isValid = false;
+                errorMessage += "Please fill out all fields for Combo 3.\n";
             }
 
-            if (strapDropdown != "0") {
-                let newArray = strapDetails.filter(function (el) {
-                    return el.value == strapDropdown;
-                });
+            // Validate and collect data for Combo 4 (dial, strap, bezel, caseback, chronocase)
+            let dialDropdown4 = document.getElementById("dial_dropdown_4").value;
+            let strapDropdown4 = document.getElementById("strap_dropdown_4").value;
+            let bezelDropdown4 = document.getElementById("bezel_dropdown_4").value;
+            let casebackDropdown4 = document.getElementById("caseback_dropdown_4").value;
+            let chronocaseDropdown4 = document.getElementById("chronocase_dropdown_4").value;
+            let combo4 = document.getElementById("combo4");
 
-                totalCost += newArray[0].price
+            if (dialDropdown4 === "" || strapDropdown4 === "" || bezelDropdown4 === "" || casebackDropdown4 === "" || chronocaseDropdown4 === "") {
+                isValid = false;
+                errorMessage += "Please fill out all fields for Combo 4.\n";
             }
 
-            if (bezelDropdown != "0") {
-                let newArray = bezelDetails.filter(function (el) {
-                    return el.value == bezelDropdown;
-                });
+            // Validate and collect data for Combo 5 (dial, strap, bezel, caseback, chronocase, crown)
+            let dialDropdown5 = document.getElementById("dial_dropdown_5").value;
+            let strapDropdown5 = document.getElementById("strap_dropdown_5").value;
+            let bezelDropdown5 = document.getElementById("bezel_dropdown_5").value;
+            let casebackDropdown5 = document.getElementById("caseback_dropdown_5").value;
+            let chronocaseDropdown5 = document.getElementById("chronocase_dropdown_5").value;
+            let crownDropdown5 = document.getElementById("crown_dropdown_5").value;
+            let combo5 = document.getElementById("combo5");
 
-                totalCost += newArray[0].price
+            if (dialDropdown5 === "" || strapDropdown5 === "" || bezelDropdown5 === "" || casebackDropdown5 === "" || chronocaseDropdown5 === "" || crownDropdown5 === "") {
+                isValid = false;
+                errorMessage += "Please fill out all fields for Combo 5.\n";
             }
 
-            if (casebackDropdown != "0") {
-                let newArray = casebackDetails.filter(function (el) {
-                    return el.value == casebackDropdown;
-                });
+            // Validate and collect data for Combo 6 (dial, strap, bezel, caseback, chronocase, crown, hands)
+            let dialDropdown6 = document.getElementById("dial_dropdown_6").value;
+            let strapDropdown6 = document.getElementById("strap_dropdown_6").value;
+            let bezelDropdown6 = document.getElementById("bezel_dropdown_6").value;
+            let casebackDropdown6 = document.getElementById("caseback_dropdown_6").value;
+            let chronocaseDropdown6 = document.getElementById("chronocase_dropdown_6").value;
+            let crownDropdown6 = document.getElementById("crown_dropdown_6").value;
+            let handDropdown6 = document.getElementById("hand_dropdown_6").value;
+            let combo6 = document.getElementById("combo6");
 
-                totalCost += newArray[0].price
+            if (dialDropdown6 === "" || strapDropdown6 === "" || bezelDropdown6 === "" || casebackDropdown6 === "" || chronocaseDropdown6 === "" || crownDropdown6 === "" || handDropdown6 === "") {
+                isValid = false;
+                errorMessage += "Please fill out all fields for Combo 6.\n";
             }
 
-            if (chronocaseDropdown != "0") {
-                let newArray = chronocaseDetails.filter(function (el) {
-                    return el.value == chronocaseDropdown;
-                });
+            // Validate and collect data for Combo 7 (dial, strap, bezel, caseback, chronocase, crown, hands, movement)
+            let dialDropdown7 = document.getElementById("dial_dropdown_7").value;
+            let strapDropdown7 = document.getElementById("strap_dropdown_7").value;
+            let bezelDropdown7 = document.getElementById("bezel_dropdown_7").value;
+            let casebackDropdown7 = document.getElementById("caseback_dropdown_7").value;
+            let chronocaseDropdown7 = document.getElementById("chronocase_dropdown_7").value;
+            let crownDropdown7 = document.getElementById("crown_dropdown_7").value;
+            let handDropdown7 = document.getElementById("hand_dropdown_7").value;
+            let movementDropdown7 = document.getElementById("movement_dropdown_7").value;
+            let combo7 = document.getElementById("combo7");
 
-                totalCost += newArray[0].price
+            if (dialDropdown7 === "" || strapDropdown7 === "" || bezelDropdown7 === "" || casebackDropdown7 === "" || chronocaseDropdown7 === "" || crownDropdown7 === "" || handDropdown7 === "" || movementDropdown7 === "") {
+                isValid = false;
+                errorMessage += "Please fill out all fields for Combo 7.\n";
             }
 
-            if (crownDropdown != "0") {
-                let newArray = crownDetails.filter(function (el) {
-                    return el.value == crownDropdown;
-                });
+            // Validate dropdowns for Combo 8 (Example for one, repeat for all)
+            let dialDropdown8 = document.getElementById("dial_dropdown").value;
+            let strapDropdown8 = document.getElementById("strap_dropdown").value;
+            let bezelDropdown8 = document.getElementById("bezel_dropdown").value;
+            let casebackDropdown8 = document.getElementById("caseback_dropdown").value;
+            let chronocaseDropdown8 = document.getElementById("chronocase_dropdown").value;
+            let crownDropdown8 = document.getElementById("crown_dropdown").value;
+            let handDropdown8 = document.getElementById("hand_dropdown").value;
+            let movementDropdown8 = document.getElementById("movement_dropdown").value;
+            let secondDropdown8 = document.getElementById("second_dropdown").value;
 
-                totalCost += newArray[0].price
+            // Additional fields for Combo 8
+            let combo8 = document.getElementById("combo8"); // Assuming combo8 is an ID in your form
+
+            if (dialDropdown8 === "" || strapDropdown8 === "" || bezelDropdown8 === "" || casebackDropdown8 === "" || chronocaseDropdown8 === "" || crownDropdown8 === "" || handDropdown8 === "" || movementDropdown8 === "" || secondDropdown8 === "") {
+                isValid = false;
+                errorMessage += "Please fill out all fields for Combo 8.\n";
             }
 
-            if (handDropdown != "0") {
-                let newArray = handDetails.filter(function (el) {
-                    return el.value == handDropdown;
-                });
 
-                totalCost += newArray[0].price
-            }
-
-            if (movementDropdown != "0") {
-                let newArray = movementDetails.filter(function (el) {
-                    return el.value == movementDropdown;
-                });
-
-                totalCost += newArray[0].price
-            }
-
-            if (secondDropdown != "0") {
-                let newArray = secondDetails.filter(function (el) {
-                    return el.value == secondDropdown;
-                });
-
-                totalCost += newArray[0].price
-            }
-
+            // Additional form fields for Combo 8
             const dialsize = document.getElementById('dialsize').value.trim();
             const color = document.getElementById('color').value.trim();
             const weight = document.getElementById('weight').value.trim();
@@ -1610,65 +1235,134 @@
             const deliveryfee = document.getElementById('deliveryfee').value.trim();
             const insidebox = document.getElementById('insidebox').value.trim();
 
-            const url = '../api/add-watch-face.php';
-            const body = new FormData();
-            body.append("dial_id", dialDropdown)
-            body.append("strap_id", strapDropdown)
-            body.append("chronocase_id", chronocaseDropdown)
-            body.append("movement_id", movementDropdown)
-            body.append("bezel_id", bezelDropdown)
-            body.append("hands_id", handDropdown)
-            body.append("seconds_id", secondDropdown)
-            body.append("crown_id", crownDropdown)
-            body.append("caseback_id", casebackDropdown)
-            body.append("wid", window.localStorage.getItem("wid"))
-            body.append("price", (totalCost + (totalCost * (watchPercentage / 100))).toFixed(2));
-            body.append("description", combinationDescription.trim())
-            body.append("watch_face_name", combinationTitle.trim())
-            body.append("token", window.localStorage.getItem("authToken"))
-            body.append("image_front", document.getElementById("watchfile2").files[0])
-            body.append("image_back", document.getElementById("watchfile3").files[0])
-            body.append("image_up", document.getElementById("watchfile4").files[0])
-            body.append("image_down", document.getElementById("watchfile5").files[0])
-            body.append("image_left", document.getElementById("watchfile6").files[0])
-            body.append("image_right", document.getElementById("watchfile1").files[0])
-            body.append("user_id", "0")
-            body.append("dialSize", dialsize)
-            body.append("color", color)
-            body.append("weight", weight)
-            body.append("bodyType", bodytype)
-            body.append("brand", Brand)
-            body.append("batteriesIncluded", battery)
-            body.append("yearOfManufacture", yearofmanufacture)
-            body.append("warrantyPeriod", warranty)
-            body.append("itemCode", itemcode)
-            body.append("displayType", displaytype)
-            body.append("waterResistant", waterresistant)
-            body.append("ipRating", iprating)
-            body.append("shape", shape)
-            body.append("insideTheBox", insidebox)
-            body.append("deliveryFee", deliveryfee)
+            if (!isValid) {
+                alert(errorMessage);
+                return false; // Prevent form submission if validation fails
+            }
 
+            // If validation passes, proceed to send the form data via AJAX
+            let formData = new FormData();
 
-            fetch(url, {
-                method: "POST",
-                body: body,
-            },
-            ).then(response => {
-                return response.json();
-            }).then(data => {
-                if (data.success) {
-                    alert(data.msg);
-                    window.location.href = "./view-watch.html"
+            // Append data for each combo
+            formData.append("dial_dropdown_1", dialDropdown1);
+            formData.append("strap_dropdown_1", strapDropdown1);
+            formData.append("combo1", combo1);
+
+            formData.append("dial_dropdown_2", dialDropdown2);
+            formData.append("strap_dropdown_2", strapDropdown2);
+            formData.append("bezel_dropdown_2", bezelDropdown2);
+            formData.append("combo2", combo2);
+
+            formData.append("dial_dropdown_3", dialDropdown3);
+            formData.append("strap_dropdown_3", strapDropdown3);
+            formData.append("bezel_dropdown_3", bezelDropdown3);
+            formData.append("caseback_dropdown_3", casebackDropdown3);
+            formData.append("combo3", combo3);
+
+            formData.append("dial_dropdown_4", dialDropdown4);
+            formData.append("strap_dropdown_4", strapDropdown4);
+            formData.append("bezel_dropdown_4", bezelDropdown4);
+            formData.append("caseback_dropdown_4", casebackDropdown4);
+            formData.append("chronocase_dropdown_4", chronocaseDropdown4);
+            formData.append("combo4", combo4);
+
+            formData.append("dial_dropdown_5", dialDropdown5);
+            formData.append("strap_dropdown_5", strapDropdown5);
+            formData.append("bezel_dropdown_5", bezelDropdown5);
+            formData.append("caseback_dropdown_5", casebackDropdown5);
+            formData.append("chronocase_dropdown_5", chronocaseDropdown5);
+            formData.append("crown_dropdown_5", crownDropdown5);
+            formData.append("combo5", combo5);
+
+            formData.append("dial_dropdown_6", dialDropdown6);
+            formData.append("strap_dropdown_6", strapDropdown6);
+            formData.append("bezel_dropdown_6", bezelDropdown6);
+            formData.append("caseback_dropdown_6", casebackDropdown6);
+            formData.append("chronocase_dropdown_6", chronocaseDropdown6);
+            formData.append("crown_dropdown_6", crownDropdown6);
+            formData.append("hand_dropdown_6", handDropdown6);
+            formData.append("combo6", combo6);
+
+            formData.append("dial_dropdown_7", dialDropdown7);
+            formData.append("strap_dropdown_7", strapDropdown7);
+            formData.append("bezel_dropdown_7", bezelDropdown7);
+            formData.append("caseback_dropdown_7", casebackDropdown7);
+            formData.append("chronocase_dropdown_7", chronocaseDropdown7);
+            formData.append("crown_dropdown_7", crownDropdown7);
+            formData.append("hand_dropdown_7", handDropdown7);
+            formData.append("movement_dropdown_7", movementDropdown7);
+            formData.append("combo7", combo7);
+
+            formData.append("dial_dropdown_8", dialDropdown8);
+            formData.append("strap_dropdown_8", strapDropdown8);
+            formData.append("bezel_dropdown_8", bezelDropdown8);
+            formData.append("caseback_dropdown_8", casebackDropdown8);
+            formData.append("chronocase_dropdown_8", chronocaseDropdown8);
+            formData.append("crown_dropdown_8", crownDropdown8);
+            formData.append("hand_dropdown_8", handDropdown8);
+            formData.append("movement_dropdown_8", movementDropdown8);
+            formData.append("second_dropdown_8", secondDropdown8);
+            formData.append("combo8", combo8);
+
+            formData.append("dial_size_8", dialsize);
+            formData.append("color_8", color);
+            formData.append("display_type_8", displaytype);
+            formData.append("weight_8", weight);
+            formData.append("body_type_8", bodytype);
+            formData.append("brand_8", Brand);
+            formData.append("batteries_included_8", battery);
+            formData.append("year_of_manufacture_8", yearofmanufacture);
+            formData.append("warranty_period_8", warranty);
+            formData.append("item_code_8", itemcode);
+            formData.append("water_resistant_8", waterresistant);
+            formData.append("ip_rating_8", iprating);
+            formData.append("delivery_fee_8", deliveryfee);
+            formData.append("shape_8", shape);
+            formData.append("inside_the_box_8", insidebox);
+
+            // Add file inputs for Combo 8
+            let fileInputs = {
+                "image_front": "watchimg1",
+                "image_back": "watchimg2",
+                "image_down": "watchimg3",
+                "image_up": "watchimg4",
+                "image_left": "watchimg5",
+                "image_right": "watchimg6"
+            };
+
+            for (let [fieldName, inputId] of Object.entries(fileInputs)) {
+                let fileInput = document.getElementById(inputId);
+                if (fileInput && fileInput.files.length > 0) {
+                    formData.append(fieldName, fileInput.files[0]);
                 }
-                else {
-                    alert(data.msg);
-                }
-            }).catch(err => {
-                console.log('err')
-                alert("error")
-            });
+            }
+
+            fetch('../api/add-watch-combo.php', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.text()) // Change to text to see the raw response
+                .then(text => {
+                    try {
+                        const data = JSON.parse(text); // Try parsing the response as JSON
+                        if (data.success) {
+                            alert('Watch and watch faces saved successfully!');
+                            // Optionally, reset the form or redirect to another page
+                        } else {
+                            alert('Failed to save: ' + data.message);
+                        }
+                    } catch (error) {
+                        console.error('Error parsing JSON:', error, text);
+                        alert('An error occurred: Invalid JSON received from server.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred while saving the watch.');
+                });
         }
+
+
 
 
         function toggleCustomizations(header) {
