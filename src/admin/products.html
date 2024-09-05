@@ -218,11 +218,10 @@
                     <div class="card-body pt-3 p-4" onclick="pageId(${it.wid})" style="cursor:pointer;">
                       <h6 class="fw-regular fs-4">Watch Name: ${it.name}</h6>
                       <h6 class="fw-regular fs-4">Watch Model: ${it.model}</h6>
-                      <h6 class="fw-regular fs-4">Price: &#8377 ${it.base_price}</h6>
-                      <h6 class="fw-regular fs-4">No. of Favourites: ${t}</h6>
+                      
                     </div>
                      <div style="display:flex;margin: auto auto;width:100%;">
-                      <button style="margin:5px;width:90%" onclick="getId(${it.wid})" class="btn btn-warning">Edit</button>
+                      <button style="margin:5px;width:90%" onclick="getId(${it.wid})" class="btn btn-warning">Create Combo</button>
                     </div>
                   </div>
                 </div>
@@ -244,11 +243,10 @@
                     <div class="card-body pt-3 p-4" onclick="pageId(${it.wid})" style="cursor:pointer;">
                       <h6 class="fw-regular fs-4">Watch Name: ${it.name}</h6>
                       <h6 class="fw-regular fs-4">Watch Model: ${it.model}</h6>
-                      <h6 class="fw-regular fs-4">Price: &#8377 ${it.base_price}</h6>
-                      <h6 class="fw-regular fs-4">No. of Favourites: ${t}</h6>
+                      
                     </div>
                      <div style="display:flex;margin: auto auto;width:100%;">
-                      <button style="margin:5px;width:90%" onclick="getId(${it.wid})" class="btn btn-warning">Edit</button>
+                      <button style="margin:5px;width:90%" onclick="getId(${it.wid})" class="btn btn-warning">Create Combo</button>
                     </div>
                   </div>
                 </div>
@@ -269,7 +267,7 @@
 
     const getId = (watchId) => {
       window.localStorage.setItem("wid", watchId);
-      window.location.href = "./edit-watch.html";
+      window.location.href = "./add-watch-combo.html";
     };
 
     const pageId = (watchId) => {

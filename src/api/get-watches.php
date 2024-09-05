@@ -13,7 +13,7 @@ else{
     $result = $conn->query($sql);
     if($result->num_rows > 0){
         $data = array();
-        $sql = "SELECT * FROM `watch` WHERE `status` = 'Active'";
+        $sql = "SELECT * FROM `watch`";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {  

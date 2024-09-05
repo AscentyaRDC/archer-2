@@ -3,6 +3,7 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "archer-2";
+$charset = 'utf8mb4';
 // Create connection
 $conn = new mysqli($servername, $username, $password,$dbname);
 // $base = 'https://techbylanz.com/archer-new/src/api';

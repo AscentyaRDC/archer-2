@@ -1,309 +1,111 @@
 <?php
+
 require('./conn.php');
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Set default values for fields that might not be provided by the frontend
+    $name = isset($_POST['name']) ? $_POST['name'] : 'Custom Watch';
+    $model = isset($_POST['model']) ? $_POST['model'] : 'Model-X123';
+    $base_price = isset($_POST['base_price']) ? $_POST['base_price'] : 1000;
+    $created_by = isset($_POST['created_by']) ? $_POST['created_by'] : 1;
+    $is_available = isset($_POST['is_available']) ? $_POST['is_available'] : 20;
+    $aaditional_charges = isset($_POST['aaditional_charges']) ? $_POST['aaditional_charges'] : 10;
 
-$name = $_POST["name"];
-$model = $_POST["model"];
-$base_price = $_POST["base_price"];
-$dial_id = $_POST["dial_id"];
-$strap_id = $_POST["strap_id"];
-$chronocase_id = $_POST["chronocase_id"];
-$movement_id = $_POST["movement_id"];
-$bezel_id = $_POST["bezel_id"];
-$hands_id = $_POST["hands_id"];
-$seconds_id = $_POST["seconds_id"];
-$crown_id = $_POST["crown_id"];
-$caseback_id = $_POST["caseback_id"];
-$token = $_POST["token"];
-$catId = $_POST["catId"];
+    // Directories for file uploads
+    $watch_upload_dir = './image/watch/';
 
+    // Check if the directories exist, and if not, create them
+    if (!is_dir($watch_upload_dir)) {
+        mkdir($watch_upload_dir, 0777, true);
+    }
 
-$image_front_name = $_FILES["image_front"]["name"];
-$image_front_tmp_name = $_FILES["image_front"]["tmp_name"];
+    // Image variables and file paths
+    $image_paths = [];
+    $image_names = ['image_front', 'image_back', 'image_up', 'image_down', 'image_left', 'image_right'];
 
-$image_back_name = $_FILES["image_back"]["name"];
-$image_back_tmp_name = $_FILES["image_back"]["tmp_name"];
+    // Handle the upload of each image and store the file paths
+    foreach ($image_names as $image_name) {
+        if (isset($_FILES[$image_name]) && $_FILES[$image_name]['error'] == UPLOAD_ERR_OK) {
+            $file_name = basename($_FILES[$image_name]['name']);
+            $file_tmp_name = $_FILES[$image_name]['tmp_name'];
+            $file_path = $watch_upload_dir . $file_name;
 
-$image_up_name = $_FILES["image_up"]["name"];
-$image_up_tmp_name = $_FILES["image_up"]["tmp_name"];
-
-$image_down_name = $_FILES["image_down"]["name"];
-$image_down_tmp_name =$_FILES["image_down"]["tmp_name"];
-
-$image_left_name = $_FILES["image_left"]["name"];
-$image_left_tmp_name = $_FILES["image_left"]["tmp_name"];
-
-$image_right_name = $_FILES["image_right"]["name"];
-$image_right_tmp_name = $_FILES["image_right"]["tmp_name"];
-
-$aaditional_charges = $_POST["aaditional_charges"];
-$created_by = $_POST["created_by"];
-$is_available = $_POST["is_available"];
-
-$dialSize = $_POST["dialSize"];
-$color = $_POST["color"];
-$weight = $_POST["weight"];
-$bodyType = $_POST["bodyType"];
-$brand = $_POST["brand"];
-$batteriesIncluded = $_POST["batteriesIncluded"];
-$yearOfManufacture = $_POST["yearOfManufacture"];
-$warrantyPeriod = $_POST["warrantyPeriod"];
-$itemCode = $_POST["itemCode"];
-$displayType = $_POST["displayType"];
-$waterResistant = $_POST["waterResistant"];
-$ipRating = $_POST["ipRating"];
-$shape = $_POST["shape"];
-$inside = $_POST["insideTheBox"];
-$deliveryFee = $_POST["deliveryFee"];
-$status = "active";
-$description = $_POST["description"];
-
-if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-    echo "Method Not Allowed";
-}
-else{
-
-    $sql = "SELECT `token` FROM `user` WHERE `token` = '$token'";
-    $result = $conn->query($sql);
-    if($result->num_rows > 0){
-        $folder_front = "./image/watch/" . $image_front_name;
-        $folder_back = "./image/watch/" . $image_back_name;
-        $folder_up = "./image/watch/" . $image_up_name;
-        $folder_down = "./image/watch/" . $image_down_name;
-        $folder_left = "./image/watch/" . $image_left_name;
-        $folder_right = "./image/watch/" . $image_right_name;
-
-        $sql = "INSERT INTO `watch`(`cat_id`, `name`, `model`, `base_price`, `dial_id`, `strap_id`, `chronocase_id`,
-            `movement_id`, `bezel_id`, `hands_id`, `seconds_id`, `crown_id`, `caseback_id`, `image_front`, `image_back`,
-            `image_left`, `image_right`, `image_up`, `image_down`, `aaditional_charges`, `created_by`,
-            `is_available`,
-            `dial_size`, `color`, `weight`, `body_type`, `brand`, `batteries_included`, 
-            `year_of_manufacture`, `warranty_period`, `item_code`, `display_type`, `water_resistant`,
-             `ip_rating`, `shape`, `inside_the_box`, `delivery_fee`,`status`,`description`)
-            VALUES ('$catId','$name','$model','$base_price','$dial_id','$strap_id','$chronocase_id','$movement_id','$bezel_id','$hands_id',
-            '$seconds_id','$crown_id','$caseback_id','$folder_front','$folder_back','$folder_left',
-            '$folder_right','$folder_up','$folder_down','$aaditional_charges','$created_by','$is_available',
-            '$dialSize','$color','$weight','$bodyType','$brand','$batteriesIncluded','$yearOfManufacture',
-            '$warrantyPeriod','$itemCode','$displayType','$waterResistant','$ipRating','$shape','$inside','$deliveryFee','$status','$description'
-            )";
-
-        if ($conn->query($sql) === TRUE) {
-
-            $folderArr = array($folder_front, $folder_back, $folder_up,$folder_down,$folder_left,$folder_right);
-            $nameArr = array($image_front_tmp_name,$image_back_tmp_name,$image_up_tmp_name,$image_down_tmp_name,$image_left_tmp_name,
-            $image_right_tmp_name);
-
-            $count = count($folderArr);
-            $added_file = 0;
-            for($i=0;$i < $count;$i++){
-
-                if (move_uploaded_file($nameArr[$i],$folderArr[$i] )) {
-                
-                    $added_file += 1;
-                } 
-                else{
-                    echo $added_file;
-                }
+            if (move_uploaded_file($file_tmp_name, $file_path)) {
+                $image_paths[$image_name] = $file_path;
+            } else {
+                die("Failed to upload $image_name.");
             }
-
-            if($added_file == 6){
-                $last_d = $conn->insert_id;
-                $array = array();
-                $data ["last_inserted_id"] = $last_d;
-                array_push($array,$data);
-                $res ["success"] = true;
-                $res ["data"] = $array;
-                $res ["msg"] = "watch details added successfully";
-
-                $out = json_encode($res);
-                echo $out;
-            }
-            else{
-                $res ["success"] = false;
-                $res ["data"] = [];
-                $res ["msg"] = "something went wrong";
-
-                $out = json_encode($res);
-                echo $out;
-            }
-
-        }
-        else{
-            $res ["success"] = false;
-            $res ["data"] = [];
-            $res ["msg"] = "Error: " . $sql . "<br>" . $conn->error . "<br>";
-        
-            $out = json_encode($res);
-            echo $out;
+        } else {
+            $image_paths[$image_name] = '';
         }
     }
-    else{
+
+    // Prepare the SQL query
+    $sql = "INSERT INTO `watch`(`name`, `model`, `base_price`, `dial_id`, `strap_id`, `chronocase_id`, 
+        `movement_id`, `bezel_id`, `hands_id`, `seconds_id`, `crown_id`, `caseback_id`, `image_front`, 
+        `image_back`, `image_left`, `image_right`, `image_up`, `image_down`, `aaditional_charges`, `created_by`, 
+        `is_available`, `dial_size`, `color`, `weight`, `body_type`, `brand`, `batteries_included`, 
+        `year_of_manufacture`, `warranty_period`, `item_code`, `display_type`, `water_resistant`, 
+        `ip_rating`, `shape`, `inside_the_box`, `delivery_fee`) 
+        VALUES (
+        '$name', 
+        '$model', 
+        '$base_price', 
+        '" . $_POST['dial_dropdown_8'] . "', 
+        '" . $_POST['strap_dropdown_8'] . "', 
+        '" . $_POST['chronocase_dropdown_8'] . "', 
+        '" . $_POST['movement_dropdown_8'] . "', 
+        '" . $_POST['bezel_dropdown_8'] . "', 
+        '" . $_POST['hand_dropdown_8'] . "', 
+        '" . $_POST['second_dropdown_8'] . "', 
+        '" . $_POST['crown_dropdown_8'] . "', 
+        '" . $_POST['caseback_dropdown_8'] . "', 
+        '" . $image_paths['image_front'] . "', 
+        '" . $image_paths['image_back'] . "', 
+        '" . $image_paths['image_left'] . "', 
+        '" . $image_paths['image_right'] . "', 
+        '" . $image_paths['image_up'] . "', 
+        '" . $image_paths['image_down'] . "', 
+        '$aaditional_charges', 
+        '$created_by', 
+        '$is_available', 
+        '" . $_POST['dial_size_8'] . "', 
+        '" . $_POST['color_8'] . "', 
+        '" . $_POST['weight_8'] . "', 
+        '" . $_POST['body_type_8'] . "', 
+        '" . $_POST['brand_8'] . "', 
+        '" . $_POST['batteries_included_8'] . "', 
+        '" . $_POST['year_of_manufacture_8'] . "', 
+        '" . $_POST['warranty_period_8'] . "', 
+        '" . $_POST['item_code_8'] . "', 
+        '" . $_POST['display_type_8'] . "', 
+        '" . $_POST['water_resistant_8'] . "', 
+        '" . $_POST['ip_rating_8'] . "', 
+        '" . $_POST['shape_8'] . "', 
+        '" . $_POST['inside_the_box_8'] . "', 
+        '" . $_POST['delivery_fee_8'] . "')";
+
+    if ($conn->query($sql) === TRUE) {
+        $last_d = $conn->insert_id;
+        $array = array();
+        $data["last_inserted_id"] = $last_d;
+        array_push($array, $data);
+        $res["success"] = true;
+        $res["data"] = $array;
+        $res["msg"] = "watch details added successfully";
+
+        $out = json_encode($res);
+        echo $out;
+    } else {
         $res["success"] = false;
-        $res["msg"] = "Not a Valid token";
         $res["data"] = [];
+        $res["msg"] = "Error: " . $sql . "<br>" . $conn->error . "<br>";
 
         $out = json_encode($res);
         echo $out;
     }
-
-
-   
-   
 }
+
 $conn->close();
-
-
-// require('./conn.php');
-
-// $inputJSON = file_get_contents('php://input');
-// $input = json_decode($inputJSON, TRUE); //convert JSON into array
-
-// $name = $_POST["name"];
-// $model = $_POST["model"];
-// $base_price = $_POST["base_price"];
-// $dial_id = $_POST["dial_id"];
-// $strap_id = $_POST["strap_id"];
-// $chronocase_id = $_POST["chronocase_id"];
-// $movement_id = $_POST["movement_id"];
-// $bezel_id = $_POST["bezel_id"];
-// $hands_id = $_POST["hands_id"];
-// $seconds_id = $_POST["seconds_id"];
-// $crown_id = $_POST["crown_id"];
-// $caseback_id = $_POST["caseback_id"];
-// $token = $_POST["token"];
-// $catId = $_POST["catId"];
-
-// $image_front_name = $_FILES["image_front"]["name"];
-// $image_front_tmp_name = $_FILES["image_front"]["tmp_name"];
-
-// $image_back_name = $_FILES["image_back"]["name"];
-// $image_back_tmp_name = $_FILES["image_back"]["tmp_name"];
-
-// $image_up_name = $_FILES["image_up"]["name"];
-// $image_up_tmp_name = $_FILES["image_up"]["tmp_name"];
-
-// $image_down_name = $_FILES["image_down"]["name"];
-// $image_down_tmp_name = $_FILES["image_down"]["tmp_name"];
-
-// $image_left_name = $_FILES["image_left"]["name"];
-// $image_left_tmp_name = $_FILES["image_left"]["tmp_name"];
-
-// $image_right_name = $_FILES["image_right"]["name"];
-// $image_right_tmp_name = $_FILES["image_right"]["tmp_name"];
-
-// $aaditional_charges = $_POST["aaditional_charges"];
-// $created_by = $_POST["created_by"];
-// $is_available = $_POST["is_available"];
-
-// $dialSize = $_POST["dialSize"];
-// $color = $_POST["color"];
-// $weight = $_POST["weight"];
-// $bodyType = $_POST["bodyType"];
-// $brand = $_POST["brand"];
-// $batteriesIncluded = $_POST["batteriesIncluded"];
-// $yearOfManufacture = $_POST["yearOfManufacture"];
-// $warrantyPeriod = $_POST["warrantyPeriod"];
-// $itemCode = $_POST["itemCode"];
-// $displayType = $_POST["displayType"];
-// $waterResistant = $_POST["waterResistant"];
-// $ipRating = $_POST["ipRating"];
-// $shape = $_POST["shape"];
-// $inside = $_POST["insideTheBox"];
-// $deliveryFee = $_POST["deliveryFee"];
-
-// if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-//     echo "Method Not Allowed";
-// }
-// else{
-
-//     $sql = "SELECT `token` FROM `user` WHERE `token` = '$token'";
-//     $result = $conn->query($sql);
-//     if($result->num_rows > 0){
-
-//         Calculate the new base price
-//         $aaditional_charges_amount = ($base_price * $aaditional_charges) / 100;
-//         $base_price += $aaditional_charges_amount;
-
-//         $folder_front = "./image/watch/" . $image_front_name;
-//         $folder_back = "./image/watch/" . $image_back_name;
-//         $folder_up = "./image/watch/" . $image_up_name;
-//         $folder_down = "./image/watch/" . $image_down_name;
-//         $folder_left = "./image/watch/" . $image_left_name;
-//         $folder_right = "./image/watch/" . $image_right_name;
-
-//         $sql = "INSERT INTO `watch`(`cat_id`, `name`, `model`, `base_price`, `dial_id`, `strap_id`, `chronocase_id`,
-//             `movement_id`, `bezel_id`, `hands_id`, `seconds_id`, `crown_id`, `caseback_id`, `image_front`, `image_back`,
-//             `image_left`, `image_right`, `image_up`, `image_down`, `aaditional_charges`, `created_by`,
-//             `is_available`,
-//             `dial_size`, `color`, `weight`, `body_type`, `brand`, `batteries_included`, 
-//             `year_of_manufacture`, `warranty_period`, `item_code`, `display_type`, `water_resistant`,
-//              `ip_rating`, `shape`, `inside_the_box`, `delivery_fee` )
-//             VALUES ('$catId','$name','$model','$base_price','$dial_id','$strap_id','$chronocase_id','$movement_id','$bezel_id','$hands_id',
-//             '$seconds_id','$crown_id','$caseback_id','$folder_front','$folder_back','$folder_left',
-//             '$folder_right','$folder_up','$folder_down','$aaditional_charges','$created_by','$is_available',
-//             '$dialSize','$color','$weight','$bodyType','$brand','$batteriesIncluded','$yearOfManufacture',
-//             '$warrantyPeriod','$itemCode','$displayType','$waterResistant','$ipRating','$shape','$inside','$deliveryFee'
-//             )";
-
-//         if ($conn->query($sql) === TRUE) {
-
-//             $folderArr = array($folder_front, $folder_back, $folder_up,$folder_down,$folder_left,$folder_right);
-//             $nameArr = array($image_front_tmp_name,$image_back_tmp_name,$image_up_tmp_name,$image_down_tmp_name,$image_left_tmp_name,
-//             $image_right_tmp_name);
-
-//             $count = count($folderArr);
-//             $added_file = 0;
-//             for($i=0;$i < $count;$i++){
-
-//                 if (move_uploaded_file($nameArr[$i],$folderArr[$i] )) {
-                
-//                     $added_file += 1;
-//                 } 
-//                 else{
-//                     echo $added_file;
-//                 }
-//             }
-
-//             if($added_file == 6){
-//                 $last_d = $conn->insert_id;
-//                 $array = array();
-//                 $data ["last_inserted_id"] = $last_d;
-//                 array_push($array,$data);
-//                 $res ["success"] = true;
-//                 $res ["data"] = $array;
-//                 $res ["msg"] = "watch details added successfully";
-
-//                 $out = json_encode($res);
-//                 echo $out;
-//             }
-//             else{
-//                 $res ["success"] = false;
-//                 $res ["data"] = [];
-//                 $res ["msg"] = "something went wrong";
-
-//                 $out = json_encode($res);
-//                 echo $out;
-//             }
-
-//         }
-//         else{
-//             $res ["success"] = false;
-//             $res ["data"] = [];
-//             $res ["msg"] = "Error: " . $sql . "<br>" . $conn->error . "<br>";
-        
-//             $out = json_encode($res);
-//             echo $out;
-//         }
-//     }
-//     else{
-//         $res["success"] = false;
-//         $res["msg"] = "Not a Valid token";
-//         $res["data"] = [];
-
-//         $out = json_encode($res);
-//         echo $out;
-//     }
-// }
-// $conn->close();
 
 ?>

@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Add Watch Combo</title>
+    <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+    <link rel="stylesheet" href="../assets/css/styles.min.css" />
+
+    <style>
+        /* Style the select elements */
+        .custom-select {
+            position: relative;
+            width: 100%;
+        }
+
+        /* Hide the default arrow and create a custom dropdown arrow */
+        .custom-select select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background: transparent;
+            padding-right: 1em;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 0.7em top 50%;
+            background-size: 1.5em auto;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 12px;
+            line-height: 2;
+            padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+            -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+    </style>
+
+    <style>
+        .customizations-content {
+            display: flex;
+            flex-wrap: wrap;
+            /* Allow items to wrap onto multiple lines */
+            justify-content: space-between;
+            /* Distribute items evenly along the main axis */
+            align-items: flex-start;
+            /* Align items at the start of the cross axis */
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease;
+        }
+
+        .customizations-content>div {
+            width: calc(32% - 10px);
+            /* Set width for each item with margin */
+            margin: 5px;
+            /* Add margin for spacing between items */
+        }
+
+        .customizations {
+            margin-top: 20px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #E1E8EE;
+            width: 90%;
+            margin-left: 5%;
+
+            border: 1px solid #ccc;
+            /* Add border to create the box effect */
+            padding: 7px;
+            /* Add padding for spacing */
+            margin-bottom: 5px;
+            /* Add margin for spacing between boxes */
+
+        }
+
+        .customization-header {
+            cursor: pointer;
+            /* Set cursor to pointer to indicate clickable */
+            display: flex;
+            /* Use flexbox for layout */
+            justify-content: space-between;
+            /* Align items to each end */
+            align-items: center;
+            /* Align items vertically */
+        }
+
+        .expand-btn {
+            font-size: 24px;
+            /* Adjust the font size as needed */
+            font-weight: bold;
+            /* Make the symbol bold */
+        }
+    </style>
+
+</head>
+
+<body>
+    <!--  Body Wrapper -->
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="fixed" data-header-position="fixed">
+        <!-- Sidebar Start -->
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div>
+                <div class="brand-logo d-flex align-items-center justify-content-between">
+                    <a href="./products.html" class="text-nowrap logo-img">
+                        <img src="../assets/images/logos/favicon.png" width="180" alt="" />
+                    </a>
+                    <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+                        <i class="ti ti-x fs-8"></i>
+                    </div>
+                </div>
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+                    <ul id="sidebarnav">
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Home</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./products.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-layout-dashboard"></i>
+                                </span>
+                                <span class="hide-menu">Products</span>
+                            </a>
+                        </li>
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Menu</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./profile.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-article"></i>
+                                </span>
+                                <span class="hide-menu">Profile</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./orders.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-alert-circle"></i>
+                                </span>
+                                <span class="hide-menu">Orders</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./feedback.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-cards"></i>
+                                </span>
+                                <span class="hide-menu">Feedback</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="./ratings.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-file-description"></i>
+                                </span>
+                                <span class="hide-menu">Ratings</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Settings</span>
+                        </li>
+                        <li class="sidebar-item">
+
+                            <a class="sidebar-link" href="./change-logo.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-settings"></i>
+                                </span>
+                                <span class="hide-menu">Settings</span>
+                            </a>
+
+                            <a class="sidebar-link" href="./add-offer.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-file-description"></i>
+                                </span>
+                                <span class="hide-menu">Offers</span>
+                            </a>
+
+                            <a class="sidebar-link" href="./login.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-login"></i>
+                                </span>
+                                <span class="hide-menu">Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!--  Sidebar End -->
+        <!--  Main wrapper -->
+        <div class="body-wrapper">
+            <div>
+                <div class="card">
+                    <div class="card-body">
+                        <h2 style="width: 100%; text-align: center;">Add Combo's for created watch</h2>
+                        <div class="card">
+                            <div class="card-body">
+
+                                <!--Form Starting Here-->
+                                <form>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="container">
+                                                    <div class="row" style="margin-top: 2%;">
+
+
+                                                        <div class="col-sm-12">
+                                                            <!-- start8 -->
+                                                            <div class="row">
+                                                                <h5 style="text-align: center;">Please select minimum 1
+                                                                    dropdown and define combo of created watch</h5>
+                                                                <div class="col-3" style="margin-top: 10px;">
+                                                                    <div class="custom-select">
+                                                                        <img src="../assets/images/profile/watch.png"
+                                                                            id="front" class="dial" alt="Default Image"
+                                                                            style="width:70px; height: 70px; margin-left: 70px;">
+                                                                        <select class="form-control dial_dropdown"
+                                                                            id="dial_dropdown">
+                                                                            <option value="0">Dials</option>
+                                                                            <!-- Add more options as needed -->
+                                                                        </select>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-3" style="margin-top: 10px;">
+                                                                    <div class="custom-select">
+                                                                        <img src="../assets/images/profile/watch.png"
+                                                                            id="front" class="strap" alt="Default Image"
+                                                                            style="width:70px; height: 70px; margin-left: 70px;">
+                                                                        <select class="form-control strap_dropdown"
+                                                                            id="strap_dropdown">
+                                                                            <option value="0">Straps</option>
+                                                                            <!-- Add more options as needed -->
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-3" style="margin-top: 10px;">
+                                                                    <div class="custom-select">
+                                                                        <img src="../assets/images/profile/watch.png"
+                                                                            id="front" class="bezel" alt="Default Image"
+                                                                            style="width:70px; height: 70px; margin-left: 70px;">
+                                                                        <select class="form-control bezel_dropdown"
+                                                                            id="bezel_dropdown">
+                                                                            <option value="0">Bezel</option>
+
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-3" style="text-align: center;">
+                                                                    <div class="imagePreview" id="image_back1"
+                                                                        style="border-radius: 5px;">
+                                                                        <img src="../assets/images/profile/sample.png"
+                                                                            id="combo8" alt="Default Image"
+                                                                            style="width:160px; height: 160px;">
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-12">
+
+                                                            <div class="row">
+
+                                                                <div class="col-3" style="margin-top: 20px;">
+                                                                    <div class="custom-select">
+                                                                        <img src="../assets/images/profile/watch.png"
+                                                                            id="front" class="caseback"
+                                                                            alt="Default Image"
+                                                                            style="width:70px; height: 70px; margin-left: 70px;">
+                                                                        <select class="form-control caseback_dropdown"
+                                                                            id="caseback_dropdown">
+                                                                            <option value="0">Caseback</option>
+                                                                            <!-- Add more options as needed -->
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-3" style="margin-top: 20px;">
+                                                                    <div class="custom-select">
+                                                                        <img src="../assets/images/profile/watch.png"
+                                                                            id="front" class="chronocase"
+                                                                            alt="Default Image"
+                                                                            style="width:70px; height: 70px; margin-left: 70px;">
+                                                                        <select class="form-control chronocase_dropdown"
+                                                                            id="chronocase_dropdown">
+                                                                            <option value="0">Chronocase</option>
+                                                                            <!-- Add more options as needed -->
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-3" style="margin-top: 20px;">
+                                                                    <div class="custom-select">
+                                                                        <img src="../assets/images/profile/watch.png"
+                                                                            id="front" class="crown" alt="Default Image"
+                                                                            style="width:70px; height: 70px; margin-left: 70px;">
+                                                                        <select class="form-control crown_dropdown"
+                                                                            id="crown_dropdown">
+                                                                            <option value="0">Crown</option>
+                                                                            <!-- Add more options as needed -->
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-sm-12" style="margin-top: 50px;">
+                                                            <div class="row">
+                                                                <div class="col-3" style="margin-top: 20px;">
+                                                                    <div class="custom-select">
+                                                                        <img src="../assets/images/profile/watch.png"
+                                                                            id="front" class="hand" alt="Default Image"
+                                                                            style="width:70px; height: 70px; margin-left: 70px;">
+                                                                        <select class="form-control hand_dropdown"
+                                                                            id="hand_dropdown">
+                                                                            <option value="0">Hands</option>
+                                                                            <!-- Add more options as needed -->
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-3" style="margin-top: 20px;">
+                                                                    <div class="custom-select">
+                                                                        <img src="../assets/images/profile/watch.png"
+                                                                            id="front" class="movement"
+                                                                            alt="Default Image"
+                                                                            style="width:70px; height: 70px; margin-left: 70px;">
+                                                                        <select class="form-control movement_dropdown"
+                                                                            id="movement_dropdown">
+                                                                            <option value="0">Movement</option>
+                                                                            <!-- Add more options as needed -->
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-3" style="margin-top: 20px;">
+                                                                    <div class="custom-select">
+                                                                        <img src="../assets/images/profile/watch.png"
+                                                                            id="front" class="second"
+                                                                            alt="Default Image"
+                                                                            style="width:70px; height: 70px; margin-left: 70px;">
+                                                                        <select class="form-control second_dropdown"
+                                                                            id="second_dropdown">
+                                                                            <option value="0">Second</option>
+                                                                            <!-- Add more options as needed -->
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- end8 -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row" style="margin-top: 2%;">
+
+                                            <!--Image Upload Field Here-->
+
+                                            <h5 style="margin-left: 40px; margin-top: 40px;text-align: center;">Add
+                                                images of selected dropdowns
+                                            </h5>
+                                            <div class="row" style="margin-top: 20px;">
+                                                <div class="col-sm-2 imgUp">
+                                                    <div class="imagePreview" id="image_back1"
+                                                        style="border-radius: 5px;">
+                                                        <img src="../assets/images/profile/sample.png" id="front1"
+                                                            alt="Default Image" style="width:160px; height: 160px;"
+                                                            onclick="document.getElementById('watchimg1').click();">
+                                                        </button>
+                                                    </div>
+                                                    <label style="width: 100%; text-align: center;">
+                                                        Upload<input type="file" class="uploadFile img"
+                                                            value="Upload Photo"
+                                                            onchange="handleFileUpload(this, 'front1')" id="watchimg1"
+                                                            style="width: 0px; height: 0px; overflow: hidden;">
+                                                    </label>
+                                                    <span id="watchfile2_error" style="color: red;" watchimg2
+                                                        class="error"></span>
+                                                </div>
+                                                <!-- col-2 -->
+                                                <!-- <i class="fa fa-plus imgAdd"></i> -->
+                                                <div class="col-sm-2 imgUp">
+                                                    <div class="imagePreview" style="border-radius: 5px;">
+                                                        <img src="../assets/images/profile/sample.png" id="back1"
+                                                            alt="Default Image" style="width:160px; height: 160px;"
+                                                            onclick="document.getElementById('watchimg2').click();">
+                                                    </div>
+                                                    <label style="width: 100%; text-align: center;">
+                                                        Upload<input type="file" class="uploadFile img"
+                                                            value="Upload Photo"
+                                                            onchange="handleFileUpload(this, 'back1')" id="watchimg2"
+                                                            style="width: 0px; height: 0px; overflow: hidden;">
+                                                    </label>
+                                                    <span id="watchfile3_error" style="color: red;"
+                                                        class="error"></span>
+                                                </div>
+                                                <!-- col-2 -->
+                                                <!-- <i class="fa fa-plus imgAdd"></i> -->
+                                                <div class="col-sm-2 imgUp">
+                                                    <div class="imagePreview" style="border-radius: 5px;">
+                                                        <img src="../assets/images/profile/sample.png"
+                                                            alt="Default Image" id="down1"
+                                                            style="width:160px; height: 160px;"
+                                                            onclick="document.getElementById('watchimg3').click();">
+                                                    </div>
+                                                    <label style="width: 100%; text-align: center;">
+                                                        Upload<input type="file" class="uploadFile img"
+                                                            value="Upload Photo"
+                                                            onchange="handleFileUpload(this, 'down1')" id="watchimg3"
+                                                            style="width: 0px; height: 0px; overflow: hidden;">
+                                                    </label>
+                                                    <span id="watchfile4_error" style="color: red;"
+                                                        class="error"></span>
+                                                </div>
+                                                <!-- col-2 -->
+                                                <!-- <i class="fa fa-plus imgAdd"></i> -->
+                                                <div class="col-sm-2 imgUp">
+                                                    <div class="imagePreview" style="border-radius: 5px;">
+                                                        <img src="../assets/images/profile/sample.png"
+                                                            alt="Default Image" id="up1"
+                                                            style="width:160px; height: 160px;"
+                                                            onclick="document.getElementById('watchimg4').click();">
+
+                                                    </div>
+                                                    <label style="width: 100%; text-align: center;">
+                                                        Upload<input type="file" class="uploadFile img"
+                                                            value="Upload Photo"
+                                                            onchange="handleFileUpload(this, 'up1')" id="watchimg4"
+                                                            style="width: 0px; height: 0px; overflow: hidden;">
+                                                    </label>
+                                                    <span id="watchfile5_error" style="color: red;"
+                                                        class="error"></span>
+                                                </div>
+                                                <!-- col-2 -->
+                                                <!-- <i class="fa fa-plus imgAdd"></i> -->
+                                                <div class="col-sm-2 imgUp">
+                                                    <div class="imagePreview" style="border-radius: 5px;">
+                                                        <img src="../assets/images/profile/sample.png"
+                                                            alt="Default Image" id="left1"
+                                                            style="width:160px; height: 160px;"
+                                                            onclick="document.getElementById('watchimg5').click();">
+
+                                                    </div>
+                                                    <label style="width: 100%; text-align: center;">
+                                                        Upload<input type="file" class="uploadFile img"
+                                                            value="Upload Photo"
+                                                            onchange="handleFileUpload(this, 'left1')" id="watchimg5"
+                                                            style="width: 0px; height: 0px; overflow: hidden;">
+                                                    </label>
+                                                    <span id="watchfile6_error" style="color: red;"
+                                                        class="error"></span>
+                                                </div>
+                                                <div class="col-sm-2 imgUp">
+                                                    <div class="imagePreview" style="border-radius: 5px;">
+                                                        <img src="../assets/images/profile/sample.png"
+                                                            alt="Default Image" id="right1"
+                                                            style="width:160px; height: 160px;"
+                                                            onclick="document.getElementById('watchimg6').click();">
+
+                                                    </div>
+                                                    <label style="width: 100%; text-align: center;">
+                                                        Upload<input type="file" class="uploadFile img"
+                                                            value="Upload Photo"
+                                                            onchange="handleFileUpload(this, 'right1')" id="watchimg6"
+                                                            style="width: 0px; height: 0px; overflow: hidden;">
+                                                    </label>
+                                                    <span id="watchfile1_error" style="color: red;"
+                                                        class="error"></span>
+                                                </div>
+
+                                                <div id="totalPriceDisplay" style="display: none;">Total Price: $0</div>
+                                            </div>
+
+
+                                            <!--Submit Button Here-->
+
+                                            <div style="display: flex;">
+                                                <button type="button" class="btn btn-primary"
+                                                    style="margin-top: 20px; margin-left: 450px;"
+                                                    onclick="window.location.href ='./edit-watch.html'">
+                                                    Cancel
+                                                </button>
+                                                <button type="button" class="btn btn-primary"
+                                                    style="margin-top: 20px; margin-left: 10px;"
+                                                    onclick="validateForm()">
+                                                    Save
+                                                </button>
+                                            </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+                        <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+                        <script src="../assets/js/sidebarmenu.js"></script>
+                        <script src="../assets/js/app.min.js"></script>
+                        <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+
+
+                        <script>
+                            function handleFileUpload(input, imageId) {
+                                var file = input.files[0];
+                                var image = document.getElementById(imageId);
+                                var errorSpan = document.getElementById(imageId + '_error');
+
+                                if (file) {
+                                    if (file.type.match('image.*')) {
+                                        var reader = new FileReader();
+                                        reader.onload = function (e) {
+                                            image.src = e.target.result;
+
+                                        };
+                                        reader.readAsDataURL(file);
+                                    } else {
+                                        image.src = '';
+                                        errorSpan.textContent = 'Please upload an image file.';
+                                        input.value = '';
+                                    }
+                                } else {
+                                    image.src = '';
+                                    errorSpan.textContent = 'No file selected.';
+                                }
+                            }
+                        </script>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let addlChrgs;
+        let dialDetails = []
+        let bezelDetails = []
+        let casebackDetails = []
+        let strapDetails = []
+        let chronocaseDetails = []
+        let crownDetails = []
+        let handDetails = []
+        let movementDetails = []
+        let secondDetails = []
+
+        let totalPrice = 0;
+
+        // Function to populate a dropdown with data and handle image change
+        const populateDropdown = (dropdownClass, imgClass, items, idField, imageField, priceField) => {
+            const dropdownElements = document.querySelectorAll(`.${dropdownClass}`);
+            const imgElements = document.querySelectorAll(`.${imgClass}`);
+
+            dropdownElements.forEach((dropdownElement, index) => {
+                items.forEach(item => {
+                    const option = document.createElement('option');
+                    option.value = item[idField];
+                    option.textContent = item.name;
+                    option.dataset.imageUrl = item[imageField]; // Store the image URL in a data attribute
+                    option.dataset.price = item[priceField]; // Store the price in a data attribute
+                    dropdownElement.appendChild(option);
+                });
+
+                // Add event listener to change the image and update price on selection
+                dropdownElement.addEventListener('change', function () {
+                    const selectedOption = this.options[this.selectedIndex];
+                    const imgElement = imgElements[index];
+                    imgElement.src = selectedOption.dataset.imageUrl; // Update the image source
+
+                    // Update the total price
+                    updateTotalPrice();
+                });
+            });
+        };
+
+        // Function to update the total price based on selected dropdown options
+        const updateTotalPrice = () => {
+            totalPrice = 0; // Reset total price
+
+            // Get all dropdowns
+            const dropdowns = document.querySelectorAll('select');
+
+            dropdowns.forEach(dropdown => {
+                const selectedOption = dropdown.options[dropdown.selectedIndex];
+                const price = parseFloat(selectedOption.dataset.price) || 0;
+                totalPrice += price; // Add the price of the selected option to the total
+            });
+
+            // Display the total price
+            document.getElementById('totalPriceDisplay').textContent = `Total Price: $${totalPrice}`;
+        };
+
+        // Example of how to call populateDropdown with prices included
+        const getWatchData = () => {
+            const apiUrl = '../api/get-customizations.php';
+            const body = JSON.stringify({
+                "token": window.localStorage.getItem("authToken")
+            });
+
+            fetch(apiUrl, {
+                method: "POST",
+                body: body,
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        // Populate the dropdowns with corresponding data
+                        dialDetails = data.data.dial; // Add this assignment
+                        strapDetails = data.data.strap; // Add this assignment
+                        bezelDetails = data.data.bezel; // Add this assignment
+                        casebackDetails = data.data.caseback; // Add this assignment
+                        chronocaseDetails = data.data.chronocase; // Add this assignment
+                        crownDetails = data.data.crowns; // Add this assignment
+                        handDetails = data.data.hands; // Add this assignment
+                        movementDetails = data.data.movement; // Add this assignment
+                        secondDetails = data.data.seconds; // Add this assignment
+
+                        // Call function to populate dropdowns
+                        populateDropdown('dial_dropdown', 'dial', data.data.dial, 'did', 'image_url');
+                        populateDropdown('strap_dropdown', 'strap', data.data.strap, 'sid', 'image_url');
+                        populateDropdown('bezel_dropdown', 'bezel', data.data.bezel, 'bid', 'image_url');
+                        populateDropdown('caseback_dropdown', 'caseback', data.data.caseback, 'cid', 'image_url');
+                        populateDropdown('chronocase_dropdown', 'chronocase', data.data.chronocase, 'cid', 'image_url');
+                        populateDropdown('crown_dropdown', 'crown', data.data.crowns, 'cid', 'image_url');
+                        populateDropdown('hand_dropdown', 'hand', data.data.hands, 'hid', 'image_url');
+                        populateDropdown('movement_dropdown', 'movement', data.data.movement, 'mid', 'image_url');
+                        populateDropdown('second_dropdown', 'second', data.data.seconds, 'sid', 'image_url');
+                    } else {
+                        console.error(data.msg);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        };
+
+        const getWatchImage = () => {
+            const apiUrl = '../api//get-watches.php';
+            const body = JSON.stringify({
+                "wid": window.localStorage.getItem("wid"),
+                "token": window.localStorage.getItem("authToken")
+            })
+            fetch(apiUrl, {
+                method: "POST",
+                body: body,
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+
+                    if (data.success) {
+                        data.data.forEach((it) => {
+                            if (it.wid === window.localStorage.getItem("wid")) {
+                                document.getElementById("combo8").src = it.image_front;
+                            }
+                        });
+                    }
+                    else {
+                        alert(data.msg)
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+            getWatchData();
+        }
+        getWatchImage()
+
+
+        function validateForm() {
+            let isValid = true;
+            let errorMessage = '';
+
+            // Validate dropdowns for Combo 8 (Example for one, repeat for all)
+            let dialDropdown8 = document.getElementById("dial_dropdown").value;
+            let strapDropdown8 = document.getElementById("strap_dropdown").value;
+            let bezelDropdown8 = document.getElementById("bezel_dropdown").value;
+            let casebackDropdown8 = document.getElementById("caseback_dropdown").value;
+            let chronocaseDropdown8 = document.getElementById("chronocase_dropdown").value;
+            let crownDropdown8 = document.getElementById("crown_dropdown").value;
+            let handDropdown8 = document.getElementById("hand_dropdown").value;
+            let movementDropdown8 = document.getElementById("movement_dropdown").value;
+            let secondDropdown8 = document.getElementById("second_dropdown").value;
+
+
+            //Check min one dropdown has to be selected
+            if (dialDropdown8 === '0' && strapDropdown8 === '0' && bezelDropdown8 === '0' && casebackDropdown8 === '0' && chronocaseDropdown8 === '0' && crownDropdown8 === '0'
+                && handDropdown8 === '0' && movementDropdown8 === '0' && secondDropdown8 === '0') {
+                alert('Please select minimum one dropdown');
+                return false;
+            }
+
+            // Validate image file inputs
+            let imageInputs = document.querySelectorAll(".uploadFile");
+            for (var i = 0; i < imageInputs.length; i++) {
+                var file = imageInputs[i].files[0];
+                if (!file) {
+                    alert("Please upload all images in upload field");
+                    return false;
+                }
+                // Add additional validations if needed, such as file type or size
+            }
+            updateWatchDetails();
+        }
+
+        function updateWatchDetails() {
+            let dialDropdown = document.getElementById("dial_dropdown").value;
+            let strapDropdown = document.getElementById("strap_dropdown").value;
+            let bezelDropdown = document.getElementById("bezel_dropdown").value;
+            let casebackDropdown = document.getElementById("caseback_dropdown").value;
+            let chronocaseDropdown = document.getElementById("chronocase_dropdown").value;
+            let crownDropdown = document.getElementById("crown_dropdown").value;
+            let handDropdown = document.getElementById("hand_dropdown").value;
+            let movementDropdown = document.getElementById("movement_dropdown").value;
+            let secondDropdown = document.getElementById("second_dropdown").value;
+
+            let totalCost = 0;
+
+            // Helper function to find the selected item's price
+            const getPriceFromSelection = (detailsArray, idField, selectedId) => {
+                let selectedItem = detailsArray.find(el => el[idField] == selectedId);
+
+                return selectedItem ? parseFloat(selectedItem.price) : 0; // Ensure it's a number
+            };
+
+            // Calculate total cost
+            if (dialDropdown != "0") {
+                let price = getPriceFromSelection(dialDetails, 'did', dialDropdown);
+                totalCost += price;
+            }
+
+            if (strapDropdown != "0") {
+                let price = getPriceFromSelection(strapDetails, 'sid', strapDropdown);
+                totalCost += price;
+            }
+
+            if (bezelDropdown != "0") {
+                let price = getPriceFromSelection(bezelDetails, 'bid', bezelDropdown);
+                totalCost += price;
+            }
+
+            if (casebackDropdown != "0") {
+                let price = getPriceFromSelection(casebackDetails, 'cid', casebackDropdown);
+                totalCost += price;
+            }
+
+            if (chronocaseDropdown != "0") {
+                let price = getPriceFromSelection(chronocaseDetails, 'cid', chronocaseDropdown);
+                totalCost += price;
+            }
+
+            if (crownDropdown != "0") {
+                let price = getPriceFromSelection(crownDetails, 'cid', crownDropdown);
+                totalCost += price;
+            }
+
+            if (handDropdown != "0") {
+                let price = getPriceFromSelection(handDetails, 'hid', handDropdown);
+                totalCost += price;
+            }
+
+            if (movementDropdown != "0") {
+                let price = getPriceFromSelection(movementDetails, 'mid', movementDropdown);
+                totalCost += price;
+            }
+
+            if (secondDropdown != "0") {
+                let price = getPriceFromSelection(secondDetails, 'sid', secondDropdown);
+                totalCost += price;
+            }
+
+            // Prepare data for the API request
+            const url = '../api/add-watch-face.php';
+            const body = new FormData();
+            body.append("dial_id", dialDropdown);
+            body.append("strap_id", strapDropdown);
+            body.append("chronocase_id", chronocaseDropdown);
+            body.append("movement_id", movementDropdown);
+            body.append("bezel_id", bezelDropdown);
+            body.append("hands_id", handDropdown);
+            body.append("seconds_id", secondDropdown);
+            body.append("crown_id", crownDropdown);
+            body.append("caseback_id", casebackDropdown);
+            body.append("wid", window.localStorage.getItem("wid"));
+            body.append("price", totalCost); // Final total cost
+            body.append("token", window.localStorage.getItem("authToken"));
+
+            console.log(`Appending Price to FormData: ${totalCost}`);
+
+            // Append images
+            body.append("image_front", document.getElementById("watchimg1").files[0]);
+            body.append("image_back", document.getElementById("watchimg2").files[0]);
+            body.append("image_up", document.getElementById("watchimg3").files[0]);
+            body.append("image_down", document.getElementById("watchimg4").files[0]);
+            body.append("image_left", document.getElementById("watchimg5").files[0]);
+            body.append("image_right", document.getElementById("watchimg6").files[0]);
+
+            // Send the data via fetch
+            fetch(url, {
+                method: "POST",
+                body: body,
+            },
+            ).then(response => {
+                return response.json();
+            }).then(data => {
+                if (data.success) {
+                    alert(data.msg);
+                    window.location.reload();
+                }
+                else {
+                    alert(data.msg);
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
