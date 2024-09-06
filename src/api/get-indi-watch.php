@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                 $row["image_down"] = $base . substr($row["image_down"], 1);
                 $row["combination"] = json_decode($row["combination"]);
                 $row["status"] = ($row["status"]);
-                $row["description"] = ($row["description"]);
+                // $row["description"] = ($row["description"]);
 
                 $sql = "SELECT * FROM `watch_face` where `wid`='$wid'";
                 $result = $conn->query($sql);
