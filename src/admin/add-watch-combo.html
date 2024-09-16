@@ -726,78 +726,57 @@
 
             let totalCost = 0;
 
-            // Helper function to find the selected item's price
-            const getPriceFromSelection = (detailsArray, idField, selectedId) => {
-                let selectedItem = detailsArray.find(el => el[idField] == selectedId);
+            // Helper function to find the selected item's price and image URL
+            const getDetailsFromSelection = (detailsArray, idField, selectedId, dropdownId) => {
+                let dropdown = document.getElementById(dropdownId);
+                let selectedOption = dropdown.options[dropdown.selectedIndex];
+                let imageUrl = selectedOption.getAttribute('data-image-url') || '';  // Get the image URL from the data attribute
 
-                return selectedItem ? parseFloat(selectedItem.price) : 0; // Ensure it's a number
+                let selectedItem = detailsArray.find(el => el[idField] == selectedId);
+                return selectedItem ? { price: parseFloat(selectedItem.price), imageUrl: imageUrl } : { price: 0, imageUrl: '' };
             };
 
-            // Calculate total cost
-            if (dialDropdown != "0") {
-                let price = getPriceFromSelection(dialDetails, 'did', dialDropdown);
-                totalCost += price;
-            }
+            // Get details (price and image URL) for each dropdown selection
+            let dialDetailsObj = getDetailsFromSelection(dialDetails, 'did', dialDropdown, 'dial_dropdown');
+            let strapDetailsObj = getDetailsFromSelection(strapDetails, 'sid', strapDropdown, 'strap_dropdown');
+            let bezelDetailsObj = getDetailsFromSelection(bezelDetails, 'bid', bezelDropdown, 'bezel_dropdown');
+            let casebackDetailsObj = getDetailsFromSelection(casebackDetails, 'cid', casebackDropdown, 'caseback_dropdown');
+            let chronocaseDetailsObj = getDetailsFromSelection(chronocaseDetails, 'cid', chronocaseDropdown, 'chronocase_dropdown');
+            let crownDetailsObj = getDetailsFromSelection(crownDetails, 'cid', crownDropdown, 'crown_dropdown');
+            let handDetailsObj = getDetailsFromSelection(handDetails, 'hid', handDropdown, 'hand_dropdown');
+            let movementDetailsObj = getDetailsFromSelection(movementDetails, 'mid', movementDropdown, 'movement_dropdown');
+            let secondDetailsObj = getDetailsFromSelection(secondDetails, 'sid', secondDropdown, 'second_dropdown');
 
-            if (strapDropdown != "0") {
-                let price = getPriceFromSelection(strapDetails, 'sid', strapDropdown);
-                totalCost += price;
-            }
-
-            if (bezelDropdown != "0") {
-                let price = getPriceFromSelection(bezelDetails, 'bid', bezelDropdown);
-                totalCost += price;
-            }
-
-            if (casebackDropdown != "0") {
-                let price = getPriceFromSelection(casebackDetails, 'cid', casebackDropdown);
-                totalCost += price;
-            }
-
-            if (chronocaseDropdown != "0") {
-                let price = getPriceFromSelection(chronocaseDetails, 'cid', chronocaseDropdown);
-                totalCost += price;
-            }
-
-            if (crownDropdown != "0") {
-                let price = getPriceFromSelection(crownDetails, 'cid', crownDropdown);
-                totalCost += price;
-            }
-
-            if (handDropdown != "0") {
-                let price = getPriceFromSelection(handDetails, 'hid', handDropdown);
-                totalCost += price;
-            }
-
-            if (movementDropdown != "0") {
-                let price = getPriceFromSelection(movementDetails, 'mid', movementDropdown);
-                totalCost += price;
-            }
-
-            if (secondDropdown != "0") {
-                let price = getPriceFromSelection(secondDetails, 'sid', secondDropdown);
-                totalCost += price;
-            }
+            totalCost += dialDetailsObj.price + strapDetailsObj.price + bezelDetailsObj.price + casebackDetailsObj.price +
+                chronocaseDetailsObj.price + crownDetailsObj.price + handDetailsObj.price + movementDetailsObj.price +
+                secondDetailsObj.price;
 
             // Prepare data for the API request
             const url = '../api/add-watch-face.php';
             const body = new FormData();
             body.append("dial_id", dialDropdown);
+            body.append("dial_image", dialDetailsObj.imageUrl);
             body.append("strap_id", strapDropdown);
+            body.append("strap_image", strapDetailsObj.imageUrl);
             body.append("chronocase_id", chronocaseDropdown);
+            body.append("chronocase_image", chronocaseDetailsObj.imageUrl);
             body.append("movement_id", movementDropdown);
+            body.append("movement_image", movementDetailsObj.imageUrl);
             body.append("bezel_id", bezelDropdown);
+            body.append("bezel_image", bezelDetailsObj.imageUrl);
             body.append("hands_id", handDropdown);
+            body.append("hands_image", handDetailsObj.imageUrl);
             body.append("seconds_id", secondDropdown);
+            body.append("seconds_image", secondDetailsObj.imageUrl);
             body.append("crown_id", crownDropdown);
+            body.append("crown_image", crownDetailsObj.imageUrl);
             body.append("caseback_id", casebackDropdown);
+            body.append("caseback_image", casebackDetailsObj.imageUrl);
             body.append("wid", window.localStorage.getItem("wid"));
-            body.append("price", totalCost); // Final total cost
+            body.append("price", totalCost);
             body.append("token", window.localStorage.getItem("authToken"));
 
-            console.log(`Appending Price to FormData: ${totalCost}`);
-
-            // Append images
+            // Append images from the file inputs
             body.append("image_front", document.getElementById("watchimg1").files[0]);
             body.append("image_back", document.getElementById("watchimg2").files[0]);
             body.append("image_up", document.getElementById("watchimg3").files[0]);
@@ -809,19 +788,17 @@
             fetch(url, {
                 method: "POST",
                 body: body,
-            },
-            ).then(response => {
-                return response.json();
-            }).then(data => {
+            }).then(response => response.json()).then(data => {
                 if (data.success) {
                     alert(data.msg);
                     window.location.reload();
-                }
-                else {
+                } else {
                     alert(data.msg);
                 }
-            })
+            }).catch(error => console.error('Error:', error));
         }
+
+
     </script>
 </body>
 

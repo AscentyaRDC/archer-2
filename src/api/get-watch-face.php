@@ -23,6 +23,17 @@ else{
                 $row["image_right"] = $base. substr($row["image_right"],1);
                 $row["image_up"] = $base. substr($row["image_up"],1);
                 $row["image_down"] = $base. substr($row["image_down"],1);
+
+                // Add the new image fields
+                $row["dial_image"] = $base . substr($row["dial_image"], 1);
+                $row["strap_image"] = $base . substr($row["strap_image"], 1);
+                $row["bezel_image"] = $base . substr($row["bezel_image"], 1);
+                $row["caseback_image"] = $base . substr($row["caseback_image"], 1);
+                $row["chronocase_image"] = $base . substr($row["chronocase_image"], 1);
+                $row["crown_image"] = $base . substr($row["crown_image"], 1);
+                $row["hand_image"] = $base . substr($row["hand_image"], 1);
+                $row["second_image"] = $base . substr($row["second_image"], 1);
+                $row["movement_image"] = $base . substr($row["movement_image"], 1);
                 array_push($data,$row);   
         }
         $res["success"] = true;

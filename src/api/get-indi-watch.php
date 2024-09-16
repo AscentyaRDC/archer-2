@@ -1,6 +1,6 @@
 <?php
 
-require ("./conn.php");
+require("./conn.php");
 
 $inputJSON = file_get_contents('php://input');
 $input = json_decode($inputJSON, TRUE); //convert JSON into array
@@ -40,6 +40,17 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                     $row1["image_up"] = $base . substr($row1["image_up"], 1);
                     $row1["image_down"] = $base . substr($row1["image_down"], 1);
                     // $row["combination"] = json_decode($row["combination"]);
+
+                    // // Add the new image fields
+                    // $row1["dial_image"] = $base . substr($row1["dial_image"], 1);
+                    // $row1["strap_image"] = $base . substr($row1["strap_image"], 1);
+                    // $row1["bezel_image"] = $base . substr($row1["bezel_image"], 1);
+                    // $row1["caseback_image"] = $base . substr($row1["caseback_image"], 1);
+                    // $row1["chronocase_image"] = $base . substr($row1["chronocase_image"], 1);
+                    // $row1["crown_image"] = $base . substr($row1["crown_image"], 1);
+                    // $row1["hand_image"] = $base . substr($row1["hand_image"], 1);
+                    // $row1["second_image"] = $base . substr($row1["second_image"], 1);
+                    // $row1["movement_image"] = $base . substr($row1["movement_image"], 1);
                     $watchfaceData[] = $row1;
                 }
                 $row["WatchFaceData"] = $watchfaceData;

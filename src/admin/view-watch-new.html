@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archer New</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .nav-buttons button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            background-color: #555;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .nav-buttons button:hover {
+            background-color: #777;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+            background-color: #f0f0f0;
+        }
+
+        .editor {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-color: #fff;
+            border-right: 2px solid #ccc;
+        }
+
+        .image-preview {
+            border: 2px solid #ccc;
+            width: 90%;
+            height: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+        }
+
+        .image-preview img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .sidebar {
+            flex: 0.38;
+            /* Adjusted flex value for better spacing */
+            background-color: #fff;
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+            height: 640px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .tools {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 100%;
+        }
+
+        .edit-layout {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .layout-options {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .layout-option {
+            background-color: #e0e0e0;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .layout-option img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .footer button {
+            padding: 5px 10px;
+            background-color: #555;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .footer button:hover {
+            background-color: #777;
+        }
+    </style>
+    <style>
+        /* Slideshow container */
+        .slideshow-container {
+            max-width: 500px;
+            position: relative;
+            margin: auto;
+        }
+
+        /* Next & previous buttons */
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Caption text */
+        .text {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Number text (1/3 etc) */
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+
+        /* The dots/bullets/indicators */
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active,
+        .dot:hover {
+            background-color: #717171;
+        }
+
+        /* Fading animation */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: .4
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        /* On smaller screens, decrease text size */
+        @media only screen and (max-width: 300px) {
+
+            .prev,
+            .next,
+            .text {
+                font-size: 11px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>ARCHER</h1>
+        <div class="nav-buttons">
+            <button>Products</button>
+            <button>Cart</button>
+            <button>Favourites</button>
+            <button>Logout</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="editor">
+            <!-- <div class="image-preview">
+                <img id="preview-image" src="./src/assets/images/profile/watch.png" alt="Preview">
+            </div> -->
+            <div class="slideshow-container">
+                <div class="mySlides fade">
+                    <div class="numbertext">1 / 6</div>
+                    <img src="../assets/images/profile/watch.png" style="height: 70%; width: 90%;" id="front">
+                    <div class="text">Caption One</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">2 / 6</div>
+                    <img src="../assets/images/profile/watch.png" style="height: 70%; width: 90%;" id="back">
+                    <div class="text">Caption Two</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">3 / 6</div>
+                    <img src="../assets/images/profile/watch.png" style="height: 70%; width: 90%;" id="left">
+                    <div class="text">Caption Three</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">4 / 6</div>
+                    <img src="../assets/images/profile/watch.png" style="height: 70%; width: 90%;" id="right">
+                    <div class="text">Caption Four</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">5 / 6</div>
+                    <img src="../assets/images/profile/watch.png" style="height: 70%; width: 90%;" id="up">
+                    <div class="text">Caption Five</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">6 / 6</div>
+                    <img src="../assets/images/profile/watch.png" style="height: 70%; width: 90%;" id="down">
+                    <div class="text">Caption Six</div>
+                </div>
+
+                <!-- <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a> -->
+
+            </div>
+            <br>
+
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+                <span class="dot" onclick="currentSlide(6)"></span>
+            </div>
+
+
+        </div>
+        <div class="sidebar">
+            <div class="tools">
+                <div>
+                    <div class="imagePreview" style="border-radius: 5px;margin: 5px; text-align: center;">
+                        <p style="color: #777;">Dials</p>
+                        <img src="../assets/images/profile/watch.png" id="left" alt="Default Image"
+                            style="width:70px; height: 70px;" onclick="changeImage(this.src)"
+                            onmouseover="changeMainImage(this.src)" onmouseout="resetMainImage()">
+                    </div>
+                </div>
+                <div>
+                    <div class="imagePreview" style="border-radius: 5px;margin: 5px; text-align: center;">
+                        <p style="color: #777;">Straps</p>
+                        <img src="../assets/images/profile/watch.png" id="left" alt="Default Image"
+                            style="width:70px; height: 70px;" onclick="changeImage(this.src)"
+                            onmouseover="changeMainImage(this.src)" onmouseout="resetMainImage()">
+                    </div>
+                </div>
+                <div>
+                    <div class="imagePreview" style="border-radius: 5px;margin: 5px; text-align: center;">
+                        <p style="color: #777; margin-left: -8px;">Bezels</p>
+                        <img src="../assets/images/profile/watch.png" id="left" alt="Default Image"
+                            style="width:70px; height: 70px;" onclick="changeImage(this.src)"
+                            onmouseover="changeMainImage(this.src)" onmouseout="resetMainImage()">
+                    </div>
+                </div>
+                <div>
+                    <div class="imagePreview" style="border-radius: 5px;margin: 5px; text-align: center;">
+                        <p style="color: #777;">Casebacks</p>
+                        <img src="../assets/images/profile/watch.png" id="left" alt="Default Image"
+                            style="width:70px; height: 70px;" onclick="changeImage(this.src)"
+                            onmouseover="changeMainImage(this.src)" onmouseout="resetMainImage()">
+                    </div>
+                </div>
+                <div>
+                    <div class="imagePreview" style="border-radius: 5px;margin: 5px; text-align: center;">
+                        <p style="color: #777;">Chronocases</p>
+                        <img src="../assets/images/profile/watch.png" id="left" alt="Default Image"
+                            style="width:70px; height: 70px;" onclick="changeImage(this.src)"
+                            onmouseover="changeMainImage(this.src)" onmouseout="resetMainImage()">
+                    </div>
+                </div>
+                <div>
+                    <div class="imagePreview" style="border-radius: 5px;margin: 5px; text-align: center;">
+                        <p style="color: #777;">Crowns</p>
+                        <img src="../assets/images/profile/watch.png" id="left" alt="Default Image"
+                            style="width:70px; height: 70px;" onclick="changeImage(this.src)"
+                            onmouseover="changeMainImage(this.src)" onmouseout="resetMainImage()">
+                    </div>
+                </div>
+                <div>
+                    <div class="imagePreview" style="border-radius: 5px;margin: 5px; text-align: center;">
+                        <p style="color: #777;">Hands</p>
+                        <img src="../assets/images/profile/watch.png" id="left" alt="Default Image"
+                            style="width:70px; height: 70px;" onclick="changeImage(this.src)"
+                            onmouseover="changeMainImage(this.src)" onmouseout="resetMainImage()">
+                    </div>
+                </div>
+                <div>
+                    <div class="imagePreview" style="border-radius: 5px;margin: 5px; text-align: center;">
+                        <p style="color: #777;">Movements</p>
+                        <img src="../assets/images/profile/watch.png" id="left" alt="Default Image"
+                            style="width:70px; height: 70px;" onclick="changeImage(this.src)"
+                            onmouseover="changeMainImage(this.src)" onmouseout="resetMainImage()">
+                    </div>
+                </div>
+                <div>
+                    <div class="imagePreview" style="border-radius: 5px;margin: 5px; text-align: center;">
+                        <p style="color: #777;">Seconds</p>
+                        <img src="../assets/images/profile/watch.png" id="left" alt="Default Image"
+                            style="width:70px; height: 70px;" onclick="changeImage(this.src)"
+                            onmouseover="changeMainImage(this.src)" onmouseout="resetMainImage()">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="edit-layout">
+            <h2>Available Customizations</h2>
+            <div class="layout-options">
+                <div class="layout-option">
+                    <img src="../assets/images/profile/watch.png" alt="Image 1">
+                </div>
+                <div class="layout-option">
+                    <img src="../assets/images/profile/watch.png" alt="Image 2">
+                </div>
+                <div class="layout-option">
+                    <img src="../assets/images/profile/watch.png" alt="Image 3">
+                </div>
+                <div class="layout-option">
+                    <img src="../assets/images/profile/watch.png" alt="Image 4">
+                </div>
+                <div class="layout-option">
+                    <img src="../assets/images/profile/watch.png" alt="Image 5">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="footer">
+        <button>ADD TO CART</button>
+        <button>BUY NOW</button>
+    </div>
+    <script>
+        let slideIndex = 0;
+        let slideTimer; // Declare a timer variable
+        showSlides();
+
+        // function plusSlides(n) {
+        //     showSlides(slideIndex += n);
+        // }
+
+        // Function to show slides automatically
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            slideTimer = setTimeout(showSlides, 3000); // Change image every 3 seconds
+        }
+
+        // Function to handle manual dot navigation
+        function currentSlide(n) {
+            clearTimeout(slideTimer); // Stop auto-sliding when a dot is clicked
+            slideIndex = n;
+            showManualSlides(n);
+        }
+
+        // Function to show the selected slide when dot is clicked
+        function showManualSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[n - 1].style.display = "block";
+            dots[n - 1].className += " active";
+            slideTimer = setTimeout(showSlides, 3000); // Resume auto-sliding after manual change
+        }
+
+
+        const getWatchDetails = () => {
+            let url = "../api/get-indi-watch.php";
+            let body = JSON.stringify({
+                token: window.localStorage.getItem("authToken"),
+                wid: window.localStorage.getItem("wid")
+            });
+            fetch(url, {
+                body: body,
+                method: "POST"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        SelectedDial = "0"
+                        SelectedStrap = "0"
+                        SelectedBezel = "0";
+                        SelectedCaseback = "0";
+                        SelectedChronocase = "0";
+                        SelectedCrown = "0";
+                        SelectedHand = "0";
+                        SelectedMovement = "0";
+                        SelectedSecond = "0";
+                        maxQty = parseInt(data.data[0].is_available);
+
+                        // let basePrice = parseFloat(data.data[0].base_price);
+                        // let additionalChargesPercentage = parseFloat(data.data[0].aaditional_charges);
+                        // let finalPrice = basePrice + (basePrice * additionalChargesPercentage / 100);
+
+                        // document.getElementById("price").innerHTML = `Price : &#x20b9; ${finalPrice.toFixed(2)} <span style="color:red; font-size: 14px;">(Included Service Taxes)</span>`;
+                        // document.getElementById("additioncost").innerHTML = additionalChargesPercentage + "%";
+                        // document.getElementById("stock").innerHTML = "Available Stock : " + parseInt(data.data[0].is_available) + " No(s)";
+                        document.getElementById("front").src = data.data[0].image_front;
+                        document.getElementById("back").src = data.data[0].image_back;
+                        document.getElementById("left").src = data.data[0].image_left;
+                        document.getElementById("right").src = data.data[0].image_right;
+                        document.getElementById("up").src = data.data[0].image_up;
+                        document.getElementById("down").src = data.data[0].image_down;
+
+                        // document.getElementById("dialsize").textContent = data.data[0].dial_size;
+                        // document.getElementById("color").textContent = data.data[0].color;
+                        // document.getElementById("weight").textContent = data.data[0].weight;
+                        // document.getElementById("bodytype").textContent = data.data[0].body_type;
+                        // document.getElementById("Brand").textContent = data.data[0].brand;
+                        // document.getElementById("battery").textContent = data.data[0].batteries_included == 1 ? "Yes" : "No";
+                        // document.getElementById("year").textContent = data.data[0].year_of_manufacture;
+                        // document.getElementById("warranty").textContent = data.data[0].warranty_period;
+                        // document.getElementById("itemcode").textContent = data.data[0].item_code;
+                        // document.getElementById("displaytype").textContent = data.data[0].display_type == 0 ? "-" : data.data[0].display_type == 1 ? "Analog" : "Digital";
+                        // document.getElementById("water").textContent = data.data[0].water_resistant == 1 ? "Yes" : "No";
+                        // document.getElementById("shape").textContent = data.data[0].shape;
+                        // document.getElementById("insidebox").textContent = data.data[0].inside_the_box;
+                        // document.getElementById("iprating").textContent = data.data[0].ip_rating;
+                        // document.getElementById("deliveryfee").textContent = data.data[0].delivery_fee;
+
+                        // Sesha
+                        //     let rowDial = `<div> <h3>Dials</h3><div class="flex-container">`;
+                        //     CustomizationDials = data.data[0].combination.dials;
+                        //     // console.log(CustomizationDials);
+
+                        //     CustomizationDials.forEach((it) => {
+                        //         let tempDiv = `<div style="padding: 5px;">`;
+                        //         if (it.id == SelectedDial)
+                        //             tempDiv = `<div style="padding: 5px;background-color: #00bcd4;border-radius:10px;">`;
+                        //         rowDial += `${tempDiv}
+                        //     <img src="${it.image}" style="height: 80px; width: 80px;" onclick="dialselect(${it.id})">
+                        // </div>`;
+                        //     });
+                        //     rowDial += `</div></div>`;
+                        //     document.getElementById("dials").innerHTML = rowDial;
+
+                        //     let rowStrap = `<div> <h3>Straps</h3><div class="flex-container">`;
+                        //     CustomizationStrap = data.data[0].combination.strap;
+                        //     console.log(CustomizationStrap);
+
+                        //     CustomizationStrap.forEach((it) => {
+                        //         let tempDiv = `<div style="padding: 10px;">`;
+                        //         if (it.id == SelectedStrap)
+                        //             tempDiv = `<div style="padding: 5px;background-color: #00bcd4;border-radius:10px">`;
+                        //         rowStrap += `${tempDiv}
+                        //     <img src="${it.image}" style="height: 80px; width: 80px;" onclick="strapselect(${it.id})">
+                        // </div>`;
+                        //     });
+                        //     rowStrap += `</div></div>`;
+                        //     document.getElementById("straps").innerHTML = rowStrap;
+
+                        //     let rowBezel = `<div> <h3>Bezels</h3><div class="flex-container">`;
+                        //     CustomizationBezels = data.data[0].combination.bezel;
+
+                        //     CustomizationBezels.forEach((it) => {
+                        //         rowBezel += `<div style="padding: 10px;">
+                        //     <img src="${it.image}" style="height: 80px; width: 80px;" onclick="bezelselect(${it.id})">
+                        // </div>`;
+                        //     });
+                        //     rowBezel += `</div></div>`;
+                        //     document.getElementById("bezels").innerHTML = rowBezel;
+
+                        //     let rowCasebacks = `<div> <h3>Casebacks</h3><div class="flex-container">`;
+                        //     CustomizationCasebacks = data.data[0].combination.caseback;
+
+                        //     CustomizationCasebacks.forEach((it) => {
+                        //         rowCasebacks += `<div style="padding: 10px;">
+                        //     <img src="${it.image}" style="height: 80px; width: 80px;" onclick="casebackselect(${it.id})">
+                        // </div>`;
+                        //     });
+                        //     rowCasebacks += `</div></div>`;
+                        //     document.getElementById("casebacks").innerHTML = rowCasebacks;
+
+                        //     let rowChronocases = `<div> <h3>Chronocases</h3><div class="flex-container">`;
+                        //     CustomizationChronocases = data.data[0].combination.chronocase;
+
+                        //     CustomizationChronocases.forEach((it) => {
+                        //         rowChronocases += `<div style="padding: 10px;">
+                        //     <img src="${it.image}" style="height: 80px; width: 80px;" onclick="chronocaseselect(${it.id})">
+                        // </div>`;
+                        //     });
+                        //     rowChronocases += `</div></div>`;
+                        //     document.getElementById("chronocases").innerHTML = rowChronocases;
+
+                        //     let rowCrowns = `<div> <h3>Crowns</h3><div class="flex-container">`;
+                        //     CustomizationCrowns = data.data[0].combination.crown;
+
+                        //     CustomizationCrowns.forEach((it) => {
+                        //         rowCrowns += `<div style="padding: 10px;">
+                        //     <img src="${it.image}" style="height: 80px; width: 80px;" onclick="crownsselect(${it.id})">
+                        // </div>`;
+                        //     });
+                        //     rowCrowns += `</div></div>`;
+                        //     document.getElementById("crowns").innerHTML = rowCrowns;
+
+                        //     let rowHands = `<div> <h3>Hands</h3><div class="flex-container">`;
+                        //     CustomizationHands = data.data[0].combination.hand;
+
+                        //     CustomizationHands.forEach((it) => {
+                        //         rowHands += `<div style="padding: 10px;">
+                        //     <img src="${it.image}" style="height: 80px; width: 80px;" onclick="handsselect(${it.id})">
+                        // </div>`;
+                        //     });
+                        //     rowHands += `</div></div>`;
+                        //     document.getElementById("hands").innerHTML = rowHands;
+
+                        //     let rowMovements = `<div> <h3>Movements</h3><div class="flex-container">`;
+                        //     CustomizationMovements = data.data[0].combination.movement;
+
+                        //     CustomizationMovements.forEach((it) => {
+                        //         rowMovements += `<div style="padding: 10px;">
+                        //     <img src="${it.image}" style="height: 80px; width: 80px;" onclick="movementselect(${it.id})">
+                        // </div>`;
+                        //     });
+                        //     rowMovements += `</div></div>`;
+                        //     document.getElementById("movements").innerHTML = rowMovements;
+
+                        //     let rowSeconds = `<div> <h3>Seconds</h3><div class="flex-container">`;
+                        //     CustomizationSeconds = data.data[0].combination.second;
+
+                        //     CustomizationSeconds.forEach((it) => {
+                        //         rowSeconds += `<div style="padding: 10px;">
+                        //     <img src="${it.image}" style="height: 80px; width: 80px;" onclick="secondselect(${it.id})">
+                        // </div>`;
+                        //     });
+                        //     rowSeconds += `</div></div>`;
+                        //     document.getElementById("seconds").innerHTML = rowSeconds;
+
+
+
+                        //     const dials = data.data[0].combination?.dials || [];
+                        //     const straps = data.data[0].combination?.strap || [];
+                        //     const bezels = data.data[0].combination?.bezel || [];
+                        //     const casebacks = data.data[0].combination?.caseback || [];
+                        //     const chronocases = data.data[0].combination?.chronocase || [];
+                        //     const crowns = data.data[0].combination?.crown || [];
+                        //     const hands = data.data[0].combination?.hand || [];
+                        //     const movements = data.data[0].combination?.movement || [];
+                        //     const seconds = data.data[0].combination?.second || [];
+
+                        //     if (dials.length === 0) {
+                        //         document.getElementById('one').classList.add('hidden');
+                        //     } else {
+                        //         // Add dials to the UI
+                        //     }
+
+                        //     if (straps.length === 0) {
+                        //         document.getElementById('two').classList.add('hidden');
+                        //     } else {
+                        //         // Add straps to the UI
+                        //     }
+
+                        //     if (bezels.length === 0) {
+                        //         document.getElementById('three').classList.add('hidden');
+                        //     } else {
+                        //         // Add bezels to the UI
+                        //     }
+
+                        //     if (casebacks.length === 0) {
+                        //         document.getElementById('four').classList.add('hidden');
+                        //     } else {
+                        //         // Add bezels to the UI
+                        //     }
+
+                        //     if (chronocases.length === 0) {
+                        //         document.getElementById('five').classList.add('hidden');
+                        //     } else {
+                        //         // Add bezels to the UI
+                        //     }
+
+                        //     if (crowns.length === 0) {
+                        //         document.getElementById('six').classList.add('hidden');
+                        //     } else {
+                        //         // Add bezels to the UI
+                        //     }
+
+                        //     if (hands.length === 0) {
+                        //         document.getElementById('seven').classList.add('hidden');
+                        //     } else {
+                        //         // Add bezels to the UI
+                        //     }
+
+                        //     if (movements.length === 0) {
+                        //         document.getElementById('eight').classList.add('hidden');
+                        //     } else {
+                        //         // Add bezels to the UI
+                        //     }
+
+                        //     if (seconds.length === 0) {
+                        //         document.getElementById('nine').classList.add('hidden');
+                        //     } else {
+                        //         // Add bezels to the UI
+                        //     }
+
+                    } else {
+                        alert(data.msg);
+                    }
+                })
+        }
+        getWatchDetails();
+    </script>
+</body>
+
+</html>
